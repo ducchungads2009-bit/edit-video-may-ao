@@ -1,0 +1,90 @@
+{
+ "ten": "Sự kiện mở bán",
+ "mo_ta": "Khí thế: chữ Bungee khối, đỏ + vàng, đếm số, chớp nhẹ khi đổi cảnh, phụ đề to. Hợp: mở bán, ưu đãi, sự kiện, giờ vàng.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Bungee",
+  "skin": "flat",
+  "accent": "#FACC15",
+  "text": {
+   "look": "solid",
+   "color": "#1F0A0A",
+   "bg": "#FACC15",
+   "hlColor": "#DC2626",
+   "hlStyle": "color",
+   "anim": "zoomOut",
+   "out": "pop",
+   "upper": true,
+   "size": 84,
+   "weight": 400,
+   "radius": 8
+  },
+  "captions": {
+   "preset": "tiktok",
+   "font": "Montserrat",
+   "size": 66,
+   "weight": 900,
+   "color": "#FFFFFF",
+   "active": "#FACC15",
+   "upper": true
+  },
+  "broll": {
+   "enter": "zoom",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 60
+  },
+  "effects": {
+   "zoom": "nhiều",
+   "zoomStyle": "punch",
+   "flash": 2
+  },
+  "sfx": {
+   "density": "vua",
+   "set": "manh",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FDE047",
+   "mid": "#DC2626",
+   "dark": "#1F0A0A",
+   "gold1": "#FEF9C3",
+   "gold2": "#FACC15"
+  },
+  "cutFx": "none",
+  "transition": "flash",
+  "captionTop": 1360,
+  "wordsPerPage": 2,
+  "color": {
+   "brightness": 104,
+   "contrast": 112,
+   "saturation": 120,
+   "warmth": 10
+  },
+  "sfxVolume": 0.28
+ },
+ "thanhPhan": {
+  "chu": "Bungee trên khối vàng",
+  "phude": "TikTok to, từ đang đọc vàng",
+  "chuyencanh": "chớp sáng",
+  "hieuung": "zoom giật nhiều",
+  "dohoa": "kính tối, đỏ vàng, số đếm",
+  "bocuc": "căn giữa",
+  "icon": "emoji",
+  "minhhoa": "zoom vào",
+  "amthanh": "vừa, mạnh",
+  "mau": "rực rỡ"
+ }
+}

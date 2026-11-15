@@ -1,0 +1,102 @@
+{
+ "ten": "Bản tin chia đôi",
+ "mo_ta": "Kiểu thời sự: người dẫn ở trên, video hiện trường (ngang) ở nửa dưới, mép giao có vạch đỏ mảnh, thẻ tin trắng sọc đỏ, nhãn LIVE. Hợp: tin tức, bình luận thị trường, talking head có minh họa.",
+ "style": {
+  "font": "Inter",
+  "heading": "Oswald",
+  "skin": "news",
+  "accent": "#E11D48",
+  "text": {
+   "look": "solid",
+   "color": "#FFFFFF",
+   "bg": "#E11D48",
+   "hlColor": "#FDE047",
+   "shadow": "none",
+   "anim": "left",
+   "out": "fade",
+   "upper": true,
+   "size": 64,
+   "weight": 900,
+   "radius": 4,
+   "font": "Oswald"
+  },
+  "captions": {
+   "preset": "box",
+   "font": "Inter",
+   "size": 54,
+   "weight": 800,
+   "color": "#FFFFFF",
+   "activeBg": "#111827",
+   "upper": false
+  },
+  "broll": {
+   "enter": "slide",
+   "exit": "fade",
+   "kenburns": false,
+   "overlay": false,
+   "pip": "clean",
+   "area": "bottom",
+   "split": 0.44,
+   "feather": 110,
+   "seam": "#E11D48"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "square",
+   "bgColor": "#E11D48",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 60,
+   "textZone": "bottom"
+  },
+  "frame": [
+   {
+    "type": "live",
+    "label": "TIN MỚI"
+   }
+  ],
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FB7185",
+   "mid": "#E11D48",
+   "dark": "#111827",
+   "gold1": "#FFE4E6",
+   "gold2": "#FDE047"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 960,
+  "wordsPerPage": 5,
+  "color": {
+   "brightness": 102,
+   "contrast": 106,
+   "saturation": 100
+  },
+  "sfxVolume": 0.2
+ },
+ "thanhPhan": {
+  "chu": "Oswald IN HOA nền đỏ",
+  "phude": "hộp tối ngay mép giao",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "zoom chậm ít",
+  "dohoa": "thẻ tin sọc đỏ, nhãn LIVE",
+  "bocuc": "căn trái",
+  "icon": "icon nét trong ô đỏ",
+  "minhhoa": "video nửa dưới, vạch đỏ mép giao",
+  "amthanh": "nhẹ",
+  "mau": "trung tính, rõ"
+ },
+ "nguon": "tạo sẵn"
+}

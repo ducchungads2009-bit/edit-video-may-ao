@@ -1,0 +1,91 @@
+{
+ "ten": "Cà phê sáng lofi",
+ "mo_ta": "Lofi ấm áp: giấy dán băng keo, chữ viết tay, tông kem – nâu cà phê, hạt phim, chuyển cảnh chậm. Hợp: chia sẻ nhẹ nhàng buổi sáng, kể chuyện thong thả, nội thất ấm cúng.",
+ "style": {
+  "font": "Josefin Sans",
+  "heading": "Patrick Hand",
+  "skin": "scrap",
+  "accent": "#A0522D",
+  "frame": "grain",
+  "text": {
+   "look": "solid",
+   "color": "#4A3426",
+   "bg": "#F5E6D3",
+   "hlColor": "#A0522D",
+   "hlStyle": "color",
+   "anim": "fade",
+   "out": "fade",
+   "upper": false,
+   "size": 84,
+   "weight": 400,
+   "radius": 8
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Josefin Sans",
+   "size": 52,
+   "weight": 700,
+   "color": "#FFF8EE",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "polaroid"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 80
+  },
+  "effects": {
+   "zoom": "không",
+   "zoomEase": "smooth",
+   "zoomStyle": "smooth"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#E8CBA8",
+   "mid": "#A0522D",
+   "dark": "#3B2A1E",
+   "gold1": "#F5E6D3",
+   "gold2": "#C68B59"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1420,
+  "wordsPerPage": 5,
+  "color": {
+   "brightness": 100,
+   "contrast": 96,
+   "saturation": 84,
+   "warmth": 26,
+   "fade": 22
+  },
+  "sfxVolume": 0.1
+ },
+ "thanhPhan": {
+  "chu": "viết tay nâu trên khối kem",
+  "phude": "tối giản",
+  "chuyencanh": "mờ chồng chậm",
+  "hieuung": "không zoom, zoom vào–ra êm",
+  "dohoa": "giấy dán băng keo",
+  "bocuc": "căn trái",
+  "icon": "emoji",
+  "minhhoa": "polaroid",
+  "amthanh": "gần như không",
+  "mau": "kem nâu ấm, mờ"
+ },
+ "nguon": "tạo sẵn"
+}

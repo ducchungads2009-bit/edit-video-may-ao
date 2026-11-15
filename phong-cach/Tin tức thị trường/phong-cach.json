@@ -1,0 +1,90 @@
+{
+ "ten": "Tin tức thị trường",
+ "mo_ta": "Kiểu bản tin: chữ Oswald cao hẹp, nhãn đỏ IN HOA, phụ đề nền tối, cắt thẳng dứt khoát. Hợp: tin thị trường, chính sách, cập nhật giá.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Roboto",
+  "heading": "Oswald",
+  "skin": "flat",
+  "accent": "#DC2626",
+  "text": {
+   "look": "solid",
+   "color": "#FFFFFF",
+   "bg": "#DC2626",
+   "hlColor": "#FDE047",
+   "hlStyle": "color",
+   "anim": "wipe",
+   "out": "fade",
+   "upper": true,
+   "size": 76,
+   "weight": 700,
+   "radius": 4
+  },
+  "captions": {
+   "preset": "box",
+   "font": "Roboto",
+   "size": 56,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "cut",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "square",
+   "bgColor": "#DC2626",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 50
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FCA5A5",
+   "mid": "#DC2626",
+   "dark": "#111827",
+   "gold1": "#FEE2E2",
+   "gold2": "#F59E0B"
+  },
+  "cutFx": "none",
+  "transition": "cut",
+  "captionTop": 1400,
+  "wordsPerPage": 5,
+  "color": {
+   "brightness": 100,
+   "contrast": 108,
+   "saturation": 96,
+   "warmth": -5
+  },
+  "sfxVolume": 0.2
+ },
+ "thanhPhan": {
+  "chu": "Oswald, nhãn đỏ quét ngang",
+  "phude": "nền tối cả dòng",
+  "chuyencanh": "cắt thẳng",
+  "hieuung": "zoom chậm ít",
+  "dohoa": "kính tối, nhấn đỏ",
+  "bocuc": "căn trái lề hẹp",
+  "icon": "icon trong ô vuông đỏ",
+  "minhhoa": "cắt thẳng",
+  "amthanh": "rất ít",
+  "mau": "trung tính, rõ"
+ }
+}

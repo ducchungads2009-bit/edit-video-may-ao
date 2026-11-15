@@ -1,0 +1,94 @@
+{
+ "ten": "Thơ trên mây",
+ "mo_ta": "Nhẹ như sương: cảnh minh họa ở nửa trên (trời, biển, phố) tan dần xuống người đọc ở dưới, chữ viết tay trắng mềm, màu pastel lạnh, zoom vào–ra êm. Hợp: thơ tình, câu nói hay, radio đêm.",
+ "style": {
+  "font": "Nunito",
+  "heading": "Dancing Script",
+  "skin": "flat",
+  "accent": "#A5B4FC",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#C7D2FE",
+   "hlStyle": "color",
+   "shadow": "glow",
+   "anim": "fade",
+   "out": "fade",
+   "upper": false,
+   "size": 96,
+   "weight": 700,
+   "font": "Dancing Script"
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Nunito",
+   "size": 54,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "round",
+   "area": "top",
+   "split": 0.48,
+   "feather": 300
+  },
+  "icons": {
+   "kind": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 90,
+   "textZone": "top",
+   "maxBlocks": 1
+  },
+  "effects": {
+   "zoom": "không",
+   "zoomEase": "smooth",
+   "shots": "auto",
+   "shotDensity": "thua"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#C7D2FE",
+   "mid": "#818CF8",
+   "dark": "#111827",
+   "gold1": "#EEF2FF",
+   "gold2": "#C7D2FE"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1420,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 102,
+   "contrast": 96,
+   "saturation": 86,
+   "warmth": -12,
+   "fade": 20
+  },
+  "sfxVolume": 0.08
+ },
+ "thanhPhan": {
+  "chu": "viết tay trắng phát sáng nhẹ",
+  "phude": "tối giản nhỏ",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "không zoom, tự đổi cỡ cảnh toàn–trung–cận",
+  "dohoa": "không khối",
+  "bocuc": "giữa, chữ trên cao",
+  "minhhoa": "nửa trên tan dần xuống",
+  "amthanh": "gần như không",
+  "mau": "pastel lạnh, nhạt"
+ },
+ "nguon": "tạo sẵn"
+}

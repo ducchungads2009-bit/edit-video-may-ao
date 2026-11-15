@@ -1,0 +1,90 @@
+{
+ "ten": "Năng động TikTok",
+ "mo_ta": "Bắt mắt kiểu TikTok: chữ Anton in hoa trên khối vàng, từ khóa ô đen, phụ đề từng từ có nền, zoom giật — hợp hook, thử thách.",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Anton",
+  "skin": "flat",
+  "accent": "#FFE600",
+  "text": {
+   "look": "solid",
+   "color": "#111111",
+   "bg": "#FFE600",
+   "hlColor": "#FFFFFF",
+   "hlStyle": "box",
+   "shadow": "none",
+   "anim": "pop",
+   "out": "pop",
+   "upper": true,
+   "size": 86,
+   "weight": 400,
+   "radius": 10
+  },
+  "captions": {
+   "preset": "wordbox",
+   "font": "Montserrat",
+   "size": 64,
+   "weight": 900,
+   "color": "#FFFFFF",
+   "active": "#111111",
+   "activeBg": "#FFE600",
+   "upper": true
+  },
+  "broll": {
+   "enter": "zoom",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 60
+  },
+  "effects": {
+   "zoom": "nhiều",
+   "zoomStyle": "punch"
+  },
+  "sfx": {
+   "density": "vua",
+   "set": "manh",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FFE600",
+   "mid": "#FF3D2E",
+   "dark": "#111111",
+   "gold1": "#FFF6A8",
+   "gold2": "#FFE600"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1360,
+  "wordsPerPage": 2,
+  "color": {
+   "brightness": 104,
+   "contrast": 110,
+   "saturation": 115
+  },
+  "sfxVolume": 0.28
+ },
+ "thanhPhan": {
+  "chu": "Anton in hoa trên khối vàng",
+  "phude": "từng từ có nền vàng",
+  "chuyencanh": "tự động, nhanh",
+  "hieuung": "zoom giật nhiều",
+  "dohoa": "kính tối, nhấn vàng",
+  "bocuc": "căn giữa, chữ to",
+  "icon": "emoji không nền",
+  "minhhoa": "zoom vào, cắt ra",
+  "amthanh": "vừa, tiếng mạnh",
+  "mau": "rực, tương phản cao"
+ },
+ "nguon": "tạo sẵn"
+}

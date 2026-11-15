@@ -1,0 +1,98 @@
+{
+ "ten": "Đen vàng thượng lưu",
+ "mo_ta": "Đen nhám + chữ ánh vàng kim, góc vuông sắc, viền chỉ vàng mảnh, dải đen điện ảnh trên/dưới, chữ giãn rất rộng. Hợp: penthouse, biệt thự hạng sang, dự án hàng hiệu.",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Playfair Display",
+  "skin": "luxe",
+  "accent": "#D4AF37",
+  "frame": [
+   "letterbox",
+   {
+    "type": "corners",
+    "color": "#D4AF37"
+   }
+  ],
+  "text": {
+   "look": "clean",
+   "color": "#F3E7C6",
+   "hlColor": "#D4AF37",
+   "hlStyle": "color",
+   "shadow": "soft",
+   "anim": "fade",
+   "out": "fade",
+   "upper": true,
+   "size": 64,
+   "weight": 400,
+   "spacing": 10
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Montserrat",
+   "size": 44,
+   "weight": 400,
+   "color": "#F3E7C6",
+   "upper": true
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "none",
+   "color": "#D4AF37",
+   "stroke": 1.4
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 110
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#F3E7C6",
+   "mid": "#D4AF37",
+   "dark": "#0A0A0A",
+   "gold1": "#F7E7B4",
+   "gold2": "#D4AF37"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1440,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 94,
+   "contrast": 116,
+   "saturation": 84,
+   "warmth": 14,
+   "vignette": 45
+  },
+  "sfxVolume": 0.14
+ },
+ "thanhPhan": {
+  "chu": "IN HOA giãn rất rộng, vàng kim",
+  "phude": "nhỏ, in hoa",
+  "chuyencanh": "mờ chồng chậm",
+  "hieuung": "zoom chậm rất ít",
+  "dohoa": "đen nhám, chữ ánh vàng, góc vuông",
+  "bocuc": "căn giữa, dải đen điện ảnh",
+  "icon": "icon nét mảnh vàng",
+  "minhhoa": "mờ dần",
+  "amthanh": "rất ít",
+  "mau": "tối, sâu, tương phản"
+ },
+ "nguon": "tạo sẵn"
+}

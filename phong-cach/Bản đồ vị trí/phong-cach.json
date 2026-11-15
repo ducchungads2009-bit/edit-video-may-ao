@@ -1,0 +1,107 @@
+{
+ "ten": "Bản đồ vị trí",
+ "mo_ta": "Khoe vị trí kiểu công nghệ: bản đồ nền tối bay theo đường, đường đi phát sáng, la bàn + tọa độ phủ video, thẻ kính tối. Hợp: giới thiệu vị trí dự án, kết nối tiện ích, khoảng cách đi lại.",
+ "style": {
+  "font": "Inter",
+  "heading": "Lexend",
+  "skin": "flat",
+  "accent": "#38BDF8",
+  "frame": [
+   {
+    "type": "coords"
+   }
+  ],
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#38BDF8",
+   "hlStyle": "color",
+   "shadow": "soft",
+   "anim": "up",
+   "out": "fade",
+   "upper": false,
+   "size": 78,
+   "weight": 900
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Inter",
+   "size": 54,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#0284C7",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 60
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "map": {
+   "style": "dark",
+   "theme": "toi",
+   "lineMode": "road",
+   "camera": "fly",
+   "frame": "full",
+   "hideLabels": true,
+   "color": "#38BDF8"
+  },
+  "graphics": {
+   "sticker": "icon",
+   "ghiChu": "dùng khối map cho đoạn nói vị trí / tiện ích (5–8s), chip có MapPin + phút đi lại, presenter corner khi bản đồ chạy"
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#38BDF8",
+   "mid": "#0284C7",
+   "dark": "#06101F",
+   "gold1": "#E0F2FE",
+   "gold2": "#38BDF8"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 100,
+   "contrast": 106,
+   "saturation": 98,
+   "warmth": -10
+  },
+  "sfxVolume": 0.18
+ },
+ "thanhPhan": {
+  "chu": "Inter trắng, nhấn xanh trời",
+  "phude": "tối giản",
+  "chuyencanh": "tự động",
+  "hieuung": "zoom chậm, la bàn + tọa độ",
+  "dohoa": "kính tối, bản đồ nền tối bay theo đường",
+  "bocuc": "căn trái",
+  "icon": "icon trong tròn xanh",
+  "minhhoa": "mờ dần",
+  "amthanh": "ít",
+  "mau": "lạnh, rõ"
+ },
+ "nguon": "tạo sẵn"
+}

@@ -1,0 +1,90 @@
+{
+ "ten": "Review căn hộ sáng",
+ "mo_ta": "Sáng sủa, thoáng: thẻ trắng, nhấn xanh ngọc, ảnh polaroid, màu nhà sáng ấm. Hợp: review căn hộ, dẫn đi xem nhà, tour dự án.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Lexend",
+  "heading": "Lexend",
+  "skin": "light",
+  "accent": "#14B8A6",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#5EEAD4",
+   "hlStyle": "color",
+   "anim": "up",
+   "out": "fade",
+   "upper": false,
+   "size": 80,
+   "weight": 900
+  },
+  "captions": {
+   "preset": "wordbox",
+   "font": "Lexend",
+   "size": 58,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "active": "#FFFFFF",
+   "activeBg": "#0D9488",
+   "upper": false
+  },
+  "broll": {
+   "enter": "slide",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "polaroid"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#0D9488",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 64
+  },
+  "effects": {
+   "zoom": "vừa",
+   "zoomStyle": "punch"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#CCFBF1",
+   "mid": "#0D9488",
+   "dark": "#134E4A",
+   "gold1": "#FEF3C7",
+   "gold2": "#F59E0B"
+  },
+  "cutFx": "none",
+  "transition": "auto",
+  "captionTop": 1380,
+  "wordsPerPage": 3,
+  "color": {
+   "brightness": 112,
+   "contrast": 104,
+   "saturation": 108,
+   "warmth": 10
+  },
+  "sfxVolume": 0.22
+ },
+ "thanhPhan": {
+  "chu": "Lexend trắng, nhấn xanh ngọc",
+  "phude": "từ đang đọc nền xanh ngọc",
+  "chuyencanh": "tự động",
+  "hieuung": "zoom vừa",
+  "dohoa": "thẻ trắng sáng",
+  "bocuc": "căn trái",
+  "icon": "icon trong tròn xanh ngọc",
+  "minhhoa": "ảnh polaroid, trượt vào",
+  "amthanh": "ít",
+  "mau": "nhà sáng sủa, ấm"
+ }
+}

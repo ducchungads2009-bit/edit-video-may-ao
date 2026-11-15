@@ -1,0 +1,98 @@
+{
+ "ten": "BĐS cao cấp AE",
+ "nhom": "bds",
+ "mo_ta": "Giới thiệu dự án hạng sang kiểu phim quảng cáo: giá hiện bằng chữ 3D vàng, ảnh phối cảnh bay trong không gian 3D, bảng giá & tiện ích tự dựng, rò sáng vàng ấm, chữ trồi lên mượt. Hợp: dự án cao cấp, biệt thự, penthouse.",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Playfair Display",
+  "skin": "luxe",
+  "accent": "#E6C27A",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#E6C27A",
+   "shadow": "soft",
+   "anim": "maskUp",
+   "out": "fade",
+   "upper": true,
+   "size": 82,
+   "weight": 700,
+   "spacing": 3,
+   "ease": "smooth",
+   "mblur": true
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Montserrat",
+   "size": 54,
+   "weight": 800,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": true,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "none",
+   "color": "#E6C27A"
+  },
+  "motion": {
+   "ease": "smooth",
+   "mblur": true
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomEase": "smooth",
+   "zoomStyle": "smooth",
+   "overlay": [
+    "lightleak",
+    "flare"
+   ]
+  },
+  "graphics": {
+   "sticker": "không",
+   "ghiChu": "giá / con số lớn → text3d face gold motion rise; ảnh phối cảnh / mặt bằng → card3d move dolly hoặc orbit (ảnh tĩnh nên chuyển 2.5D bằng parallax.py); bảng giá → scene pricetable; tiện ích → scene amenities; mở đầu scene intro kicker tên dự án"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#F3E1B0",
+   "mid": "#C9A24A",
+   "dark": "#0D1117",
+   "gold1": "#F6D98B",
+   "gold2": "#B8892E"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1410,
+  "wordsPerPage": 3,
+  "color": {
+   "contrast": 108,
+   "saturation": 98,
+   "warmth": 14,
+   "vignette": 24
+  },
+  "sfxVolume": 0.22
+ },
+ "thanhPhan": {
+  "chu": "in hoa giãn, trồi lên từ khe",
+  "phude": "tối giản",
+  "chuyencanh": "mờ chồng chậm",
+  "hieuung": "zoom êm, rò sáng vàng",
+  "dohoa": "chữ 3D vàng, bảng giá, tiện ích",
+  "minhhoa": "ảnh 3D camera đẩy vào",
+  "amthanh": "ít, mềm",
+  "mau": "ấm, tối góc"
+ },
+ "nguon": "tạo sẵn"
+}

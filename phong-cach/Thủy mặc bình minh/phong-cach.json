@@ -1,0 +1,101 @@
+{
+ "ten": "Thủy mặc bình minh",
+ "mo_ta": "Bình minh thủy mặc: trời hồng đào, mặt trời cam nhạt, núi xanh lục mờ sương; chữ nâu mực nghiêng; video ấm nhẹ — hợp thơ tình, lời chúc, câu nói tích cực.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Playfair Display",
+  "heading": "Dancing Script",
+  "skin": "flat",
+  "accent": "#C2410C",
+  "text": {
+   "look": "clean",
+   "color": "#3B2F2A",
+   "hlColor": "#C2410C",
+   "hlStyle": "color",
+   "shadow": "none",
+   "anim": "blur",
+   "out": "fade",
+   "upper": false,
+   "italic": true,
+   "size": 58,
+   "weight": 400,
+   "font": "Playfair Display"
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Playfair Display",
+   "size": 54,
+   "weight": 400,
+   "color": "#FFF8EC",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "area": "top",
+   "split": 0.42,
+   "feather": 260
+  },
+  "frame": [
+   {
+    "type": "ink",
+    "palette": "dawn"
+   }
+  ],
+  "icons": {
+   "kind": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 110,
+   "textZone": "top",
+   "maxBlocks": 1
+  },
+  "effects": {
+   "zoom": "không",
+   "shots": "auto",
+   "shotDensity": "thua",
+   "zoomEase": "smooth"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "templates": false
+ },
+ "plan": {
+  "theme": {
+   "light": "#F0B48C",
+   "mid": "#6F8579",
+   "dark": "#2E2A26",
+   "gold1": "#F6EEE4",
+   "gold2": "#C2410C"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1420,
+  "wordsPerPage": 5,
+  "color": {
+   "brightness": 103,
+   "contrast": 96,
+   "saturation": 88,
+   "warmth": 16,
+   "fade": 12,
+   "vignette": 14
+  },
+  "sfxVolume": 0.06
+ },
+ "thanhPhan": {
+  "chu": "serif nghiêng nâu, nhấn cam",
+  "phude": "tối giản kem",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "không zoom, đổi cỡ cảnh thưa",
+  "dohoa": "trời hồng đào, núi xanh, chim",
+  "bocuc": "câu thơ ở dải trời phía trên",
+  "minhhoa": "tranh thủy mặc nửa trên",
+  "amthanh": "gần như im lặng",
+  "mau": "ấm nhẹ, hồng đào"
+ }
+}

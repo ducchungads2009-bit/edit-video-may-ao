@@ -1,0 +1,97 @@
+{
+ "ten": "Năng động AE",
+ "mo_ta": "Chữ bật từng ký tự nảy đàn hồi, mũi tên & khoanh tròn tự vẽ chỉ vào chi tiết, lấp lánh / pháo giấy ở kêu gọi, bảng số đếm lên — kiểu motion graphic TikTok làm bằng AE. Hợp: review nhanh, thử thách, khuyến mãi.",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Anton",
+  "skin": "flat",
+  "accent": "#FFE600",
+  "text": {
+   "look": "outline",
+   "color": "#FFFFFF",
+   "hlColor": "#FFE600",
+   "stroke": 12,
+   "strokeColor": "#111111",
+   "anim": "stagger",
+   "out": "pop",
+   "upper": true,
+   "size": 90,
+   "weight": 400,
+   "ease": "bouncy",
+   "mblur": true
+  },
+  "captions": {
+   "preset": "pop",
+   "font": "Montserrat",
+   "size": 64,
+   "weight": 900,
+   "color": "#FFFFFF",
+   "active": "#FFE600",
+   "upper": true
+  },
+  "broll": {
+   "enter": "whip",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "motion": {
+   "ease": "snappy",
+   "mblur": true
+  },
+  "effects": {
+   "zoom": "nhiều",
+   "zoomStyle": "punch",
+   "overlay": [
+    "lightleak",
+    "sparkle",
+    "confetti"
+   ]
+  },
+  "graphics": {
+   "sticker": "emoji",
+   "ghiChu": "cứ 4-6s có 1 shape (arrow/circle/underline) chỉ vào thứ đang nói; giá dùng scene stats/pricetable đếm lên; kêu gọi cuối dùng scene outro"
+  },
+  "sfx": {
+   "density": "vua",
+   "set": "manh",
+   "joins": true
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FFE600",
+   "mid": "#FF3D2E",
+   "dark": "#111111",
+   "gold1": "#FFE600",
+   "gold2": "#FFB800"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1380,
+  "wordsPerPage": 2,
+  "color": {
+   "brightness": 104,
+   "contrast": 110,
+   "saturation": 118
+  },
+  "sfxVolume": 0.3
+ },
+ "thanhPhan": {
+  "chu": "bật từng ký tự, nảy đàn hồi",
+  "phude": "bật từng từ vàng",
+  "chuyencanh": "tự động + lia nhanh",
+  "hieuung": "zoom giật, lấp lánh",
+  "dohoa": "mũi tên / khoanh tự vẽ, ô số đếm",
+  "minhhoa": "lia nhanh vào",
+  "amthanh": "vừa, tiếng mạnh",
+  "mau": "rực, tương phản cao"
+ },
+ "nguon": "tạo sẵn",
+ "nhom": "nangdong"
+}

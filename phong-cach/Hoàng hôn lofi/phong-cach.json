@@ -1,0 +1,93 @@
+{
+ "ten": "Hoàng hôn lofi",
+ "mo_ta": "Mơ màng giờ vàng: thẻ tối mềm, nhấn cam – hồng hoàng hôn, vệt sáng hắt, chữ thường mảnh, màu ấm hồng. Hợp: căn hộ view hoàng hôn, rooftop, tâm sự buổi chiều, du lịch biển.",
+ "style": {
+  "font": "Josefin Sans",
+  "heading": "Josefin Sans",
+  "skin": "podcast",
+  "accent": "#FDBA74",
+  "frame": [
+   "leak"
+  ],
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#FDBA74",
+   "hlStyle": "color",
+   "shadow": "glow",
+   "anim": "blur",
+   "out": "fade",
+   "upper": false,
+   "size": 82,
+   "weight": 700
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Josefin Sans",
+   "size": 54,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": true,
+   "pip": "round"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 80
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "smooth",
+   "zoomEase": "smooth"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FDBA74",
+   "mid": "#F472B6",
+   "dark": "#2A1325",
+   "gold1": "#FFE4E6",
+   "gold2": "#FDBA74"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 102,
+   "contrast": 102,
+   "saturation": 108,
+   "warmth": 30,
+   "tint": "#FF8FA3",
+   "tintAmount": 8
+  },
+  "sfxVolume": 0.1
+ },
+ "thanhPhan": {
+  "chu": "Josefin mảnh, phát sáng nhẹ",
+  "phude": "tối giản",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "zoom chậm, vệt sáng hắt, zoom vào–ra êm",
+  "dohoa": "thẻ tối mềm, nhấn cam hồng",
+  "bocuc": "căn giữa",
+  "icon": "emoji",
+  "minhhoa": "khung tròn",
+  "amthanh": "gần như không",
+  "mau": "giờ vàng ấm hồng"
+ },
+ "nguon": "tạo sẵn"
+}

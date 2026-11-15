@@ -1,0 +1,90 @@
+{
+ "ten": "Kể chuyện cảm xúc",
+ "mo_ta": "Chậm, ấm: chữ có chân Merriweather, hiện mờ dần, màu phim ấm, phụ đề nhỏ chữ thường. Hợp: câu chuyện khách hàng, hành trình mua nhà, tâm sự nghề.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Be Vietnam Pro",
+  "heading": "Merriweather",
+  "skin": "flat",
+  "accent": "#F59E0B",
+  "text": {
+   "look": "clean",
+   "color": "#FFFBEB",
+   "hlColor": "#FCD34D",
+   "hlStyle": "color",
+   "anim": "fade",
+   "out": "fade",
+   "upper": false,
+   "size": 74,
+   "weight": 700,
+   "italic": true
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Be Vietnam Pro",
+   "size": 52,
+   "weight": 400,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "round"
+  },
+  "icons": {
+   "kind": "none",
+   "bg": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 90
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "smooth",
+   "zoomEase": "smooth"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FDE68A",
+   "mid": "#B45309",
+   "dark": "#1C1917",
+   "gold1": "#FEF3C7",
+   "gold2": "#F59E0B"
+  },
+  "cutFx": "none",
+  "transition": "fade",
+  "captionTop": 1420,
+  "wordsPerPage": 5,
+  "color": {
+   "brightness": 98,
+   "contrast": 104,
+   "saturation": 90,
+   "warmth": 22,
+   "fade": 18,
+   "vignette": 30
+  },
+  "sfxVolume": 0.15
+ },
+ "thanhPhan": {
+  "chu": "chữ có chân nghiêng, hiện mờ",
+  "phude": "nhỏ, chữ thường",
+  "chuyencanh": "mờ chồng chậm",
+  "hieuung": "zoom chậm rất ít, zoom vào–ra êm",
+  "dohoa": "rất ít, kính tối ấm",
+  "bocuc": "căn giữa lề rộng",
+  "icon": "không dùng icon",
+  "minhhoa": "khung tròn, mờ dần",
+  "amthanh": "rất ít",
+  "mau": "phim ấm, mờ nhẹ"
+ }
+}

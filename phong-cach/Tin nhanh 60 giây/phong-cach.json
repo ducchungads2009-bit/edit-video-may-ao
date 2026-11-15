@@ -1,0 +1,95 @@
+{
+ "ten": "Tin nhanh 60 giây",
+ "mo_ta": "Tin dọc kiểu TikTok: tít to khối vàng – đen, nhãn LIVE, thẻ trắng sọc đỏ, phụ đề từng từ, nhịp nhanh. Hợp: điểm tin nhanh, tin nóng trong ngày, 3 tin BĐS hôm nay.",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Anton",
+  "skin": "news",
+  "accent": "#FACC15",
+  "frame": [
+   {
+    "type": "live",
+    "label": "TIN NÓNG"
+   }
+  ],
+  "text": {
+   "look": "solid",
+   "color": "#111111",
+   "bg": "#FACC15",
+   "hlColor": "#D7141A",
+   "hlStyle": "color",
+   "anim": "pop",
+   "out": "pop",
+   "upper": true,
+   "size": 90,
+   "weight": 400,
+   "radius": 0
+  },
+  "captions": {
+   "preset": "wordbox",
+   "font": "Montserrat",
+   "size": 62,
+   "weight": 900,
+   "color": "#FFFFFF",
+   "active": "#111111",
+   "activeBg": "#FACC15",
+   "upper": true
+  },
+  "broll": {
+   "enter": "zoom",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 50
+  },
+  "effects": {
+   "zoom": "vừa",
+   "zoomStyle": "punch"
+  },
+  "sfx": {
+   "density": "vua",
+   "set": "manh",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FDE047",
+   "mid": "#D7141A",
+   "dark": "#111111",
+   "gold1": "#FEF9C3",
+   "gold2": "#FACC15"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1360,
+  "wordsPerPage": 2,
+  "color": {
+   "brightness": 104,
+   "contrast": 110,
+   "saturation": 108
+  },
+  "sfxVolume": 0.24
+ },
+ "thanhPhan": {
+  "chu": "Anton khối vàng chữ đen",
+  "phude": "từng từ nền vàng",
+  "chuyencanh": "tự động, nhanh",
+  "hieuung": "zoom giật vừa",
+  "dohoa": "thẻ trắng sọc vàng, nhãn TIN NÓNG",
+  "bocuc": "căn giữa, tít to",
+  "icon": "emoji",
+  "minhhoa": "zoom vào",
+  "amthanh": "vừa",
+  "mau": "rực, rõ"
+ },
+ "nguon": "tạo sẵn"
+}

@@ -1,0 +1,97 @@
+{
+ "ten": "Dữ liệu neon",
+ "mo_ta": "Bảng điều khiển công nghệ: nền kính tối, lưới tọa độ mờ phủ video, biểu đồ phát sáng cyan – tím, số đếm lên, chữ Inter gọn. Hợp: phân tích thị trường, dòng tiền, xu hướng giá, báo cáo quý.",
+ "style": {
+  "font": "Inter",
+  "heading": "Inter",
+  "skin": "flat",
+  "accent": "#22D3EE",
+  "frame": "grid",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#22D3EE",
+   "hlStyle": "color",
+   "shadow": "glow",
+   "anim": "up",
+   "out": "fade",
+   "upper": false,
+   "size": 76,
+   "weight": 900,
+   "spacing": -1
+  },
+  "captions": {
+   "preset": "karaoke",
+   "font": "Inter",
+   "size": 54,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "active": "#22D3EE",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": false,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#7C3AED",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 60
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "punch"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "graphics": {
+   "sticker": "icon",
+   "ghiChu": "chart line/bar màu cyan, counter, tabs so sánh; presenter corner/split khi đọc số"
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#22D3EE",
+   "mid": "#7C3AED",
+   "dark": "#070B18",
+   "gold1": "#E0F2FE",
+   "gold2": "#22D3EE"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 96,
+   "contrast": 110,
+   "saturation": 92,
+   "warmth": -18,
+   "vignette": 30
+  },
+  "sfxVolume": 0.18
+ },
+ "thanhPhan": {
+  "chu": "Inter phát sáng nhẹ, nhấn cyan",
+  "phude": "karaoke cyan",
+  "chuyencanh": "tự động",
+  "hieuung": "zoom ít, lưới tọa độ",
+  "dohoa": "kính tối, biểu đồ phát sáng",
+  "bocuc": "căn trái",
+  "icon": "icon trong tròn tím",
+  "minhhoa": "mờ dần",
+  "amthanh": "ít",
+  "mau": "lạnh, tối, tương phản"
+ },
+ "nguon": "tạo sẵn"
+}

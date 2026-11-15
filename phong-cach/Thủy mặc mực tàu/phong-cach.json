@@ -1,0 +1,103 @@
+{
+ "ten": "Thủy mặc mực tàu",
+ "mo_ta": "Tranh thủy mặc đen trắng: dải giấy dó mờ sương phủ trên đầu khung với núi mực, trăng, chim; lau sậy hai góc; câu thơ chữ mực nghiêng; màu video ngả giấy cũ, không zoom.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Playfair Display",
+  "heading": "Playfair Display",
+  "skin": "flat",
+  "accent": "#8C2F25",
+  "text": {
+   "look": "clean",
+   "color": "#2A2826",
+   "hlColor": "#8C2F25",
+   "hlStyle": "color",
+   "shadow": "none",
+   "anim": "blur",
+   "out": "fade",
+   "upper": false,
+   "italic": true,
+   "size": 58,
+   "weight": 400,
+   "font": "Playfair Display"
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Playfair Display",
+   "size": 54,
+   "weight": 400,
+   "color": "#FFF8EC",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "area": "top",
+   "split": 0.42,
+   "feather": 260
+  },
+  "frame": [
+   {
+    "type": "ink",
+    "palette": "mono"
+   },
+   "grain"
+  ],
+  "icons": {
+   "kind": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 110,
+   "textZone": "top",
+   "maxBlocks": 1
+  },
+  "effects": {
+   "zoom": "không",
+   "shots": "auto",
+   "shotDensity": "thua",
+   "zoomEase": "smooth"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "templates": false
+ },
+ "plan": {
+  "theme": {
+   "light": "#8C2F25",
+   "mid": "#5E5C58",
+   "dark": "#2A2826",
+   "gold1": "#EFE9DC",
+   "gold2": "#8C2F25"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1420,
+  "wordsPerPage": 5,
+  "color": {
+   "brightness": 100,
+   "contrast": 96,
+   "saturation": 62,
+   "warmth": 10,
+   "fade": 18,
+   "sepia": 18,
+   "vignette": 22
+  },
+  "sfxVolume": 0.06
+ },
+ "thanhPhan": {
+  "chu": "serif nghiêng màu mực, trên dải giấy",
+  "phude": "tối giản kem",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "không zoom, đổi cỡ cảnh thưa",
+  "dohoa": "dải giấy sương + núi mực, lau sậy",
+  "bocuc": "câu thơ ở dải giấy phía trên",
+  "minhhoa": "tranh thủy mặc nửa trên",
+  "amthanh": "gần như im lặng",
+  "mau": "ngả giấy cũ, nhạt màu"
+ }
+}

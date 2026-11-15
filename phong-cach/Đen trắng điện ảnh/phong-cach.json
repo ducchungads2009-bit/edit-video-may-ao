@@ -1,0 +1,88 @@
+{
+ "ten": "Đen trắng điện ảnh",
+ "mo_ta": "Nghệ thuật: video đen trắng tương phản, chữ Playfair trắng, chuyển mờ chậm, rất ít đồ họa. Hợp: biệt thự, kiến trúc, video thương hiệu cao cấp.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Inter",
+  "heading": "Playfair Display",
+  "skin": "flat",
+  "accent": "#FFFFFF",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#FFFFFF",
+   "hlStyle": "color",
+   "anim": "fade",
+   "out": "fade",
+   "upper": false,
+   "size": 80,
+   "weight": 700,
+   "italic": true
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Inter",
+   "size": 48,
+   "weight": 400,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "none",
+   "bg": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 100
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#E5E7EB",
+   "mid": "#9CA3AF",
+   "dark": "#0A0A0A",
+   "gold1": "#F3F4F6",
+   "gold2": "#FFFFFF"
+  },
+  "cutFx": "none",
+  "transition": "fade",
+  "captionTop": 1440,
+  "wordsPerPage": 5,
+  "color": {
+   "saturation": 0,
+   "contrast": 118,
+   "brightness": 98,
+   "vignette": 40,
+   "all": true
+  },
+  "sfxVolume": 0.12
+ },
+ "thanhPhan": {
+  "chu": "Playfair trắng nghiêng",
+  "phude": "rất nhỏ",
+  "chuyencanh": "mờ chồng chậm",
+  "hieuung": "zoom chậm rất ít",
+  "dohoa": "gần như không, kính tối",
+  "bocuc": "căn giữa lề rộng",
+  "icon": "không dùng icon",
+  "minhhoa": "mờ dần",
+  "amthanh": "rất ít",
+  "mau": "đen trắng tương phản"
+ }
+}

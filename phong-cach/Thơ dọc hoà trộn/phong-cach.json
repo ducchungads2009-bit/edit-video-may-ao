@@ -1,0 +1,99 @@
+{
+ "ten": "Thơ dọc hoà trộn",
+ "mo_ta": "Đọc thơ khung dọc: người đọc ở nửa trên, cảnh minh họa hiện nửa dưới hoà mờ vào người, chữ serif nghiêng, zoom vào–ra rất êm, chuyển cảnh mờ chồng, gần như không tiếng hiệu ứng. Hợp: đọc thơ, đọc truyện, tâm sự.",
+ "style": {
+  "font": "Lexend",
+  "heading": "Playfair Display",
+  "skin": "flat",
+  "accent": "#E9C46A",
+  "text": {
+   "look": "clean",
+   "color": "#FFF8EC",
+   "hlColor": "#E9C46A",
+   "hlStyle": "color",
+   "shadow": "soft",
+   "anim": "blur",
+   "out": "fade",
+   "upper": false,
+   "italic": true,
+   "size": 76,
+   "weight": 400,
+   "font": "Playfair Display"
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Playfair Display",
+   "size": 58,
+   "weight": 400,
+   "color": "#FFF8EC",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean",
+   "area": "bottom",
+   "split": 0.46,
+   "feather": 280
+  },
+  "icons": {
+   "kind": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 90,
+   "textZone": "bottom",
+   "maxBlocks": 1
+  },
+  "frame": [
+   "grain"
+  ],
+  "effects": {
+   "zoom": "không",
+   "zoomEase": "smooth",
+   "shots": "auto",
+   "shotDensity": "thua"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#E9C46A",
+   "mid": "#B5838D",
+   "dark": "#1E1A1D",
+   "gold1": "#FFF3D6",
+   "gold2": "#E9C46A"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1000,
+  "wordsPerPage": 5,
+  "color": {
+   "brightness": 98,
+   "contrast": 98,
+   "saturation": 88,
+   "warmth": 14,
+   "fade": 18,
+   "vignette": 30
+  },
+  "sfxVolume": 0.08
+ },
+ "thanhPhan": {
+  "chu": "serif nghiêng kem, hiện mờ→nét",
+  "phude": "tối giản serif ngay mép giao",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "không zoom, tự đổi cỡ cảnh toàn–trung–cận",
+  "dohoa": "gần như không, hạt phim",
+  "bocuc": "giữa, chữ ở nửa dưới",
+  "minhhoa": "nửa dưới, mép hoà mờ dày",
+  "amthanh": "gần như không",
+  "mau": "ấm, nhạt, tối góc"
+ },
+ "nguon": "tạo sẵn"
+}

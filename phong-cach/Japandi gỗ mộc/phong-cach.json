@@ -1,0 +1,94 @@
+{
+ "ten": "Japandi gỗ mộc",
+ "mo_ta": "Be gỗ mộc, phẳng không bóng, chữ mảnh nâu, chấm nhỏ, hạt phim nhẹ, màu dịu. Hợp: căn hộ tối giản Nhật – Bắc Âu, nội thất gỗ, không gian yên tĩnh.",
+ "style": {
+  "font": "Josefin Sans",
+  "heading": "Josefin Sans",
+  "skin": "japandi",
+  "accent": "#8C6A4A",
+  "frame": "grain",
+  "text": {
+   "look": "solid",
+   "color": "#3B3127",
+   "bg": "#EFE6D8",
+   "hlColor": "#8C6A4A",
+   "hlStyle": "color",
+   "anim": "fade",
+   "out": "fade",
+   "upper": false,
+   "size": 70,
+   "weight": 400,
+   "radius": 18,
+   "spacing": 2
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Josefin Sans",
+   "size": 50,
+   "weight": 400,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "none",
+   "color": "#8C6A4A",
+   "stroke": 1.5
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 90
+  },
+  "effects": {
+   "zoom": "không",
+   "zoomEase": "smooth",
+   "zoomStyle": "smooth"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#D9CBB4",
+   "mid": "#8C6A4A",
+   "dark": "#3B3127",
+   "gold1": "#EFE6D8",
+   "gold2": "#B08A63"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1420,
+  "wordsPerPage": 5,
+  "color": {
+   "brightness": 104,
+   "contrast": 94,
+   "saturation": 84,
+   "warmth": 14,
+   "fade": 20
+  },
+  "sfxVolume": 0.12
+ },
+ "thanhPhan": {
+  "chu": "chữ mảnh nâu trên khối be",
+  "phude": "tối giản mảnh",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "không zoom, zoom vào–ra êm",
+  "dohoa": "be gỗ phẳng, không bóng",
+  "bocuc": "căn trái, nhiều khoảng trống",
+  "icon": "icon nét mảnh nâu",
+  "minhhoa": "mờ dần",
+  "amthanh": "gần như không",
+  "mau": "dịu, mờ ấm, hạt phim"
+ },
+ "nguon": "tạo sẵn"
+}

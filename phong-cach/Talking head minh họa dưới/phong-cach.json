@@ -1,0 +1,94 @@
+{
+ "ten": "Talking head minh họa dưới",
+ "mo_ta": "Người nói giữ nguyên ở trên, mỗi ý có video/ảnh minh họa trượt vào nửa dưới hoà mờ lên, thẻ kính tối hiện đại, chữ trắng nhấn vàng. Hợp: chia sẻ kiến thức, review, BĐS nói chuyện trực tiếp.",
+ "style": {
+  "font": "Be Vietnam Pro",
+  "heading": "Be Vietnam Pro",
+  "skin": "flat",
+  "accent": "#FACC15",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#FACC15",
+   "hlStyle": "color",
+   "shadow": "soft",
+   "anim": "up",
+   "out": "fade",
+   "upper": false,
+   "size": 78,
+   "weight": 900
+  },
+  "captions": {
+   "preset": "wordbox",
+   "font": "Be Vietnam Pro",
+   "size": 60,
+   "weight": 900,
+   "color": "#FFFFFF",
+   "active": "#111111",
+   "activeBg": "#FACC15",
+   "upper": false
+  },
+  "broll": {
+   "enter": "up",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean",
+   "area": "bottom",
+   "split": 0.45,
+   "feather": 180
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#FACC15",
+   "color": "#111111"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 70,
+   "textZone": "top"
+  },
+  "effects": {
+   "zoom": "vừa",
+   "zoomStyle": "punch"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FACC15",
+   "mid": "#2563EB",
+   "dark": "#0B1220",
+   "gold1": "#FEF9C3",
+   "gold2": "#FACC15"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 980,
+  "wordsPerPage": 3,
+  "color": {
+   "brightness": 104,
+   "contrast": 106,
+   "saturation": 108
+  },
+  "sfxVolume": 0.25
+ },
+ "thanhPhan": {
+  "chu": "Be Vietnam Pro đậm, nhấn vàng",
+  "phude": "từ đang đọc nền vàng, ở mép giao",
+  "chuyencanh": "tự động",
+  "hieuung": "zoom nhấn vừa phải",
+  "dohoa": "thẻ kính tối",
+  "bocuc": "giữa, chữ trên đầu",
+  "icon": "icon đen trong tròn vàng",
+  "minhhoa": "nửa dưới, trượt lên, mép mờ",
+  "amthanh": "nhẹ",
+  "mau": "sáng, tươi nhẹ"
+ },
+ "nguon": "tạo sẵn"
+}

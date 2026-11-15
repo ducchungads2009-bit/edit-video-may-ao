@@ -1,0 +1,88 @@
+{
+ "ten": "Doanh nhân tối giản",
+ "mo_ta": "Chuyên nghiệp: thẻ trắng, xanh navy, chữ Inter, chuyển cảnh mờ, không màu mè. Hợp: môi giới cá nhân, tư vấn đầu tư, giới thiệu công ty.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Inter",
+  "heading": "Inter",
+  "skin": "light",
+  "accent": "#1E3A8A",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#93C5FD",
+   "hlStyle": "color",
+   "anim": "fade",
+   "out": "fade",
+   "upper": false,
+   "size": 74,
+   "weight": 700
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Inter",
+   "size": 52,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "none",
+   "color": "#1E40AF",
+   "stroke": 2
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 70
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#BFDBFE",
+   "mid": "#1E40AF",
+   "dark": "#0F172A",
+   "gold1": "#DBEAFE",
+   "gold2": "#3B82F6"
+  },
+  "cutFx": "none",
+  "transition": "fade",
+  "captionTop": 1410,
+  "wordsPerPage": 5,
+  "color": {
+   "brightness": 102,
+   "contrast": 104,
+   "saturation": 94,
+   "warmth": -4
+  },
+  "sfxVolume": 0.16
+ },
+ "thanhPhan": {
+  "chu": "Inter trắng gọn",
+  "phude": "tối giản",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "zoom chậm ít",
+  "dohoa": "thẻ trắng, navy",
+  "bocuc": "căn trái",
+  "icon": "icon nét mảnh không nền",
+  "minhhoa": "mờ dần",
+  "amthanh": "rất ít",
+  "mau": "trung tính, sạch"
+ }
+}

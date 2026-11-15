@@ -1,0 +1,97 @@
+{
+ "ten": "Bản tin truyền hình",
+ "mo_ta": "Như bản tin thời sự: thẻ trắng sọc đỏ, nhãn LIVE + giờ góc trên, dải chữ chạy phía dưới, chữ Oswald / Roboto, phụ đề nền tối, cắt thẳng. Hợp: tin thị trường, chính sách mới, cập nhật quy hoạch.",
+ "style": {
+  "font": "Roboto",
+  "heading": "Oswald",
+  "skin": "news",
+  "accent": "#D7141A",
+  "frame": [
+   "live",
+   {
+    "type": "ticker",
+    "label": "TIN BĐS",
+    "text": "CẬP NHẬT THỊ TRƯỜNG BẤT ĐỘNG SẢN  •  CHÍNH SÁCH MỚI  •  GIÁ CĂN HỘ  •  QUY HOẠCH  •  "
+   }
+  ],
+  "text": {
+   "look": "solid",
+   "color": "#FFFFFF",
+   "bg": "#D7141A",
+   "hlColor": "#FDE047",
+   "hlStyle": "color",
+   "anim": "wipe",
+   "out": "fade",
+   "upper": true,
+   "size": 72,
+   "weight": 700,
+   "radius": 0
+  },
+  "captions": {
+   "preset": "box",
+   "font": "Roboto",
+   "size": 54,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "cut",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "square",
+   "bgColor": "#D7141A",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 40
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#93C5FD",
+   "mid": "#0B2545",
+   "dark": "#0B2545",
+   "gold1": "#FEE2E2",
+   "gold2": "#D7141A"
+  },
+  "transition": "cut",
+  "cutFx": "none",
+  "captionTop": 1360,
+  "wordsPerPage": 5,
+  "color": {
+   "brightness": 102,
+   "contrast": 106,
+   "saturation": 98
+  },
+  "sfxVolume": 0.16
+ },
+ "thanhPhan": {
+  "chu": "Oswald trắng trên khối đỏ",
+  "phude": "nền tối cả dòng",
+  "chuyencanh": "cắt thẳng",
+  "hieuung": "zoom chậm ít",
+  "dohoa": "thẻ trắng sọc đỏ, LIVE, dải chữ chạy",
+  "bocuc": "căn trái lề hẹp",
+  "icon": "icon trong ô vuông đỏ",
+  "minhhoa": "cắt thẳng",
+  "amthanh": "rất ít",
+  "mau": "trung tính, rõ"
+ },
+ "nguon": "tạo sẵn"
+}

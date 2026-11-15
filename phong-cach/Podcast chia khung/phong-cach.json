@@ -1,0 +1,102 @@
+{
+ "ten": "Podcast chia khung",
+ "mo_ta": "Phòng thu ấm: cảnh minh họa nửa trên mờ dần xuống người nói, thẻ tối bo mềm, phụ đề karaoke hồng dịu, zoom vào–ra rất êm, không giật. Hợp: podcast, trò chuyện, chia sẻ dài.",
+ "style": {
+  "font": "Lexend",
+  "heading": "Lexend",
+  "skin": "podcast",
+  "accent": "#F9A8D4",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#F9A8D4",
+   "hlStyle": "color",
+   "shadow": "soft",
+   "anim": "fade",
+   "out": "fade",
+   "upper": false,
+   "size": 74,
+   "weight": 700
+  },
+  "captions": {
+   "preset": "karaoke",
+   "font": "Lexend",
+   "size": 60,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "active": "#F9A8D4",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "round",
+   "area": "top",
+   "split": 0.42,
+   "feather": 240
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#3B2F55",
+   "color": "#F9A8D4"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 70,
+   "textZone": "top"
+  },
+  "frame": [
+   {
+    "type": "wave",
+    "color": "#F9A8D4"
+   }
+  ],
+  "effects": {
+   "zoom": "không",
+   "zoomEase": "smooth",
+   "shots": "auto",
+   "shotDensity": "thua"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#F9A8D4",
+   "mid": "#7C3AED",
+   "dark": "#14121E",
+   "gold1": "#FCE7F3",
+   "gold2": "#F9A8D4"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1440,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 96,
+   "contrast": 106,
+   "saturation": 92,
+   "warmth": 10,
+   "vignette": 36
+  },
+  "sfxVolume": 0.1
+ },
+ "thanhPhan": {
+  "chu": "Lexend trắng, nhấn hồng",
+  "phude": "karaoke hồng dưới người nói",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "không zoom, tự đổi cỡ cảnh toàn–trung–cận",
+  "dohoa": "thẻ tối mềm, sóng âm",
+  "bocuc": "giữa, chữ trong vùng trên",
+  "minhhoa": "nửa trên tan xuống người nói",
+  "amthanh": "gần như không",
+  "mau": "trầm ấm"
+ },
+ "nguon": "tạo sẵn"
+}

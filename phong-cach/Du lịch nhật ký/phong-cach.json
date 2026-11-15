@@ -1,0 +1,94 @@
+{
+ "ten": "Du lịch nhật ký",
+ "mo_ta": "Nhật ký chuyến đi: thẻ kiểu vé tàu / boarding pass có lỗ bấm, chữ hẹp in hoa + tiêu đề viết tay, vệt sáng hắt, màu cam – xanh ngọc rực nắng. Hợp: du lịch, review khu nghỉ dưỡng, khám phá địa điểm.",
+ "style": {
+  "font": "Josefin Sans",
+  "heading": "Dancing Script",
+  "skin": "ticket",
+  "accent": "#E07A5F",
+  "frame": [
+   "leak",
+   "grain"
+  ],
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#FFD29D",
+   "hlStyle": "color",
+   "shadow": "soft",
+   "anim": "up",
+   "out": "fade",
+   "upper": false,
+   "size": 104,
+   "weight": 700
+  },
+  "captions": {
+   "preset": "karaoke",
+   "font": "Josefin Sans",
+   "size": 56,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "active": "#FFD29D",
+   "upper": false
+  },
+  "broll": {
+   "enter": "slide",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "polaroid"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 70
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "smooth",
+   "zoomEase": "smooth"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#9ED8DB",
+   "mid": "#1F3B4D",
+   "dark": "#102530",
+   "gold1": "#FFF6E6",
+   "gold2": "#E07A5F"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 106,
+   "contrast": 106,
+   "saturation": 116,
+   "warmth": 14,
+   "hue": -3
+  },
+  "sfxVolume": 0.16
+ },
+ "thanhPhan": {
+  "chu": "tiêu đề viết tay to",
+  "phude": "karaoke cam nhạt",
+  "chuyencanh": "tự động",
+  "hieuung": "zoom chậm, vệt sáng hắt, zoom vào–ra êm",
+  "dohoa": "vé tàu / boarding pass lỗ bấm",
+  "bocuc": "căn trái",
+  "icon": "emoji",
+  "minhhoa": "polaroid, trượt vào",
+  "amthanh": "ít",
+  "mau": "nắng rực cam – xanh ngọc"
+ },
+ "nguon": "tạo sẵn"
+}

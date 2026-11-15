@@ -1,0 +1,104 @@
+{
+ "ten": "Thủy mặc đêm trăng",
+ "mo_ta": "Đêm trăng thủy mặc: trời đêm xanh mực, trăng sáng, núi chồng mờ phủ đầu khung; chữ kem sáng nghiêng; video tối dịu, lạnh — hợp thơ buồn, radio đêm.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Playfair Display",
+  "heading": "Playfair Display",
+  "skin": "flat",
+  "accent": "#E9C46A",
+  "text": {
+   "look": "clean",
+   "color": "#EFE9DC",
+   "hlColor": "#E9C46A",
+   "hlStyle": "color",
+   "shadow": "glow",
+   "anim": "blur",
+   "out": "fade",
+   "upper": false,
+   "italic": true,
+   "size": 58,
+   "weight": 400,
+   "font": "Playfair Display"
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Playfair Display",
+   "size": 54,
+   "weight": 400,
+   "color": "#EFE9DC",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "area": "top",
+   "split": 0.42,
+   "feather": 260
+  },
+  "frame": [
+   {
+    "type": "ink",
+    "palette": "night"
+   },
+   "grain"
+  ],
+  "icons": {
+   "kind": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 110,
+   "textZone": "top",
+   "maxBlocks": 1
+  },
+  "effects": {
+   "zoom": "không",
+   "shots": "auto",
+   "shotDensity": "thua",
+   "zoomEase": "smooth"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "templates": false
+ },
+ "plan": {
+  "theme": {
+   "light": "#E9C46A",
+   "mid": "#3A4658",
+   "dark": "#141B27",
+   "gold1": "#EFE9DC",
+   "gold2": "#E9C46A"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1420,
+  "wordsPerPage": 5,
+  "color": {
+   "brightness": 90,
+   "contrast": 104,
+   "saturation": 70,
+   "warmth": -14,
+   "fade": 10,
+   "vignette": 40,
+   "tint": "#2A3550",
+   "tintAmount": 10
+  },
+  "sfxVolume": 0.06
+ },
+ "thanhPhan": {
+  "chu": "serif nghiêng kem, phát sáng nhẹ",
+  "phude": "tối giản kem",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "không zoom, đổi cỡ cảnh thưa",
+  "dohoa": "trời đêm, trăng, núi mờ",
+  "bocuc": "câu thơ ở dải trời đêm",
+  "minhhoa": "tranh thủy mặc nửa trên",
+  "amthanh": "gần như im lặng",
+  "mau": "tối dịu, lạnh"
+ }
+}

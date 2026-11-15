@@ -1,0 +1,144 @@
+{
+ "template": "review",
+ "videoSrc": "apt1.mp4",
+ "durationSec": 65.7,
+ "sfxVolume": 0.35,
+ "cuts": [
+  16.3,
+  19.6,
+  29.33,
+  32.27,
+  38.7,
+  43.87,
+  46.97,
+  53.73,
+  58.57
+ ],
+ "elements": [
+  {
+   "type": "priceHook",
+   "start": 0.05,
+   "end": 5.3,
+   "price": "2,55 TỶ",
+   "sub": "Căn 2 ngủ · Hà Nội",
+   "sfx": "pop"
+  },
+  {
+   "type": "chip",
+   "start": 5.6,
+   "end": 8.4,
+   "icon": "FileCheck",
+   "text": "Pháp lý đầy đủ",
+   "y": 240,
+   "sfx": "tick"
+  },
+  {
+   "type": "chip",
+   "start": 7.1,
+   "end": 8.4,
+   "icon": "Trees",
+   "text": "Tiện ích bạt ngàn",
+   "y": 360,
+   "sfx": "tick"
+  },
+  {
+   "type": "chip",
+   "start": 11.6,
+   "end": 17.2,
+   "icon": "Ruler",
+   "text": "55 m²",
+   "y": 240,
+   "sfx": "tick"
+  },
+  {
+   "type": "chip",
+   "start": 12.7,
+   "end": 17.2,
+   "icon": "Tag",
+   "text": "Chỉ 2,55 tỷ",
+   "y": 360,
+   "sfx": "tick"
+  },
+  {
+   "type": "chip",
+   "start": 14.5,
+   "end": 17.2,
+   "icon": "Building2",
+   "text": "Nhà ở thương mại · có sổ",
+   "y": 480,
+   "sfx": "tick"
+  },
+  {
+   "type": "rangeCard",
+   "start": 24.3,
+   "end": 27.1,
+   "label": "Căn 2 ngủ cao cấp / rộng hơn",
+   "value": "2,5 – 3,5 tỷ",
+   "sfx": "pop"
+  },
+  {
+   "type": "bigQuestion",
+   "start": 27.15,
+   "end": 29.2,
+   "text": "VÌ SAO RẺ?",
+   "sfx": "pop"
+  },
+  {
+   "type": "checklist",
+   "start": 29.3,
+   "end": 41.5,
+   "title": "Lý do giá tốt",
+   "items": [
+    {
+     "text": "Chủ nhà cần bán thật",
+     "at": 30.6
+    },
+    {
+     "text": "Chủ đang vay ngân hàng",
+     "at": 32.6
+    },
+    {
+     "text": "Cần tiền xoay việc khác",
+     "at": 34.5
+    },
+    {
+     "text": "Sổ đỏ đàng hoàng",
+     "at": 38.95
+    }
+   ]
+  },
+  {
+   "type": "chip",
+   "start": 42.1,
+   "end": 44.3,
+   "icon": "MapPin",
+   "text": "Dẫn đi xem thực tế",
+   "y": 240,
+   "sfx": "tick"
+  },
+  {
+   "type": "chip",
+   "start": 51.2,
+   "end": 54.6,
+   "icon": "Images",
+   "text": "Gửi ảnh căn + ảnh sổ",
+   "y": 240,
+   "sfx": "tick"
+  },
+  {
+   "type": "cta",
+   "start": 55.1,
+   "end": 65.7,
+   "icon": "MessageCircle",
+   "text": "INBOX nhận danh sách căn",
+   "sfx": "pop"
+  }
+ ],
+ "theme": {
+  "light": "#5BB8FF",
+  "mid": "#2070B8",
+  "dark": "#0B3570",
+  "gold1": "#FFEFB0",
+  "gold2": "#E8AE2A"
+ }
+}

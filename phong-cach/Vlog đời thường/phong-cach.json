@@ -1,0 +1,89 @@
+{
+ "ten": "Vlog đời thường",
+ "mo_ta": "Gần gũi, vui: chữ viết tay, pastel đào, emoji, phụ đề bật từng từ. Hợp: vlog một ngày làm sale, hậu trường, chuyện nghề nhẹ nhàng.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Nunito",
+  "heading": "Patrick Hand",
+  "skin": "light",
+  "accent": "#FB7185",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#FDA4AF",
+   "hlStyle": "color",
+   "anim": "bounce",
+   "out": "pop",
+   "upper": false,
+   "size": 88,
+   "weight": 400
+  },
+  "captions": {
+   "preset": "pop",
+   "font": "Nunito",
+   "size": 60,
+   "weight": 900,
+   "color": "#FFFFFF",
+   "active": "#FDA4AF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "zoom",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "polaroid"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 60
+  },
+  "effects": {
+   "zoom": "vừa",
+   "zoomStyle": "pulse"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FECDD3",
+   "mid": "#E11D48",
+   "dark": "#4C0519",
+   "gold1": "#FFE4E6",
+   "gold2": "#FDA4AF"
+  },
+  "cutFx": "none",
+  "transition": "auto",
+  "captionTop": 1380,
+  "wordsPerPage": 3,
+  "color": {
+   "brightness": 108,
+   "contrast": 98,
+   "saturation": 104,
+   "warmth": 14,
+   "tint": "#FFC0CB",
+   "tintAmount": 6
+  },
+  "sfxVolume": 0.22
+ },
+ "thanhPhan": {
+  "chu": "chữ viết tay, nhấn hồng",
+  "phude": "bật từng từ",
+  "chuyencanh": "tự động",
+  "hieuung": "zoom nhịp nhàng",
+  "dohoa": "thẻ trắng, emoji",
+  "bocuc": "căn giữa",
+  "icon": "emoji không nền",
+  "minhhoa": "polaroid",
+  "amthanh": "ít, vui",
+  "mau": "pastel ấm"
+ }
+}

@@ -1,0 +1,134 @@
+{
+ "ten": "Tech tương lai",
+ "mo_ta": "Giao diện HUD công nghệ: chữ Chakra Petch góc cạnh, từ khóa phát sáng cyan, nhãn kính mờ gõ từng ký tự, glitch ở điểm chuyển, dashboard số đếm lên trên nền lưới tối, màu video lạnh.",
+ "nguon": "Claude thiết kế",
+ "style": {
+  "font": "Inter",
+  "heading": "Chakra Petch",
+  "text": {
+   "look": "clean",
+   "font": "Chakra Petch",
+   "weight": 700,
+   "color": "#FFFFFF",
+   "bg": "#00E5FF",
+   "hlColor": "#00E5FF",
+   "stroke": 0,
+   "strokeColor": "#00131F",
+   "shadow": "soft",
+   "anim": "blur",
+   "out": "blur",
+   "upper": true,
+   "size": 90,
+   "radius": 10,
+   "spacing": 1
+  },
+  "captions": {
+   "preset": "karaoke",
+   "font": "Chakra Petch",
+   "size": 50,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "active": "#00E5FF",
+   "upper": true,
+   "anim": "fade"
+  },
+  "broll": {
+   "enter": "zoomin",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "templates": false,
+  "effects": {
+   "zoom": "vừa",
+   "zoomStyle": "punch",
+   "shake": false,
+   "flash": 0
+  },
+  "graphics": {
+   "sticker": "icon",
+   "ghiChu": "icon lucide nét mảnh màu cyan, không nền; số liệu dùng counter; nhãn nhỏ dùng look box (kính mờ) + anim type"
+  },
+  "sfx": {
+   "density": "vua",
+   "set": "manh",
+   "joins": true
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 80,
+   "textZone": "top",
+   "iconPos": "right",
+   "maxBlocks": 4,
+   "stackGap": 30
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "none",
+   "color": "#00E5FF",
+   "stroke": 2,
+   "size": 110,
+   "set": [
+    "Users",
+    "Radio",
+    "CircleCheck",
+    "UserPlus",
+    "Eye",
+    "Heart",
+    "MessageCircle",
+    "Phone",
+    "TrendingUp",
+    "Zap"
+   ],
+   "map": {
+    "khách": "Users",
+    "live": "Radio",
+    "xong": "CircleCheck",
+    "follow": "UserPlus",
+    "xem": "Eye",
+    "thích": "Heart",
+    "bình luận": "MessageCircle",
+    "số điện thoại": "Phone",
+    "tăng": "TrendingUp"
+   }
+  }
+ },
+ "plan": {
+  "captionTop": 1180,
+  "wordsPerPage": 3,
+  "transition": "blur",
+  "cutFx": "none",
+  "joinSfx": true,
+  "color": {
+   "brightness": 102,
+   "contrast": 112,
+   "saturation": 90,
+   "warmth": -25,
+   "vignette": 30,
+   "tint": "#00B8D9",
+   "tintAmount": 8
+  },
+  "theme": {
+   "light": "#00E5FF",
+   "mid": "#00B8D9",
+   "dark": "#060B1A",
+   "gold1": "#B9F6FF",
+   "gold2": "#8A7CFF"
+  },
+  "sfxVolume": 0.3
+ },
+ "thanhPhan": {
+  "chu": "Chakra Petch IN HOA, từ khóa phát sáng cyan",
+  "phude": "karaoke IN HOA nhỏ, từ đang nói cyan",
+  "chuyencanh": "nhòe, zoom xuyên, lia nhanh + glitch",
+  "hieuung": "zoom punch vừa, glitch/RGB ở điểm chuyển",
+  "dohoa": "nhãn kính mờ gõ chữ, số đếm lên kiểu dashboard",
+  "minhhoa": "người nói thu vào cửa sổ trên nền lưới tối",
+  "amthanh": "glitch, whoosh, riser, gõ phím",
+  "mau": "lạnh, tương phản cao, tối 4 góc",
+  "nhip": "chữ mới mỗi 1,5–3s, neo đúng từ khóa",
+  "bocuc": "chữ căn giữa vùng trên, icon bên phải",
+  "icon": "icon lucide nét mảnh cyan, không nền"
+ }
+}

@@ -1,0 +1,91 @@
+{
+ "ten": "Pastel nhẹ nhàng",
+ "mo_ta": "Dịu mắt: tím lavender, thẻ trắng, chữ Josefin Sans thanh, chuyển mờ. Hợp: căn hộ cho gia đình trẻ, nội thất, phong thủy nhẹ nhàng.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Josefin Sans",
+  "heading": "Josefin Sans",
+  "skin": "light",
+  "accent": "#A78BFA",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#DDD6FE",
+   "hlStyle": "color",
+   "anim": "blur",
+   "out": "fade",
+   "upper": false,
+   "size": 82,
+   "weight": 700
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Josefin Sans",
+   "size": 56,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "round"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#A78BFA",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 70
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "smooth",
+   "zoomEase": "smooth"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#DDD6FE",
+   "mid": "#7C3AED",
+   "dark": "#2E1065",
+   "gold1": "#EDE9FE",
+   "gold2": "#C4B5FD"
+  },
+  "cutFx": "none",
+  "transition": "fade",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 108,
+   "contrast": 92,
+   "saturation": 88,
+   "fade": 22,
+   "tint": "#E9D5FF",
+   "tintAmount": 8
+  },
+  "sfxVolume": 0.18
+ },
+ "thanhPhan": {
+  "chu": "Josefin thanh, nhấn tím nhạt",
+  "phude": "tối giản",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "zoom chậm, zoom vào–ra êm",
+  "dohoa": "thẻ trắng, tím lavender",
+  "bocuc": "căn giữa",
+  "icon": "icon trong tròn tím",
+  "minhhoa": "khung tròn",
+  "amthanh": "rất ít",
+  "mau": "pastel mờ"
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "ten": "Thủy mặc mực tàu (chỉ tiếng)",
+ "mo_ta": "Video chỉ có giọng đọc: tranh thủy mặc đen trắng trên giấy dó chuyển động nhẹ; câu thơ chữ mực nghiêng, nhấn đỏ son.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Playfair Display",
+  "heading": "Playfair Display",
+  "skin": "flat",
+  "accent": "#8C2F25",
+  "text": {
+   "look": "clean",
+   "color": "#2A2826",
+   "hlColor": "#8C2F25",
+   "hlStyle": "color",
+   "shadow": "none",
+   "anim": "blur",
+   "out": "fade",
+   "upper": false,
+   "italic": true,
+   "size": 64,
+   "weight": 400,
+   "font": "Playfair Display"
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Playfair Display",
+   "size": 52,
+   "weight": 400,
+   "color": "#2A2826",
+   "upper": false
+  },
+  "backdrop": {
+   "type": "ink",
+   "palette": "mono"
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "area": "full",
+   "overlay": false
+  },
+  "icons": {
+   "kind": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 110,
+   "textZone": "middle",
+   "maxBlocks": 1
+  },
+  "effects": {
+   "zoom": "không",
+   "zoomEase": "smooth"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "templates": false
+ },
+ "plan": {
+  "theme": {
+   "light": "#8C2F25",
+   "mid": "#5E5C58",
+   "dark": "#2A2826",
+   "gold1": "#EFE9DC",
+   "gold2": "#8C2F25"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captions": false,
+  "captionTop": 1300,
+  "wordsPerPage": 5,
+  "sfxVolume": 0.05
+ },
+ "thanhPhan": {
+  "chu": "serif nghiêng, câu thơ giữa mặt nước",
+  "phude": "tắt — câu thơ là chữ chính",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "tranh thở chậm, không zoom",
+  "dohoa": "cả khung là tranh thủy mặc động",
+  "bocuc": "câu thơ giữa mặt nước",
+  "minhhoa": "tranh thủy mặc toàn khung, mờ chồng",
+  "amthanh": "chỉ giọng đọc + nhạc nhẹ",
+  "mau": "đen trắng giấy dó"
+ }
+}

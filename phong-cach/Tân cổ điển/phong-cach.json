@@ -1,0 +1,97 @@
+{
+ "ten": "Tân cổ điển",
+ "mo_ta": "Thẻ ngà viền chỉ vàng kép, hoa văn ◆, khung viền chỉ + hoa văn 4 góc phủ cả video, chữ Playfair giãn rộng, màu phim ấm. Hợp: căn hộ / biệt thự tân cổ điển, nội thất châu Âu.",
+ "style": {
+  "font": "Josefin Sans",
+  "heading": "Playfair Display",
+  "skin": "classic",
+  "accent": "#B8975A",
+  "frame": {
+   "type": "classic",
+   "color": "#D9C08A"
+  },
+  "text": {
+   "look": "clean",
+   "color": "#FBF7EE",
+   "hlColor": "#E9D49B",
+   "hlStyle": "color",
+   "shadow": "soft",
+   "anim": "fade",
+   "out": "fade",
+   "upper": true,
+   "size": 72,
+   "weight": 700,
+   "spacing": 5,
+   "font": "Playfair Display"
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Josefin Sans",
+   "size": 50,
+   "weight": 700,
+   "color": "#FBF7EE",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "none",
+   "color": "#B8975A",
+   "stroke": 1.6
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 100
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#E9D49B",
+   "mid": "#B8975A",
+   "dark": "#3A2E1F",
+   "gold1": "#F6EBD0",
+   "gold2": "#B8975A"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 102,
+   "contrast": 104,
+   "saturation": 88,
+   "warmth": 20,
+   "fade": 15,
+   "vignette": 30
+  },
+  "sfxVolume": 0.16
+ },
+ "thanhPhan": {
+  "chu": "Playfair IN HOA giãn rộng",
+  "phude": "tối giản",
+  "chuyencanh": "mờ chồng chậm",
+  "hieuung": "zoom chậm rất ít",
+  "dohoa": "thẻ ngà viền chỉ vàng kép, hoa văn ◆",
+  "bocuc": "căn giữa, lề rộng, khung viền",
+  "icon": "icon nét mảnh vàng",
+  "minhhoa": "mờ dần",
+  "amthanh": "rất ít",
+  "mau": "phim ấm, mờ nhẹ"
+ },
+ "nguon": "tạo sẵn"
+}

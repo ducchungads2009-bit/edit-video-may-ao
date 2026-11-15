@@ -1,0 +1,71 @@
+{
+ "ten": "Vòng quay quanh người",
+ "mo_ta": "Người nói ở giữa, ảnh/video minh họa xếp vòng elip quay quanh ngực (nửa sau chui ra sau người); từ khóa chữ vàng đậm in hoa kèm dòng nghiêng nhỏ, số thứ tự xám to phía sau. Hợp: giới thiệu sản phẩm/khóa học/công cụ, liệt kê nhiều kết quả.",
+ "nguon": "video vòng quay (mẫu người dùng gửi)",
+ "style": {
+  "font": "Be Vietnam Pro",
+  "heading": "Anton",
+  "text": {
+   "look": "plain",
+   "color": "#FFD54A",
+   "stroke": 0,
+   "shadow": "hard",
+   "strokeColor": "#3a2a00",
+   "anim": "pop",
+   "out": "fade",
+   "upper": true,
+   "size": 92,
+   "font": "Anton"
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Be Vietnam Pro",
+   "size": 46,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "templates": false,
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "punch"
+  },
+  "graphics": {
+   "sticker": "không",
+   "ghiChu": "khối orbit 4–8 giây ở đoạn mở đầu / liệt kê (5–8 ảnh-video, period 7–9); chữ vàng Anton 2 dòng + dòng nghiêng trắng nhỏ trên/dưới; số thứ tự xám to mờ sau chữ khi liệt kê"
+  },
+  "sfx": {
+   "density": "vua",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "captionTop": 1300,
+  "wordsPerPage": 5,
+  "transition": "auto",
+  "cutFx": "none",
+  "color": {
+   "contrast": 106,
+   "saturation": 104,
+   "vignette": 20
+  },
+  "sfxVolume": 0.3
+ },
+ "thanhPhan": {
+  "chu": "Anton vàng in hoa + dòng nghiêng trắng",
+  "phude": "chữ trắng nhỏ, thường",
+  "dohoa": "ảnh/video quay vòng quanh người",
+  "hieuung": "zoom punch ít",
+  "minhhoa": "vòng quay 3D, nửa sau sau người",
+  "mau": "tối, góc tối nhẹ",
+  "nhip": "vòng quay ở mở đầu và đoạn liệt kê"
+ }
+}

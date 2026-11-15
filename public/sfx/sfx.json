@@ -1,0 +1,177 @@
+[
+ {
+  "name": "whoosh",
+  "cat": "chuyen-canh",
+  "desc": "Vụt gió vừa",
+  "use": "chuyển cảnh, ảnh trám trượt vào, chữ bay vào",
+  "dur": 0.55
+ },
+ {
+  "name": "whoosh-nhe",
+  "cat": "chuyen-canh",
+  "desc": "Vụt gió nhẹ, mềm",
+  "use": "mờ chồng, chữ hiện mờ→nét, phong cách nhẹ nhàng",
+  "dur": 0.7
+ },
+ {
+  "name": "whoosh-manh",
+  "cat": "chuyen-canh",
+  "desc": "Vụt gió mạnh, sắc",
+  "use": "lia nhanh (whip), zoom xuyên, chuyển cảnh mạnh",
+  "dur": 0.45
+ },
+ {
+  "name": "swoosh",
+  "cat": "chuyen-canh",
+  "desc": "Lướt ngắn",
+  "use": "trượt chữ/nhãn, đẩy cảnh",
+  "dur": 0.28
+ },
+ {
+  "name": "swipe",
+  "cat": "chuyen-canh",
+  "desc": "Quẹt rất ngắn",
+  "use": "đổi chữ nhanh, quẹt màn hình",
+  "dur": 0.16
+ },
+ {
+  "name": "riser",
+  "cat": "chuyen-canh",
+  "desc": "Dâng lên căng dần (1,1s)",
+  "use": "trước câu chốt / tiết lộ / con số lớn",
+  "dur": 1.1
+ },
+ {
+  "name": "impact",
+  "cat": "nhan-manh",
+  "desc": "Đập mạnh, trầm",
+  "use": "zoom giật, chữ to đập vào, con số gây sốc",
+  "dur": 0.9
+ },
+ {
+  "name": "boom",
+  "cat": "nhan-manh",
+  "desc": "Bùm trầm vang dài",
+  "use": "mở đầu hook, tiêu đề lớn",
+  "dur": 1.6
+ },
+ {
+  "name": "hit",
+  "cat": "nhan-manh",
+  "desc": "Gõ chắc, ngắn",
+  "use": "từ khóa bật ra, nhấn nhịp",
+  "dur": 0.25
+ },
+ {
+  "name": "pop",
+  "cat": "hien-chu",
+  "desc": "Bốp nhẹ",
+  "use": "chữ/nhãn bật ra (mặc định)",
+  "dur": 0.12
+ },
+ {
+  "name": "bubble",
+  "cat": "hien-chu",
+  "desc": "Bong bóng (tròn, vui)",
+  "use": "nhãn dán, emoji, chữ vui",
+  "dur": 0.18
+ },
+ {
+  "name": "click",
+  "cat": "hien-chu",
+  "desc": "Click giao diện",
+  "use": "hiện icon, đổi mục, checklist nhỏ",
+  "dur": 0.05
+ },
+ {
+  "name": "tick",
+  "cat": "hien-chu",
+  "desc": "Tích khẽ",
+  "use": "nhãn icon (chip) hiện ra",
+  "dur": 0.06
+ },
+ {
+  "name": "typing",
+  "cat": "hien-chu",
+  "desc": "Gõ phím (1,2s)",
+  "use": "chữ gõ từng ký tự",
+  "dur": 1.2
+ },
+ {
+  "name": "boing",
+  "cat": "vui",
+  "desc": "Lò xo nảy",
+  "use": "nhãn dán nảy, khoảnh khắc hài",
+  "dur": 0.5
+ },
+ {
+  "name": "tada",
+  "cat": "vui",
+  "desc": "Ta-da (hợp âm lên)",
+  "use": "kết quả tốt, hoàn thành, tiết lộ vui",
+  "dur": 0.9
+ },
+ {
+  "name": "ding",
+  "cat": "thong-bao",
+  "desc": "Ding trong",
+  "use": "mỗi dòng checklist, ý đúng",
+  "dur": 0.9
+ },
+ {
+  "name": "bell",
+  "cat": "thong-bao",
+  "desc": "Chuông nhỏ",
+  "use": "kêu gọi (CTA), nhắc follow",
+  "dur": 1.2
+ },
+ {
+  "name": "notify",
+  "cat": "thong-bao",
+  "desc": "Thông báo 2 nốt",
+  "use": "tin nhắn/khách liên hệ, thông báo app",
+  "dur": 0.65
+ },
+ {
+  "name": "success",
+  "cat": "thong-bao",
+  "desc": "Thành công (2 nốt lên)",
+  "use": "đạt kết quả, chốt deal, tích xanh",
+  "dur": 0.8
+ },
+ {
+  "name": "cash",
+  "cat": "thong-bao",
+  "desc": "Ka-ching (tiền)",
+  "use": "giá tiền, doanh thu, ưu đãi",
+  "dur": 1.0
+ },
+ {
+  "name": "sparkle",
+  "cat": "hieu-ung",
+  "desc": "Lấp lánh",
+  "use": "chữ sang trọng hiện ra, điểm nổi bật",
+  "dur": 1.0
+ },
+ {
+  "name": "glitch",
+  "cat": "hieu-ung",
+  "desc": "Nhiễu số (glitch)",
+  "use": "chuyển cảnh công nghệ, lỗi, giật hình",
+  "dur": 0.35
+ },
+ {
+  "name": "camera",
+  "cat": "hieu-ung",
+  "desc": "Chụp ảnh (màn trập)",
+  "use": "hiện ảnh minh họa, chụp màn hình",
+  "dur": 0.3
+ },
+ {
+  "name": "error",
+  "cat": "hieu-ung",
+  "desc": "Báo sai (rè)",
+  "use": "điều sai lầm, đừng làm vậy, dấu X",
+  "dur": 0.35
+ }
+]

@@ -1,0 +1,90 @@
+{
+ "ten": "Thử thách 30 ngày",
+ "mo_ta": "Có nhịp, có tiến độ: chữ Barlow Condensed đậm, cam năng lượng, nhãn ngày + thanh tiến độ, zoom giật. Hợp: series thử thách, nhật ký hành trình.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Barlow Condensed",
+  "skin": "flat",
+  "accent": "#F97316",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#FB923C",
+   "hlStyle": "box",
+   "anim": "pop",
+   "out": "pop",
+   "upper": true,
+   "size": 96,
+   "weight": 900
+  },
+  "captions": {
+   "preset": "wordbox",
+   "font": "Montserrat",
+   "size": 62,
+   "weight": 900,
+   "color": "#FFFFFF",
+   "active": "#FFFFFF",
+   "activeBg": "#EA580C",
+   "upper": true
+  },
+  "broll": {
+   "enter": "zoom",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#EA580C",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 60
+  },
+  "effects": {
+   "zoom": "nhiều",
+   "zoomStyle": "punch"
+  },
+  "sfx": {
+   "density": "vua",
+   "set": "manh",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FDBA74",
+   "mid": "#EA580C",
+   "dark": "#1C1917",
+   "gold1": "#FFEDD5",
+   "gold2": "#F97316"
+  },
+  "cutFx": "none",
+  "transition": "auto",
+  "captionTop": 1360,
+  "wordsPerPage": 2,
+  "color": {
+   "brightness": 104,
+   "contrast": 110,
+   "saturation": 110,
+   "warmth": 8
+  },
+  "sfxVolume": 0.26
+ },
+ "thanhPhan": {
+  "chu": "Barlow đậm IN HOA, ô đen từ khóa",
+  "phude": "từng từ nền cam",
+  "chuyencanh": "tự động",
+  "hieuung": "zoom giật nhiều",
+  "dohoa": "kính tối, nhấn cam, nhãn ngày",
+  "bocuc": "căn giữa chữ to",
+  "icon": "icon trong tròn cam",
+  "minhhoa": "zoom vào",
+  "amthanh": "vừa",
+  "mau": "rực, tương phản"
+ }
+}

@@ -1,0 +1,176 @@
+{
+ "ten": "tin tức",
+ "mo_ta": "Infographic tài chính trên nền xám than lưới mờ: chữ Montserrat đậm IN HOA trắng, số liệu vàng cam, số âm đỏ, biểu đồ cột/đường/tròn mọc lên, icon nét trắng, khung viền trắng bo góc, camera lướt xuống nối các khối. Hợp: giải mã báo cáo tài chính doanh nghiệp, tin thị trường BĐS, phân tích số liệu bằng giọng đọc.",
+ "nguon": "mau.mp4",
+ "style": {
+  "sfx": {
+   "density": "vua",
+   "joins": true,
+   "map": {
+    "cut": "whoosh-nhe",
+    "text": "ding",
+    "chart": "pop"
+   },
+   "set": "mem"
+  },
+  "pace": {
+   "doDaiCanhTB": 9.92,
+   "catMoi10s": 0.93,
+   "chuHinhMoi10s": 7.05,
+   "tocDoNoi": 294,
+   "hookChuDauTien": 0.4,
+   "catSatLoi": true,
+   "matDo3Phan": [
+    6.3,
+    8.1,
+    6.7
+   ]
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in",
+   "shake": false,
+   "flash": 0
+  },
+  "graphics": {
+   "viTri": "giữa",
+   "rong": 0.77,
+   "tonTai": 2.3,
+   "mau": [
+    "#8D8D8C",
+    "#E99E14",
+    "#2C2527",
+    "#FCFCFC",
+    "#D76D19"
+   ],
+   "sticker": "icon",
+   "ghiChu": "Mỗi ý = 1 cụm infographic: tiêu đề trắng IN HOA + số liệu vàng cam (số âm đỏ #E3141B) + biểu đồ chart (bar/donut/line, card:false, có dòng chú thích nhỏ xám 'BIỂU ĐỒ SO SÁNH…' bên dưới) hoặc counter; so sánh 2 vế dùng tabs/2 khung viền trắng có dấu › ở giữa; liệt kê vấn đề dùng checklist trong khung viền trắng, mục chữ đỏ; ảnh thật dùng pip clean viền trắng mảnh + nhãn vàng dưới ảnh; nhãn số trên nền be (#B9A98A) chữ đỏ+trắng."
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 60,
+   "textZone": "middle",
+   "maxBlocks": 5,
+   "stackGap": 120,
+   "iconPos": "left"
+  },
+  "icons": {
+   "kind": "lucide",
+   "size": 110,
+   "bg": "none",
+   "color": "#FFFFFF",
+   "stroke": 2.4,
+   "set": [
+    "House",
+    "HandCoins",
+    "Building2",
+    "Users",
+    "Store",
+    "Banknote",
+    "Wallet",
+    "CircleHelp",
+    "Scale",
+    "TrendingUp",
+    "TrendingDown",
+    "ChartColumn",
+    "CalendarDays",
+    "Landmark"
+   ],
+   "map": {
+    "bất động sản": "House",
+    "kho hàng": "HandCoins",
+    "giao dịch": "Store",
+    "nhân sự": "Users",
+    "doanh nghiệp": "Building2",
+    "tiền mặt": "Banknote",
+    "dòng tiền": "Wallet",
+    "đối tác chưa rõ": "CircleHelp",
+    "nợ / vốn": "Scale",
+    "tăng": "TrendingUp",
+    "giảm": "TrendingDown",
+    "doanh thu": "ChartColumn",
+    "ngày": "CalendarDays",
+    "ngân hàng": "Landmark"
+   }
+  },
+  "font": "Montserrat",
+  "heading": "Montserrat",
+  "skin": "flat",
+  "accent": "#F2A516",
+  "frame": [
+   {
+    "type": "grid",
+    "color": "#FFFFFF"
+   },
+   "grain"
+  ],
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#F2A516",
+   "hlStyle": "color",
+   "shadow": "soft",
+   "anim": "wipe",
+   "out": "fade",
+   "upper": true,
+   "size": 70,
+   "weight": 800,
+   "stroke": 0,
+   "spacing": 0,
+   "align": "center"
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Montserrat",
+   "size": 54,
+   "weight": 800,
+   "color": "#FFFFFF",
+   "active": "#F2A516",
+   "upper": true,
+   "anim": "pop"
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "templates": false
+ },
+ "plan": {
+  "transition": "up",
+  "color": {
+   "brightness": 94,
+   "contrast": 106,
+   "saturation": 88,
+   "vignette": 25
+  },
+  "template": "review",
+  "captions": false,
+  "captionTop": 1400,
+  "wordsPerPage": 3,
+  "cutFx": "none",
+  "sfxVolume": 0.3,
+  "theme": {
+   "light": "#FFD27A",
+   "mid": "#F2A516",
+   "dark": "#1E1B1C",
+   "gold1": "#FFF3D6",
+   "gold2": "#F2A516"
+  }
+ },
+ "thanhPhan": {
+  "chuyencanh": "camera lướt xuống / lia ngang nối khối",
+  "amthanh": "ding khi chữ hiện, pop khi biểu đồ; nhạc nền nhỏ",
+  "nhip": "chữ hiện liên tục ~7 lần/10s, cắt sát lời",
+  "hieuung": "đẩy vào chậm rất ít, không chớp/rung",
+  "mau": "nền xám than lưới mờ, vàng cam / đỏ",
+  "dohoa": "biểu đồ mọc, khung viền trắng, nhãn be",
+  "bocuc": "căn giữa, xếp chồng dọc, icon trái chữ",
+  "icon": "icon nét trắng, không nền, kiểu infographic",
+  "chu": "Montserrat đậm IN HOA, trắng + số vàng cam",
+  "phude": "không phụ đề (chữ infographic thay)",
+  "minhhoa": "ảnh thật khung viền trắng, hiện mờ dần"
+ }
+}

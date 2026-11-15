@@ -1,0 +1,93 @@
+{
+ "ten": "Editorial xanh",
+ "mo_ta": "Kiểu tạp chí: chữ lớn có chân in nghiêng, từ khóa bôi vàng bút dạ quang, thẻ trắng, tông xanh nước biển — sang, dễ đọc.",
+ "style": {
+  "font": "Be Vietnam Pro",
+  "heading": "Playfair Display",
+  "skin": "light",
+  "accent": "#1170D0",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#F7DC6B",
+   "hlStyle": "marker",
+   "shadow": "soft",
+   "anim": "blur",
+   "out": "fade",
+   "upper": false,
+   "size": 82,
+   "weight": 700
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Be Vietnam Pro",
+   "size": 54,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "polaroid"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#1170D0",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 70
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "graphics": {
+   "sticker": "icon",
+   "ghiChu": "ưu tiên phrase (cụm chữ 3 tầng), note, tiles, presenter card/split nền giấy be"
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#BFDDF7",
+   "mid": "#1170D0",
+   "dark": "#0A3D78",
+   "gold1": "#F7DC6B",
+   "gold2": "#F2C94C"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1360,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 104,
+   "contrast": 100,
+   "saturation": 96,
+   "warmth": 5
+  },
+  "sfxVolume": 0.2
+ },
+ "thanhPhan": {
+  "chu": "chữ có chân in nghiêng, bôi vàng",
+  "phude": "tối giản chữ thường",
+  "chuyencanh": "mờ chồng nhẹ",
+  "hieuung": "zoom chậm, ít",
+  "dohoa": "thẻ trắng, giấy be nét đứt",
+  "bocuc": "căn trái, nhiều khoảng thở",
+  "icon": "icon nét trong tròn xanh",
+  "minhhoa": "ảnh polaroid",
+  "amthanh": "rất ít, nhẹ",
+  "mau": "sáng, ấm nhẹ"
+ },
+ "nguon": "tạo sẵn"
+}

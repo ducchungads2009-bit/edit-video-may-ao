@@ -1,0 +1,652 @@
+[
+{
+"file": "advertime.mp3",
+"title": "Advertime",
+"mood": "soi-dong",
+"tags": "sôi động, vui tươi, quảng cáo, upbeat happy corporate",
+"sec": 134,
+"full": 134,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "energizing.mp3",
+"title": "Energizing",
+"mood": "soi-dong",
+"tags": "sôi động, năng lượng, energetic upbeat",
+"sec": 133,
+"full": 133,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "funkeriffic.mp3",
+"title": "Funkeriffic",
+"mood": "soi-dong",
+"tags": "sôi động, funk, vui, energetic funky",
+"sec": 150,
+"full": 210,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "funky-energy-loop.mp3",
+"title": "Funky Energy Loop",
+"mood": "soi-dong",
+"tags": "sôi động, funk, năng động, funky energetic",
+"sec": 150,
+"full": 203,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "funshine.mp3",
+"title": "Funshine",
+"mood": "soi-dong",
+"tags": "vui tươi, tươi sáng, happy sunny upbeat",
+"sec": 150,
+"full": 165,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "gotta-keep-on-movin.mp3",
+"title": "Gotta Keep On Movin",
+"mood": "soi-dong",
+"tags": "sôi động, năng động, upbeat energetic",
+"sec": 144,
+"full": 144,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "groovin.mp3",
+"title": "Groovin",
+"mood": "soi-dong",
+"tags": "groove, vui, funky upbeat",
+"sec": 150,
+"full": 240,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "city-sunshine.mp3",
+"title": "City Sunshine",
+"mood": "soi-dong",
+"tags": "thành phố, vui tươi, tươi sáng, happy city upbeat",
+"sec": 150,
+"full": 185,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "celebration.mp3",
+"title": "Celebration",
+"mood": "soi-dong",
+"tags": "mở bán, ăn mừng, lễ hội, celebration happy",
+"sec": 143,
+"full": 143,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "happy-whistling-ukulele.mp3",
+"title": "Happy Whistling Ukulele",
+"mood": "vui-tuoi",
+"tags": "vui tươi, ukulele, huýt sáo, happy acoustic",
+"sec": 123,
+"full": 123,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "ukulele-song.mp3",
+"title": "Ukulele Song",
+"mood": "vui-tuoi",
+"tags": "vui tươi, ukulele, nhẹ, happy acoustic",
+"sec": 139,
+"full": 139,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "pump-up-your-graduation.mp3",
+"title": "Pump up your Graduation",
+"mood": "soi-dong",
+"tags": "sôi động, hào hứng, upbeat energetic",
+"sec": 150,
+"full": 290,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "be-jammin.mp3",
+"title": "Be Jammin",
+"mood": "soi-dong",
+"tags": "vui, groove, upbeat",
+"sec": 150,
+"full": 167,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "hippety-hop.mp3",
+"title": "Hippety Hop",
+"mood": "vui-tuoi",
+"tags": "vui nhộn, hip hop, fun",
+"sec": 117,
+"full": 117,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "take-the-ride.mp3",
+"title": "Take the Ride",
+"mood": "soi-dong",
+"tags": "sôi động, lái xe, road upbeat",
+"sec": 150,
+"full": 262,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "lucky-break.mp3",
+"title": "Lucky Break",
+"mood": "vui-tuoi",
+"tags": "vui, may mắn, happy",
+"sec": 150,
+"full": 286,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "fireworks.mp3",
+"title": "Fireworks",
+"mood": "soi-dong",
+"tags": "pháo hoa, mở bán, ăn mừng, celebration",
+"sec": 150,
+"full": 191,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "be-chillin.mp3",
+"title": "Be Chillin",
+"mood": "chill",
+"tags": "chill, thư giãn, lofi, relax",
+"sec": 150,
+"full": 203,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "study-and-relax.mp3",
+"title": "Study and Relax",
+"mood": "chill",
+"tags": "chill, lofi, thư giãn, study relax calm",
+"sec": 150,
+"full": 223,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "meditating-beat.mp3",
+"title": "Meditating Beat",
+"mood": "chill",
+"tags": "chill, lofi beat, nhẹ nhàng, calm",
+"sec": 150,
+"full": 157,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "slice-of-life.mp3",
+"title": "Slice of Life",
+"mood": "chill",
+"tags": "đời thường, vlog, nhẹ nhàng, calm",
+"sec": 141,
+"full": 141,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "martini-sunset.mp3",
+"title": "Martini Sunset",
+"mood": "chill",
+"tags": "hoàng hôn, chill, sang trọng nhẹ, lounge",
+"sec": 150,
+"full": 174,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "pina-colada.mp3",
+"title": "Pina Colada",
+"mood": "chill",
+"tags": "biển, nghỉ dưỡng, chill, tropical",
+"sec": 150,
+"full": 164,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "sunny-rasta.mp3",
+"title": "Sunny Rasta",
+"mood": "chill",
+"tags": "reggae, biển, vui nhẹ, tropical",
+"sec": 140,
+"full": 140,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "sunday-dub.mp3",
+"title": "Sunday Dub",
+"mood": "chill",
+"tags": "dub, thư giãn, chill",
+"sec": 150,
+"full": 209,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "take-the-sting-out-jazz-fi.mp3",
+"title": "Take the Sting Out - Jazz Fi",
+"mood": "chill",
+"tags": "jazz lofi, chill, cà phê",
+"sec": 150,
+"full": 223,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "3-am-west-end.mp3",
+"title": "3 am West End",
+"mood": "chill",
+"tags": "đêm, lofi, chill, night",
+"sec": 150,
+"full": 291,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "kalimba-relaxation-music.mp3",
+"title": "Kalimba Relaxation Music",
+"mood": "nhe-nhang",
+"tags": "kalimba, thư giãn, nhẹ nhàng, calm relax",
+"sec": 150,
+"full": 428,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "river-meditation.mp3",
+"title": "River Meditation",
+"mood": "nhe-nhang",
+"tags": "thiền, sông, nhẹ nhàng, calm meditation",
+"sec": 150,
+"full": 167,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "infinite-peace.mp3",
+"title": "Infinite Peace",
+"mood": "nhe-nhang",
+"tags": "bình yên, nhẹ nhàng, ambient calm",
+"sec": 76,
+"full": 76,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "bass-meant-jazz.mp3",
+"title": "Bass Meant Jazz",
+"mood": "sang-trong",
+"tags": "jazz, sang trọng, lounge",
+"sec": 150,
+"full": 280,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "compy-jazz.mp3",
+"title": "Compy Jazz",
+"mood": "sang-trong",
+"tags": "jazz, sang trọng, nhẹ",
+"sec": 150,
+"full": 247,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "flutey-jazz.mp3",
+"title": "Flutey Jazz",
+"mood": "sang-trong",
+"tags": "jazz, sáo, sang trọng",
+"sec": 150,
+"full": 247,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "downtown-boogie.mp3",
+"title": "Downtown Boogie",
+"mood": "sang-trong",
+"tags": "boogie, phố, sang trọng, groove",
+"sec": 147,
+"full": 147,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "night-in-venice.mp3",
+"title": "Night in Venice",
+"mood": "sang-trong",
+"tags": "châu Âu, lãng mạn, sang trọng, elegant",
+"sec": 150,
+"full": 218,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "gothamlicious.mp3",
+"title": "Gothamlicious",
+"mood": "sang-trong",
+"tags": "thành phố đêm, sang trọng, cool",
+"sec": 48,
+"full": 48,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "inspiration.mp3",
+"title": "Inspiration",
+"mood": "cam-xuc",
+"tags": "truyền cảm hứng, cảm xúc, inspiring",
+"sec": 138,
+"full": 138,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "elevate-inspirate.mp3",
+"title": "Elevate Inspirate",
+"mood": "cam-xuc",
+"tags": "truyền cảm hứng, tích cực, inspiring uplifting",
+"sec": 64,
+"full": 64,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "hopeful.mp3",
+"title": "Hopeful",
+"mood": "cam-xuc",
+"tags": "hy vọng, cảm xúc, hopeful",
+"sec": 114,
+"full": 114,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "journey-of-hope.mp3",
+"title": "Journey of Hope",
+"mood": "cam-xuc",
+"tags": "hành trình, hy vọng, cảm xúc, inspiring",
+"sec": 150,
+"full": 349,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "romantic-inspiration.mp3",
+"title": "Romantic Inspiration",
+"mood": "cam-xuc",
+"tags": "lãng mạn, cảm xúc, romantic",
+"sec": 150,
+"full": 150,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "lovely-piano-song.mp3",
+"title": "Lovely Piano Song",
+"mood": "piano",
+"tags": "piano, nhẹ nhàng, cảm xúc",
+"sec": 96,
+"full": 96,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "nostalgic-piano.mp3",
+"title": "Nostalgic Piano",
+"mood": "piano",
+"tags": "piano, hoài niệm, cảm xúc, nostalgic",
+"sec": 150,
+"full": 196,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "relaxing-ballad.mp3",
+"title": "Relaxing Ballad",
+"mood": "piano",
+"tags": "ballad, nhẹ nhàng, cảm xúc",
+"sec": 150,
+"full": 209,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "finally-see-the-light.mp3",
+"title": "Finally See The Light",
+"mood": "cam-xuc",
+"tags": "cảm xúc, tươi sáng, uplifting",
+"sec": 150,
+"full": 201,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "horizon-flare.mp3",
+"title": "Horizon Flare",
+"mood": "cam-xuc",
+"tags": "chân trời, điện ảnh nhẹ, cinematic uplifting",
+"sec": 102,
+"full": 102,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "infinite-wonder.mp3",
+"title": "Infinite Wonder",
+"mood": "cam-xuc",
+"tags": "kỳ diệu, ambient, cảm xúc",
+"sec": 150,
+"full": 190,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "emotional-blockbuster-2.mp3",
+"title": "Emotional Blockbuster 2",
+"mood": "dien-anh",
+"tags": "điện ảnh, cảm xúc, cinematic emotional",
+"sec": 132,
+"full": 132,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "epic-blockbuster-2.mp3",
+"title": "Epic Blockbuster 2",
+"mood": "dien-anh",
+"tags": "hoành tráng, điện ảnh, epic cinematic",
+"sec": 150,
+"full": 159,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "heroic-adventure.mp3",
+"title": "Heroic Adventure",
+"mood": "dien-anh",
+"tags": "hoành tráng, phiêu lưu, epic",
+"sec": 143,
+"full": 143,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "kings-trailer.mp3",
+"title": "Kings Trailer",
+"mood": "dien-anh",
+"tags": "trailer, hoành tráng, epic",
+"sec": 150,
+"full": 163,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "strength-of-the-titans.mp3",
+"title": "Strength of the Titans",
+"mood": "dien-anh",
+"tags": "hoành tráng, mạnh mẽ, epic",
+"sec": 62,
+"full": 62,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "novus-initium.mp3",
+"title": "Novus Initium",
+"mood": "dien-anh",
+"tags": "khởi đầu, điện ảnh, cinematic",
+"sec": 150,
+"full": 163,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "overture.mp3",
+"title": "Overture",
+"mood": "dien-anh",
+"tags": "mở màn, hoành tráng, orchestral",
+"sec": 99,
+"full": 99,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "stereotype-news.mp3",
+"title": "Stereotype News",
+"mood": "tin-tuc",
+"tags": "tin tức, bản tin, news",
+"sec": 66,
+"full": 66,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "sciencenet-theme.mp3",
+"title": "Sciencenet Theme",
+"mood": "tin-tuc",
+"tags": "công nghệ, tin tức, tech corporate",
+"sec": 44,
+"full": 44,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "screen-saver.mp3",
+"title": "Screen Saver",
+"mood": "tin-tuc",
+"tags": "công nghệ, nhẹ, tech ambient",
+"sec": 150,
+"full": 182,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "circuit.mp3",
+"title": "Circuit",
+"mood": "tin-tuc",
+"tags": "công nghệ, điện tử, tech electronic",
+"sec": 150,
+"full": 180,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "motions.mp3",
+"title": "Motions",
+"mood": "tin-tuc",
+"tags": "doanh nghiệp, chuyển động, corporate",
+"sec": 117,
+"full": 117,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "think-about-it.mp3",
+"title": "Think About It",
+"mood": "tin-tuc",
+"tags": "suy nghĩ, phân tích, doanh nghiệp, corporate",
+"sec": 120,
+"full": 120,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "hidden-truth.mp3",
+"title": "Hidden Truth",
+"mood": "hoi-hop",
+"tags": "hồi hộp, bí ẩn, suspense mystery",
+"sec": 99,
+"full": 99,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "driving-concern.mp3",
+"title": "Driving Concern",
+"mood": "hoi-hop",
+"tags": "hồi hộp, căng thẳng, suspense",
+"sec": 150,
+"full": 200,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "asking-questions.mp3",
+"title": "Asking Questions",
+"mood": "hoi-hop",
+"tags": "câu hỏi, tò mò, mystery",
+"sec": 104,
+"full": 104,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "deck-the-halls.mp3",
+"title": "Deck the Halls",
+"mood": "le-hoi",
+"tags": "giáng sinh, lễ hội, christmas",
+"sec": 107,
+"full": 107,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+},
+{
+"file": "we-wish-you-a-merry-christmas.mp3",
+"title": "We Wish You a Merry Christmas",
+"mood": "le-hoi",
+"tags": "giáng sinh, lễ hội, christmas",
+"sec": 87,
+"full": 87,
+"creator": "Kevin MacLeod (FreePD)",
+"license": "CC0 / public domain"
+}
+]

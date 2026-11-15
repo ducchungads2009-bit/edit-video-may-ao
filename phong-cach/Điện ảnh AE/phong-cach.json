@@ -1,0 +1,101 @@
+{
+ "ten": "Điện ảnh AE",
+ "mo_ta": "Như trailer làm bằng After Effects: chữ trồi lên từ khe, nhòe chuyển động mượt, rò sáng & cháy phim ở điểm nối, toả sáng nhẹ, chữ 3D vàng cho con số. Hợp: giới thiệu dự án cao cấp, kể chuyện, mở bán.",
+ "style": {
+  "font": "Be Vietnam Pro",
+  "heading": "Playfair Display",
+  "skin": "luxe",
+  "accent": "#E9C46A",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#E9C46A",
+   "shadow": "soft",
+   "anim": "maskUp",
+   "out": "fade",
+   "upper": true,
+   "size": 84,
+   "weight": 800,
+   "spacing": 2,
+   "ease": "smooth",
+   "mblur": true
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Be Vietnam Pro",
+   "size": 56,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": true,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "none",
+   "color": "#E9C46A"
+  },
+  "motion": {
+   "ease": "smooth",
+   "mblur": true
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomEase": "smooth",
+   "zoomStyle": "smooth",
+   "overlay": [
+    "lightleak",
+    "filmburn",
+    "flare"
+   ]
+  },
+  "graphics": {
+   "sticker": "không",
+   "ghiChu": "con số lớn dùng text3d face gold motion rise; bảng giá / tiện ích dùng scene; mũi tên shape vẽ ra chỉ vào chi tiết; card3d move dolly cho ảnh phối cảnh"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#F4E3B2",
+   "mid": "#C9A227",
+   "dark": "#0E1420",
+   "gold1": "#F6D77B",
+   "gold2": "#B8860B"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 3,
+  "color": {
+   "brightness": 100,
+   "contrast": 110,
+   "saturation": 96,
+   "warmth": 12,
+   "vignette": 28,
+   "fade": 10
+  },
+  "sfxVolume": 0.25
+ },
+ "thanhPhan": {
+  "chu": "chữ trồi từ khe, nhòe chuyển động",
+  "phude": "tối giản chữ thường",
+  "chuyencanh": "mờ chồng + cháy phim",
+  "hieuung": "zoom êm, toả sáng, rò sáng",
+  "dohoa": "chữ 3D vàng, cảnh dựng sẵn, mũi tên vẽ",
+  "minhhoa": "ảnh 3D camera đẩy vào",
+  "amthanh": "ít, tiếng mềm",
+  "mau": "ấm, tối góc kiểu phim"
+ },
+ "nguon": "tạo sẵn",
+ "nhom": "kechuyen"
+}

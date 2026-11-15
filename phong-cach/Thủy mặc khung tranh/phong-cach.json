@@ -1,0 +1,92 @@
+{
+ "ten": "Thủy mặc khung tranh",
+ "mo_ta": "Người đọc thơ đặt trong khung giữa một bức tranh thủy mặc tô màu nhạt (trăng, núi, chim, thuyền, lau sậy) — như ngồi trong tranh; câu thơ chữ mực trên nền trời.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Playfair Display",
+  "heading": "Playfair Display",
+  "skin": "flat",
+  "accent": "#B7791F",
+  "text": {
+   "look": "clean",
+   "color": "#3B2F2A",
+   "hlColor": "#B7791F",
+   "hlStyle": "color",
+   "shadow": "none",
+   "anim": "blur",
+   "out": "fade",
+   "upper": false,
+   "italic": true,
+   "size": 58,
+   "weight": 400,
+   "font": "Playfair Display"
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Playfair Display",
+   "size": 50,
+   "weight": 400,
+   "color": "#FFF8EC",
+   "upper": false
+  },
+  "presenter": {
+   "mode": "card",
+   "bg": "ink-color",
+   "s": 0.56,
+   "y": 1250,
+   "r": 34,
+   "frame": 6
+  },
+  "icons": {
+   "kind": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 110,
+   "textZone": "top",
+   "maxBlocks": 1
+  },
+  "effects": {
+   "zoom": "không",
+   "zoomEase": "smooth"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "templates": false
+ },
+ "plan": {
+  "theme": {
+   "light": "#F2D27E",
+   "mid": "#5F7D6E",
+   "dark": "#2E2A26",
+   "gold1": "#F3EEE3",
+   "gold2": "#B7791F"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1630,
+  "wordsPerPage": 5,
+  "color": {
+   "brightness": 102,
+   "contrast": 96,
+   "saturation": 86,
+   "warmth": 6,
+   "fade": 10
+  },
+  "sfxVolume": 0.06
+ },
+ "thanhPhan": {
+  "chu": "serif nghiêng nâu mực trên nền trời",
+  "phude": "tối giản, dưới khung",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "không zoom",
+  "dohoa": "người trong khung giữa tranh thủy mặc",
+  "bocuc": "câu thơ trên trời, người giữa tranh",
+  "minhhoa": "ít — tranh đã là nền",
+  "amthanh": "gần như im lặng",
+  "mau": "pastel ấm nhẹ"
+ }
+}

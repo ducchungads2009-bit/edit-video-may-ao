@@ -1,0 +1,89 @@
+{
+ "ten": "Motion xanh nước",
+ "mo_ta": "Học từ bộ Motioncut: tông xanh nước biển, chữ có chân in nghiêng, thẻ kính, sao lấp lánh — hợp video giọng đọc + hình động không người nói, truyền động lực, tư duy.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Be Vietnam Pro",
+  "heading": "Playfair Display",
+  "skin": "flat",
+  "accent": "#38BDF8",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#7DD3FC",
+   "hlStyle": "color",
+   "anim": "blur",
+   "out": "fade",
+   "upper": false,
+   "size": 86,
+   "weight": 700
+  },
+  "captions": {
+   "preset": "karaoke",
+   "font": "Be Vietnam Pro",
+   "size": 58,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "active": "#7DD3FC",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": true,
+   "pip": "round"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#0284C7",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 70
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#BAE6FD",
+   "mid": "#0284C7",
+   "dark": "#082F49",
+   "gold1": "#E0F2FE",
+   "gold2": "#38BDF8"
+  },
+  "cutFx": "none",
+  "transition": "fade",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 100,
+   "contrast": 104,
+   "saturation": 100,
+   "warmth": -15
+  },
+  "sfxVolume": 0.2
+ },
+ "thanhPhan": {
+  "chu": "chữ có chân nghiêng, nhấn xanh",
+  "phude": "karaoke xanh nhạt",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "zoom chậm",
+  "dohoa": "kính tối xanh, sao lấp lánh",
+  "bocuc": "căn giữa",
+  "icon": "icon trong tròn xanh",
+  "minhhoa": "khung tròn, mờ dần",
+  "amthanh": "ít",
+  "mau": "lạnh, xanh"
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "ten": "Nhịp · Sang trọng BĐS",
+ "mo_ta": "2–4 nhịp mỗi cảnh, đẩy chậm vào cảnh, mờ chồng, ánh sáng loé, màu ấm, chữ mảnh hiện chậm — căn hộ, biệt thự cao cấp.",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Playfair Display",
+  "skin": "flat",
+  "accent": "#D4AF37",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#D4AF37",
+   "hlStyle": "color",
+   "shadow": "soft",
+   "anim": "fade",
+   "out": "fade",
+   "upper": true,
+   "size": 66,
+   "weight": 700,
+   "spacing": 6
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Montserrat",
+   "size": 50,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "none",
+   "color": "#D4AF37",
+   "stroke": 1.8
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 90
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "beat": {
+   "preset": "sang-trong"
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#E9D9A6",
+   "mid": "#B8962E",
+   "dark": "#14110B",
+   "gold1": "#F5E6B8",
+   "gold2": "#D4AF37"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 100,
+   "contrast": 108,
+   "saturation": 92,
+   "warmth": 15,
+   "vignette": 35
+  },
+  "sfxVolume": 0.15
+ },
+ "thanhPhan": {
+  "chu": "in hoa giãn chữ, nhấn vàng, hiện chậm",
+  "phude": "tối giản, nhỏ",
+  "chuyencanh": "mờ chồng đúng nhịp",
+  "hieuung": "zoom chậm, rất ít",
+  "dohoa": "kính tối, vàng champagne",
+  "bocuc": "căn giữa, lề rộng",
+  "icon": "icon nét mảnh vàng, không nền",
+  "minhhoa": "mờ dần, zoom chậm",
+  "amthanh": "chỉ nhạc, không tiếng hiệu ứng",
+  "mau": "ấm, sâu, tối 4 góc",
+  "nhip": "Sang trọng: 2–4 nhịp mỗi cảnh"
+ },
+ "nguon": "tạo sẵn",
+ "nhom": "nhip"
+}

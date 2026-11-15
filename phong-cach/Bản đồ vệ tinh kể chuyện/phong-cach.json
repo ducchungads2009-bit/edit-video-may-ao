@@ -1,0 +1,72 @@
+{
+ "ten": "Bản đồ vệ tinh kể chuyện",
+ "mo_ta": "Kể chuyện trên bản đồ ảnh vệ tinh thật: viền cả nước phát sáng neon, từng vùng tự vẽ viền trắng rồi tô màu, camera bay/zoom lần lượt tới từng vùng, nhãn tỉnh bật ra, ảnh chân dung tròn + bảng tên cam. Hợp: địa lý, lịch sử, phân vùng, quy hoạch, giới thiệu khu vực.",
+ "nguon": "video bản đồ thật (mẫu người dùng gửi)",
+ "style": {
+  "font": "Oswald",
+  "heading": "Oswald",
+  "text": {
+   "look": "plain",
+   "color": "#FFFFFF",
+   "stroke": 0,
+   "shadow": "hard",
+   "strokeColor": "#000000",
+   "anim": "pop",
+   "out": "fade",
+   "upper": true,
+   "size": 76,
+   "weight": 700
+  },
+  "captions": {
+   "preset": "single",
+   "font": "Oswald",
+   "size": 56,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "active": "#FFE14D",
+   "upper": true,
+   "anim": "pop"
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "round"
+  },
+  "templates": false,
+  "mapTour": {
+   "basemap": "sat",
+   "dim": 0.15
+  },
+  "effects": {
+   "zoom": "không"
+  },
+  "graphics": {
+   "sticker": "không",
+   "ghiChu": "gần như cả video là khối mapTour nối tiếp: mỗi ý = 1 vùng; tên vùng to (labelRotate theo hướng vùng), nhãn tỉnh (tags) bật lần lượt 0,2s, ảnh chân dung (badges) khi nhắc tới người"
+  },
+  "sfx": {
+   "density": "vua",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "captionTop": 1480,
+  "wordsPerPage": 6,
+  "transition": "fade",
+  "cutFx": "none",
+  "sfxVolume": 0.3
+ },
+ "thanhPhan": {
+  "chu": "Oswald trắng in hoa, bóng cứng",
+  "phude": "1 dòng in hoa dưới thấp",
+  "dohoa": "bản đồ vệ tinh, vùng tô màu, viền neon",
+  "hieuung": "camera bay/zoom tới từng vùng",
+  "minhhoa": "ảnh chân dung tròn + bảng tên cam",
+  "amthanh": "whoosh nhẹ khi bay vùng",
+  "mau": "vệ tinh hơi tối, màu vùng đậm",
+  "nhip": "mỗi vùng 3–6 giây theo lời kể"
+ }
+}

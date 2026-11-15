@@ -1,0 +1,100 @@
+{
+ "ten": "Mở bán bùng nổ AE",
+ "nhom": "bds",
+ "mo_ta": "Khí thế ngày mở bán: chữ bật từng ký tự nảy mạnh, số đếm lên, pháo giấy + lấp lánh, lóa sáng ở con số, mũi tên vẽ chỉ ưu đãi, nhịp cắt theo nhạc. Hợp: mở bán, giờ vàng, khuyến mãi, sự kiện.",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Bungee",
+  "skin": "flat",
+  "accent": "#FFD60A",
+  "text": {
+   "look": "solid",
+   "color": "#111111",
+   "bg": "#FFD60A",
+   "hlColor": "#E63946",
+   "hlStyle": "color",
+   "anim": "stagger",
+   "out": "pop",
+   "upper": true,
+   "size": 86,
+   "weight": 400,
+   "radius": 12,
+   "ease": "bouncy",
+   "mblur": true
+  },
+  "captions": {
+   "preset": "wordbox",
+   "font": "Montserrat",
+   "size": 64,
+   "weight": 900,
+   "color": "#FFFFFF",
+   "active": "#111111",
+   "activeBg": "#FFD60A",
+   "upper": true
+  },
+  "broll": {
+   "enter": "whip",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "motion": {
+   "ease": "bouncy",
+   "mblur": true
+  },
+  "effects": {
+   "zoom": "nhiều",
+   "zoomStyle": "punch",
+   "overlay": [
+    "flare",
+    "confetti",
+    "sparkle",
+    "lightleak"
+   ]
+  },
+  "graphics": {
+   "sticker": "emoji",
+   "ghiChu": "giá / chiết khấu → scene stats hoặc pricetable (số đếm lên) + overlay flare; ưu đãi → shape circle hoặc arrow chỉ vào; kêu gọi cuối → scene outro + confetti; bắt nhịp nhạc (ae.py bat-nhip)"
+  },
+  "sfx": {
+   "density": "nhieu",
+   "set": "manh",
+   "joins": true
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FFD60A",
+   "mid": "#E63946",
+   "dark": "#14080A",
+   "gold1": "#FFE66D",
+   "gold2": "#FFB703"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1370,
+  "wordsPerPage": 2,
+  "color": {
+   "brightness": 104,
+   "contrast": 112,
+   "saturation": 120
+  },
+  "sfxVolume": 0.32
+ },
+ "thanhPhan": {
+  "chu": "khối vàng, bật từng ký tự",
+  "phude": "từng từ nền vàng",
+  "chuyencanh": "nhanh, lia",
+  "hieuung": "zoom giật, lóa, pháo giấy",
+  "dohoa": "số đếm lên, mũi tên vẽ",
+  "minhhoa": "lia nhanh vào",
+  "amthanh": "nhiều, mạnh",
+  "mau": "rực đỏ vàng"
+ },
+ "nguon": "tạo sẵn"
+}

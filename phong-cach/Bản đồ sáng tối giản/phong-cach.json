@@ -1,0 +1,104 @@
+{
+ "ten": "Bản đồ sáng tối giản",
+ "mo_ta": "Bản đồ trắng sạch, đường đi san hô nổi bật, ghim to, thẻ trắng, chữ Lexend — rõ ràng dễ nhìn. Hợp: chỉ đường, các tiện ích quanh dự án, so sánh vị trí, khu dân cư.",
+ "style": {
+  "font": "Lexend",
+  "heading": "Lexend",
+  "skin": "light",
+  "accent": "#F43F5E",
+  "text": {
+   "look": "solid",
+   "color": "#0F172A",
+   "bg": "#FFFFFF",
+   "hlColor": "#F43F5E",
+   "hlStyle": "color",
+   "anim": "up",
+   "out": "fade",
+   "upper": false,
+   "size": 76,
+   "weight": 900,
+   "radius": 16
+  },
+  "captions": {
+   "preset": "wordbox",
+   "font": "Lexend",
+   "size": 56,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "active": "#FFFFFF",
+   "activeBg": "#F43F5E",
+   "upper": false
+  },
+  "broll": {
+   "enter": "slide",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#F43F5E",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 60
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "map": {
+   "style": "positron",
+   "theme": "sang",
+   "lineMode": "road",
+   "camera": "zoomin",
+   "frame": "card",
+   "hideLabels": true,
+   "color": "#F43F5E"
+  },
+  "graphics": {
+   "sticker": "icon",
+   "ghiChu": "khối map khung thẻ (card), chip MapPin + phút đi lại, hbar so sánh khoảng cách"
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FECDD3",
+   "mid": "#F43F5E",
+   "dark": "#0F172A",
+   "gold1": "#FFE4E6",
+   "gold2": "#FB7185"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 3,
+  "color": {
+   "brightness": 106,
+   "contrast": 102,
+   "saturation": 104
+  },
+  "sfxVolume": 0.18
+ },
+ "thanhPhan": {
+  "chu": "Lexend đậm trên khối trắng",
+  "phude": "từ đang đọc nền san hô",
+  "chuyencanh": "tự động",
+  "hieuung": "zoom chậm",
+  "dohoa": "thẻ trắng, bản đồ trắng đường san hô",
+  "bocuc": "căn trái",
+  "icon": "icon trong tròn san hô",
+  "minhhoa": "trượt vào",
+  "amthanh": "ít",
+  "mau": "sáng, sạch"
+ },
+ "nguon": "tạo sẵn"
+}

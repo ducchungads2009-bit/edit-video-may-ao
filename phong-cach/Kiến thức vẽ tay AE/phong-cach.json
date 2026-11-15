@@ -1,0 +1,90 @@
+{
+ "ten": "Kiến thức vẽ tay AE",
+ "nhom": "tin",
+ "mo_ta": "Giải thích dễ hiểu như bảng trắng: khoanh tròn, gạch chân lượn sóng, mũi tên cong tự vẽ ra bằng nét tay, chữ nổi lên êm, dấu ✓ ✕ cho đúng sai. Hợp: kiến thức, kinh nghiệm mua nhà, hướng dẫn, mẹo.",
+ "style": {
+  "font": "Nunito",
+  "heading": "Patrick Hand",
+  "skin": "light",
+  "accent": "#FF8A00",
+  "text": {
+   "look": "highlight",
+   "color": "#111111",
+   "bg": "#FFE066",
+   "hlColor": "#D9480F",
+   "anim": "rise",
+   "out": "fade",
+   "upper": false,
+   "size": 88,
+   "weight": 400,
+   "ease": "smooth"
+  },
+  "captions": {
+   "preset": "karaoke",
+   "font": "Nunito",
+   "size": 58,
+   "weight": 800,
+   "color": "#FFFFFF",
+   "active": "#FFD43B",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "polaroid"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "motion": {
+   "ease": "smooth"
+  },
+  "effects": {
+   "zoom": "vừa",
+   "zoomStyle": "punch",
+   "overlay": "không"
+  },
+  "graphics": {
+   "sticker": "emoji",
+   "ghiChu": "cứ 4-7s 1 hình vẽ tay: shape circle (rough) khoanh thứ đang nói, underline wave dưới từ khóa, arrow bend 0.3 chỉ từ chữ tới vật; đúng/sai → shape check / cross; so sánh → scene compare (a/b items); màu nét cam #FF8A00 hoặc đỏ"
+  },
+  "sfx": {
+   "density": "vua",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FFE066",
+   "mid": "#FF8A00",
+   "dark": "#1F2937",
+   "gold1": "#FFF3BF",
+   "gold2": "#FFD43B"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 3,
+  "color": {
+   "brightness": 104,
+   "contrast": 104,
+   "saturation": 106
+  },
+  "sfxVolume": 0.25
+ },
+ "thanhPhan": {
+  "chu": "bút dạ quang, nổi lên êm",
+  "phude": "karaoke vàng",
+  "chuyencanh": "tự động",
+  "hieuung": "zoom vừa",
+  "dohoa": "khoanh, gạch chân, mũi tên vẽ tay, ✓ ✕",
+  "minhhoa": "ảnh polaroid",
+  "amthanh": "vừa, mềm",
+  "mau": "sáng tươi"
+ },
+ "nguon": "tạo sẵn"
+}

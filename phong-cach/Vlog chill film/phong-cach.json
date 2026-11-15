@@ -1,0 +1,98 @@
+{
+ "ten": "Vlog chill film",
+ "mo_ta": "Như cuộn phim máy cơ: mẩu giấy dán băng keo chữ viết tay, vệt sáng hắt trôi chậm, hạt phim, ngày tháng cam góc dưới, màu bạc ấm. Hợp: vlog một ngày, đi xem nhà, hậu trường nhẹ nhàng.",
+ "style": {
+  "font": "Nunito",
+  "heading": "Patrick Hand",
+  "skin": "scrap",
+  "accent": "#E76F51",
+  "frame": [
+   "grain",
+   "leak",
+   {
+    "type": "datestamp"
+   }
+  ],
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#FFD166",
+   "hlStyle": "color",
+   "shadow": "soft",
+   "anim": "fade",
+   "out": "fade",
+   "upper": false,
+   "size": 90,
+   "weight": 400
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Nunito",
+   "size": 54,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "polaroid"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 70
+  },
+  "effects": {
+   "zoom": "không",
+   "zoomEase": "smooth",
+   "zoomStyle": "smooth"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FFD6A5",
+   "mid": "#E76F51",
+   "dark": "#3D2B1F",
+   "gold1": "#FFF1D6",
+   "gold2": "#FFD166"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1420,
+  "wordsPerPage": 5,
+  "color": {
+   "brightness": 104,
+   "contrast": 96,
+   "saturation": 88,
+   "warmth": 22,
+   "fade": 26,
+   "tint": "#FFB37A",
+   "tintAmount": 6
+  },
+  "sfxVolume": 0.12
+ },
+ "thanhPhan": {
+  "chu": "chữ viết tay mềm",
+  "phude": "nhỏ, chữ thường",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "không zoom, vệt sáng hắt, zoom vào–ra êm",
+  "dohoa": "giấy dán băng keo, chữ viết tay",
+  "bocuc": "căn giữa",
+  "icon": "emoji",
+  "minhhoa": "polaroid",
+  "amthanh": "gần như không",
+  "mau": "phim bạc ấm, hạt"
+ },
+ "nguon": "tạo sẵn"
+}

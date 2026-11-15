@@ -1,0 +1,94 @@
+{
+ "ten": "SeeCut đỏ gạch",
+ "mo_ta": "Học từ bộ SeeCut: tông đỏ gạch + kem, người nói thu thành thẻ bo góc, nhãn IN HOA ngắn, chữ bật đúng từ khóa. Hợp: review, hướng dẫn, chia sẻ kinh nghiệm.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Be Vietnam Pro",
+  "heading": "Be Vietnam Pro",
+  "skin": "light",
+  "accent": "#C2410C",
+  "text": {
+   "look": "solid",
+   "color": "#FFF7ED",
+   "bg": "#C2410C",
+   "hlColor": "#FDE68A",
+   "hlStyle": "marker",
+   "anim": "pop",
+   "out": "fade",
+   "upper": true,
+   "size": 78,
+   "weight": 900,
+   "radius": 12
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Be Vietnam Pro",
+   "size": 54,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "slide",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#C2410C",
+   "color": "#FFF7ED"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 70
+  },
+  "effects": {
+   "zoom": "vừa",
+   "zoomStyle": "punch"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "graphics": {
+   "sticker": "icon",
+   "ghiChu": "dùng presenter mode card (nền giấy be) cho câu nội dung; nhãn IN HOA 1–3 từ; mỗi nhịp ≥ 2 phần tử"
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FDE7D3",
+   "mid": "#C2410C",
+   "dark": "#431407",
+   "gold1": "#FFEDD5",
+   "gold2": "#F59E0B"
+  },
+  "cutFx": "none",
+  "transition": "auto",
+  "captionTop": 1380,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 104,
+   "contrast": 104,
+   "saturation": 102,
+   "warmth": 12
+  },
+  "sfxVolume": 0.22
+ },
+ "thanhPhan": {
+  "chu": "khối đỏ gạch chữ kem IN HOA",
+  "phude": "tối giản",
+  "chuyencanh": "tự động",
+  "hieuung": "zoom giật vừa",
+  "dohoa": "thẻ trắng, nhấn đỏ gạch; người nói thu thẻ",
+  "bocuc": "căn trái",
+  "icon": "icon nét trong tròn đỏ",
+  "minhhoa": "trượt vào",
+  "amthanh": "ít, nhẹ",
+  "mau": "ấm, kem"
+ }
+}

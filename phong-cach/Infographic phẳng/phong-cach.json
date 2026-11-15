@@ -1,0 +1,95 @@
+{
+ "ten": "Infographic phẳng",
+ "mo_ta": "Đồ họa thông tin rõ ràng: thẻ trắng viền đậm + bóng đổ cứng, biểu đồ cột / tròn / đường động, số đếm lên, màu xanh – vàng – san hô tươi. Hợp: giải thích số liệu, so sánh dự án, giá qua các năm.",
+ "style": {
+  "font": "Lexend",
+  "heading": "Lexend",
+  "skin": "info",
+  "accent": "#2563EB",
+  "text": {
+   "look": "solid",
+   "color": "#0F172A",
+   "bg": "#FFFFFF",
+   "hlColor": "#2563EB",
+   "hlStyle": "color",
+   "anim": "pop",
+   "out": "fade",
+   "upper": false,
+   "size": 78,
+   "weight": 900,
+   "radius": 12
+  },
+  "captions": {
+   "preset": "wordbox",
+   "font": "Lexend",
+   "size": 56,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "active": "#0F172A",
+   "activeBg": "#FACC15",
+   "upper": false
+  },
+  "broll": {
+   "enter": "slide",
+   "exit": "cut",
+   "kenburns": false,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "square",
+   "bgColor": "#2563EB",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 60
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "punch"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "graphics": {
+   "sticker": "icon",
+   "ghiChu": "ưu tiên chart (bar/hbar/donut/line/progress), counter, tiles; presenter split khi trình bày biểu đồ; mỗi số liệu ghi nguồn (source)"
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#93C5FD",
+   "mid": "#2563EB",
+   "dark": "#0F172A",
+   "gold1": "#FEF08A",
+   "gold2": "#FACC15"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 3,
+  "color": {
+   "brightness": 104,
+   "contrast": 104,
+   "saturation": 104
+  },
+  "sfxVolume": 0.2
+ },
+ "thanhPhan": {
+  "chu": "Lexend đậm trên khối trắng",
+  "phude": "từ đang đọc nền vàng",
+  "chuyencanh": "tự động",
+  "hieuung": "zoom ít",
+  "dohoa": "thẻ viền đậm bóng cứng, biểu đồ động",
+  "bocuc": "căn trái, chia lưới",
+  "icon": "icon trong ô vuông xanh",
+  "minhhoa": "trượt vào",
+  "amthanh": "ít",
+  "mau": "tươi, rõ"
+ },
+ "nguon": "tạo sẵn"
+}

@@ -1,0 +1,107 @@
+{
+ "ten": "Thơ ánh sáng AE",
+ "nhom": "tho",
+ "mo_ta": "Đọc thơ lung linh: từng chữ nổi lên chậm như sương, hạt sáng và lấp lánh bay nhẹ, toả sáng dịu, tự đổi cỡ cảnh toàn–trung–cận êm, màu lạnh huyền ảo. Hợp: thơ, câu nói hay, radio đêm, tâm sự.",
+ "style": {
+  "font": "Nunito",
+  "heading": "Playfair Display",
+  "skin": "flat",
+  "accent": "#C7D2FE",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#FDE68A",
+   "shadow": "glow",
+   "anim": "rise",
+   "out": "blur",
+   "upper": false,
+   "size": 90,
+   "weight": 700,
+   "italic": true,
+   "ease": "smooth"
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Nunito",
+   "size": 52,
+   "weight": 800,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "round",
+   "area": "top",
+   "split": 0.46,
+   "feather": 300
+  },
+  "icons": {
+   "kind": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 90,
+   "textZone": "top",
+   "maxBlocks": 1
+  },
+  "motion": {
+   "ease": "smooth"
+  },
+  "effects": {
+   "zoom": "không",
+   "zoomEase": "smooth",
+   "shots": "auto",
+   "shotDensity": "thua",
+   "overlay": [
+    "particles",
+    "sparkle",
+    "bokeh"
+   ]
+  },
+  "graphics": {
+   "sticker": "không",
+   "ghiChu": "câu thơ quan trọng → text anim rise hoặc wave; toàn bài overlay particles amount 40; khổ cuối fx dreamy; không dùng shape / scene"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#C7D2FE",
+   "mid": "#818CF8",
+   "dark": "#0B1023",
+   "gold1": "#FDE68A",
+   "gold2": "#C7D2FE"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1420,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 100,
+   "contrast": 98,
+   "saturation": 88,
+   "warmth": -14,
+   "fade": 16,
+   "vignette": 22
+  },
+  "sfxVolume": 0.06
+ },
+ "thanhPhan": {
+  "chu": "nghiêng phát sáng, nổi lên như sương",
+  "phude": "tối giản nhỏ",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "hạt sáng, lấp lánh, đổi cỡ cảnh êm",
+  "dohoa": "không",
+  "minhhoa": "nửa trên hoà trộn",
+  "amthanh": "rất ít",
+  "mau": "lạnh huyền ảo"
+ },
+ "nguon": "tạo sẵn"
+}

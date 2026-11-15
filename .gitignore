@@ -1,0 +1,7 @@
+node_modules/
+models/sherpa-onnx-*/
+cho-edit/
+.trinh-duyet
+.mang.json
+__pycache__/
+*.pyc

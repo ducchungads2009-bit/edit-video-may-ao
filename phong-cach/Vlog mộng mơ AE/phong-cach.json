@@ -1,0 +1,95 @@
+{
+ "ten": "Vlog mộng mơ AE",
+ "nhom": "chill",
+ "mo_ta": "Nhẹ nhàng như phim Hàn: bokeh và rò sáng trôi chậm, toả sáng mơ màng, chữ nổi lên từ mờ sang nét, chuyển cảnh mờ chồng, màu pastel ấm. Hợp: vlog đi xem nhà, một ngày ở căn hộ, decor, quán cà phê.",
+ "style": {
+  "font": "Nunito",
+  "heading": "Dancing Script",
+  "skin": "flat",
+  "accent": "#F7A8B8",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#FFD6E0",
+   "shadow": "glow",
+   "anim": "rise",
+   "out": "fade",
+   "upper": false,
+   "size": 96,
+   "weight": 700,
+   "ease": "smooth"
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Nunito",
+   "size": 54,
+   "weight": 800,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "round"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "motion": {
+   "ease": "smooth"
+  },
+  "effects": {
+   "zoom": "không",
+   "zoomEase": "smooth",
+   "zoomStyle": "smooth",
+   "overlay": [
+    "bokeh",
+    "lightleak"
+   ]
+  },
+  "graphics": {
+   "sticker": "emoji",
+   "ghiChu": "đoạn đẹp / cảm xúc → fx dreamy amount 40-60; ảnh tĩnh → card3d move float; hầu như không dùng shape; chữ ít, câu ngắn"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FFD6E0",
+   "mid": "#F7A8B8",
+   "dark": "#2B2D42",
+   "gold1": "#FFF1E6",
+   "gold2": "#FFD6A5"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1420,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 104,
+   "contrast": 96,
+   "saturation": 92,
+   "warmth": 16,
+   "fade": 18
+  },
+  "sfxVolume": 0.15
+ },
+ "thanhPhan": {
+  "chu": "viết tay mềm, nổi lên êm",
+  "phude": "tối giản",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "bokeh, rò sáng, mơ màng",
+  "dohoa": "ảnh 3D lơ lửng",
+  "minhhoa": "mờ dần, khung tròn",
+  "amthanh": "ít, mềm",
+  "mau": "pastel ấm, mờ phim"
+ },
+ "nguon": "tạo sẵn"
+}

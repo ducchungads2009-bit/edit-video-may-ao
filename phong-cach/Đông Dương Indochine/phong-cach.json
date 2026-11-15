@@ -1,0 +1,97 @@
+{
+ "ten": "Đông Dương Indochine",
+ "mo_ta": "Xanh rêu đậm + vàng đồng, viền chỉ kép, chữ ngà có chân, góc chữ L vàng, màu ấm hoài cổ. Hợp: nhà phố / biệt thự phong cách Đông Dương, Pháp cổ, gạch bông.",
+ "style": {
+  "font": "Josefin Sans",
+  "heading": "Merriweather",
+  "skin": "indochine",
+  "accent": "#C9A227",
+  "frame": {
+   "type": "corners",
+   "color": "#C9A227"
+  },
+  "text": {
+   "look": "solid",
+   "color": "#F3E9D2",
+   "bg": "#0F3D2E",
+   "hlColor": "#E3C567",
+   "hlStyle": "color",
+   "anim": "fade",
+   "out": "fade",
+   "upper": false,
+   "size": 74,
+   "weight": 700,
+   "radius": 4
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Josefin Sans",
+   "size": 50,
+   "weight": 700,
+   "color": "#F3E9D2",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "polaroid"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#C9A227",
+   "color": "#0F3D2E"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 80
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#9FC7A8",
+   "mid": "#1F6B4F",
+   "dark": "#0F3D2E",
+   "gold1": "#F3E9D2",
+   "gold2": "#C9A227"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 100,
+   "contrast": 106,
+   "saturation": 92,
+   "warmth": 18,
+   "tint": "#2F6B4F",
+   "tintAmount": 6,
+   "vignette": 30
+  },
+  "sfxVolume": 0.16
+ },
+ "thanhPhan": {
+  "chu": "chữ ngà trên khối xanh rêu",
+  "phude": "tối giản",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "zoom chậm",
+  "dohoa": "xanh rêu viền vàng đồng kép",
+  "bocuc": "căn trái, góc chữ L vàng",
+  "icon": "icon trong tròn vàng đồng",
+  "minhhoa": "polaroid",
+  "amthanh": "rất ít",
+  "mau": "ấm hoài cổ, ngả xanh"
+ },
+ "nguon": "tạo sẵn"
+}

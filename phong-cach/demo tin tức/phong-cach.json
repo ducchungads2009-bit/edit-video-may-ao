@@ -1,0 +1,173 @@
+{
+ "ten": "demo tin tức",
+ "mo_ta": "Lưu từ video đã dựng \"demo tin tức\"",
+ "nguon": "video demo tin tức",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Montserrat",
+  "text": {
+   "look": "solid",
+   "color": "#BDBDBD",
+   "hlColor": "#E3141B",
+   "hlStyle": "color",
+   "shadow": "none",
+   "anim": "fade",
+   "out": "up",
+   "upper": true,
+   "size": 52,
+   "weight": 900,
+   "stroke": 0,
+   "spacing": 0,
+   "align": "center",
+   "bg": "#141112",
+   "radius": 16
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Montserrat",
+   "size": 54,
+   "weight": 800,
+   "color": "#FFFFFF",
+   "active": "#F2A516",
+   "upper": true,
+   "anim": "pop"
+  },
+  "effects": {
+   "zoom": "không",
+   "zoomStyle": "in",
+   "shake": false,
+   "flash": 0
+  },
+  "templates": false,
+  "graphics": {
+   "viTri": "giữa",
+   "rong": 0.77,
+   "tonTai": 2.3,
+   "mau": [
+    "#8D8D8C",
+    "#E99E14",
+    "#2C2527",
+    "#FCFCFC",
+    "#D76D19"
+   ],
+   "sticker": "icon",
+   "ghiChu": "Mỗi ý = 1 cụm infographic: tiêu đề trắng IN HOA + số liệu vàng cam (số âm đỏ #E3141B) + biểu đồ chart (bar/donut/line, card:false, có dòng chú thích nhỏ xám 'BIỂU ĐỒ SO SÁNH…' bên dưới) hoặc counter; so sánh 2 vế dùng tabs/2 khung viền trắng có dấu › ở giữa; liệt kê vấn đề dùng checklist trong khung viền trắng, mục chữ đỏ; ảnh thật dùng pip clean viền trắng mảnh + nhãn vàng dưới ảnh; nhãn số trên nền be (#B9A98A) chữ đỏ+trắng."
+  },
+  "skin": "flat",
+  "accent": "#F2A516",
+  "frame": [
+   {
+    "type": "grid",
+    "color": "#FFFFFF"
+   },
+   "grain"
+  ],
+  "layout": {
+   "align": "center",
+   "marginX": 60,
+   "textZone": "middle",
+   "maxBlocks": 5,
+   "stackGap": 120,
+   "iconPos": "left"
+  },
+  "icons": {
+   "kind": "lucide",
+   "size": 110,
+   "bg": "none",
+   "color": "#FFFFFF",
+   "stroke": 2.4,
+   "set": [
+    "House",
+    "HandCoins",
+    "Building2",
+    "Users",
+    "Store",
+    "Banknote",
+    "Wallet",
+    "CircleHelp",
+    "Scale",
+    "TrendingUp",
+    "TrendingDown",
+    "ChartColumn",
+    "CalendarDays",
+    "Landmark"
+   ],
+   "map": {
+    "bất động sản": "House",
+    "kho hàng": "HandCoins",
+    "giao dịch": "Store",
+    "nhân sự": "Users",
+    "doanh nghiệp": "Building2",
+    "tiền mặt": "Banknote",
+    "dòng tiền": "Wallet",
+    "đối tác chưa rõ": "CircleHelp",
+    "nợ / vốn": "Scale",
+    "tăng": "TrendingUp",
+    "giảm": "TrendingDown",
+    "doanh thu": "ChartColumn",
+    "ngày": "CalendarDays",
+    "ngân hàng": "Landmark"
+   }
+  },
+  "broll": {
+   "enter": "cut",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "round"
+  },
+  "sfx": {
+   "density": "vua",
+   "joins": true,
+   "map": {
+    "cut": "whoosh-nhe",
+    "text": "ding",
+    "chart": "pop"
+   },
+   "set": "mem"
+  },
+  "pace": {
+   "doDaiCanhTB": 9.92,
+   "catMoi10s": 0.93,
+   "chuHinhMoi10s": 7.05,
+   "tocDoNoi": 294,
+   "hookChuDauTien": 0.4,
+   "catSatLoi": true,
+   "matDo3Phan": [
+    6.3,
+    8.1,
+    6.7
+   ]
+  }
+ },
+ "plan": {
+  "captionTop": 1400,
+  "wordsPerPage": 3,
+  "transition": "up",
+  "cutFx": "none",
+  "color": {
+   "brightness": 94,
+   "contrast": 106,
+   "saturation": 88,
+   "vignette": 25
+  },
+  "sfxVolume": 0.3,
+  "theme": {
+   "light": "#FFD27A",
+   "mid": "#F2A516",
+   "dark": "#1E1B1C",
+   "gold1": "#FFF3D6",
+   "gold2": "#F2A516"
+  }
+ },
+ "thanhPhan": {
+  "chu": "Montserrat, kiểu solid, hiện fade",
+  "phude": "kiểu minimal, tắt",
+  "chuyencanh": "nối đoạn: up",
+  "hieuung": "zoom không",
+  "dohoa": "text ×40, sticker ×15, chart ×5",
+  "minhhoa": "1 cảnh trám",
+  "amthanh": "sfx vua",
+  "mau": "chỉnh màu riêng"
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "ten": "Tech tối giản",
+ "mo_ta": "Kính tối mờ, viền mảnh, chữ Lexend sạch, điểm nhấn xanh cyan — cảm giác công nghệ, gọn, hiện đại.",
+ "style": {
+  "font": "Lexend",
+  "heading": "Lexend",
+  "skin": "flat",
+  "accent": "#22D3EE",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#22D3EE",
+   "hlStyle": "color",
+   "shadow": "soft",
+   "anim": "up",
+   "out": "fade",
+   "upper": false,
+   "size": 80,
+   "weight": 900,
+   "spacing": -1
+  },
+  "captions": {
+   "preset": "karaoke",
+   "font": "Lexend",
+   "size": 56,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "active": "#22D3EE",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#22D3EE",
+   "color": "#0B1220",
+   "stroke": 2.4
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 70
+  },
+  "effects": {
+   "zoom": "vừa",
+   "zoomStyle": "punch"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#22D3EE",
+   "mid": "#0EA5E9",
+   "dark": "#0B1220",
+   "gold1": "#E0F2FE",
+   "gold2": "#22D3EE"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1380,
+  "wordsPerPage": 3,
+  "color": {
+   "brightness": 102,
+   "contrast": 106,
+   "saturation": 96,
+   "warmth": -10
+  },
+  "sfxVolume": 0.22
+ },
+ "thanhPhan": {
+  "chu": "Lexend trắng sạch, từ khóa cyan",
+  "phude": "karaoke, từ đang đọc xanh cyan",
+  "chuyencanh": "zoom cut / mờ chồng tự động",
+  "hieuung": "zoom giật vừa phải",
+  "dohoa": "kính tối, viền mảnh, không 3D",
+  "bocuc": "căn giữa, gọn",
+  "icon": "icon nét trong tròn cyan",
+  "minhhoa": "ảnh mờ dần, zoom chậm",
+  "amthanh": "ít, tiếng nhẹ",
+  "mau": "lạnh, trong, tương phản nhẹ"
+ },
+ "nguon": "tạo sẵn"
+}

@@ -1,0 +1,95 @@
+{
+ "ten": "Nhịp · Năng động TikTok",
+ "mo_ta": "Cắt theo phách, zoom giật + rung ở nhịp mạnh, chữ bật từng từ theo nhịp — khuyến mãi, sự kiện, video sôi động.",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Anton",
+  "skin": "flat",
+  "accent": "#FFE600",
+  "text": {
+   "look": "solid",
+   "color": "#111111",
+   "bg": "#FFE600",
+   "hlColor": "#FFFFFF",
+   "hlStyle": "box",
+   "shadow": "none",
+   "anim": "pop",
+   "out": "pop",
+   "upper": true,
+   "size": 86,
+   "weight": 400,
+   "radius": 10
+  },
+  "captions": {
+   "preset": "wordbox",
+   "font": "Montserrat",
+   "size": 64,
+   "weight": 900,
+   "color": "#FFFFFF",
+   "active": "#111111",
+   "activeBg": "#FFE600",
+   "upper": true
+  },
+  "broll": {
+   "enter": "zoom",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 60
+  },
+  "effects": {
+   "zoom": "nhiều",
+   "zoomStyle": "punch"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "beat": {
+   "preset": "nang-dong"
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FFE600",
+   "mid": "#FF3D2E",
+   "dark": "#111111",
+   "gold1": "#FFF6A8",
+   "gold2": "#FFE600"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1360,
+  "wordsPerPage": 2,
+  "color": {
+   "brightness": 104,
+   "contrast": 110,
+   "saturation": 115
+  },
+  "sfxVolume": 0.15
+ },
+ "thanhPhan": {
+  "chu": "chữ to bật từng từ theo nhịp",
+  "phude": "từng từ có nền vàng",
+  "chuyencanh": "lia nhanh / zoom theo phách",
+  "hieuung": "zoom giật nhiều",
+  "dohoa": "kính tối, nhấn vàng",
+  "bocuc": "căn giữa, chữ to",
+  "icon": "emoji không nền",
+  "minhhoa": "zoom vào, cắt ra",
+  "amthanh": "chỉ nhạc, không tiếng hiệu ứng",
+  "mau": "rực, tương phản cao",
+  "nhip": "Năng động: mỗi phách 1 cảnh"
+ },
+ "nguon": "tạo sẵn",
+ "nhom": "nhip"
+}

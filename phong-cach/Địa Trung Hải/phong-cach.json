@@ -1,0 +1,97 @@
+{
+ "ten": "Địa Trung Hải",
+ "mo_ta": "Tường trắng vôi, thẻ đỉnh vòm cong, xanh Aegean + gạch nung, đường sóng, khung vòm phủ video, màu nắng biển. Hợp: căn hộ biển, resort, phong cách Santorini / Địa Trung Hải.",
+ "style": {
+  "font": "Nunito",
+  "heading": "Josefin Sans",
+  "skin": "med",
+  "accent": "#C8623E",
+  "frame": {
+   "type": "arch",
+   "color": "#FFFFFF"
+  },
+  "text": {
+   "look": "solid",
+   "color": "#1D4E89",
+   "bg": "#FFFFFF",
+   "hlColor": "#C8623E",
+   "hlStyle": "color",
+   "anim": "up",
+   "out": "fade",
+   "upper": false,
+   "size": 78,
+   "weight": 700,
+   "radius": 40
+  },
+  "captions": {
+   "preset": "wordbox",
+   "font": "Nunito",
+   "size": 56,
+   "weight": 900,
+   "color": "#FFFFFF",
+   "active": "#FFFFFF",
+   "activeBg": "#1D4E89",
+   "upper": false
+  },
+  "broll": {
+   "enter": "slide",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "round"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#1D4E89",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 80
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#9CC3E6",
+   "mid": "#1D4E89",
+   "dark": "#0F2A4A",
+   "gold1": "#F4EDE1",
+   "gold2": "#C8623E"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1380,
+  "wordsPerPage": 3,
+  "color": {
+   "brightness": 110,
+   "contrast": 104,
+   "saturation": 116,
+   "warmth": 12,
+   "hue": -4
+  },
+  "sfxVolume": 0.18
+ },
+ "thanhPhan": {
+  "chu": "chữ xanh Aegean trên thẻ trắng bo tròn",
+  "phude": "từ đang đọc nền xanh",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "zoom chậm",
+  "dohoa": "thẻ trắng đỉnh vòm, đường sóng gạch nung",
+  "bocuc": "căn giữa, khung vòm",
+  "icon": "icon trong tròn xanh",
+  "minhhoa": "khung tròn, trượt vào",
+  "amthanh": "rất ít",
+  "mau": "nắng biển, xanh rực"
+ },
+ "nguon": "tạo sẵn"
+}

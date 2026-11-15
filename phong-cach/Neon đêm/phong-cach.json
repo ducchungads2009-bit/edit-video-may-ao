@@ -1,0 +1,94 @@
+{
+ "ten": "Neon đêm",
+ "mo_ta": "Tương lai, đêm thành phố: chữ góc cạnh phát sáng cyan–hồng, nền kính tối tím, nhịp nhanh — hợp video trẻ, công nghệ.",
+ "style": {
+  "font": "Chakra Petch",
+  "heading": "Chakra Petch",
+  "skin": "flat",
+  "accent": "#00E5FF",
+  "text": {
+   "look": "neon",
+   "color": "#E0F7FF",
+   "hlColor": "#FF2BD6",
+   "hlStyle": "color",
+   "shadow": "glow",
+   "anim": "blur",
+   "out": "blur",
+   "upper": true,
+   "size": 84,
+   "weight": 700,
+   "spacing": 1
+  },
+  "captions": {
+   "preset": "pop",
+   "font": "Chakra Petch",
+   "size": 62,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "active": "#FF2BD6",
+   "upper": true
+  },
+  "broll": {
+   "enter": "whip",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#7C3AED",
+   "color": "#FFFFFF",
+   "stroke": 2.2
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 60
+  },
+  "effects": {
+   "zoom": "vừa",
+   "zoomStyle": "punch",
+   "flash": 0
+  },
+  "sfx": {
+   "density": "vua",
+   "set": "manh",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#00E5FF",
+   "mid": "#7C3AED",
+   "dark": "#0A0420",
+   "gold1": "#FF2BD6",
+   "gold2": "#00E5FF"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1380,
+  "wordsPerPage": 2,
+  "color": {
+   "brightness": 98,
+   "contrast": 112,
+   "saturation": 110,
+   "warmth": -20,
+   "vignette": 30
+  },
+  "sfxVolume": 0.25
+ },
+ "thanhPhan": {
+  "chu": "Chakra Petch in hoa phát sáng",
+  "phude": "bật từng từ, từ đang đọc hồng",
+  "chuyencanh": "tự động, ảnh trám lia nhanh",
+  "hieuung": "zoom giật, có thể glitch nhẹ",
+  "dohoa": "kính tối tím, viền mảnh",
+  "bocuc": "căn giữa",
+  "icon": "icon nét trong tròn tím",
+  "minhhoa": "lia nhanh vào, cắt ra",
+  "amthanh": "vừa, tiếng mạnh",
+  "mau": "lạnh, tương phản cao, tối 4 góc"
+ },
+ "nguon": "tạo sẵn"
+}

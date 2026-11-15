@@ -1,0 +1,92 @@
+{
+ "ten": "Tin tức motion AE",
+ "nhom": "tin",
+ "mo_ta": "Bản tin hiện đại kiểu motion graphic: tiêu đề xáo chữ rồi hiện ra, chú thích có chấm nháy chỉ vào chi tiết, ô số liệu đếm lên, bảng so sánh tự dựng, gạch chân đỏ, không màu mè. Hợp: tin thị trường, phân tích, cập nhật chính sách.",
+ "style": {
+  "font": "Inter",
+  "heading": "Oswald",
+  "skin": "news",
+  "accent": "#E10600",
+  "text": {
+   "look": "solid",
+   "color": "#FFFFFF",
+   "bg": "#E10600",
+   "hlColor": "#FFE14D",
+   "anim": "scramble",
+   "out": "wipe",
+   "upper": true,
+   "size": 78,
+   "weight": 700,
+   "radius": 4,
+   "ease": "snappy"
+  },
+  "captions": {
+   "preset": "box",
+   "font": "Inter",
+   "size": 56,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "activeBg": "#111111E6",
+   "upper": false
+  },
+  "broll": {
+   "enter": "slide",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "square",
+   "bgColor": "#E10600",
+   "color": "#FFFFFF"
+  },
+  "motion": {
+   "ease": "snappy"
+  },
+  "effects": {
+   "zoom": "vừa",
+   "zoomStyle": "punch",
+   "overlay": "không"
+  },
+  "graphics": {
+   "sticker": "không",
+   "ghiChu": "số liệu → scene stats; so sánh 2 phương án → scene compare dạng bảng; chi tiết trên màn hình / ảnh → shape callout có text; từ khóa quan trọng → shape underline màu đỏ; không dùng lớp phủ ánh sáng"
+  },
+  "sfx": {
+   "density": "vua",
+   "set": "manh",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FF5A4F",
+   "mid": "#E10600",
+   "dark": "#0B0F17",
+   "gold1": "#FFE14D",
+   "gold2": "#FFC300"
+  },
+  "transition": "cut",
+  "cutFx": "none",
+  "captionTop": 1390,
+  "wordsPerPage": 4,
+  "color": {
+   "contrast": 106,
+   "saturation": 102
+  },
+  "sfxVolume": 0.28
+ },
+ "thanhPhan": {
+  "chu": "nhãn đỏ, xáo chữ giải mã",
+  "phude": "nền tối cả dòng",
+  "chuyencanh": "cắt thẳng",
+  "hieuung": "zoom vừa, không lớp phủ",
+  "dohoa": "chú thích chấm nháy, ô số, bảng so sánh",
+  "minhhoa": "trượt ngang",
+  "amthanh": "vừa",
+  "mau": "trung tính, tương phản"
+ },
+ "nguon": "tạo sẵn"
+}

@@ -1,0 +1,94 @@
+{
+ "ten": "Hướng dẫn từng bước",
+ "mo_ta": "Rõ ràng, có thứ tự: ô số 1·2·3, nhãn tím, thẻ trắng, chữ Lexend. Hợp: hướng dẫn thủ tục, các bước mua nhà, checklist giấy tờ.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Lexend",
+  "heading": "Lexend",
+  "skin": "light",
+  "accent": "#6366F1",
+  "text": {
+   "look": "solid",
+   "color": "#FFFFFF",
+   "bg": "#4F46E5",
+   "hlColor": "#FDE68A",
+   "hlStyle": "color",
+   "anim": "pop",
+   "out": "fade",
+   "upper": false,
+   "size": 76,
+   "weight": 900,
+   "radius": 16
+  },
+  "captions": {
+   "preset": "karaoke",
+   "font": "Lexend",
+   "size": 56,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "active": "#A5B4FC",
+   "upper": false
+  },
+  "broll": {
+   "enter": "up",
+   "exit": "fade",
+   "kenburns": false,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#4F46E5",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 64
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "punch"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "graphics": {
+   "sticker": "icon",
+   "ghiChu": "ưu tiên tiles, checklist, note; mỗi bước một ô số"
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#C7D2FE",
+   "mid": "#4F46E5",
+   "dark": "#1E1B4B",
+   "gold1": "#E0E7FF",
+   "gold2": "#818CF8"
+  },
+  "cutFx": "none",
+  "transition": "auto",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 104,
+   "contrast": 104,
+   "saturation": 100
+  },
+  "sfxVolume": 0.2
+ },
+ "thanhPhan": {
+  "chu": "khối tím bo góc",
+  "phude": "karaoke tím nhạt",
+  "chuyencanh": "tự động",
+  "hieuung": "zoom ít",
+  "dohoa": "ô số, checklist, thẻ trắng",
+  "bocuc": "căn trái",
+  "icon": "icon trong tròn tím",
+  "minhhoa": "trượt lên",
+  "amthanh": "ít",
+  "mau": "sáng trung tính"
+ }
+}

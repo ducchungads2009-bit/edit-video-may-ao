@@ -1,0 +1,89 @@
+{
+ "ten": "Retro cổ điển",
+ "mo_ta": "Hoài cổ: tiêu đề Lobster, nâu kem, màu sepia phim cũ, khung polaroid. Hợp: nhà phố cũ, khu phố cổ, kể lại lịch sử khu đất.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Josefin Sans",
+  "heading": "Lobster",
+  "skin": "light",
+  "accent": "#B45309",
+  "text": {
+   "look": "shadow",
+   "color": "#FEF3C7",
+   "strokeColor": "#3B2410",
+   "hlColor": "#FCD34D",
+   "hlStyle": "color",
+   "anim": "drop",
+   "out": "fade",
+   "upper": false,
+   "size": 90,
+   "weight": 400
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Josefin Sans",
+   "size": 54,
+   "weight": 700,
+   "color": "#FEF3C7",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "polaroid"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 70
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FDE68A",
+   "mid": "#92400E",
+   "dark": "#3B2410",
+   "gold1": "#FEF3C7",
+   "gold2": "#D97706"
+  },
+  "cutFx": "none",
+  "transition": "fade",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 98,
+   "contrast": 104,
+   "saturation": 80,
+   "sepia": 28,
+   "fade": 25,
+   "vignette": 35
+  },
+  "sfxVolume": 0.18
+ },
+ "thanhPhan": {
+  "chu": "Lobster bóng đổ nâu",
+  "phude": "kem tối giản",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "zoom chậm",
+  "dohoa": "thẻ kem, nâu",
+  "bocuc": "căn giữa",
+  "icon": "emoji",
+  "minhhoa": "polaroid",
+  "amthanh": "rất ít",
+  "mau": "sepia phim cũ"
+ }
+}

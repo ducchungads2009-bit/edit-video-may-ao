@@ -1,0 +1,96 @@
+{
+ "ten": "Podcast motion AE",
+ "nhom": "podcast",
+ "mo_ta": "Podcast / talking head có nhịp: từ khóa bật từng ký tự, câu trích lật 3D, chú thích chấm nháy cho ý chính, gạch chân bút dạ, zoom êm theo câu, hạt nhiễu nhẹ. Hợp: podcast, chia sẻ kinh nghiệm, phỏng vấn.",
+ "style": {
+  "font": "Lexend",
+  "heading": "Lexend",
+  "skin": "podcast",
+  "accent": "#7C5CFF",
+  "text": {
+   "look": "solid",
+   "color": "#FFFFFF",
+   "bg": "#7C5CFF",
+   "hlColor": "#FFE066",
+   "anim": "flip3d",
+   "out": "fade",
+   "upper": false,
+   "size": 76,
+   "weight": 700,
+   "radius": 16,
+   "ease": "spring"
+  },
+  "captions": {
+   "preset": "karaoke",
+   "font": "Lexend",
+   "size": 58,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "active": "#B9A8FF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#7C5CFF",
+   "color": "#FFFFFF"
+  },
+  "motion": {
+   "ease": "spring",
+   "mblur": true
+  },
+  "effects": {
+   "zoom": "vừa",
+   "zoomEase": "smooth",
+   "zoomStyle": "smooth",
+   "overlay": [
+    "grain"
+   ]
+  },
+  "graphics": {
+   "sticker": "không",
+   "ghiChu": "ý chính → shape underline marker dưới chữ hoặc callout; câu trích → text anim flip3d; số → scene stats 1-2 ô; không dùng cảnh trám dày"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#B9A8FF",
+   "mid": "#7C5CFF",
+   "dark": "#120F1F",
+   "gold1": "#FFE066",
+   "gold2": "#FFD43B"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 3,
+  "color": {
+   "contrast": 104,
+   "saturation": 100
+  },
+  "sfxVolume": 0.2
+ },
+ "thanhPhan": {
+  "chu": "nhãn tím, lật 3D",
+  "phude": "karaoke tím",
+  "chuyencanh": "tự động",
+  "hieuung": "zoom êm, hạt nhiễu",
+  "dohoa": "chú thích, gạch chân bút dạ",
+  "minhhoa": "ít",
+  "amthanh": "ít",
+  "mau": "trung tính"
+ },
+ "nguon": "tạo sẵn"
+}

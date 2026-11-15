@@ -1,0 +1,95 @@
+{
+ "ten": "Camcorder hoài niệm",
+ "mo_ta": "Như máy quay cầm tay đời cũ: khung REC chấm đỏ + timecode, góc ngắm, hạt phim, màu hơi nhòe ấm, chữ trắng đơn giản. Hợp: vlog đi đường, hậu trường, khoảnh khắc đời thường.",
+ "style": {
+  "font": "Roboto",
+  "heading": "Oswald",
+  "skin": "flat",
+  "accent": "#FF2D2D",
+  "frame": [
+   "rec",
+   "grain"
+  ],
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#FFE066",
+   "hlStyle": "color",
+   "shadow": "hard",
+   "strokeColor": "#000000",
+   "anim": "none",
+   "out": "none",
+   "upper": true,
+   "size": 76,
+   "weight": 700
+  },
+  "captions": {
+   "preset": "box",
+   "font": "Roboto",
+   "size": 52,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "cut",
+   "exit": "cut",
+   "kenburns": false,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "emoji",
+   "bg": "none"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 70
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "smooth",
+   "zoomEase": "smooth"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#FFE066",
+   "mid": "#FF2D2D",
+   "dark": "#111111",
+   "gold1": "#FFF3B0",
+   "gold2": "#FFE066"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 5,
+  "color": {
+   "brightness": 102,
+   "contrast": 108,
+   "saturation": 92,
+   "warmth": 12,
+   "fade": 10,
+   "vignette": 25
+  },
+  "sfxVolume": 0.14
+ },
+ "thanhPhan": {
+  "chu": "in hoa trắng bóng đổ cứng",
+  "phude": "nền tối",
+  "chuyencanh": "cắt thẳng",
+  "hieuung": "zoom ít, khung REC, zoom vào–ra êm",
+  "dohoa": "kính tối đơn giản",
+  "bocuc": "căn trái",
+  "icon": "emoji",
+  "minhhoa": "cắt thẳng",
+  "amthanh": "ít",
+  "mau": "ấm, hơi nhòe"
+ },
+ "nguon": "tạo sẵn"
+}

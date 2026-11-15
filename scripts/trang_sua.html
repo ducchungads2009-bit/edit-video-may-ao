@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sửa video</title>
+<style>
+  :root { --bg:#0d1017; --card:#161b26; --line:#263047; --mut:#93a0b8; --acc:#7c5cff; --ok:#22c55e; --bad:#ef4444; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:#e8ecf4; font:15px/1.45 -apple-system, "Segoe UI", Roboto, sans-serif; padding-bottom:120px; }
+  header { padding:14px 16px 8px; }
+  h1 { font-size:19px; margin:0; }
+  .sub { color:var(--mut); font-size:13px; }
+  .player { padding:0 12px 4px; }
+  video { width:100%; max-height:42vh; background:#000; border-radius:14px; display:block; }
+  .tabs { display:flex; gap:6px; overflow-x:auto; padding:8px 12px; position:sticky; top:0; z-index:4; background:var(--bg); }
+  .tabs button { flex:none; padding:8px 14px; border-radius:999px; border:1px solid var(--line); background:var(--card); color:#e8ecf4; font-size:14px; }
+  .tabs button.on { background:var(--acc); border-color:var(--acc); }
+  .pane { padding:4px 12px; display:none; }
+  .pane.on { display:block; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:10px; margin-bottom:8px; }
+  .card.off { opacity:.45; }
+  .row { display:flex; gap:8px; align-items:center; }
+  .seg img { width:64px; height:114px; object-fit:cover; border-radius:8px; flex:none; background:#000; }
+  .seg .info { flex:1; min-width:0; }
+  .seg b { display:block; }
+  .btns { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+  button.s { padding:7px 10px; border-radius:9px; border:1px solid var(--line); background:#1e2534; color:#e8ecf4; font-size:13px; }
+  button.s:disabled { opacity:.35; }
+  button.red { background:#3a1717; border-color:#5b2323; }
+  input, textarea, select { width:100%; background:#0f131c; color:#e8ecf4; border:1px solid var(--line); border-radius:10px; padding:9px 10px; font:inherit; }
+  textarea { min-height:70px; }
+  label.f { display:block; font-size:12px; color:var(--mut); margin:6px 0 3px; }
+  .tag { display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px; background:#232b3d; color:var(--mut); margin-left:6px; }
+  .time { display:grid; grid-template-columns:1fr 1fr auto; gap:6px; align-items:end; }
+  .save { position:fixed; left:0; right:0; bottom:0; padding:10px 12px calc(10px + env(safe-area-inset-bottom)); background:var(--bg); border-top:1px solid var(--line); z-index:9; }
+  .save button { width:100%; padding:14px; border:0; border-radius:14px; background:var(--acc); color:#fff; font-size:16px; font-weight:700; }
+  .save .st { text-align:center; font-size:13px; color:var(--mut); margin-top:6px; min-height:18px; }
+  .chips { display:flex; gap:6px; flex-wrap:wrap; margin:6px 0; }
+  .chips button { padding:6px 10px; border-radius:999px; border:1px solid var(--line); background:#1e2534; color:#e8ecf4; font-size:13px; }
+  .chips button.on { background:var(--acc); }
+  .mrow { display:flex; align-items:center; gap:8px; padding:8px; border-radius:10px; }
+  .mrow.on { background:#2a2350; }
+  .mrow b { flex:1; font-weight:600; }
+  .empty { color:var(--mut); text-align:center; padding:20px; }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="ten">Sửa video</h1>
+  <div class="sub" id="phien"></div>
+</header>
+<div class="player"><video id="vid" controls playsinline preload="metadata"></video></div>
+<div class="tabs" id="tabs">
+  <button data-t="canh" class="on">🎞 Cảnh</button>
+  <button data-t="chu">✏️ Chữ</button>
+  <button data-t="phude">💬 Phụ đề</button>
+  <button data-t="nhac">🎵 Nhạc</button>
+  <button data-t="pc">🎨 Phong cách</button>
+  <button data-t="note">📝 Ghi chú</button>
+</div>
+<div class="pane on" id="p-canh"></div>
+<div class="pane" id="p-chu"></div>
+<div class="pane" id="p-phude"></div>
+<div class="pane" id="p-nhac"></div>
+<div class="pane" id="p-pc"></div>
+<div class="pane" id="p-note"></div>
+<div class="save"><button id="luu">💾 Lưu — rồi nhắn Claude “dựng lại”</button><div class="st" id="st"></div></div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt = (t) => { t = Math.max(0, +t || 0); return Math.floor(t / 60) + ':' + (t % 60).toFixed(1).padStart(4, '0'); };
+const MOOD = {'soi-dong':'Sôi động','vui-tuoi':'Vui tươi','chill':'Chill','nhe-nhang':'Nhẹ nhàng','sang-trong':'Sang trọng','cam-xuc':'Cảm xúc','hung-trang':'Hùng tráng','hoi-hop':'Hồi hộp','bi-an':'Bí ẩn','ky-niem':'Kỷ niệm','tin-tuc':'Tin tức'};
+const NAME = {text:'Chữ', chip:'Nhãn', cta:'Kêu gọi', priceHook:'Thẻ giá', bigQuestion:'Câu hỏi lớn', rangeCard:'Khoảng giá', counter:'Số đếm', phrase:'Cụm chữ', checklist:'Danh sách', dayBadge:'Nhãn ngày', sticker:'Nhãn dán', stamp:'Dấu ✓✕', bubble:'Bong bóng'};
+const FIELDS = {text:[['text','Nội dung',1]], chip:[['text','Nội dung']], cta:[['text','Nội dung']], bigQuestion:[['text','Nội dung']],
+  priceHook:[['price','Giá'],['sub','Dòng phụ']], rangeCard:[['label','Nhãn'],['value','Giá trị']], counter:[['to','Số'],['suffix','Đơn vị'],['label','Nhãn']],
+  phrase:[['sm','Dòng nhỏ'],['big','Chữ lớn'],['tag','Hộp chữ']], dayBadge:[['day','Ngày'],['total','Tổng']], sticker:[['icon','Emoji / icon']], stamp:[['text','Chữ']], bubble:[['text','Nội dung']], checklist:[['title','Tiêu đề']]};
+let D = null, S = null, db = null, dirty = false;
+const vid = $('#vid');
+
+// ---- trạng thái chỉnh sửa (bản sao, sửa thoải mái; Lưu mới ghi) ----
+const fresh = () => ({
+  segs: D.segs.map((s, i) => ({...s, i, off: false})),
+  els: (D.plan.elements || []).map((e, i) => ({...e, _i: i})),
+  caps: (D.phuDe || []).map((l) => l.text),
+  nhac: D.nhacHienTai || '', vol: D.plan.music?.volume ?? 0.6, tatNhac: !D.plan.music && !D.nhacHienTai,
+  pc: D.phongCachHienTai || '', note: '',
+});
+const mark = () => { dirty = true; $('#st').textContent = 'Có thay đổi chưa lưu'; };
+
+// mốc cảnh trong video xem thử (theo bản đang phát)
+const outStart = (i) => D.segs.slice(0, i).reduce((s, x) => s + (x.b - x.a), 0);
+
+function renderCanh() {
+  const el = $('#p-canh');
+  el.innerHTML = '<div class="sub" style="margin-bottom:6px">Chạm ảnh để xem cảnh đó. Bỏ / đổi thứ tự / thu – nới đầu cuối cảnh.</div>' + S.segs.map((s, k) => `
+    <div class="card seg ${s.off ? 'off' : ''}"><div class="row">
+      <img src="${esc(s.thumb)}" data-go="${s.i}" alt="">
+      <div class="info"><b>${k + 1}. ${esc(s.nhan || 'Cảnh')}</b><span class="sub">${(s.b - s.a).toFixed(1)} giây${s.off ? ' · đã bỏ' : ''}</span>${s.loi && s.loi !== s.nhan ? `<div class="sub" style="font-size:12px;margin-top:2px">“${esc(s.loi.length > 90 ? s.loi.slice(0, 90) + '…' : s.loi)}”</div>` : ''}
+        <div class="btns">
+          <button class="s" data-a="up" data-k="${k}" ${k === 0 ? 'disabled' : ''}>⬆</button>
+          <button class="s" data-a="down" data-k="${k}" ${k === S.segs.length - 1 ? 'disabled' : ''}>⬇</button>
+          <button class="s ${s.off ? '' : 'red'}" data-a="off" data-k="${k}">${s.off ? '↩ Lấy lại' : '🗑 Bỏ'}</button>
+        </div>
+        <div class="btns">
+          <button class="s" data-a="a-" data-k="${k}">Đầu ◀ 0,5s</button><button class="s" data-a="a+" data-k="${k}">Đầu ▶ 0,5s</button>
+          <button class="s" data-a="b-" data-k="${k}">Cuối ◀ 0,5s</button><button class="s" data-a="b+" data-k="${k}">Cuối ▶ 0,5s</button>
+        </div>
+      </div></div></div>`).join('');
+}
+$('#p-canh').addEventListener('click', (ev) => {
+  const g = ev.target.closest('[data-go]');
+  if (g) { vid.currentTime = outStart(+g.dataset.go) + 0.05; vid.play().catch(() => {}); return; }
+  const b = ev.target.closest('[data-a]'); if (!b) return;
+  const k = +b.dataset.k, s = S.segs[k], a = b.dataset.a;
+  if (a === 'up' && k > 0) [S.segs[k - 1], S.segs[k]] = [S.segs[k], S.segs[k - 1]];
+  else if (a === 'down' && k < S.segs.length - 1) [S.segs[k + 1], S.segs[k]] = [S.segs[k], S.segs[k + 1]];
+  else if (a === 'off') s.off = !s.off;
+  else if (a === 'a-') s.a = Math.max(0, +(s.a - 0.5).toFixed(2));
+  else if (a === 'a+') s.a = Math.min(s.b - 0.8, +(s.a + 0.5).toFixed(2));
+  else if (a === 'b-') s.b = Math.max(s.a + 0.8, +(s.b - 0.5).toFixed(2));
+  else if (a === 'b+') s.b = +(s.b + 0.5).toFixed(2);
+  mark(); renderCanh();
+});
+
+function renderChu() {
+  const el = $('#p-chu');
+  const list = S.els.filter((e) => FIELDS[e.type] && !e._del);
+  el.innerHTML = '<button class="s" id="themchu" style="width:100%;padding:11px;margin-bottom:8px">＋ Thêm chữ ở chỗ đang xem</button>' +
+    (list.length ? '' : '<div class="empty">Chưa có chữ nào.</div>') + list.map((e) => {
+    const j = S.els.indexOf(e);
+    const f = (FIELDS[e.type] || []).map(([k, lab, multi]) => `<label class="f">${lab}</label>` + (multi
+      ? `<textarea data-j="${j}" data-k="${k}">${esc(e[k])}</textarea>` : `<input data-j="${j}" data-k="${k}" value="${esc(e[k])}">`)).join('');
+    const items = Array.isArray(e.items) ? e.items.map((it, n) => `<label class="f">Dòng ${n + 1}</label><input data-j="${j}" data-it="${n}" value="${esc(it.text)}">`).join('') : '';
+    return `<div class="card"><div class="row"><b style="flex:1">${NAME[e.type] || e.type}</b><span class="tag">${fmt(e.start)}–${fmt(e.end)}</span></div>${f}${items}
+      <div class="time"><div><label class="f">Hiện từ (giây)</label><input type="number" step="0.1" data-j="${j}" data-k="start" value="${e.start}"></div>
+      <div><label class="f">Đến (giây)</label><input type="number" step="0.1" data-j="${j}" data-k="end" value="${e.end}"></div>
+      <button class="s" data-now="${j}">⏱ Giờ đang xem</button></div>
+      <div class="btns"><button class="s" data-see="${j}">▶ Xem chỗ này</button><button class="s red" data-del="${j}">🗑 Xoá</button></div></div>`;
+  }).join('');
+}
+$('#p-chu').addEventListener('input', (ev) => {
+  const t = ev.target, j = t.dataset.j; if (j == null) return;
+  const e = S.els[+j];
+  if (t.dataset.it != null) e.items[+t.dataset.it] = {...e.items[+t.dataset.it], text: t.value};
+  else e[t.dataset.k] = ['start', 'end'].includes(t.dataset.k) ? +t.value : t.value;
+  mark();
+});
+$('#p-chu').addEventListener('click', (ev) => {
+  const t = ev.target;
+  if (t.id === 'themchu') {
+    const st = +vid.currentTime.toFixed(1);
+    S.els.push({type: 'text', start: st, end: +(st + 3).toFixed(1), text: 'Chữ mới', look: 'solid', size: 80, y: 700, _new: true});
+    mark(); renderChu(); return;
+  }
+  if (t.dataset.now != null) { const e = S.els[+t.dataset.now], d = e.end - e.start; e.start = +vid.currentTime.toFixed(1); e.end = +(e.start + d).toFixed(1); mark(); renderChu(); }
+  if (t.dataset.see != null) { vid.currentTime = S.els[+t.dataset.see].start; vid.play().catch(() => {}); }
+  if (t.dataset.del != null) { S.els[+t.dataset.del]._del = true; mark(); renderChu(); }
+});
+
+function renderPhude() {
+  const el = $('#p-phude');
+  if (!S.caps.length) {
+    el.innerHTML = `<div class="empty">${D.plan.captions ? 'Không có câu nào để sửa.' : 'Video này không có phụ đề.'} Muốn sửa gì khác, ghi vào tab 📝 Ghi chú.</div>`;
+    return;
+  }
+  el.innerHTML = '<div class="sub" style="margin-bottom:6px">Sửa chữ từng câu (giữ nguyên số chữ thì khớp thời gian nhất).</div>' +
+    S.caps.map((c, n) => `<div class="card"><span class="tag">giây ${(+D.phuDe[n].t).toFixed(1)} (video gốc)</span><input data-c="${n}" value="${esc(c)}"></div>`).join('');
+}
+$('#p-phude').addEventListener('input', (ev) => { const n = ev.target.dataset.c; if (n == null) return; S.caps[+n] = ev.target.value; mark(); });
+
+let au = null;
+function renderNhac() {
+  const el = $('#p-nhac');
+  const moods = [...new Set(D.nhac.map((t) => t.mood))];
+  el.innerHTML = `<div class="card"><label class="f">Âm lượng nhạc: <b id="vv">${Math.round(S.vol * 100)}%</b></label><input type="range" min="0.05" max="1" step="0.05" value="${S.vol}" id="vol">
+    <div class="btns"><button class="s ${S.tatNhac ? 'red' : ''}" id="tat">${S.tatNhac ? '🔇 Đang tắt nhạc — bấm để bật' : '🔇 Tắt nhạc'}</button></div></div>` +
+    moods.map((m) => `<div class="sub" style="margin:10px 4px 4px">${esc(MOOD[m] || (m || 'khác').replace(/-/g, ' '))}</div>` + D.nhac.filter((t) => t.mood === m).map((t) =>
+      `<div class="mrow ${!S.tatNhac && S.nhac === t.file ? 'on' : ''}"><b>${esc(t.ten)}</b><button class="s" data-pick="${esc(t.file)}">${!S.tatNhac && S.nhac === t.file ? '✓ Đang chọn' : 'Chọn'}</button></div>`).join('')).join('');
+}
+$('#p-nhac').addEventListener('input', (ev) => { if (ev.target.id === 'vol') { S.vol = +ev.target.value; $('#vv').textContent = Math.round(S.vol * 100) + '%'; mark(); } });
+$('#p-nhac').addEventListener('click', (ev) => {
+  const t = ev.target;
+  if (t.id === 'tat') { S.tatNhac = !S.tatNhac; mark(); renderNhac(); }
+  if (t.dataset.pick) { S.nhac = t.dataset.pick; S.tatNhac = false; mark(); renderNhac(); }
+});
+
+function renderPc() {
+  $('#p-pc').innerHTML = `<div class="card"><label class="f">Phong cách đang dùng</label><select id="pcsel">${['', ...D.phongCach].map((n) => `<option ${n === S.pc ? 'selected' : ''} value="${esc(n)}">${n ? esc(n) : '— Claude tự chọn —'}</option>`).join('')}</select>
+    <div class="sub" style="margin-top:8px">Đổi phong cách thì Claude dựng lại chữ, phụ đề, hiệu ứng theo bộ mới. Muốn học theo video mẫu: gửi video mẫu vào chat.</div></div>`;
+}
+$('#p-pc').addEventListener('change', (ev) => { if (ev.target.id === 'pcsel') { S.pc = ev.target.value; mark(); } });
+
+function renderNote() {
+  $('#p-note').innerHTML = `<div class="card"><label class="f">Ghi chú cho Claude (sửa gì khác: thêm giá, đổi màu chữ, chèn cảnh, sửa phụ đề…)</label><textarea id="note" style="min-height:140px">${esc(S.note)}</textarea></div>`;
+}
+$('#p-note').addEventListener('input', (ev) => { if (ev.target.id === 'note') { S.note = ev.target.value; mark(); } });
+
+$('#tabs').addEventListener('click', (ev) => {
+  const b = ev.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#tabs button').forEach((x) => x.classList.toggle('on', x === b));
+  document.querySelectorAll('.pane').forEach((p) => p.classList.toggle('on', p.id === 'p-' + b.dataset.t));
+});
+
+function renderAll() { renderCanh(); renderChu(); renderPhude(); renderNhac(); renderPc(); renderNote(); }
+
+// ---- lưu cho Claude đọc ----
+$('#luu').addEventListener('click', async () => {
+  const st = $('#st');
+  const out = {
+    phienBan: D.phienBan, at: new Date().toISOString(),
+    canh: S.segs.filter((s) => !s.off).map((s) => ({goc: s.i + 1, a: s.a, b: s.b, nhan: s.nhan})),
+    canhBo: S.segs.filter((s) => s.off).map((s) => s.i + 1),
+    chu: S.els.map((e) => { const {_i, _del, _new, ...r} = e; return {...r, goc: _i ?? null, xoa: !!_del, moi: !!_new}; }),
+    phuDe: S.caps.map((c, n) => ({t: D.phuDe[n].t, cu: D.phuDe[n].text, goc: D.phuDe[n].goc || D.phuDe[n].text, moi: c})).filter((x) => x.moi.trim() !== x.cu), nhac: S.tatNhac ? null : S.nhac, amLuongNhac: S.vol, phongCach: S.pc, ghiChu: S.note,
+  };
+  if (!db) {
+    try { await navigator.clipboard.writeText(JSON.stringify(out)); st.textContent = 'Không lưu được lên trang — đã chép, dán vào chat cho Claude.'; } catch { st.textContent = 'Không lưu được — mở trang trong app Claude / claude.ai rồi thử lại.'; }
+    return;
+  }
+  st.textContent = 'Đang lưu…';
+  try {
+    await db.doc('ban-sua/hien-tai').set(out);
+    dirty = false;
+    st.textContent = '✅ Đã lưu lúc ' + new Date().toLocaleTimeString('vi') + ' — quay lại chat, nhắn “dựng lại”.';
+  } catch (e) { st.textContent = '⚠️ Lưu lỗi: ' + (e?.message || e); }
+});
+window.addEventListener('beforeunload', (e) => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+(async () => {
+  try { D = await (await fetch('du-lieu.json', {cache: 'no-store'})).json(); }
+  catch { document.body.innerHTML = '<p class="empty">Không tải được dữ liệu dự án.</p>'; return; }
+  $('#ten').textContent = '✂ ' + (D.ten || 'Sửa video');
+  $('#phien').textContent = 'Bản dựng số ' + D.phienBan + ' · sửa xong bấm Lưu, rồi nhắn Claude “dựng lại”';
+  vid.src = D.video;
+  S = fresh();
+  renderAll();
+  // nạp bản đã lưu (cùng số bản dựng) để sửa tiếp
+  try {
+    const timer = new Promise((r) => setTimeout(() => r(null), 10000));
+    db = await Promise.race([window.claude?.use?.('db') ?? null, timer]);
+    if (db) {
+      const snap = await db.doc('ban-sua/hien-tai').get();
+      const v = snap && (typeof snap.data === 'function' ? snap.data() : snap.data ?? snap);
+      if (v && v.phienBan === D.phienBan && Array.isArray(v.canh)) {
+        const byGoc = new Map(v.canh.map((c) => [c.goc, c]));
+        const order = v.canh.map((c) => S.segs.find((s) => s.i + 1 === c.goc)).filter(Boolean);
+        const rest = S.segs.filter((s) => !byGoc.has(s.i + 1)).map((s) => ({...s, off: true}));
+        S.segs = [...order.map((s) => ({...s, a: byGoc.get(s.i + 1).a, b: byGoc.get(s.i + 1).b})), ...rest];
+        if (Array.isArray(v.chu)) S.els = v.chu.map((e) => { const {goc, xoa, moi, ...r} = e; return {...r, _i: goc, _del: xoa, _new: moi}; });
+        if (Array.isArray(v.phuDe)) v.phuDe.forEach((x) => { const n = D.phuDe.findIndex((l) => Math.abs(l.t - x.t) < 0.01); if (n >= 0) S.caps[n] = x.moi; });
+        S.nhac = v.nhac || S.nhac; S.tatNhac = v.nhac === null; S.vol = v.amLuongNhac ?? S.vol; S.pc = v.phongCach ?? S.pc; S.note = v.ghiChu || '';
+        renderAll();
+        $('#st').textContent = 'Đã nạp bản bạn lưu lúc ' + new Date(v.at).toLocaleTimeString('vi');
+      }
+    }
+  } catch {}
+})();
+</script>
+</body>
+</html>

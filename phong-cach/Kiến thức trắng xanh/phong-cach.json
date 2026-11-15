@@ -1,0 +1,54 @@
+{
+ "ten": "Kiến thức trắng xanh",
+ "mo_ta": "Talking head kiểu series chia sẻ kiến thức: chữ trắng không viền, bóng mờ, từ khóa tô xanh/đóng khung xanh, chữ hiện mờ→nét từng từ, khung ảnh nổi trên nền mờ sáng, nhạc nền nhẹ liên tục.",
+ "nguon": "mau.mp4",
+ "style": {
+  "font": "Inter",
+  "heading": "Inter",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "bg": "#3E63DD",
+   "hlColor": "#8FB8FF",
+   "stroke": 0,
+   "shadow": "soft",
+   "anim": "blur",
+   "out": "blur",
+   "upper": false,
+   "size": 84,
+   "weight": 900,
+   "radius": 14,
+   "spacing": -2
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Inter",
+   "size": 52,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false,
+   "anim": "fade"
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": false,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "templates": false
+ },
+ "plan": {
+  "captionTop": 1150,
+  "wordsPerPage": 4,
+  "transition": "fade",
+  "cutFx": "none",
+  "color": {
+   "brightness": 103,
+   "contrast": 96,
+   "saturation": 98,
+   "warmth": -5
+  },
+  "sfxVolume": 0.2
+ }
+}

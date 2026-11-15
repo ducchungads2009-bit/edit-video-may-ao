@@ -1,0 +1,93 @@
+{
+ "ten": "Phân tích số liệu",
+ "mo_ta": "Kiểu tài chính: nền kính tối, số lớn đếm lên, nhấn xanh lá tăng trưởng, chữ Inter gọn. Hợp: phân tích giá, lãi suất, dòng tiền, so sánh dự án.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Inter",
+  "heading": "Inter",
+  "skin": "flat",
+  "accent": "#10B981",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#34D399",
+   "hlStyle": "color",
+   "anim": "up",
+   "out": "fade",
+   "upper": false,
+   "size": 78,
+   "weight": 900,
+   "spacing": -1
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Inter",
+   "size": 54,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": false,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#059669",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 64
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "punch"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "graphics": {
+   "sticker": "icon",
+   "ghiChu": "ưu tiên counter, tabs, tiles; presenter split khi đọc bảng số"
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#6EE7B7",
+   "mid": "#059669",
+   "dark": "#0B1220",
+   "gold1": "#D1FAE5",
+   "gold2": "#10B981"
+  },
+  "cutFx": "none",
+  "transition": "auto",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 100,
+   "contrast": 106,
+   "saturation": 94,
+   "warmth": -10
+  },
+  "sfxVolume": 0.2
+ },
+ "thanhPhan": {
+  "chu": "Inter gọn, nhấn xanh lá",
+  "phude": "tối giản",
+  "chuyencanh": "tự động",
+  "hieuung": "zoom ít",
+  "dohoa": "kính tối, số đếm lên, tab so sánh",
+  "bocuc": "căn trái",
+  "icon": "icon trong tròn xanh lá",
+  "minhhoa": "mờ dần",
+  "amthanh": "ít",
+  "mau": "lạnh, rõ"
+ }
+}

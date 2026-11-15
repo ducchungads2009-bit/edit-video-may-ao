@@ -1,0 +1,100 @@
+{
+ "ten": "Nhịp · Glitch công nghệ",
+ "nhom": "nhip",
+ "mo_ta": "Cắt cực nhanh ở đoạn mạnh, nhiễu hình / tách màu ở nhịp mạnh — công nghệ, app, ra mắt sản phẩm.",
+ "style": {
+  "font": "Chakra Petch",
+  "heading": "Saira Condensed",
+  "skin": "flat",
+  "accent": "#00E5FF",
+  "text": {
+   "look": "neon",
+   "color": "#00E5FF",
+   "hlColor": "#FF2BD6",
+   "anim": "glitch",
+   "out": "blur",
+   "upper": true,
+   "size": 88,
+   "weight": 700,
+   "ease": "snappy",
+   "mblur": true
+  },
+  "captions": {
+   "preset": "tiktok",
+   "font": "Chakra Petch",
+   "size": 58,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "active": "#00E5FF",
+   "upper": true
+  },
+  "broll": {
+   "enter": "whip",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "none",
+   "color": "#00E5FF"
+  },
+  "motion": {
+   "ease": "snappy",
+   "mblur": true
+  },
+  "effects": {
+   "zoom": "vừa",
+   "zoomStyle": "punch",
+   "overlay": [
+    "particles",
+    "rays"
+   ]
+  },
+  "graphics": {
+   "sticker": "không",
+   "ghiChu": "điểm nối / ý mới → fx glitch hoặc rgb 0.4s; con số → scene stats; tính năng → shape callout màu cyan; tiêu đề mở đầu anim scramble; toàn video có thể thêm fx glow amount 30 ở đoạn cao trào"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "beat": {
+   "preset": "glitch"
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#00E5FF",
+   "mid": "#7B2FF7",
+   "dark": "#05060F",
+   "gold1": "#9BF6FF",
+   "gold2": "#00E5FF"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1390,
+  "wordsPerPage": 3,
+  "color": {
+   "contrast": 112,
+   "saturation": 110,
+   "warmth": -18,
+   "vignette": 20
+  },
+  "sfxVolume": 0.15
+ },
+ "thanhPhan": {
+  "chu": "chữ glitch, mono",
+  "phude": "TikTok cyan",
+  "chuyencanh": "cắt nhanh + nhiễu hình",
+  "hieuung": "hạt sáng, tia sáng, toả sáng",
+  "dohoa": "chú thích mảnh, ô số",
+  "minhhoa": "lia nhanh",
+  "amthanh": "chỉ nhạc, không tiếng hiệu ứng",
+  "mau": "lạnh, tương phản",
+  "nhip": "Glitch: dồn ở đoạn mạnh"
+ },
+ "nguon": "tạo sẵn"
+}

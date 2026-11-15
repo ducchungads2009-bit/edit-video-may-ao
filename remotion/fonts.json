@@ -1,0 +1,217 @@
+[
+ {
+  "id": "be-vietnam-pro",
+  "family": "Be Vietnam Pro",
+  "kind": "sans",
+  "weights": [
+   400,
+   700,
+   900
+  ],
+  "note": "hiện đại, đậm, rõ — mặc định"
+ },
+ {
+  "id": "montserrat",
+  "family": "Montserrat",
+  "kind": "sans",
+  "weights": [
+   400,
+   700,
+   900
+  ],
+  "note": "hình học, sang, phổ biến trên TikTok"
+ },
+ {
+  "id": "inter",
+  "family": "Inter",
+  "kind": "sans",
+  "weights": [
+   400,
+   700,
+   900
+  ],
+  "note": "gọn gàng, trung tính"
+ },
+ {
+  "id": "roboto",
+  "family": "Roboto",
+  "kind": "sans",
+  "weights": [
+   400,
+   700,
+   900
+  ],
+  "note": "trung tính, kiểu Android"
+ },
+ {
+  "id": "lexend",
+  "family": "Lexend",
+  "kind": "sans",
+  "weights": [
+   400,
+   700,
+   900
+  ],
+  "note": "tròn, dễ đọc, thân thiện"
+ },
+ {
+  "id": "nunito",
+  "family": "Nunito",
+  "kind": "sans",
+  "weights": [
+   400,
+   700,
+   900
+  ],
+  "note": "bo tròn mềm, vui"
+ },
+ {
+  "id": "josefin-sans",
+  "family": "Josefin Sans",
+  "kind": "sans",
+  "weights": [
+   400,
+   700
+  ],
+  "note": "thanh, hình học, cổ điển"
+ },
+ {
+  "id": "chakra-petch",
+  "family": "Chakra Petch",
+  "kind": "sans",
+  "weights": [
+   400,
+   700
+  ],
+  "note": "góc cạnh, công nghệ"
+ },
+ {
+  "id": "oswald",
+  "family": "Oswald",
+  "kind": "condensed",
+  "weights": [
+   400,
+   700
+  ],
+  "note": "cao hẹp, mạnh — tiêu đề tin tức"
+ },
+ {
+  "id": "barlow-condensed",
+  "family": "Barlow Condensed",
+  "kind": "condensed",
+  "weights": [
+   400,
+   700,
+   900
+  ],
+  "note": "hẹp, hiện đại, nhiều độ đậm"
+ },
+ {
+  "id": "saira-condensed",
+  "family": "Saira Condensed",
+  "kind": "condensed",
+  "weights": [
+   400,
+   700,
+   900
+  ],
+  "note": "hẹp, thể thao"
+ },
+ {
+  "id": "anton",
+  "family": "Anton",
+  "kind": "display",
+  "weights": [
+   400
+  ],
+  "note": "rất đậm, hẹp — chữ to giật tít"
+ },
+ {
+  "id": "bungee",
+  "family": "Bungee",
+  "kind": "display",
+  "weights": [
+   400
+  ],
+  "note": "khối vuông, đường phố"
+ },
+ {
+  "id": "paytone-one",
+  "family": "Paytone One",
+  "kind": "display",
+  "weights": [
+   400
+  ],
+  "note": "tròn đậm, vui, quảng cáo"
+ },
+ {
+  "id": "baloo-2",
+  "family": "Baloo 2",
+  "kind": "display",
+  "weights": [
+   400,
+   700,
+   800
+  ],
+  "note": "tròn béo, dễ thương"
+ },
+ {
+  "id": "playfair-display",
+  "family": "Playfair Display",
+  "kind": "serif",
+  "weights": [
+   400,
+   700,
+   900
+  ],
+  "note": "có chân, sang trọng, tạp chí"
+ },
+ {
+  "id": "merriweather",
+  "family": "Merriweather",
+  "kind": "serif",
+  "weights": [
+   400,
+   700,
+   900
+  ],
+  "note": "có chân, đọc tốt, nghiêm túc"
+ },
+ {
+  "id": "lobster",
+  "family": "Lobster",
+  "kind": "script",
+  "weights": [
+   400
+  ],
+  "note": "viết tay đậm, retro"
+ },
+ {
+  "id": "pacifico",
+  "family": "Pacifico",
+  "kind": "script",
+  "weights": [
+   400
+  ],
+  "note": "viết tay tròn, vui"
+ },
+ {
+  "id": "dancing-script",
+  "family": "Dancing Script",
+  "kind": "script",
+  "weights": [
+   400,
+   700
+  ],
+  "note": "viết tay thanh, mềm mại"
+ },
+ {
+  "id": "patrick-hand",
+  "family": "Patrick Hand",
+  "kind": "hand",
+  "weights": [
+   400
+  ],
+  "note": "chữ viết tay kiểu ghi chú"
+ }
+]

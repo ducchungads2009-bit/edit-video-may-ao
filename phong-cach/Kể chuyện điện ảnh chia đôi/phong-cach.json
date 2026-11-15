@@ -1,0 +1,98 @@
+{
+ "ten": "Kể chuyện điện ảnh chia đôi",
+ "mo_ta": "Như phim tài liệu: cảnh minh họa nửa trên hoà vào người kể ở dưới, chữ serif trắng mảnh, hạt phim, màu trầm điện ảnh, zoom vào–ra chậm. Hợp: kể chuyện, lịch sử dự án, hành trình, tâm sự nghề.",
+ "style": {
+  "font": "Inter",
+  "heading": "Merriweather",
+  "skin": "flat",
+  "accent": "#F4A261",
+  "text": {
+   "look": "clean",
+   "color": "#F5F0E8",
+   "hlColor": "#F4A261",
+   "hlStyle": "color",
+   "shadow": "soft",
+   "anim": "blur",
+   "out": "fade",
+   "upper": false,
+   "size": 70,
+   "weight": 700,
+   "font": "Merriweather"
+  },
+  "captions": {
+   "preset": "single",
+   "font": "Inter",
+   "size": 52,
+   "weight": 600,
+   "color": "#F5F0E8",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean",
+   "area": "top",
+   "split": 0.5,
+   "feather": 260
+  },
+  "icons": {
+   "kind": "none"
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 90,
+   "textZone": "top",
+   "maxBlocks": 1
+  },
+  "frame": [
+   "grain"
+  ],
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "smooth",
+   "zoomEase": "smooth"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#F4A261",
+   "mid": "#264653",
+   "dark": "#0E1416",
+   "gold1": "#FDEBD3",
+   "gold2": "#F4A261"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1440,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 96,
+   "contrast": 110,
+   "saturation": 84,
+   "warmth": 6,
+   "vignette": 40,
+   "tint": "#2A9D8F",
+   "tintAmount": 5
+  },
+  "sfxVolume": 0.1
+ },
+ "thanhPhan": {
+  "chu": "Merriweather serif kem",
+  "phude": "từng câu, nhỏ gọn",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "zoom vào–ra chậm",
+  "dohoa": "hạt phim",
+  "bocuc": "giữa, chữ trên",
+  "minhhoa": "nửa trên hoà vào người kể",
+  "amthanh": "gần như không",
+  "mau": "trầm điện ảnh"
+ },
+ "nguon": "tạo sẵn"
+}

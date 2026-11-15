@@ -1,0 +1,97 @@
+{
+ "ten": "text viết tay",
+ "mo_ta": "Lưu từ video đã dựng \"test thơ 2 voice\"",
+ "nguon": "video test thơ 2 voice",
+ "style": {
+  "font": "Nunito",
+  "heading": "Dancing Script",
+  "text": {
+   "look": "clean",
+   "color": "#3B2F2A",
+   "hlColor": "#A0603F",
+   "hlStyle": "color",
+   "shadow": "none",
+   "anim": "type",
+   "out": "fade",
+   "upper": false,
+   "size": 70,
+   "weight": 400,
+   "font": "Dancing Script",
+   "stroke": 0,
+   "spacing": 10
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Nunito",
+   "size": 54,
+   "weight": 700,
+   "color": "#FFFFFF",
+   "upper": false
+  },
+  "effects": {
+   "zoom": "không",
+   "zoomEase": "smooth",
+   "shots": "auto",
+   "shotDensity": "thua"
+  },
+  "skin": "flat",
+  "accent": "#A5B4FC",
+  "layout": {
+   "align": "center",
+   "marginX": 90,
+   "textZone": "top",
+   "maxBlocks": 1
+  },
+  "icons": {
+   "kind": "none"
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "round",
+   "area": "top",
+   "split": 0.48,
+   "feather": 300
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "templates": false
+ },
+ "plan": {
+  "captionTop": 1420,
+  "wordsPerPage": 4,
+  "transition": "fade",
+  "cutFx": "none",
+  "color": {
+   "brightness": 107,
+   "contrast": 97,
+   "saturation": 100,
+   "warmth": 0,
+   "fade": 0,
+   "vignette": 0
+  },
+  "sfxVolume": 0.08,
+  "theme": {
+   "light": "#EADCC8",
+   "mid": "#A0603F",
+   "dark": "#3B2F2A",
+   "gold1": "#F7F1E6",
+   "gold2": "#C9A88A"
+  }
+ },
+ "thanhPhan": {
+  "chu": "Dancing Script, kiểu clean, hiện type",
+  "phude": "kiểu minimal, tắt",
+  "chuyencanh": "nối đoạn: fade",
+  "hieuung": "zoom không",
+  "dohoa": "text ×31, sticker ×1",
+  "minhhoa": "ít cảnh trám",
+  "amthanh": "sfx it",
+  "mau": "chỉnh màu riêng"
+ }
+}

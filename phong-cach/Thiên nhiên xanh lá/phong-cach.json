@@ -1,0 +1,89 @@
+{
+ "ten": "Thiên nhiên xanh lá",
+ "mo_ta": "Trong lành: xanh lá, chữ Nunito tròn, thẻ trắng, màu ấm nắng. Hợp: nghỉ dưỡng, second home, dự án nhiều cây xanh, đất vườn.",
+ "nguon": "tạo sẵn",
+ "style": {
+  "font": "Nunito",
+  "heading": "Nunito",
+  "skin": "light",
+  "accent": "#16A34A",
+  "text": {
+   "look": "clean",
+   "color": "#FFFFFF",
+   "hlColor": "#86EFAC",
+   "hlStyle": "color",
+   "anim": "up",
+   "out": "fade",
+   "upper": false,
+   "size": 82,
+   "weight": 900
+  },
+  "captions": {
+   "preset": "karaoke",
+   "font": "Nunito",
+   "size": 58,
+   "weight": 900,
+   "color": "#FFFFFF",
+   "active": "#86EFAC",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "round"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "circle",
+   "bgColor": "#16A34A",
+   "color": "#FFFFFF"
+  },
+  "layout": {
+   "align": "left",
+   "marginX": 64
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  }
+ },
+ "plan": {
+  "theme": {
+   "light": "#BBF7D0",
+   "mid": "#15803D",
+   "dark": "#052E16",
+   "gold1": "#DCFCE7",
+   "gold2": "#86EFAC"
+  },
+  "cutFx": "none",
+  "transition": "fade",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 106,
+   "contrast": 104,
+   "saturation": 112,
+   "warmth": 18
+  },
+  "sfxVolume": 0.18
+ },
+ "thanhPhan": {
+  "chu": "Nunito tròn, nhấn xanh lá",
+  "phude": "karaoke xanh lá",
+  "chuyencanh": "mờ chồng",
+  "hieuung": "zoom chậm",
+  "dohoa": "thẻ trắng, xanh lá",
+  "bocuc": "căn trái",
+  "icon": "icon trong tròn xanh lá",
+  "minhhoa": "khung tròn",
+  "amthanh": "rất ít",
+  "mau": "nắng ấm, xanh tươi"
+ }
+}
