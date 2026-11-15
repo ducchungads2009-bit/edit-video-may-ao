@@ -24,14 +24,16 @@ Gửi NGAY danh sách sau (một tin), rồi chờ họ gửi một lượt:
 
 Đã gửi đủ ngay từ đầu thì bỏ qua bước hỏi. Thiếu thông tin không bắt buộc → tự chọn cách an toàn, KHÔNG bịa giá / số liệu.
 
-## 2. Cài công cụ (mỗi phiên 1 lần, ~1–2 phút)
+## 2. Cài công cụ (mỗi phiên 1 lần, ~1 phút)
+Gọi add_repo (owner `ducchungads2009-bit`, repo `edit-video-may-ao`, access `read`), rồi:
 ```
-cd ~ && [ -d video-tool ] || git clone https://github.com/<CHU-KHO>/<TEN-KHO>.git video-tool
-cd ~/video-tool && ./cai-may-ao.sh        # phải in "SẴN SÀNG"
+cd ~ && [ -d video-tool/.git ] || git clone --depth 1 https://github.com/ducchungads2009-bit/edit-video-may-ao video-tool
+cd ~/video-tool && ./cai-may-ao.sh        # phải in "SẴN SÀNG" + dòng kiểm tra mạng
 ```
-Clone báo không có quyền → dùng add_repo (owner/repo ở trên) rồi clone lại; vẫn không được → báo người dùng: cần
-kết nối GitHub với Claude và được mời vào kho. Mọi lệnh sau chạy trong ~/video-tool qua `./chay.sh <script> ...`
-(đã đặt sẵn trình duyệt dựng hình). File người dùng gửi nằm ở /mnt/user-data/uploads/.
+add_repo / clone báo không có quyền → báo người dùng: cần kết nối GitHub với Claude (claude.ai → Cài đặt → Connectors),
+được mời vào kho `ducchungads2009-bit/edit-video-may-ao` và cài ứng dụng Claude cho kho đó (github.com/apps/claude).
+Luôn để công cụ ở `~/video-tool` (KHÔNG để trong /tmp — trang chỉnh sửa không đăng được từ /tmp). Mọi lệnh sau chạy trong
+~/video-tool qua `./chay.sh <script> ...`. File người dùng gửi nằm ở /mnt/user-data/uploads/.
 
 ## 3. Dựng (làm liền, không hỏi lại)
 Tài liệu đầy đủ của công cụ: `TAI-LIEU.md` (chỉ đọc mục cần: grep tiêu đề). BỎ QUA mọi chỗ nói `nho_may.py`, giao diện,
