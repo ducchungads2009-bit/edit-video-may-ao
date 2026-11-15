@@ -23,6 +23,7 @@ Gửi NGAY danh sách sau (một tin), rồi chờ họ gửi một lượt:
 > Gửi xong mình làm liền một mạch, xong gửi video + link trang chỉnh sửa. Bạn khoá màn hình được.
 
 Đã gửi đủ ngay từ đầu thì bỏ qua bước hỏi. Thiếu thông tin không bắt buộc → tự chọn cách an toàn, KHÔNG bịa giá / số liệu.
+"Xem phong cách" → cài công cụ (mục 2), chạy `./chay.sh phongcach.py ds`, gửi danh sách gọn theo nhóm chủ đề.
 
 ## 2. Cài công cụ (mỗi phiên 1 lần, ~1 phút)
 Gọi add_repo (owner `ducchungads2009-bit`, repo `edit-video-may-ao`, access `read`), rồi:
@@ -55,6 +56,7 @@ Tài liệu đầy đủ của công cụ: `TAI-LIEU.md` (chỉ đọc mục c�
    (video có lời thì bỏ qua — trang tự hiện lời nói).
 7. Viết `plan.json` theo TAI-LIEU.md (bước 5). Nhạc từ kho: chép `assets-chung/nhac/<file>.mp3` vào `assets/nhac/` →
    `"music": {"src": "assets/nhac/<file>.mp3", "volume": 0.15}` (video không lời: 0.5–0.7). Danh sách: `assets-chung/nhac/danh-sach.json`.
+   Chưa có: khối cần tách người (behind, orbit, presenter) — không dùng trên máy ảo.
 8. `./chay.sh soat.py "<du-an>"`, sửa 1 vòng. `./chay.sh render.py "<du-an>"` (máy ảo ~10 giây dựng / 1 giây video:
    chạy nền, kiểm tra mỗi 2–4 phút; KHÔNG kết thúc lượt trả lời khi đang dựng).
 9. Xem 3–4 khung của `final.mp4` (ffmpeg) để chắc đúng.
