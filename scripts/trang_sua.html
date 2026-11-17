@@ -11,7 +11,15 @@
   header { padding:14px 16px 8px; }
   h1 { font-size:19px; margin:0; }
   .sub { color:var(--mut); font-size:13px; }
-  .player { padding:0 12px 4px; }
+  .player { padding:0 12px 4px; position:relative; }
+  #pos { position:absolute; inset:0 12px 4px; display:none; touch-action:none; cursor:move; }
+  #pos.on { display:block; }
+  #pos .ghost { position:absolute; transform:translate(-50%,-50%); background:rgba(255,214,10,.88); color:#111; font-weight:800; font-size:13px;
+    padding:4px 8px; border-radius:8px; border:2px solid #111; max-width:70%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; pointer-events:none; }
+  #pos .hint { position:absolute; left:8px; right:8px; top:8px; background:rgba(0,0,0,.7); color:#fff; font-size:12px; padding:5px 8px; border-radius:8px; pointer-events:none; }
+  .posbar { display:none; gap:6px; flex-wrap:wrap; align-items:center; padding:6px 12px; }
+  .posbar.on { display:flex; }
+  .posbar button { padding:8px 12px; }
   video { width:100%; max-height:42vh; background:#000; border-radius:14px; display:block; }
   .tabs { display:flex; gap:6px; overflow-x:auto; padding:8px 12px; position:sticky; top:0; z-index:4; background:var(--bg); }
   .tabs button { flex:none; padding:8px 14px; border-radius:999px; border:1px solid var(--line); background:var(--card); color:#e8ecf4; font-size:14px; }
@@ -50,7 +58,8 @@
   <h1 id="ten">Sửa video</h1>
   <div class="sub" id="phien"></div>
 </header>
-<div class="player"><video id="vid" controls playsinline preload="metadata"></video></div>
+<div class="player"><video id="vid" controls playsinline preload="metadata"></video><div id="pos"><div class="hint">Kéo trên khung hình để dời khối — ô vàng là vị trí gần đúng</div><div class="ghost" id="ghost"></div></div></div>
+<div class="posbar" id="posbar"><b id="posname" style="flex:1;font-size:13px"></b><button class="s" data-mv="0,-20">▲</button><button class="s" data-mv="0,20">▼</button><button class="s" data-mv="-20,0">◀</button><button class="s" data-mv="20,0">▶</button><button class="s" id="posreset">↺ Chỗ cũ</button><button class="s" id="posdone" style="background:#22c55e;color:#06210f">✓ Xong</button></div>
 <div class="tabs" id="tabs">
   <button data-t="canh" class="on">🎞 Cảnh</button>
   <button data-t="chu">✏️ Chữ</button>
@@ -137,7 +146,7 @@ function renderChu() {
       <div class="time"><div><label class="f">Hiện từ (giây)</label><input type="number" step="0.1" data-j="${j}" data-k="start" value="${e.start}"></div>
       <div><label class="f">Đến (giây)</label><input type="number" step="0.1" data-j="${j}" data-k="end" value="${e.end}"></div>
       <button class="s" data-now="${j}">⏱ Giờ đang xem</button></div>
-      <div class="btns"><button class="s" data-see="${j}">▶ Xem chỗ này</button><button class="s red" data-del="${j}">🗑 Xoá</button></div></div>`;
+      <div class="btns"><button class="s" data-see="${j}">▶ Xem chỗ này</button><button class="s" data-pos="${j}">✥ Dời vị trí</button><button class="s red" data-del="${j}">🗑 Xoá</button></div>${(e.dx || e.dy) ? `<div class="sub">Đã dời: ${posTxt(e)}</div>` : ''}</div>`;
   }).join('');
 }
 $('#p-chu').addEventListener('input', (ev) => {
@@ -157,7 +166,58 @@ $('#p-chu').addEventListener('click', (ev) => {
   if (t.dataset.now != null) { const e = S.els[+t.dataset.now], d = e.end - e.start; e.start = +vid.currentTime.toFixed(1); e.end = +(e.start + d).toFixed(1); mark(); renderChu(); }
   if (t.dataset.see != null) { vid.currentTime = S.els[+t.dataset.see].start; vid.play().catch(() => {}); }
   if (t.dataset.del != null) { S.els[+t.dataset.del]._del = true; mark(); renderChu(); }
+  if (t.dataset.pos != null) posStart(+t.dataset.pos);
 });
+
+// ---- dời vị trí khối: dx / dy (px trên khung xuất) ----
+const DEFY = {chip: 240, priceHook: 520, bigQuestion: 620, checklist: 240, rangeCard: 280, cta: 1120, text: 700, sticker: 700, counter: 700, phrase: 600, stamp: 700, bubble: 600, dayBadge: 120};
+let posJ = null, drag = null;
+const posTxt = (e) => [e.dx ? (e.dx > 0 ? 'phải ' : 'trái ') + Math.abs(Math.round(e.dx)) + 'px' : '', e.dy ? (e.dy > 0 ? 'xuống ' : 'lên ') + Math.abs(Math.round(e.dy)) + 'px' : ''].filter(Boolean).join(', ') || 'chưa dời';
+function frameDims() {  // khung xuất: rộng 1080 (dọc / vuông / 4:5) hoặc 1920 (ngang)
+  const vw = vid.videoWidth || 9, vh = vid.videoHeight || 16;
+  const W = vw > vh ? 1920 : 1080; return {W, H: W * vh / vw, vw, vh};
+}
+function vidRect() {  // vùng hình thật trong thẻ video (trừ viền đen)
+  const r = vid.getBoundingClientRect(), {vw, vh} = frameDims();
+  const sc = Math.min(r.width / vw, r.height / vh), w = vw * sc, h = vh * sc;
+  return {x: (r.width - w) / 2, y: (r.height - h) / 2, w, h};
+}
+function posDraw() {
+  if (posJ == null) return;
+  const e = S.els[posJ], {W, H} = frameDims(), R = vidRect();
+  const ax = (e.x != null && e.x <= 1 ? e.x * W : W / 2) + (e.dx || 0);
+  const ay = (e.y != null ? +e.y : (DEFY[e.type] || 700) * H / 1920) + (e.dy || 0);
+  const g = $('#ghost');
+  g.textContent = String(e.text || e.price || e.big || e.label || e.icon || e.title || NAME[e.type] || '').split('\n')[0] || '•';
+  g.style.left = (R.x + ax / W * R.w) + 'px'; g.style.top = (R.y + Math.min(H, Math.max(0, ay)) / H * R.h) + 'px';
+  $('#posname').textContent = (NAME[e.type] || e.type) + ' · ' + posTxt(e);
+}
+function posStart(j) {
+  posJ = j; const e = S.els[j];
+  e._dx0 ??= e.dx || 0; e._dy0 ??= e.dy || 0;
+  vid.pause(); vid.currentTime = Math.min(e.end - 0.05, e.start + 0.4);
+  $('#pos').classList.add('on'); $('#posbar').classList.add('on');
+  window.scrollTo({top: 0, behavior: 'smooth'}); posDraw();
+}
+function posEnd() { posJ = null; $('#pos').classList.remove('on'); $('#posbar').classList.remove('on'); renderChu(); }
+function posMove(ddx, ddy) {
+  const e = S.els[posJ]; e.dx = Math.round((e.dx || 0) + ddx); e.dy = Math.round((e.dy || 0) + ddy);
+  if (!e.dx) delete e.dx; if (!e.dy) delete e.dy; mark(); posDraw();
+}
+$('#pos').addEventListener('pointerdown', (ev) => { drag = {x: ev.clientX, y: ev.clientY}; $('#pos').setPointerCapture(ev.pointerId); });
+$('#pos').addEventListener('pointermove', (ev) => {
+  if (!drag || posJ == null) return;
+  const R = vidRect(), {W} = frameDims(), k = W / R.w;
+  posMove((ev.clientX - drag.x) * k, (ev.clientY - drag.y) * k); drag = {x: ev.clientX, y: ev.clientY};
+});
+$('#pos').addEventListener('pointerup', () => { drag = null; });
+$('#posbar').addEventListener('click', (ev) => {
+  const t = ev.target;
+  if (t.dataset.mv) { const [a, b] = t.dataset.mv.split(',').map(Number); posMove(a, b); }
+  if (t.id === 'posreset') { const e = S.els[posJ]; e.dx = e._dx0; e.dy = e._dy0; if (!e.dx) delete e.dx; if (!e.dy) delete e.dy; mark(); posDraw(); }
+  if (t.id === 'posdone') posEnd();
+});
+window.addEventListener('resize', posDraw);
 
 function renderPhude() {
   const el = $('#p-phude');
@@ -212,7 +272,7 @@ $('#luu').addEventListener('click', async () => {
     phienBan: D.phienBan, at: new Date().toISOString(),
     canh: S.segs.filter((s) => !s.off).map((s) => ({goc: s.i + 1, a: s.a, b: s.b, nhan: s.nhan})),
     canhBo: S.segs.filter((s) => s.off).map((s) => s.i + 1),
-    chu: S.els.map((e) => { const {_i, _del, _new, ...r} = e; return {...r, goc: _i ?? null, xoa: !!_del, moi: !!_new}; }),
+    chu: S.els.map((e) => { const {_i, _del, _new, _dx0, _dy0, ...r} = e; return {...r, goc: _i ?? null, xoa: !!_del, moi: !!_new}; }),
     phuDe: S.caps.map((c, n) => ({t: D.phuDe[n].t, cu: D.phuDe[n].text, goc: D.phuDe[n].goc || D.phuDe[n].text, moi: c})).filter((x) => x.moi.trim() !== x.cu), nhac: S.tatNhac ? null : S.nhac, amLuongNhac: S.vol, phongCach: S.pc, ghiChu: S.note,
   };
   if (!db) {  // trang mở ngoài Claude (ChatGPT, file tải về): chép bản sửa để dán vào chat
