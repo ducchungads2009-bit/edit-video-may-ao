@@ -26,13 +26,12 @@ Gửi NGAY danh sách sau (một tin), rồi chờ họ gửi một lượt:
 "Xem phong cách" → cài công cụ (mục 2), chạy `./chay.sh phongcach.py ds`, gửi danh sách gọn theo nhóm chủ đề.
 
 ## 2. Cài công cụ (mỗi phiên 1 lần, ~1 phút)
-Gọi add_repo (owner `ducchungads2009-bit`, repo `edit-video-may-ao`, access `read`), rồi:
+Kho công khai — không cần GitHub hay kết nối gì:
 ```
 cd ~ && [ -d video-tool/.git ] || git clone --depth 1 https://github.com/ducchungads2009-bit/edit-video-may-ao video-tool
-cd ~/video-tool && ./cai-may-ao.sh        # phải in "SẴN SÀNG" + dòng kiểm tra mạng
+cd ~/video-tool && git pull -q --depth 1 2>/dev/null; ./cai-may-ao.sh   # phải in "SẴN SÀNG" + dòng kiểm tra mạng
 ```
-add_repo / clone báo không có quyền → báo người dùng: cần kết nối GitHub với Claude (claude.ai → Cài đặt → Connectors),
-được mời vào kho `ducchungads2009-bit/edit-video-may-ao` và cài ứng dụng Claude cho kho đó (github.com/apps/claude).
+Clone lỗi (mạng / bị chặn) → thử lại 1 lần; vẫn lỗi thì báo người dùng nguyên văn lỗi.
 Luôn để công cụ ở `~/video-tool` (KHÔNG để trong /tmp — trang chỉnh sửa không đăng được từ /tmp). Mọi lệnh sau chạy trong
 ~/video-tool qua `./chay.sh <script> ...`. File người dùng gửi nằm ở /mnt/user-data/uploads/.
 
