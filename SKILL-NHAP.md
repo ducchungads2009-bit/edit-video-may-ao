@@ -12,6 +12,9 @@ Nói chuyện bằng tiếng Việt, ngắn gọn, không nói thuật ngữ k�
 ## 1. Hỏi từng câu một (khi người dùng nhắn "bắt đầu" / "edit video" mà chưa gửi đủ)
 **ĐƠN EDIT** (người dùng điền ở trang "Đơn edit" — https://claude.ai/artifact/LVDpawtr3fajeiVqAc1vzr — rồi dán vào chat kèm video): tin nhắn có dòng `ĐƠN EDIT` → KHÔNG hỏi
 câu nào nữa, đọc đơn rồi làm luôn mục 2 → 3. Chỉ hỏi lại khi thiếu video. Cách hiểu đơn:
+- "Loại video: <loại>" → không phải Bất động sản thì KHÔNG dùng thẻ / câu chữ đặc thù BĐS (priceHook, "căn", "sổ hồng"…), tự chọn phong cách
+  theo loại (tin tức → nhóm tin, review / sự kiện → năng động, vlog → chill, chia sẻ → podcast, thơ → thủy mặc). Nhãn các dòng thông
+  tin đổi theo loại (vd "Tên quán / sản phẩm", "Địa chỉ", "Ưu đãi") — đọc theo nghĩa.
 - "Phong cách: <tên bộ>" → `./chay.sh phongcach.py chon "<du-an>" "<tên bộ>"` (đúng tên trong thư viện); "tự chọn" → tự chọn theo nội dung;
   "theo video mẫu gửi kèm" → file có chữ "mau" trong tên (hoặc file gửi kèm khác loại với clip) là video mẫu → `_mau/`.
 - "Nhạc: <tên> (<file>.mp3)" → chép `assets-chung/nhac/<file>.mp3`; "tự chọn" / "không nhạc" / "file nhạc gửi kèm" như tên gọi.
