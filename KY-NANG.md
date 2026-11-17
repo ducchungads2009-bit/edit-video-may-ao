@@ -23,6 +23,18 @@ câu nào nữa, đọc đơn rồi làm luôn mục 2 → 3. Chỉ hỏi lại 
 Nhắn "bắt đầu" mà KHÔNG có đơn → trả lời 1 dòng: "Điền nhanh ở trang Đơn edit (https://claude.ai/artifact/LVDpawtr3fajeiVqAc1vzr) rồi dán vào đây kèm video — hoặc mình hỏi từng câu:"
 rồi hỏi câu 1 bên dưới.
 
+**FILE GỬI KÈM & LINK** (người dùng thường gửi mọi thứ trong 1 tin cùng đơn):
+- Phân loại theo đơn + loại file: ảnh → tư liệu minh họa; âm thanh → giọng đọc nếu đơn ghi "Giọng đọc", nhạc nếu đơn ghi "file nhạc gửi kèm"
+  (có cả 2 mà không rõ file nào: file có lời nói = giọng đọc — thử nhận giọng vài giây đầu). Video: mặc định là clip gốc; tên file có
+  "mau"/"mẫu" = video mẫu, có "minh hoa"/"tu lieu" = tư liệu. Đơn có dòng "Ghi chú file" thì theo đúng dòng đó.
+  Vẫn không chắc (vd đơn nói có video mẫu / video minh họa mà không biết là file nào) → hỏi ĐÚNG 1 câu, kèm ảnh lưới khung đầu của
+  từng video đánh số (ffmpeg), vd "Video số mấy là video mẫu?". Không hỏi gì khác.
+- Đơn ghi có gửi kèm thứ gì (giọng đọc, nhạc, ảnh minh họa, video mẫu) mà tin nhắn chưa có → nhắn 1 dòng "Đã nhận clip, gửi tiếp <thứ còn
+  thiếu> nhé (hoặc nhắn 'bỏ qua')" rồi chờ; người dùng gửi tiếp ở tin sau (có thể kèm chữ "nhạc", "voice", "minh họa"… để chỉ loại).
+- Có LINK (Google Drive file / thư mục, Dropbox, link tải thẳng — trong đơn dòng "Link" hoặc trong tin nhắn): sau khi cài công cụ chạy
+  `./chay.sh tai_link.py /tmp/tai-ve <link> [<link>…]` rồi phân loại file tải về như trên. Báo lỗi tên miền / quyền chia sẻ thì nhắn
+  người dùng đúng câu lỗi đó (Drive phải để "Bất kỳ ai có đường liên kết"), các file đã gửi trực tiếp vẫn làm tiếp.
+
 MỖI TIN CHỈ HỎI 1 CÂU, ngắn 1–2 dòng, chờ họ trả lời rồi mới hỏi câu kế. Không gửi cả danh sách, không giải thích dài.
 Thứ tự (câu nào họ đã trả lời / đã gửi kèm từ trước thì bỏ qua, không hỏi lại):
 1. **Video gốc** (bắt buộc): "Gửi mình các clip nhé (theo thứ tự muốn ghép; clip nào lấy đoạn nào thì ghi kèm)."
@@ -101,6 +113,7 @@ bằng cách khác (vd nhãn chữ "📍 Cách trung tâm 10 phút" thay cho kh�
 - Khối `map` (bản đồ, đường đi): cần tiles.openfreemap.org, nominatim.openstreetmap.org, router.project-osrm.org.
 - Khối `mapTour` (bản đồ vệ tinh): thêm tiles.maps.eox.at; địa hình 3D: s3.amazonaws.com.
 - Ảnh / video stock: pixabay.com, cdn.pixabay.com (+ khoá Pixabay); ảnh địa danh: api.openverse.org.
+- Tải link Google Drive: drive.google.com, drive.usercontent.google.com (Dropbox: www.dropbox.com, dl.dropboxusercontent.com).
 Muốn bật: người dùng thêm các tên miền trên vào danh sách được phép (claude.ai → Cài đặt → Capabilities), mở phiên mới.
 Không cần mạng: chữ, phụ đề, thẻ, chữ 3D, thẻ 3D, lớp phủ, hình vẽ, cảnh dựng sẵn, zoom, chuyển cảnh, nhạc trong kho.
 

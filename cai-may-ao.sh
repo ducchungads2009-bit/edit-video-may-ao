@@ -14,7 +14,7 @@ if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; 
     && cp /tmp/ffmpeg-*-amd64-static/ffmpeg /tmp/ffmpeg-*-amd64-static/ffprobe ~/.local/bin/ || true
 fi
 echo "== Thư viện Python"
-PKGS="sherpa-onnx soundfile numpy opencv-python-headless onnxruntime pillow brotli"
+PKGS="sherpa-onnx soundfile numpy opencv-python-headless onnxruntime pillow brotli gdown"
 { python3 -m pip install --break-system-packages -q $PKGS 2>/dev/null || python3 -m pip install -q $PKGS; } 2>&1 | grep -v -i "warning\|notice" || true
 echo "== Thư viện dựng (npm)"
 npm ci --no-audit --no-fund --loglevel=error
@@ -49,9 +49,9 @@ command -v ffmpeg >/dev/null || { echo "LỖI: máy ảo thiếu ffmpeg"; exit 1
 echo "== Kiểm tra mạng cho các tính năng cần Internet"
 chk() { c=$(curl -s -o /dev/null -m 8 -w "%{http_code}" "$1"); [ "$c" != "000" ] && [ "$c" != "403" ] && echo co || echo khong; }
 BD=$(chk https://tiles.openfreemap.org/styles/liberty); TD=$(chk https://nominatim.openstreetmap.org/search?q=Hanoi\&format=json)
-VT=$(chk https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml); PX=$(chk https://pixabay.com/api/); OV=$(chk https://api.openverse.org/v1/images/?q=hanoi)
-printf '{"banDo": "%s", "timToaDo": "%s", "veTinh": "%s", "stockPixabay": "%s", "anhDiaDanh": "%s"}\n' $BD $TD $VT $PX $OV > .mang.json
-echo "   bản đồ: $BD · tìm toạ độ: $TD · bản đồ vệ tinh: $VT · ảnh/video stock: $PX · ảnh địa danh: $OV"
+VT=$(chk https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml); PX=$(chk https://pixabay.com/api/); OV=$(chk https://api.openverse.org/v1/images/?q=hanoi); DR=$(chk https://drive.usercontent.google.com/)
+printf '{"banDo": "%s", "timToaDo": "%s", "veTinh": "%s", "stockPixabay": "%s", "anhDiaDanh": "%s", "linkDrive": "%s"}\n' $BD $TD $VT $PX $OV $DR > .mang.json
+echo "   bản đồ: $BD · tìm toạ độ: $TD · bản đồ vệ tinh: $VT · ảnh/video stock: $PX · ảnh địa danh: $OV · tải link Drive: $DR"
 [ "$BD$TD" = "coco" ] || echo "   (Muốn dùng khối bản đồ: thêm các tên miền ở mục KHỐI CẦN MẠNG vào danh sách được phép trong cài đặt Claude)"
 mkdir -p cho-edit
 echo "SẴN SÀNG — trình duyệt: $B"
