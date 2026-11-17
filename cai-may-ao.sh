@@ -12,10 +12,24 @@ if [ ! -f models/sherpa-onnx-zipformer-vi-2025-04-20/tokens.txt ]; then
 fi
 echo "== Trình duyệt để dựng hình"
 B=""
-for c in google-chrome google-chrome-stable chromium chromium-browser; do command -v $c >/dev/null 2>&1 && { B=$(command -v $c); break; }; done
+# Tìm trình duyệt dựng hình: có sẵn trên máy -> bản Playwright/Puppeteer đã cài sẵn -> tải (nếu mạng cho phép)
+tim() { for c in google-chrome google-chrome-stable chromium chromium-browser chrome headless_shell; do command -v $c >/dev/null 2>&1 && { B=$(command -v $c); return; }; done
+  B=$(ls -d ${PLAYWRIGHT_BROWSERS_PATH:-/nonexist}/chromium*/chrome-linux*/{chrome,headless_shell} /opt/pw-browsers/chromium*/chrome-linux*/{chrome,headless_shell} \
+       ~/.cache/ms-playwright/chromium*/chrome-linux*/{chrome,headless_shell} ~/.cache/puppeteer/chrome*/linux-*/chrome-*/{chrome,chrome-headless-shell} \
+       /usr/lib/chromium/chromium /opt/google/chrome/chrome 2>/dev/null | head -1); }
+[ -n "$EP_DU_PHONG" ] && B="" || tim
 if [ -z "$B" ]; then
-  npx --yes playwright@1 install chromium >/dev/null 2>&1 || true
-  B=$(ls -d ~/.cache/ms-playwright/chromium-*/chrome-linux*/chrome 2>/dev/null | head -1)
+  echo "   (máy ảo chưa có trình duyệt — đang thử tải…)"
+  timeout 180 npx --yes playwright@1 install chromium-headless-shell >/dev/null 2>&1 || timeout 180 npx --yes playwright@1 install chromium >/dev/null 2>&1 || true
+  tim
+fi
+if [ -z "$B" ]; then
+  timeout 180 npx --yes @puppeteer/browsers install chrome-headless-shell@stable --path ~/.cache/puppeteer >/dev/null 2>&1 || true
+  tim
+fi
+if [ -z "$B" ]; then   # cách cuối: Chromium nén sẵn trong gói npm (chỉ cần registry npm)
+  B=$(timeout 240 python3 scripts/cai_chromium.py 2>/dev/null | tail -1)
+  [ -x "$B" ] || B=""
 fi
 [ -n "$B" ] || { echo "LỖI: không tìm được trình duyệt Chrome/Chromium để dựng hình"; exit 1; }
 echo "$B" > .trinh-duyet
