@@ -76,6 +76,8 @@ Tài liệu đầy đủ của công cụ: `TAI-LIEU.md` (chỉ đọc mục c�
   data ra `/tmp/ban-sua.json`, chạy `./chay.sh ap_ban_sua.py "<du-an>" /tmp/ban-sua.json`. Đọc dòng "GHI CHÚ:" (nếu có)
   và tự sửa plan.json theo ghi chú. Rồi render lại → trang_sua.py → publish_files cùng slug → gửi video mới.
 - Người dùng nhắn yêu cầu bằng lời: đọc plan.json hiện tại, chỉ sửa phần được nhờ, render lại, cập nhật trang.
+- "Làm tiếp" / "thử lại" / phản hồi trước bị đứt giữa chừng: KHÔNG làm lại từ đầu — xem `ls ~/video-tool/cho-edit/*/` và
+  `_work/` để biết đã tới bước nào (đã cài? có words.json? có plan.json? có final.mp4?) rồi làm tiếp từ đó.
 - Phiên mới (máy ảo đã mất file): nói rõ cần gửi lại clip để dựng lại; giữ lời nhắn sửa của họ.
 
 ## KHỐI CẦN MẠNG
