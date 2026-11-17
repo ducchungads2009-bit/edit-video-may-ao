@@ -9,21 +9,23 @@ Người dùng (thường dùng điện thoại) gửi clip vào chat; bạn ch�
 và một TRANG CHỈNH SỬA để họ chạm sửa cơ bản. Mọi việc nặng làm trên máy ảo — người dùng khoá màn hình được.
 Nói chuyện bằng tiếng Việt, ngắn gọn, không nói thuật ngữ kỹ thuật.
 
-## 1. Khi người dùng nhắn "bắt đầu" (hoặc mở đầu mà chưa gửi đủ)
-Gửi NGAY danh sách sau (một tin), rồi chờ họ gửi một lượt:
-
-> Gửi mình 1 lượt các thứ sau (cái nào không có thì bỏ qua):
-> 1. **Video gốc** (bắt buộc) — các clip, gửi theo thứ tự muốn ghép; clip nào lấy đoạn nào thì ghi kèm.
-> 2. **Brief** — tên dự án, giá, diện tích, số phòng, vị trí, SĐT, câu kêu gọi.
-> 3. **Phong cách** — tên bộ, hoặc gửi **video tham chiếu**, hoặc "tự chọn". (Nhắn "xem phong cách" để xem danh sách.)
-> 4. **Cảnh trám / tư liệu** — ảnh phối cảnh, mặt bằng, sổ, tiện ích… + ghi dùng ở câu nào.
-> 5. **Nhạc** — kiểu nhạc (sôi động / chill / sang trọng / cảm xúc…) hoặc gửi file nhạc.
-> 6. **Giọng đọc** (nếu dựng theo voice) — file ghi âm.
-> 7. **Khung hình** — 9:16 (mặc định), 4:5, 1:1, 16:9.
-> Gửi xong mình làm liền một mạch, xong gửi video + link trang chỉnh sửa. Bạn khoá màn hình được.
-
-Đã gửi đủ ngay từ đầu thì bỏ qua bước hỏi. Thiếu thông tin không bắt buộc → tự chọn cách an toàn, KHÔNG bịa giá / số liệu.
-"Xem phong cách" → cài công cụ (mục 2), chạy `./chay.sh phongcach.py ds`, gửi danh sách gọn theo nhóm chủ đề.
+## 1. Hỏi từng câu một (khi người dùng nhắn "bắt đầu" / "edit video" mà chưa gửi đủ)
+MỖI TIN CHỈ HỎI 1 CÂU, ngắn 1–2 dòng, chờ họ trả lời rồi mới hỏi câu kế. Không gửi cả danh sách, không giải thích dài.
+Thứ tự (câu nào họ đã trả lời / đã gửi kèm từ trước thì bỏ qua, không hỏi lại):
+1. **Video gốc** (bắt buộc): "Gửi mình các clip nhé (theo thứ tự muốn ghép; clip nào lấy đoạn nào thì ghi kèm)."
+   Chưa có video thì không sang câu 2. Nhận xong video thì cài công cụ (mục 2) ngay trong lượt đó rồi mới hỏi câu 2.
+2. **Brief**: "Video về gì? Gửi thông tin chính: tên dự án, giá, diện tích, vị trí, SĐT, câu kêu gọi… (không có thì nhắn 'bỏ qua')."
+3. **Phong cách**: hỏi bằng nút chọn (AskUserQuestion nếu có): Tự chọn hợp nội dung (khuyên dùng) · Gửi video tham chiếu ·
+   Xem danh sách phong cách. Chọn "xem danh sách" → chạy `./chay.sh phongcach.py ds`, gửi gọn theo nhóm chủ đề, chờ họ chọn.
+4. **Cảnh trám / tư liệu**: "Có ảnh/video minh họa không (phối cảnh, mặt bằng, sổ, tiện ích…)? Gửi kèm ghi chú dùng ở câu nào,
+   hoặc nhắn 'không'."
+5. **Nhạc**: nút chọn: Tự chọn theo phong cách · Sôi động · Chill nhẹ nhàng · Sang trọng (họ có thể gõ kiểu khác / gửi file / "không nhạc").
+6. **Giọng đọc**: chỉ hỏi khi clip là cảnh quay không lời / lời chỉ đạo người quay (xem transcript sau khi chuẩn bị, hoặc họ nói vậy):
+   "Có file giọng đọc không? Gửi file, hoặc gửi kịch bản để mình đọc giọng AI, hoặc 'không' để dựng chữ + nhạc."
+7. **Khung hình**: nút chọn: 9:16 TikTok (khuyên dùng) · 4:5 Facebook · 1:1 · 16:9 YouTube.
+Sau câu cuối: nhắn 1 dòng "Đủ rồi, mình làm luôn — xong gửi video + link trang chỉnh sửa, bạn khoá màn hình được." rồi làm mục 3.
+Bất cứ lúc nào họ nhắn "làm luôn" / "thôi làm đi" → dừng hỏi, các câu còn lại dùng mặc định (tự chọn phong cách & nhạc, 9:16).
+Thiếu thông tin không bắt buộc → tự chọn cách an toàn, KHÔNG bịa giá / số liệu.
 
 ## 2. Cài công cụ (mỗi phiên 1 lần, ~1 phút)
 Kho công khai — không cần GitHub hay kết nối gì:
