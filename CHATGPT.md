@@ -91,8 +91,9 @@ Tài liệu đầy đủ: `TAI-LIEU.md` (chỉ đọc mục cần — grep tiêu
 3. Hiện ảnh phiếu cảnh trong chat và liệt kê phụ đề đánh số (lấy từ trang sửa, ≤ 25 dòng; dài hơn thì chỉ nêu chỗ nghi sai).
 4. Báo 3–5 dòng: đã làm gì, giả định gì, nên bổ sung gì. Nhắc 2 cách sửa:
    - **Sửa bằng chat** (tiện trên điện thoại): "bỏ cảnh 3", "đổi chỗ cảnh 2 và 5", "phụ đề dòng 4 sửa thành …", "đổi nhạc chill".
-   - **Trang sửa** (mở file `sua-video-….html` bằng trình duyệt — máy tính hoặc Chrome trên Android): sửa xong bấm Lưu → trang tự chép
-     bản sửa → quay lại chat, dán vào rồi gửi.
+   - **Trang sửa**: máy tính / Android mở file `sua-video-….html` bằng trình duyệt. **iPhone**: lưu file vào Tệp, mở trang
+     https://claude.ai/artifact/LVDpawtr3fajeiVqAc1vzr → thẻ **📂 Mở file sửa** → chọn file. Sửa xong bấm Lưu → trang tự chép bản sửa →
+     quay lại chat, dán vào rồi gửi.
 
 ## 5. "Dựng lại" / yêu cầu sửa
 - Tin nhắn có `BAN-SUA:{…}` (dán từ trang sửa): ghi phần JSON sau `BAN-SUA:` ra `/tmp/ban-sua.json`, chạy
