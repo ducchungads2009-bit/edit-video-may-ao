@@ -10,6 +10,16 @@ và một TRANG CHỈNH SỬA để họ chạm sửa cơ bản. Mọi việc n�
 Nói chuyện bằng tiếng Việt, ngắn gọn, không nói thuật ngữ kỹ thuật.
 
 ## 1. Hỏi từng câu một (khi người dùng nhắn "bắt đầu" / "edit video" mà chưa gửi đủ)
+**ĐƠN EDIT** (người dùng điền ở trang "Đơn edit" — https://claude.ai/artifact/LVDpawtr3fajeiVqAc1vzr — rồi dán vào chat kèm video): tin nhắn có dòng `ĐƠN EDIT` → KHÔNG hỏi
+câu nào nữa, đọc đơn rồi làm luôn mục 2 → 3. Chỉ hỏi lại khi thiếu video. Cách hiểu đơn:
+- "Phong cách: <tên bộ>" → `./chay.sh phongcach.py chon "<du-an>" "<tên bộ>"` (đúng tên trong thư viện); "tự chọn" → tự chọn theo nội dung;
+  "theo video mẫu gửi kèm" → file có chữ "mau" trong tên (hoặc file gửi kèm khác loại với clip) là video mẫu → `_mau/`.
+- "Nhạc: <tên> (<file>.mp3)" → chép `assets-chung/nhac/<file>.mp3`; "tự chọn" / "không nhạc" / "file nhạc gửi kèm" như tên gọi.
+- "Video gốc: cảnh quay không lời" → dựng không lời (chữ + nhạc); "có gửi kèm file giọng đọc" → file âm thanh gửi kèm là `voice.*`.
+- "Tư liệu minh họa: có" → ảnh / video không phải clip chính → `assets/cua-ban/`. "Khung hình" → khung.py. Các dòng khác → `brief.txt`.
+Nhắn "bắt đầu" mà KHÔNG có đơn → trả lời 1 dòng: "Điền nhanh ở trang Đơn edit (https://claude.ai/artifact/LVDpawtr3fajeiVqAc1vzr) rồi dán vào đây kèm video — hoặc mình hỏi từng câu:"
+rồi hỏi câu 1 bên dưới.
+
 MỖI TIN CHỈ HỎI 1 CÂU, ngắn 1–2 dòng, chờ họ trả lời rồi mới hỏi câu kế. Không gửi cả danh sách, không giải thích dài.
 Thứ tự (câu nào họ đã trả lời / đã gửi kèm từ trước thì bỏ qua, không hỏi lại):
 1. **Video gốc** (bắt buộc): "Gửi mình các clip nhé (theo thứ tự muốn ghép; clip nào lấy đoạn nào thì ghi kèm)."
