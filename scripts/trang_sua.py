@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-MAX_MB = 17  # mỗi file của artifact ≤ 20 MiB
+MAX_MB = 17  # mỗi file của artifact ≤ 20 MiB (bản 1 file: 10)
 
 
 def run(cmd):
@@ -57,7 +57,8 @@ def main():
 
     # video xem thử ≤ MAX_MB
     d = max(1.0, dur_of(final))
-    vb = int(max(350_000, min(1_500_000, MAX_MB * 8e6 / d - 96_000)))
+    mx = 10 if "--mot-file" in args else MAX_MB
+    vb = int(max(250_000, min(1_500_000, mx * 8e6 / d - 96_000)))
     run(["ffmpeg", "-y", "-i", str(final), "-vf", "scale=540:-2", "-c:v", "libx264", "-preset", "veryfast", "-b:v", str(vb),
          "-maxrate", str(int(vb * 1.3)), "-bufsize", str(vb * 2), "-c:a", "aac", "-b:a", "96k", "-movflags", "+faststart", str(out / "preview.mp4")])
 
@@ -113,6 +114,36 @@ def main():
     shutil.copy(ROOT / "scripts/trang_sua.html", out / "index.html")
     # lưu bản gốc lúc tạo trang (để áp bản sửa đúng mốc)
     (proj / "_work/trang-sua-goc.json").write_text(json.dumps({"phien": phien, "segments": segs, "plan": plan}, ensure_ascii=False), encoding="utf-8")
+    if "--mot-file" in args:  # 1 file HTML mở được ở mọi nơi (ChatGPT, máy tính) — video + ảnh nhúng sẵn
+        import base64
+        def durl(f, mime):
+            return f"data:{mime};base64," + base64.b64encode((out / f).read_bytes()).decode()
+        d1 = dict(data, video=durl("preview.mp4", "video/mp4"), segs=[dict(c, thumb=durl(c["thumb"], "image/jpeg")) for c in cards])
+        html = (out / "index.html").read_text(encoding="utf-8")
+        inj = "<script>window.__DU_LIEU__=" + json.dumps(d1, ensure_ascii=False).replace("</", "<\\/") + ";</script>"
+        html = html.replace("<script>", inj + "\n<script>", 1)
+        mf = proj / f"sua-video-{phien}.html"
+        mf.write_text(html, encoding="utf-8")
+        print(f"Trang sửa 1 file: {mf}  ({mf.stat().st_size / 1e6:.1f} MB)")
+    if "--phieu" in args:  # ảnh lưới các cảnh có đánh số — để sửa bằng chat ("bỏ cảnh 3", "đổi cảnh 2 với 5")
+        from PIL import Image, ImageDraw, ImageFont
+        ims = [Image.open(out / c["thumb"]).convert("RGB") for c in cards]
+        if ims:
+            w, h = ims[0].size; cols = min(5, len(ims)); rows = (len(ims) + cols - 1) // cols
+            sheet = Image.new("RGB", (cols * (w + 6) + 6, rows * (h + 6) + 6), "white")
+            dr = ImageDraw.Draw(sheet)
+            try:
+                font = ImageFont.load_default(size=34)
+            except TypeError:
+                font = ImageFont.load_default()
+            for k, im in enumerate(ims):
+                x, y = 6 + (k % cols) * (w + 6), 6 + (k // cols) * (h + 6)
+                sheet.paste(im.resize((w, h)), (x, y))
+                dr.rectangle([x, y, x + 52, y + 44], fill="black")
+                dr.text((x + 8, y + 2), str(k + 1), fill="yellow", font=font)
+            pf2 = proj / f"phieu-canh-{phien}.jpg"
+            sheet.save(pf2, quality=85)
+            print(f"Phiếu cảnh: {pf2}")
     files = sorted(p.name for p in out.iterdir())
     mb = sum(p.stat().st_size for p in out.iterdir()) / 1e6
     print(f"Trang chỉnh sửa (bản dựng số {phien}): {out}  ·  {len(files)} file, {mb:.1f} MB")

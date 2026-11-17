@@ -75,6 +75,8 @@ Tài liệu đầy đủ của công cụ: `TAI-LIEU.md` (chỉ đọc mục c�
 - Sau khi người dùng bấm Lưu trên trang: db_get (slug trong `trang-sua-slug.txt`, path `ban-sua/hien-tai`), ghi phần
   data ra `/tmp/ban-sua.json`, chạy `./chay.sh ap_ban_sua.py "<du-an>" /tmp/ban-sua.json`. Đọc dòng "GHI CHÚ:" (nếu có)
   và tự sửa plan.json theo ghi chú. Rồi render lại → trang_sua.py → publish_files cùng slug → gửi video mới.
+- Tin nhắn có `BAN-SUA:{…}` (người dùng mở trang ngoài Claude nên trang chép bản sửa để dán): ghi phần JSON sau `BAN-SUA:` ra
+  `/tmp/ban-sua.json` rồi chạy ap_ban_sua.py như trên.
 - Người dùng nhắn yêu cầu bằng lời: đọc plan.json hiện tại, chỉ sửa phần được nhờ, render lại, cập nhật trang.
 - "Làm tiếp" / "thử lại" / phản hồi trước bị đứt giữa chừng: KHÔNG làm lại từ đầu — xem `ls ~/video-tool/cho-edit/*/` và
   `_work/` để biết đã tới bước nào (đã cài? có words.json? có plan.json? có final.mp4?) rồi làm tiếp từ đó.

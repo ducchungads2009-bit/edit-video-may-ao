@@ -65,7 +65,7 @@
 <div class="pane" id="p-nhac"></div>
 <div class="pane" id="p-pc"></div>
 <div class="pane" id="p-note"></div>
-<div class="save"><button id="luu">💾 Lưu — rồi nhắn Claude “dựng lại”</button><div class="st" id="st"></div></div>
+<div class="save"><button id="luu">💾 Lưu — rồi nhắn “dựng lại”</button><div class="st" id="st"></div></div>
 
 <script>
 const $ = (s) => document.querySelector(s);
@@ -188,12 +188,12 @@ $('#p-nhac').addEventListener('click', (ev) => {
 
 function renderPc() {
   $('#p-pc').innerHTML = `<div class="card"><label class="f">Phong cách đang dùng</label><select id="pcsel">${['', ...D.phongCach].map((n) => `<option ${n === S.pc ? 'selected' : ''} value="${esc(n)}">${n ? esc(n) : '— Claude tự chọn —'}</option>`).join('')}</select>
-    <div class="sub" style="margin-top:8px">Đổi phong cách thì Claude dựng lại chữ, phụ đề, hiệu ứng theo bộ mới. Muốn học theo video mẫu: gửi video mẫu vào chat.</div></div>`;
+    <div class="sub" style="margin-top:8px">Đổi phong cách thì AI dựng lại chữ, phụ đề, hiệu ứng theo bộ mới. Muốn học theo video mẫu: gửi video mẫu vào chat.</div></div>`;
 }
 $('#p-pc').addEventListener('change', (ev) => { if (ev.target.id === 'pcsel') { S.pc = ev.target.value; mark(); } });
 
 function renderNote() {
-  $('#p-note').innerHTML = `<div class="card"><label class="f">Ghi chú cho Claude (sửa gì khác: thêm giá, đổi màu chữ, chèn cảnh, sửa phụ đề…)</label><textarea id="note" style="min-height:140px">${esc(S.note)}</textarea></div>`;
+  $('#p-note').innerHTML = `<div class="card"><label class="f">Ghi chú cho AI (sửa gì khác: thêm giá, đổi màu chữ, chèn cảnh, sửa phụ đề…)</label><textarea id="note" style="min-height:140px">${esc(S.note)}</textarea></div>`;
 }
 $('#p-note').addEventListener('input', (ev) => { if (ev.target.id === 'note') { S.note = ev.target.value; mark(); } });
 
@@ -215,8 +215,17 @@ $('#luu').addEventListener('click', async () => {
     chu: S.els.map((e) => { const {_i, _del, _new, ...r} = e; return {...r, goc: _i ?? null, xoa: !!_del, moi: !!_new}; }),
     phuDe: S.caps.map((c, n) => ({t: D.phuDe[n].t, cu: D.phuDe[n].text, goc: D.phuDe[n].goc || D.phuDe[n].text, moi: c})).filter((x) => x.moi.trim() !== x.cu), nhac: S.tatNhac ? null : S.nhac, amLuongNhac: S.vol, phongCach: S.pc, ghiChu: S.note,
   };
-  if (!db) {
-    try { await navigator.clipboard.writeText(JSON.stringify(out)); st.textContent = 'Không lưu được lên trang — đã chép, dán vào chat cho Claude.'; } catch { st.textContent = 'Không lưu được — mở trang trong app Claude / claude.ai rồi thử lại.'; }
+  if (!db) {  // trang mở ngoài Claude (ChatGPT, file tải về): chép bản sửa để dán vào chat
+    const txt = 'dựng lại\nBAN-SUA:' + JSON.stringify(out);
+    try { localStorage.setItem('ban-sua-' + D.phienBan, JSON.stringify(out)); } catch {}
+    let ok = false;
+    try { await navigator.clipboard.writeText(txt); ok = true; } catch {}
+    st.innerHTML = (ok ? '✅ Đã chép bản sửa. ' : '') + 'Quay lại chat, <b>dán</b> vào ô chat rồi gửi.' +
+      '<textarea id="ban-sua-txt" readonly style="width:100%;height:90px;margin-top:8px;font-size:12px">' + esc(txt) + '</textarea>' +
+      '<button id="chep-lai" style="margin-top:6px">📋 Chép lại</button>';
+    const ta = $('#ban-sua-txt');
+    $('#chep-lai').onclick = async () => { ta.select(); try { await navigator.clipboard.writeText(txt); } catch { document.execCommand('copy'); } $('#chep-lai').textContent = '✅ Đã chép'; };
+    dirty = false;
     return;
   }
   st.textContent = 'Đang lưu…';
@@ -229,10 +238,10 @@ $('#luu').addEventListener('click', async () => {
 window.addEventListener('beforeunload', (e) => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
 
 (async () => {
-  try { D = await (await fetch('du-lieu.json', {cache: 'no-store'})).json(); }
+  try { D = window.__DU_LIEU__ || await (await fetch('du-lieu.json', {cache: 'no-store'})).json(); }
   catch { document.body.innerHTML = '<p class="empty">Không tải được dữ liệu dự án.</p>'; return; }
   $('#ten').textContent = '✂ ' + (D.ten || 'Sửa video');
-  $('#phien').textContent = 'Bản dựng số ' + D.phienBan + ' · sửa xong bấm Lưu, rồi nhắn Claude “dựng lại”';
+  $('#phien').textContent = 'Bản dựng số ' + D.phienBan + ' · sửa xong bấm Lưu, rồi quay lại chat nhắn “dựng lại”';
   vid.src = D.video;
   S = fresh();
   renderAll();
@@ -256,6 +265,7 @@ window.addEventListener('beforeunload', (e) => { if (dirty) { e.preventDefault()
       }
     }
   } catch {}
+  if (!db) { try { const v = JSON.parse(localStorage.getItem('ban-sua-' + D.phienBan) || 'null'); if (v) $('#st').textContent = 'Có bản sửa đã lưu trên máy này lúc ' + new Date(v.at).toLocaleTimeString('vi') + ' (bấm Lưu để chép lại).'; } catch {} }
 })();
 </script>
 </body>

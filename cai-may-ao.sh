@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
-# Cài công cụ dựng video trên máy ảo của Claude (chạy 1 lần mỗi phiên, ~1–2 phút). In "SẴN SÀNG" khi xong.
+# Cài công cụ dựng video trên máy ảo (Claude, hoặc ChatGPT chế độ Công việc) — 1 lần mỗi phiên, ~1–2 phút. In "SẴN SÀNG" khi xong.
 set -e
 cd "$(dirname "$0")"
+mkdir -p ~/.local/bin; export PATH="$HOME/.local/bin:$HOME/.local/node/bin:$PATH"
+# Máy ảo thiếu Node / ffmpeg (vd ChatGPT) -> tải bản dựng sẵn (cần mạng tới nodejs.org / johnvansickle.com)
+if ! command -v npm >/dev/null 2>&1; then
+  echo "== Tải Node.js"
+  curl -sSL --retry 3 https://nodejs.org/dist/v22.11.0/node-v22.11.0-linux-x64.tar.xz | tar xJ -C /tmp && rm -rf ~/.local/node && mv /tmp/node-v22.11.0-linux-x64 ~/.local/node
+fi
+if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
+  echo "== Tải ffmpeg"
+  curl -sSL --retry 3 https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz | tar xJ -C /tmp \
+    && cp /tmp/ffmpeg-*-amd64-static/ffmpeg /tmp/ffmpeg-*-amd64-static/ffprobe ~/.local/bin/ || true
+fi
 echo "== Thư viện Python"
-pip install --break-system-packages -q sherpa-onnx soundfile numpy opencv-python-headless onnxruntime 2>&1 | grep -v -i "warning\|notice" || true
+PKGS="sherpa-onnx soundfile numpy opencv-python-headless onnxruntime pillow brotli"
+{ python3 -m pip install --break-system-packages -q $PKGS 2>/dev/null || python3 -m pip install -q $PKGS; } 2>&1 | grep -v -i "warning\|notice" || true
 echo "== Thư viện dựng (npm)"
 npm ci --no-audit --no-fund --loglevel=error
 echo "== Mô hình nhận giọng tiếng Việt"
