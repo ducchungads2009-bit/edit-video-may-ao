@@ -34,6 +34,10 @@ rồi hỏi câu 1 bên dưới.
 - Có LINK (Google Drive file / thư mục, Dropbox, link tải thẳng — trong đơn dòng "Link" hoặc trong tin nhắn): sau khi cài công cụ chạy
   `./chay.sh tai_link.py /tmp/tai-ve <link> [<link>…]` rồi phân loại file tải về như trên. Báo lỗi tên miền / quyền chia sẻ thì nhắn
   người dùng đúng câu lỗi đó (Drive phải để "Bất kỳ ai có đường liên kết"), các file đã gửi trực tiếp vẫn làm tiếp.
+- Link là THƯ MỤC Drive có thư mục con: tên thư mục con (bỏ dấu, không phân biệt hoa thường) quyết định loại — "clip", "video goc",
+  "quay" → clip gốc; "anh", "minh hoa", "tu lieu", "canh tram" → `assets/cua-ban/`; "mau", "tham chieu", "video mau" → `_mau/`;
+  "nhac" → nhạc (`nhac.*`); "voice", "giong", "giong doc" → `voice.*`. Thư mục con tên khác / file để ngoài → phân loại như trên.
+  Clip gốc nhiều file: ghép theo thứ tự tên file (người dùng có thể đặt 01, 02…).
 
 MỖI TIN CHỈ HỎI 1 CÂU, ngắn 1–2 dòng, chờ họ trả lời rồi mới hỏi câu kế. Không gửi cả danh sách, không giải thích dài.
 Thứ tự (câu nào họ đã trả lời / đã gửi kèm từ trước thì bỏ qua, không hỏi lại):

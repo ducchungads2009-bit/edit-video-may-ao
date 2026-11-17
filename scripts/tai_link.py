@@ -10,11 +10,15 @@ ok = bad = 0
 for u in links:
     u = u.strip().strip("<>").rstrip(".,;)")
     try:
-        before = set(os.listdir(dst))
+        def all_files():
+            return {os.path.relpath(os.path.join(r, f), dst) for r, _, fs in os.walk(dst) for f in fs}
+        before = all_files()
         if "drive.google.com" in u or "docs.google.com" in u:
             import gdown
             if "/folders/" in u:
-                gdown.download_folder(url=u, output=dst, quiet=True, remaining_ok=True)
+                got = gdown.download_folder(url=u, output=dst, quiet=True, remaining_ok=True) or []
+                if len(got) >= 50:
+                    print("LƯU Ý: Drive chỉ cho tải tối đa 50 file mỗi thư mục — thư mục nào nhiều hơn thì chia nhỏ hoặc gửi link từng thư mục")
             else:
                 try:
                     out = gdown.download(url=u, output=dst + os.sep, quiet=True, fuzzy=True)
@@ -39,7 +43,7 @@ for u in links:
                         if not b:
                             break
                         f.write(b)
-        new = sorted(set(os.listdir(dst)) - before)
+        new = sorted(all_files() - before)
         for n in new:
             print(f"ĐÃ TẢI: {n} ({os.path.getsize(os.path.join(dst, n)) / 1e6:.1f} MB)")
         ok += 1
