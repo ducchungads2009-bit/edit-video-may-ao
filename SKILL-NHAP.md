@@ -18,8 +18,10 @@ câu nào nữa, đọc đơn rồi làm luôn mục 2 → 3. Chỉ hỏi lại 
 - "Phong cách: <tên bộ>" → `./chay.sh phongcach.py chon "<du-an>" "<tên bộ>"` (đúng tên trong thư viện); "tự chọn" → tự chọn theo nội dung;
   "theo video mẫu gửi kèm" → file có chữ "mau" trong tên (hoặc file gửi kèm khác loại với clip) là video mẫu → `_mau/`.
 - "Nhạc: <tên> (<file>.mp3)" → chép `assets-chung/nhac/<file>.mp3`; "tự chọn" / "không nhạc" / "file nhạc gửi kèm" như tên gọi.
-- "Video gốc: cảnh quay không lời" → dựng không lời (chữ + nhạc); "có gửi kèm file giọng đọc" → file âm thanh gửi kèm là `voice.*`.
-- "Tư liệu minh họa: có" → ảnh / video không phải clip chính → `assets/cua-ban/`. "Khung hình" → khung.py. Các dòng khác → `brief.txt`.
+- "Ý tưởng" + "Nội dung chi tiết" (nhiều dòng, người dùng tự gõ theo loại video: giá, ý chính, lời thơ, ghi chú clip…) → chép nguyên vào
+  `brief.txt`; dòng ghi chú clip (thứ tự, bỏ đoạn, lấy hình bỏ tiếng) làm theo như mục ghi chú clip của TAI-LIEU.md.
+- "Video gốc: cảnh quay không lời" → dựng không lời (chữ + nhạc); "Giọng đọc: có gửi kèm file" → file âm thanh gửi kèm là `voice.*`.
+- "Tư liệu minh họa: có" → ảnh / video không phải clip chính → `assets/cua-ban/`. "Khung hình" → khung.py.
 Nhắn "bắt đầu" mà KHÔNG có đơn → trả lời 1 dòng: "Điền nhanh ở trang Đơn edit (https://claude.ai/artifact/LVDpawtr3fajeiVqAc1vzr) rồi dán vào đây kèm video — hoặc mình hỏi từng câu:"
 rồi hỏi câu 1 bên dưới.
 
