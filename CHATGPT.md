@@ -84,23 +84,26 @@ Tài liệu đầy đủ: `TAI-LIEU.md` (chỉ đọc mục cần — grep tiêu
 8. `./chay.sh soat.py "<du-an>"`, sửa 1 vòng. `./chay.sh render.py "<du-an>"` (chạy nền, ~10 giây dựng / 1 giây video).
 9. Xem 3–4 khung của `final.mp4` (ffmpeg) để chắc đúng.
 
-## 4. Gửi kết quả
-1. `./chay.sh trang_sua.py "<du-an>" --ten "<tên ngắn>" --mot-file --phieu` → `<du-an>/sua-video-<số>.html` (trang sửa 1 file) +
-   `<du-an>/phieu-canh-<số>.jpg` (ảnh các cảnh có đánh số).
-2. Chép ra `/mnt/data/`: `final.mp4` → `<ten>.mp4`, trang sửa → `sua-video-<ten>.html`; đưa link tải cả hai.
-3. Hiện ảnh phiếu cảnh trong chat và liệt kê phụ đề đánh số (lấy từ trang sửa, ≤ 25 dòng; dài hơn thì chỉ nêu chỗ nghi sai).
-4. Báo 3–5 dòng: đã làm gì, giả định gì, nên bổ sung gì. Nhắc 2 cách sửa:
-   - **Sửa bằng chat** (tiện trên điện thoại): "bỏ cảnh 3", "đổi chỗ cảnh 2 và 5", "phụ đề dòng 4 sửa thành …", "đổi nhạc chill".
-   - **Trang sửa**: máy tính / Android mở file `sua-video-….html` bằng trình duyệt. **iPhone**: lưu file vào Tệp, mở trang
-     https://claude.ai/artifact/LVDpawtr3fajeiVqAc1vzr → thẻ **📂 Mở file sửa** → chọn file. Sửa xong bấm Lưu → trang tự chép bản sửa →
-     quay lại chat, dán vào rồi gửi.
+## 4. Gửi kết quả (sửa bằng chat — KHÔNG gửi file trang sửa trừ khi người dùng xin)
+1. `./chay.sh trang_sua.py "<du-an>" --ten "<tên ngắn>" --phieu` → `<du-an>/phieu-canh-<số>.jpg` (ảnh các cảnh có đánh số) +
+   `_trang-sua/du-lieu.json` (danh sách cảnh, chữ, phụ đề — dùng để đánh số khi người dùng sửa).
+2. Chép `final.mp4` ra `/mnt/data/<ten>.mp4`, đưa link tải.
+3. Hiện ảnh phiếu cảnh trong chat + liệt kê NGẮN, đánh số:
+   - **Chữ trên video**: số thứ tự · nội dung · giây hiện (ví dụ "C2 · CHỈ 2,55 TỶ · 0:03").
+   - **Phụ đề**: chỉ liệt kê dòng nghi sai (tên riêng, số, tiếng Anh); video ngắn (≤ 20 dòng) thì liệt kê hết, đánh số P1, P2…
+4. Báo 3–5 dòng: đã làm gì, giả định gì, nên bổ sung gì. Nhắc cách sửa bằng chat, ví dụ: "bỏ cảnh 3", "đổi chỗ cảnh 2 và 5",
+   "C2 sửa thành …", "C2 dời lên trên", "P4 sửa thành …", "đổi nhạc chill", "thêm chữ 'SỔ HỒNG' ở giây 5". Gom nhiều chỗ sửa trong
+   1 tin cho đỡ tốn lượt.
+5. Người dùng xin "trang sửa" (dùng máy tính / Android): thêm `--mot-file` để có `sua-video-<số>.html`, chép ra `/mnt/data/` và đưa link.
 
 ## 5. "Dựng lại" / yêu cầu sửa
 - Tin nhắn có `BAN-SUA:{…}` (dán từ trang sửa): ghi phần JSON sau `BAN-SUA:` ra `/tmp/ban-sua.json`, chạy
   `./chay.sh ap_ban_sua.py "<du-an>" /tmp/ban-sua.json`. Đọc dòng "GHI CHÚ:" (nếu có) và tự sửa plan.json theo ghi chú.
 - Yêu cầu bằng lời: đọc plan.json hiện tại, chỉ sửa phần được nhờ (cảnh k = đoạn thứ k trong `segments`; dòng phụ đề sai → thêm vào
   `fixes`), giữ nguyên phần khác.
-- Rồi render lại → trang_sua.py `--mot-file --phieu` → gửi video + trang sửa mới.
+- Yêu cầu theo số: "cảnh k" = đoạn thứ k trong `segments` (đúng thứ tự ảnh phiếu cảnh); "Ck" = khối chữ thứ k trong danh sách đã gửi;
+  "Pk" = dòng phụ đề thứ k (sửa → thêm vào `fixes`); "dời lên / xuống / trái / phải" → `dy` / `dx` ±150px (hoặc theo số px họ nói).
+- Rồi render lại → trang_sua.py `--phieu` → gửi video + phiếu cảnh + danh sách mới (như mục 4).
 - "Làm tiếp" / phản hồi trước bị đứt: KHÔNG làm lại từ đầu — xem `ls ~/video-tool/cho-edit/*/` và `_work/` để biết đã tới bước nào
   (đã cài? có words.json? có plan.json? có final.mp4?) rồi làm tiếp.
 - Phiên mới (máy ảo đã mất file): nói rõ cần gửi lại clip; giữ lời nhắn sửa của họ.
