@@ -79,8 +79,13 @@ Tài liệu đầy đủ của công cụ: `TAI-LIEU.md` (chỉ đọc mục c�
    rồi xem để chọn cảnh.
 4. Phong cách: video tham chiếu → `./chay.sh style.py "<du-an>"` rồi làm mục "Video mẫu & PHONG CÁCH" của TAI-LIEU.md;
    tên bộ → `./chay.sh phongcach.py chon "<du-an>" "<tên>"`; "tự chọn" → chọn theo bảng chủ đề trong TAI-LIEU.md.
-5. Cắt: có lời → `./chay.sh cat_lang.py` + thêm đoạn đọc lại / vấp vào `cut.json` → `./chay.sh trim.py` (hoặc
-   `segments` khi nhiều lần quay — mục 2a TAI-LIEU.md). Không lời → `segments` 3–5 giây / cảnh đẹp, xếp theo lối đi,
+5. Cắt: có lời → `./chay.sh cat_lang.py "<du-an>"` — tự cắt từ đệm (à, ừ, ờ… kể cả nói liền vào câu), lặng > 0,6s VÀ chỗ nói vấp /
+   nói lại (cụm từ lặp lại ngay sau → bỏ lần nói trước). ĐỌC các dòng "nói lại / vấp" nó in: lần GIỮ (lần sau) phải trọn câu, nói tốt —
+   nếu lần trước tốt hơn hoặc lặp là cố ý nhấn mạnh thì sửa `cut.json`. Rồi đọc `_work/transcript_full.txt` tìm chỗ còn lại (câu nói hỏng
+   giữa chừng, lạc đề, lóng ngóng đầu/cuối clip) thêm vào `cut.json` → `./chay.sh trim.py "<du-an>"` → BẮT BUỘC
+   `./chay.sh cat_lang.py "<du-an>" --kiem`: còn báo lặp / từ đệm thì thêm vào cut.json và trim lại (tối đa 2 vòng). (Nhiều lần quay cùng
+   nội dung → `segments` — mục 2a TAI-LIEU.md, xong cũng soát lại như vậy.)
+   Không lời → `segments` 3–5 giây / cảnh đẹp, xếp theo lối đi,
    `"videoVolume": 0`, `"captions": false`, có nhạc.
 6. Ghi tên từng cảnh (để trang chỉnh sửa hiện) vào `_work/nhan-canh.json` = ["Phòng khách", "Bếp", …] theo thứ tự segments
    (video có lời thì bỏ qua — trang tự hiện lời nói).
