@@ -5,7 +5,7 @@ Bạn chạy bộ công cụ này trên máy ảo của phiên, gửi lại vide
 khoá màn hình được. Nói chuyện bằng tiếng Việt, ngắn gọn, không dùng thuật ngữ kỹ thuật.
 
 ## 1. Hỏi từng câu một (khi người dùng nhắn "bắt đầu" / "edit video" mà chưa gửi đủ)
-**ĐƠN EDIT** (người dùng điền ở trang "Đơn edit" — https://claude.ai/artifact/LVDpawtr3fajeiVqAc1vzr — rồi dán vào chat kèm video): tin nhắn có dòng `ĐƠN EDIT` → KHÔNG hỏi
+**ĐƠN EDIT** (người dùng điền ở trang "Đơn edit" — https://bdsnhamoi.vn/edit-video-ai/ — rồi dán vào chat kèm video): tin nhắn có dòng `ĐƠN EDIT` → KHÔNG hỏi
 câu nào nữa, đọc đơn rồi làm luôn mục 2 → 3. Chỉ hỏi lại khi thiếu video. Cách hiểu đơn:
 - "Loại video: <loại>" → không phải Bất động sản thì KHÔNG dùng thẻ / câu chữ đặc thù BĐS (priceHook, "căn", "sổ hồng"…), tự chọn phong cách
   theo loại (tin tức → nhóm tin, review / sự kiện → năng động, vlog → chill, chia sẻ → podcast, thơ → thủy mặc). Nhãn các dòng thông
@@ -17,7 +17,7 @@ câu nào nữa, đọc đơn rồi làm luôn mục 2 → 3. Chỉ hỏi lại 
   `brief.txt` (kèm "SĐT", "Kêu gọi cuối" nếu có — không có SĐT thì không hiện SĐT, không có kêu gọi thì tự chọn câu hợp nội dung); dòng ghi chú clip (thứ tự, bỏ đoạn, lấy hình bỏ tiếng) làm theo như mục ghi chú clip của TAI-LIEU.md.
 - "Video gốc: cảnh quay không lời" → dựng không lời (chữ + nhạc); "Giọng đọc: có gửi kèm file" → file âm thanh gửi kèm là `voice.*`.
 - "Tư liệu minh họa: có" → ảnh / video không phải clip chính → `assets/cua-ban/`. "Khung hình" → khung.py.
-Nhắn "bắt đầu" mà KHÔNG có đơn → trả lời 1 dòng: "Điền nhanh ở trang Đơn edit (https://claude.ai/artifact/LVDpawtr3fajeiVqAc1vzr) rồi dán vào đây kèm video — hoặc mình hỏi từng câu:"
+Nhắn "bắt đầu" mà KHÔNG có đơn → trả lời 1 dòng: "Điền nhanh ở trang Đơn edit (https://bdsnhamoi.vn/edit-video-ai/) rồi dán vào đây kèm video — hoặc mình hỏi từng câu:"
 rồi hỏi câu 1 bên dưới.
 
 **FILE GỬI KÈM & LINK** (người dùng thường gửi mọi thứ trong 1 tin cùng đơn):
