@@ -572,7 +572,7 @@ def kieu_chu_note(f: Path):
 # ---------- gửi / nhận phong cách (file .phongcach = zip của thư mục phong-cach/<tên>) ----------
 GOI_EXT = {".json", ".md", ".jpg", ".jpeg", ".png", ".txt", ".webp"}
 # khối đặc biệt cần bản tool đủ mới: tên khối -> file mã nguồn phải có
-NEED_FILES = {"orbit": "remotion/src/Orbit.tsx", "mapTour": "remotion/src/MapTour.tsx", "map": "remotion/src/MapBlock.tsx"}
+NEED_FILES = {"text3dPro": "remotion/src/Three3D.tsx", "photo3d": "remotion/src/Three3D.tsx", "object3d": "remotion/src/Three3D.tsx", "screen3d": "remotion/src/Three3D.tsx", "orbit": "remotion/src/Orbit.tsx", "mapTour": "remotion/src/MapTour.tsx", "map": "remotion/src/MapBlock.tsx"}
 
 
 def _needs(j: dict, note: str) -> list:

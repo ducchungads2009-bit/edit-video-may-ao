@@ -788,7 +788,69 @@ Mẫu người dùng tự lưu: `mau-cua-toi.json` (gốc tool) — nếu có, �
   3D / cảnh tới nhịp nhạc gần nhất (giữ độ dài; nhịp lấy từ plan.beats, chưa có thì dò từ plan.music). Khối không muốn dời: `"locked": true`.
 - Phong cách có sẵn dùng các khối này: "Điện ảnh AE", "Năng động AE" (style.effects.overlay = danh sách kiểu lớp phủ ưa dùng,
   style.graphics.ghiChu = cách dùng shape / text3d / scene).
-- Tool KHÔNG có: Lottie (cần file thiết kế), thay trời (sky replacement), 3D thật (mô hình 3D) — dùng gần nhất: overlay, card3d.
+- Tool KHÔNG có: Lottie (cần file thiết kế), thay trời (sky replacement) — dùng gần nhất: overlay. 3D THẬT: xem mục dưới.
+
+### 3D THẬT — Three.js (remotion/src/Three3D.tsx) — khối, ánh sáng, phản chiếu, bóng đổ thật
+Khác `text3d` / `card3d` / `orbit` (vẽ bằng CSS, giả 3D): các khối dưới dựng cảnh 3D thật trên nền trong suốt đè lên video. Nặng hơn khối
+thường → mỗi video 1–3 khối, mỗi khối 3–8 giây, cho Ý QUAN TRỌNG (hook giá, khoe căn, chốt vị trí). Xuất cần card đồ hoạ (render tự bật).
+- `text3dPro` — CHỮ KHỐI KIM LOẠI: `{"type": "text3dPro", start, end, "text": "CĂN HỘ\nVIEW SÔNG" ("\n" xuống dòng), "sub": "Chỉ từ 2,9 tỷ"
+  (dòng phụ nhỏ, trắng), "mat": gold|silver|chrome|copper|rose|white|black|color (+ "color"), "font": be-vietnam-pro|montserrat|playfair,
+  "anim": drop (từng chữ lật rơi, mặc định)|rise|flip|spin|zoom, "size": 190 (px cỡ chữ), "depth": 0.28 (× cỡ chữ), "width": 920 (px tối
+  đa — dòng dài tự co), "x": 540, "y": 650 (px tâm khối), "stagger": 0.06, "noGlint"/"noShadow"/"noSway": true để tắt vệt sáng / bóng /
+  lắc}`. Mỗi dòng ≤ ~12 ký tự; IN HOA ngắn 1–3 từ như nhãn. Dùng thay `text3d` khi cần chữ chốt sang trọng (giá, tên dự án, "SIÊU PHẨM").
+  Tránh mặt người nói (tranh_mat.py tính cả khối này). Riêng màu chữ trên nền: kim loại vàng/bạc tự có viền tối ở cạnh vát, nền rất sáng
+  thì chọn `black` hoặc `color` đậm.
+- `photo3d` — ẢNH BAY 3D QUANH NGƯỜI (thay `orbit` khi muốn chất 3D thật): `{"type": "photo3d", start, end, "items": [{"src": "assets/a.jpg",
+  "caption": "Phòng khách"}, …] (4–6 ẢNH, không nhận video), "look": polaroid (khung trắng + chú thích, mặc định)|clean|glass,
+  "hero": [{"i": 2, "at": 3.2, "hold": 1.5}] (ảnh số i — đếm từ 0 — rời vòng bay ra phóng to cạnh mặt lúc `at` giây tính từ lúc khối hiện,
+  giữ `hold` giây rồi quay về; đặt `at` đúng lúc lời nói nhắc tới phòng / căn đó — tra words.json), "period": 7 (giây/vòng), "rx": 380
+  (px bán kính), "tilt": 18 (độ nghiêng vòng), "cardW": 250, "dir": 1|-1, "heroX"/"heroY" (px, bỏ trống = phía đối diện người nói),
+  "heroScale": 1.7, "flyIn": false (bỏ bay vào), "exit": false (bỏ bay ra), "behind": false (cả vòng trước người)}`. `cx` (0–1) / `cy` (px)
+  bỏ trống = tự theo mặt (mat.json), ngang ngực. Nửa sau tự nằm SAU người (render tự tách người, chỉ khung 9:16). Khối 5–8 giây.
+  Phụ đề / chữ khác không đặt trùng vùng vòng ảnh trong lúc khối chạy.
+- `object3d` — VẬT THỂ 3D TRÊN MẶT ĐẤT CỦA CẢNH: `{"type": "object3d", start, end, "items": [{"kind": pin|house|tag|model, "x": 540, "y": 1150
+  (px điểm vật CHẠM ĐẤT trên khung), "size": 260 (px cao), "at": 0.15 (giây trễ sau lúc khối hiện), "color", "lift" (px nhấc khỏi đất —
+  ghim lơ lửng trên mái nhà: lift = cỡ nhà), "spin", "turn" (độ), "text"/"sub" (bảng giá: "3,2 TỶ" / "85m² · 2PN"), "mat" (chữ bảng giá),
+  "src": "assets/x.glb" (kind model)}], "pitch": 24 (độ nhìn xuống đất), "noShadow"}`. Hợp: cảnh flycam / toàn cảnh khu đất (ghim + bảng giá
+  lên đúng lô đất), cảnh mặt tiền (ngôi nhà mọc lên), chốt giá. Lấy x, y từ sheet.jpg / check.jpg (điểm trên mặt đất). Máy quay di
+  chuyển → BÁM VẬT THỂ (`track.py`, như khối thường) để vật dính vào cảnh. Không bịa giá — chỉ lấy từ lời nói / brief.
+  KIỂU XẾP `"layout"`: ring (vòng quay quanh người, mặc định) | fan (xoè quạt, `spread` độ, 70) | stack (xấp ảnh — ảnh trên cùng lần lượt
+  lật ra sau, mỗi ảnh period/số ảnh giây) | wall (tường ảnh nghiêng, `cols`, `wallTurn` độ) | helix (xoắn ốc quay). Kiểu khác ring nên
+  `"behind": false` và đặt `cx`/`cy` sang bên cạnh người nói (vd cx 0.32, cy 950). `hero` (phóng ảnh ra) dùng được với mọi kiểu.
+- `screen3d` — MÀN HÌNH 3D cạnh / trước người nói: `{"type": "screen3d", start, end, "look": holo (kính hologram xanh, viền phát sáng, mở
+  bung) | glass (kính mờ trắng) | device (máy tính bảng) | phone (điện thoại có tai thỏ, ratio 2.05, w 380) | curved (màn hình cong, w 900)
+  | neon (bảng neon 2 ống hồng–xanh, chữ phát sáng) | tv (TV có chân đế) | billboard (bảng LED điểm sáng, chữ vàng) | card (thẻ trắng nổi,
+  bóng đổ) | custom (tự thiết kế từ đầu), "frame": {…} (THIẾT KẾ KHUNG — xem dưới), "pageStyle": {…} (kiểu trang chữ), "pages": [{"src": "assets/a.mp4", "from": 3, "volume": 0} (VIDEO chạy
+  khớp từng khung) | {"src": "assets/b.jpg"} | {"title": "Căn 2PN · 72 m²", "text": "View sông\nBan công Đông Nam", "sub": "…"} (trang chữ)],
+  "x": 330, "y": 820 (px tâm), "w": 620 (px rộng), "ratio" (cao/rộng; 1.4 = dọc như điện thoại), "tiltY"/"tiltX" (độ nghiêng; mặc định
+  quay vào phía giữa khung), "enter": unfold|fly|flip, "color" (màu hologram), "at": [giây trong khối — chuyển trang] (không ghi + không
+  dò tay = tự chia đều)}`. Đặt ở khoảng trống cạnh người nói (xem mat.json), không đè mặt. Hợp: chiếu video căn / clip flycam cạnh người
+  đang giới thiệu (device / glass + 1 trang video), thông tin căn dạng hologram.
+  TỰ THIẾT KẾ KHUNG THEO Ý TƯỞNG (ưu tiên khi brief / phong cách có ý riêng — đừng chỉ chọn kiểu có sẵn): lấy kiểu gần nhất làm `look`
+  (hoặc `custom`) rồi ghi `frame` (chỉ các thông số muốn đổi): `curve` (độ cong ngang, 0 phẳng, 40–90 cong), `corner` (bo góc 0–0.5),
+  `bezel` {w px viền (0 = không khung), depth px dày, color, metal 0–1, rough 0–1}, `plate` {color, opacity} (tấm nền kính), `inset` (vùng
+  nội dung 0.8–1), `glow` {color, width px, halo 0–1, pulse}, `neon` {color, color2, width, flicker}, `corners` bracket|dot|none,
+  `scan` lines|led|grid|none (+ scanColor, scanOpacity), `reflection` 0–1, `shadow` 0–1, `notch`, `buttons`, `stand`, `transition`
+  slide|fade|flip. `pageStyle` {bg "#màu" | ["#màu1","#màu2"] | "none", ink, accent, align left|center, font (font có trong tool — xem
+  remotion/fonts.json), glow (chữ neon), titleSize}; từng trang ghi đè được bằng `style`. `enter` unfold|fly|flip|rise|fade, `color` = màu
+  chủ đạo (viền / neon). Ví dụ ý tưởng → thiết kế:
+  · "sang trọng, vàng kim" → look custom, frame {corner 0.08, bezel {w 10, depth 14, color "#c9a24a", metal 1, rough 0.2}, glow {color
+    "#ffd27a", width 3, halo 0.8, pulse true}, reflection 0.4, shadow 0.4, corners "dot"}, pageStyle {bg ["#1a1206","#3a2a0c"], ink "#fff6dd",
+    accent "#ffd27a", align "center", font "Playfair Display"}.
+  · "công nghệ, tương lai" → look holo + frame {corners "bracket", scan "grid", glow {color "#7cf9ff", pulse true}}, enter unfold.
+  · "trẻ trung, mạng xã hội" → look phone + pageStyle {bg ["#ff7a59","#ffb36b"], ink "#fff"}.
+  · "điện ảnh, rộng" → look curved + frame {curve 90}, ratio 0.42.  · "quán bar / sự kiện đêm" → look neon, đổi color / neon.color2.
+  · "tối giản, nhẹ nhàng" → look card + frame {corner 0.12, shadow 0.3}, pageStyle {accent màu thương hiệu}.
+  Màu theo thương hiệu (brand.json) khi brief không nói gì. Ghi thiết kế vào bao-cao.md (để lần sau dùng lại cùng kiểu).
+  THEO CỬ CHỈ TAY (người nói chỉ / vuốt trong clip): `python scripts/nho_may.py tay "<folder>" --khoi <số thứ tự khối>` → ghi `handPts`
+  (đầu ngón trỏ + tâm, cỡ bàn tay theo thời gian) và `swipes` (mỗi lần vuốt ngang = lật trang; vuốt sang trái = trang sau) vào khối:
+  màn hình nghiêng theo tay (`handFollow` 0–1), loé sáng chỗ ngón tay chạm, vòng sóng khi lật trang, bàn tay nằm ĐÈ LÊN kính
+  (`handOver: false` để tắt; render tự tách người). Có swipes thì bỏ `at`. Số trang nên = số lần vuốt + 1 (dò được bao nhiêu lần vuốt
+  thì in ra — thiếu trang thì thêm, thừa thì ghép). Đặt màn hình ở chỗ tay hay giơ lên (xem x, y trong handPts). Mô hình dò tay MediaPipe (tự tải lần đầu, chạy offline).
+- Thêm font cho chữ 3D thật (máy phát triển): `python scripts/font3d.py <tên @fontsource> 800` → `remotion/src/fonts3d/`, khai báo trong
+  FONTS3D (Three3D.tsx).
+  Máy ảo không có card đồ hoạ: khối 3D xuất chậm hơn (vẽ bằng CPU) — dùng ít, khối ngắn. Dò tay cần tải mô hình MediaPipe (mạng
+  máy ảo chặn thì bỏ qua theo tay, dùng `at` để chuyển trang theo lời nói).
 - Tốc độ video: `"speed": 1.2` (cả video), `"segSpeed": {"12.5": 2}` (riêng đoạn, khoá = giây bắt đầu đoạn trong video gốc). render.py áp lên bản xuất cuối (scripts/render.py `speed_ranges` / `apply_speed`). Tốc độ 0,1–16×; `"segCurve"` đường cong (hero | bullet | montage | jump | flashin | flashout); `"segAudio": {"<giây>": "keep|mute"}` (mặc định tự tắt tiếng gốc khi < 0,75× hoặc > 2,5×), `"segSmooth": {"<giây>": "mci|blend|off"}` (slow-motion tự trộn khung; mci = mượt nhất, xuất lâu).
 
 ## DỰNG THEO NHỊP NHẠC — dự án có `dung-nhip.json` {"on": true} (người dùng tích "🎵 Dựng theo nhịp nhạc")
@@ -884,7 +946,7 @@ Mã nguồn ở `editor/` (React, dùng chính `remotion/src/EditPlan.tsx` để
 
 ## Tạo KHỐI MỚI cho hiệu ứng tool chưa có (người dùng nhờ "làm hiệu ứng giống video này", "tạo phong cách mới có hiệu ứng X")
 Trước hết thử ghép bằng thứ đã có: `kf` (keyframe dx/dy/sc/rot/op), `mask`, `behind`, `follow: "face"`, `fx`, kiểu hiện/ẩn chữ,
-pip/broll, `shape`, `text3d`, `card3d`, `orbit`, `map`/`mapTour`. Ghép được gần đúng → dùng luôn, báo người dùng chỗ khác mẫu.
+pip/broll, `shape`, `text3d`, `card3d`, `orbit`, 3D thật (`text3dPro`, `photo3d`, `object3d`, `screen3d`), `map`/`mapTour`. Ghép được gần đúng → dùng luôn, báo người dùng chỗ khác mẫu.
 Không ghép được (chuyển động / bố cục riêng, lặp lại nhiều lần trong mẫu) → viết khối mới, làm đủ các bước:
 1. Xem kỹ mẫu: dải khung cách 0,1–0,2s quanh lúc hiệu ứng chạy (ffmpeg `fps=5,tile=`), ghi lại quỹ đạo, cỡ, độ sâu, thời lượng.
 2. `remotion/src/<TenKhoi>.tsx`: component nhận `{e, dur}`, mọi thông số có mặc định, toạ độ theo `FR.w/FR.h`, `fy()` (frame.ts),

@@ -16,7 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-SNAP_TYPES = {"zoom", "overlay", "shape", "fx", "text", "sticker", "text3d", "card3d", "scene", "phrase", "counter", "stamp", "chip", "bigQuestion"}
+SNAP_TYPES = {"zoom", "overlay", "shape", "fx", "text", "sticker", "text3d", "text3dPro", "object3d", "card3d", "scene", "phrase", "counter", "stamp", "chip", "bigQuestion"}
 
 
 def _joins(plan):

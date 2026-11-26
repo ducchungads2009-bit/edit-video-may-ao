@@ -24,6 +24,7 @@ import {InkScape} from './Ink';
 import {Bubble, Chart, Counter, Note, Phrase, PresenterBg, Spark, Stamp, Tabs, Tiles, presenterAt, presenterWrap} from './Graphics2';
 import {MapBlock} from './MapBlock';
 import {Orbit} from './Orbit';
+import {Object3D, Photo3D, Screen3D, Text3DPro, handAt} from './Three3D';
 import {MapTour} from './MapTour';
 import {BrandLayer, BrandMark} from './Brand';
 import {FR, fy, DEFAULT_Y} from './frame';
@@ -88,6 +89,9 @@ export type El =
   // · text3d (chữ khối 3D: text, size, depth, face solid|gold|chrome, motion swing|spin|rise|tilt|float|zoom) · card3d (ảnh/video mặt phẳng 3D:
   // src, w, ratio, move orbit|flyIn|tiltIn|float|flip|dolly|swing) · scene (cảnh dựng sẵn: kind intro|pricetable|compare|amenities|stats|outro)
   | (Base & {type: 'overlay' | 'shape' | 'text3d' | 'card3d' | 'scene'; [k: string]: any})
+  // 3D THẬT (Three3D.tsx, Three.js): text3dPro (chữ khối kim loại, bóng đổ, vệt sáng) · photo3d (ảnh bay vòng quanh người, phóng ảnh ra
+  // trước mặt: hero) · object3d (ghim / nhà / bảng giá / mô hình .glb đặt trên mặt đất của cảnh)
+  | (Base & {type: 'text3dPro' | 'photo3d' | 'object3d' | 'screen3d'; [k: string]: any})
   | (Base & {type: 'zoom'; style?: 'punch' | 'in' | 'out' | 'pulse' | 'shake' | 'smooth'; scale?: number; x?: number; y?: number});
 
 /** Chỉnh màu & ánh sáng (100 = giữ nguyên). all: áp cả cho ảnh/video trám */
@@ -1126,6 +1130,10 @@ const renderEl = (e: El, dur: number, theme: Theme, filter?: string) => {
     case 'sticker': return <Sticker icon={e.icon} size={e.size} color={e.color} x={e.x} y={e.y ?? 600} anim={e.anim as any} out={e.out as any} loop={e.loop} rotate={e.rotate} dur={dur} inDur={e.inDur} outDur={e.outDur} />;
     case 'map': return <MapBlock e={e as any} dur={dur} theme={theme} />;
     case 'orbit': return <Orbit e={e as any} dur={dur} />;
+    case 'text3dPro': return <Text3DPro e={e} dur={dur} />;
+    case 'photo3d': return <Photo3D e={e as any} dur={dur} />;
+    case 'object3d': return <Object3D e={e} dur={dur} />;
+    case 'screen3d': return <Screen3DEl e={e} dur={dur} />;
     case 'mapTour': return <MapTour e={e as any} dur={dur} />;
     case 'phrase': return <Phrase e={e} dur={dur} theme={theme} />;
     case 'counter': return <Counter e={e} dur={dur} theme={theme} />;
@@ -1194,7 +1202,48 @@ const splitShift = (els: El[], t: number, faceY: (t: number) => number | null): 
 };
 
 /* ===== khối BÁM MẶT ===== */
-const FaceCtx = React.createContext<{faces?: PlanProps['faces']; segs?: [number, number][]}>({});
+const FaceCtx = React.createContext<{faces?: PlanProps['faces']; segs?: [number, number][]; p?: PlanProps}>({});
+/** giây video gốc -> giây video xuất (null = đoạn đã cắt) */
+const srcToOutT = (segs: [number, number][] | undefined, t: number): number | null => {
+  if (!segs || !segs.length) return t;
+  let acc = 0;
+  for (const [a, b] of segs) {
+    if (t >= a && t < b) return acc + (t - a);
+    acc += b - a;
+  }
+  return null;
+};
+/** MÀN HÌNH 3D: đổi cử chỉ tay (giây gốc, scripts/tay.py) sang giây trong khối; tay đè lên kính = lớp người cắt quanh bàn tay */
+const Screen3DEl: React.FC<{e: any; dur: number}> = ({e, dur}) => {
+  const fc = React.useContext(FaceCtx);
+  const f = useCurrentFrame();
+  const conv = (pts: any[] | undefined) =>
+    (pts || []).map((q: any) => {
+      const o = srcToOutT(fc.segs, q[0]);
+      return o == null ? null : [o - e.start, ...q.slice(1)];
+    }).filter((q: any) => q && q[0] > -1 && q[0] < e.end - e.start + 1) as number[][];
+  const hand = conv(e.handPts);
+  const ev = conv(e.swipes).map((q) => ({t: q[0], dir: q[1] ?? 1}));
+  const hp = handAt(hand, f / FPS);
+  const p = fc.p;
+  const over = e.handOver !== false && hp && p && p.person && p.person.length;
+  const from = Math.round(e.start * FPS);
+  const r = e.handR ?? (hp && hp.length >= 5 ? Math.max(70, hp[4] * 0.62) : 150);
+  const mx = hp && hp.length >= 5 ? hp[2] : hp ? hp[0] : 0, my = hp && hp.length >= 5 ? hp[3] : hp ? hp[1] + r * 0.4 : 0;
+  return (
+    <>
+      <Screen3D e={e} dur={dur} hand={hand} ev={ev} />
+      {over ? (
+        <AbsoluteFill style={{WebkitMaskImage: `radial-gradient(ellipse ${r}px ${r * 1.2}px at ${mx}px ${my}px, #000 62%, transparent 100%)`,
+          maskImage: `radial-gradient(ellipse ${r}px ${r * 1.2}px at ${mx}px ${my}px, #000 62%, transparent 100%)`}}>
+          <Sequence from={-from}>
+            <PersonLayer p={p} />
+          </Sequence>
+        </AbsoluteFill>
+      ) : null}
+    </>
+  );
+};
 const outToSrcT = (segs: [number, number][] | undefined, t: number) => {
   if (!segs || !segs.length) return t;
   let acc = 0;
@@ -1266,7 +1315,7 @@ const ElSeq: React.FC<{e: El; p: PlanProps; filter?: string}> = ({e, p, filter})
   const bl = (e as any).blend || (e.type === 'overlay' ? OVERLAY_BLEND[(e as any).kind || 'lightleak'] : undefined);
   const blend = bl && bl !== 'normal' ? (bl === 'add' ? 'plus-lighter' : bl) : undefined;
   return (
-    <Sequence from={from} durationInFrames={dur} premountFor={'src' in e || e.type === 'orbit' ? FPS : e.type === 'map' || e.type === 'mapTour' ? FPS * 2 : 0} style={blend ? {mixBlendMode: blend as any} : undefined}>
+    <Sequence from={from} durationInFrames={dur} premountFor={'src' in e || e.type === 'orbit' || e.type === 'photo3d' || e.type === 'object3d' || e.type === 'text3dPro' || e.type === 'screen3d' ? FPS : e.type === 'map' || e.type === 'mapTour' ? FPS * 2 : 0} style={blend ? {mixBlendMode: blend as any} : undefined}>
       {e.type === 'audio' || e.type === 'zoom' || e.type === 'sfx' || e.type === 'fx' ? (
         renderEl(e, dur, p.theme, filter)
       ) : (
@@ -1460,7 +1509,7 @@ export const EditPlan: React.FC<PlanProps> = (p) => {
   const hasPerson0 = !!(p.person && p.person.length);
   // vòng quay chưa ghi tâm -> lấy theo mặt người nói (_work/mat.json): tâm ngang = mặt, tâm dọc = ngang ngực
   const orbAt = (e: any) => {
-    if (e.type !== 'orbit' || (e.cx != null && e.cy != null) || !p.faces?.faces?.length) return e;
+    if ((e.type !== 'orbit' && e.type !== 'photo3d') || (e.cx != null && e.cy != null) || !p.faces?.faces?.length) return e;
     const st = p.faces.step || 0.5, F = p.faces.faces;
     const bx: number[][] = [];
     for (let k = 0; k <= 4; k++) {
@@ -1471,10 +1520,11 @@ export const EditPlan: React.FC<PlanProps> = (p) => {
     if (!bx.length) return e;
     const av = (j: number) => bx.reduce((s2, b) => s2 + b[j], 0) / bx.length;
     const x = av(1) + av(3) / 2, y = av(2) + av(4) / 2, h = av(4);
+    if (e.type === 'photo3d') return {...e, cx: e.cx ?? x / FR.w, cy: e.cy ?? Math.min(FR.h * 0.67, y + h * 1.1), rx: e.rx ?? Math.max(300, Math.min(440, h * 2.3))};
     return {...e, cx: e.cx ?? x / FR.w, cy: e.cy ?? Math.min(FR.h * 0.67, y + h * 0.85), rx: e.rx ?? Math.max(330, Math.min(470, h * 2.6))};
   };
   // vòng quay quanh người: có lớp người -> tách 2 lớp (nửa sau nằm SAU người, nửa trước đè lên người)
-  const els1 = hasPerson0 ? els.map(orbAt).flatMap((e: any) => (e.type === 'orbit' && e.behind !== false ? [{...e, _half: 'back', z: -10, behind: true}, {...e, _half: 'front', behind: false, z: typeof e.z === 'number' && e.z > 0 ? e.z : undefined}] : [e])) as El[] : (els.map(orbAt) as El[]);
+  const els1 = hasPerson0 ? els.map(orbAt).flatMap((e: any) => ((e.type === 'orbit' || e.type === 'photo3d') && e.behind !== false ? [{...e, _half: 'back', z: -10, behind: true}, {...e, _half: 'front', behind: false, z: typeof e.z === 'number' && e.z > 0 ? e.z : undefined}] : [e])) as El[] : (els.map(orbAt) as El[]);
   const hasPerson = hasPerson0;
   // xếp theo LỚP (z), cùng lớp thì theo thứ tự khối; lớp âm nằm sau người (khi đã tách người)
   const byZ = (a: El, b: El) => zOf(a) - zOf(b) || (a._i ?? 0) - (b._i ?? 0);
@@ -1525,7 +1575,7 @@ export const EditPlan: React.FC<PlanProps> = (p) => {
   const mv = p.music?.volume ?? 0.15;
   return (
     <ThemeCtx.Provider value={p.theme}>
-      <FaceCtx.Provider value={{faces: p.faces, segs: p.segments}}>
+      <FaceCtx.Provider value={{faces: p.faces, segs: p.segments, p}}>
       <BeatCtx.Provider value={p.beats || []}>
       <AbsoluteFill style={{background: 'black'}} data-comp="1">
         {ffx.defs}

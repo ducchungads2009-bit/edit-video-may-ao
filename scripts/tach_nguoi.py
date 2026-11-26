@@ -42,7 +42,9 @@ CH = 150  # khúc 5 giây (khung video gốc): lớp người tách theo khúc c
 def behind_of(e) -> bool:
     """khối nằm sau người: lớp z < 0 (hoặc "behind": true khi chưa có z) — giống isBehind() trong EditPlan.tsx"""
     z = e.get("z")
-    if e.get("type") == "orbit":  # vòng quay quanh người: nửa sau nằm sau người (trừ khi "behind": false)
+    if e.get("type") == "screen3d":  # màn hình 3D: cần lớp người để bàn tay đè lên kính (khi đã dò tay)
+        return bool(e.get("handPts")) and e.get("handOver") is not False
+    if e.get("type") in ("orbit", "photo3d"):  # vòng quay / ảnh bay 3D quanh người: nửa sau nằm sau người (trừ khi "behind": false)
         return e.get("behind") is not False
     return z < 0 if isinstance(z, (int, float)) else bool(e.get("behind"))
 
