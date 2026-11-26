@@ -43,6 +43,7 @@ LOCAL = {
     "tachnguoi": lambda f, a: ["scripts/tach_nguoi.py", f],
     "mat": lambda f, a: ["scripts/mat.py", f],
     "chemo": lambda f, a: ["scripts/che_mo.py", f, *a],
+    "tay": lambda f, a: ["scripts/tay.py", f, *a],
 }
 
 

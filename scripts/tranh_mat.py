@@ -14,9 +14,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from mat import zone, STEP  # noqa: E402
 
 DEFAULT_Y = {"chip": 240, "priceHook": 520, "bigQuestion": 620, "checklist": 240, "rangeCard": 280, "cta": 1120, "pip": 260, "text": 700, "sticker": 600,
-             "chart": 300, "phrase": 300, "counter": 420, "stamp": 600, "tabs": 260, "tiles": 300, "note": 260, "bubble": 380, "spark": 300, "text3d": 700, "scene": 300, "card3d": 760}
+             "chart": 300, "phrase": 300, "counter": 420, "stamp": 600, "tabs": 260, "tiles": 300, "note": 260, "bubble": 380, "spark": 300, "text3d": 700, "text3dPro": 650, "scene": 300, "card3d": 760}
 TEXTY = {"text", "chip", "priceHook", "bigQuestion", "checklist", "rangeCard", "cta", "sticker", "pip",
-         "phrase", "counter", "stamp", "tabs", "tiles", "note", "bubble", "chart", "text3d", "scene"}
+         "phrase", "counter", "stamp", "tabs", "tiles", "note", "bubble", "chart", "text3d", "text3dPro", "scene"}
 W, H = 1080, 1920
 
 
@@ -66,6 +66,9 @@ def est_h(e, style):
         return size * 1.3 * lines * sc + 20
     if t == "sticker":
         return (e.get("size") or 150) * sc
+    if t == "text3dPro":
+        n = max(1, str(e.get("text") or "").count("\n") + 1)
+        return ((e.get("size") or 190) * 1.3 * n + (e.get("size") or 190) * 0.5 * bool(e.get("sub"))) * sc
     if t == "text3d":
         return (e.get("size") or 140) * 1.6 * max(1, str(e.get("text") or "").count("\n") + 1) * sc
     if t == "card3d":

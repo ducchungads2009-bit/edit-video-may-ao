@@ -7,7 +7,7 @@ import json
 import sys
 from pathlib import Path
 
-TEXTY = {"text", "chip", "priceHook", "bigQuestion", "checklist", "rangeCard", "cta", "phrase", "counter", "stamp", "tabs", "tiles", "note", "bubble", "chart", "text3d", "scene"}
+TEXTY = {"text", "chip", "priceHook", "bigQuestion", "checklist", "rangeCard", "cta", "phrase", "counter", "stamp", "tabs", "tiles", "note", "bubble", "chart", "text3d", "text3dPro", "scene"}
 
 
 def words_of(e):

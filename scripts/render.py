@@ -308,7 +308,7 @@ def build_plan(folder: Path) -> dict:
                 e.pop("fillSrc")
         if e.get("sfx") and "/" in e["sfx"] and not e["sfx"].startswith("cua-ban/") and not find(e["sfx"]):
             e.pop("sfx")
-        if e.get("type") == "orbit":  # ảnh/video của vòng quay: bỏ file thiếu
+        if e.get("type") in ("orbit", "photo3d"):  # ảnh/video của vòng quay / ảnh bay 3D: bỏ file thiếu
             its = []
             for it in e.get("items") or []:
                 it = {"src": it} if isinstance(it, str) else dict(it or {})
@@ -318,6 +318,29 @@ def build_plan(folder: Path) -> dict:
                     its.append(it)
                 elif it.get("src"):
                     missing.append(it["src"])
+            e["items"] = its
+        if e.get("type") == "screen3d" and isinstance(e.get("pages"), list):  # ảnh / video trong màn hình 3D: bỏ trang thiếu file
+            pgs = []
+            for pg in e["pages"]:
+                if isinstance(pg, dict) and pg.get("src"):
+                    p = find(pg["src"])
+                    if not p:
+                        missing.append(pg["src"])
+                        continue
+                    pg = {**pg, "src": p.relative_to(folder.resolve()).as_posix()}
+                if pg:
+                    pgs.append(pg)
+            e["pages"] = pgs
+        if e.get("type") == "object3d" and isinstance(e.get("items"), list):  # mô hình .glb của vật thể 3D: bỏ vật thiếu file
+            its = []
+            for it in e["items"]:
+                if isinstance(it, dict) and it.get("src"):
+                    p = find(it["src"])
+                    if not p:
+                        missing.append(it["src"])
+                        continue
+                    it = {**it, "src": p.relative_to(folder.resolve()).as_posix()}
+                its.append(it)
             e["items"] = its
         for r in (e.get("regions") or []) if e.get("type") == "mapTour" else []:  # ảnh chân dung tròn trên bản đồ
             for b in r.get("badges") or []:
@@ -367,7 +390,7 @@ def build_plan(folder: Path) -> dict:
             plan["mainFit"] = khung.auto_fit(info.get("width"), info.get("height"), fmt)
     if fmt != "9:16":
         for e in plan.get("elements", []):
-            if e and e.get("type") == "orbit":
+            if e and e.get("type") in ("orbit", "photo3d"):
                 e["behind"] = False  # khung khác 9:16 chưa tách người -> vòng quay vẽ đủ cả vòng trước người
     if fmt != "9:16" and any(e and (e.get("behind") or (isinstance(e.get("z"), (int, float)) and e["z"] < 0)) for e in plan.get("elements", [])):
         print("[!] Khung " + fmt + ": chưa hỗ trợ đặt khối SAU người — các khối đó nằm trước người")
@@ -389,7 +412,7 @@ def build_plan(folder: Path) -> dict:
     plan["_beautyVideo"] = vid
     plan["videoSrc"] = clean_audio(folder, vid, plan.get("audio") or {})
     # khối bám mặt -> cần dữ liệu vùng mặt (scripts/mat.py)
-    if any(e and (e.get("follow") == "face" or (e.get("type") == "orbit" and (e.get("cx") is None or e.get("cy") is None))) for e in plan["elements"]):
+    if any(e and (e.get("follow") == "face" or (e.get("type") in ("orbit", "photo3d") and (e.get("cx") is None or e.get("cy") is None))) for e in plan["elements"]):
         mp = folder / "_work" / "mat.json"
         if not mp.exists():
             try:
@@ -500,8 +523,14 @@ def build_props(folder: Path) -> dict:
             e["srcs"] = [stage(x) for x in e["srcs"]]
         if e.get("sfx") and "/" in e["sfx"] and not e["sfx"].startswith("cua-ban/"):
             e["sfx"] = stage(e["sfx"])
-        for it in e.get("items") or [] if e.get("type") == "orbit" else []:
+        for it in e.get("items") or [] if e.get("type") in ("orbit", "photo3d") else []:
             it["src"] = stage(it["src"])
+        for pg in e.get("pages") or [] if e.get("type") == "screen3d" else []:
+            if isinstance(pg, dict) and pg.get("src"):
+                pg["src"] = stage(pg["src"])
+        for it in e.get("items") or [] if e.get("type") == "object3d" else []:
+            if isinstance(it, dict) and it.get("src"):
+                it["src"] = stage(it["src"])
         for r in (e.get("regions") or []) if e.get("type") == "mapTour" else []:
             for b in r.get("badges") or []:
                 if b.get("img"):
