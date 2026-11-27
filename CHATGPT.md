@@ -65,6 +65,8 @@ mỗi 1–3 phút cho tới khi xong — đừng để một lệnh chờ quá g
 ## 3. Dựng (làm liền, không hỏi lại)
 Tài liệu đầy đủ: `TAI-LIEU.md` (chỉ đọc mục cần — grep tiêu đề). BỎ QUA mọi chỗ nói `nho_may.py`, giao diện, `tiendo.py`, mã kích hoạt
 — ở máy ảo chạy thẳng script bằng `./chay.sh`. Mỗi chữ "Claude" trong tài liệu = bạn.
+**CHUẨN CHẤT LƯỢNG:** đọc HẾT `CHAT-LUONG.md` (gốc kho công cụ) trước khi viết plan.json và làm đủ mục 7 (tự kiểm tra) trước khi
+gửi. Video nói về dự án cụ thể → ảnh THẬT của dự án tìm trên web (mục 2), phủ kín + lia chậm; dự án cao cấp → bộ chữ sang trọng (mục 4).
 1. Tạo `cho-edit/<ten-du-an>/`, chép clip vào (tên `01-…`, `02-…` nếu cần đúng thứ tự), `brief.txt`, tư liệu vào `assets/cua-ban/`,
    video tham chiếu vào `_mau/`, giọng đọc thành `voice.*`, nhạc của họ thành `nhac.*`. Khung khác 9:16: `./chay.sh khung.py "<du-an>" 1:1`.
 2. `./chay.sh prepare.py "<du-an>"` (chạy nền; clip 4K ~2–3 phút / phút video).
@@ -82,11 +84,12 @@ Tài liệu đầy đủ: `TAI-LIEU.md` (chỉ đọc mục cần — grep tiêu
    nội dung → `segments` — mục 2a TAI-LIEU.md, xong cũng soát lại như vậy.) Không lời → `segments` 3–5 giây / cảnh đẹp, `"videoVolume": 0`,
    `"captions": false`, có nhạc.
 6. Ghi tên từng cảnh vào `_work/nhan-canh.json` = ["Phòng khách", "Bếp", …] theo thứ tự segments (video có lời thì bỏ qua).
-7. Viết `plan.json` theo TAI-LIEU.md (bước 5). Nhạc từ kho: chép `assets-chung/nhac/<file>.mp3` vào `assets/nhac/` →
+7. Viết `plan.json` theo TAI-LIEU.md (bước 5) và CHAT-LUONG.md (mẫu khối ở mục 6). Nhạc từ kho: chép `assets-chung/nhac/<file>.mp3` vào `assets/nhac/` →
    `"music": {"src": "assets/nhac/<file>.mp3", "volume": 0.15}` (video không lời: 0.5–0.7). Danh sách: `assets-chung/nhac/danh-sach.json`.
    Chưa có: khối cần tách người (behind, orbit, presenter) — không dùng.
 8. `./chay.sh soat.py "<du-an>"`, sửa 1 vòng. `./chay.sh render.py "<du-an>"` (chạy nền, ~10 giây dựng / 1 giây video).
-9. Xem 3–4 khung của `final.mp4` (ffmpeg) để chắc đúng.
+9. XEM 6 khung của `final.mp4` (ffmpeg, phủ mở đầu / giữa / kết) bằng mắt, đối chiếu danh sách "KHÔNG ĐƯỢC CÓ" ở CHAT-LUONG.md
+   mục 7; còn lỗi thì sửa plan.json, dựng lại rồi mới gửi.
 
 ## 4. Gửi kết quả (sửa bằng chat — KHÔNG gửi file trang sửa trừ khi người dùng xin)
 1. `./chay.sh trang_sua.py "<du-an>" --ten "<tên ngắn>" --phieu` → `<du-an>/phieu-canh-<số>.jpg` (ảnh các cảnh có đánh số) +
@@ -115,4 +118,17 @@ Tài liệu đầy đủ: `TAI-LIEU.md` (chỉ đọc mục cần — grep tiêu
 ## Mạng & bản quyền
 - `cai-may-ao.sh` ghi `.mang.json`: khối nào mạng "co" mới dùng (bản đồ, ảnh địa danh Openverse). Chế độ Công việc thường mở mạng.
 - Không bịa giá, diện tích, SĐT, số phòng khi brief không có (số phòng đoán theo hình thì nói rõ là đoán).
-- Chỉ dùng ảnh / nhạc người dùng gửi, kho nhạc có sẵn (CC0), ảnh Openverse có ghi nguồn (tool tự chèn). Không lấy ảnh người thật từ web.
+- Ảnh: người dùng gửi > ẢNH THẬT của dự án trên web (trang chủ đầu tư / sàn chính thức / báo — `./chay.sh stock.py url …`) >
+  Openverse ảnh địa danh (ghi nguồn tự chèn) > Pixabay (khi có khoá). Nhạc: người dùng gửi > kho có sẵn. Không lấy ảnh người thật.
+- Không tải được trang ảnh dự án → báo người dùng / xin họ gửi ảnh; KHÔNG thay bằng cảnh chung chung mà không báo.
+
+## KHỐI CẦN MẠNG
+`cai-may-ao.sh` ghi `.mang.json` (co / khong) cho từng nhóm. "khong" thì thay bằng cách khác (vd nhãn chữ "📍 Cách trung tâm 10 phút"
+thay cho bản đồ) và ghi vào báo cáo. Bản đồ: tiles.openfreemap.org, nominatim.openstreetmap.org, router.project-osrm.org; ảnh stock:
+pixabay.com; ảnh địa danh: api.openverse.org; ảnh dự án: tên miền trang chứa ảnh. Không cần mạng: chữ, phụ đề, thẻ, chữ 3D, lớp phủ,
+hình vẽ, zoom, chuyển cảnh, nhạc trong kho.
+
+## Làm việc liền mạch
+- Đang dựng (render chạy nền) thì KHÔNG kết thúc lượt trả lời: cứ 1–3 phút xem log tới khi xong, rồi tự kiểm tra (CHAT-LUONG.md mục 7)
+  và gửi kết quả.
+- KHÔNG tự viết script ffmpeg / PIL để ghép, cắt, dựng khung hay sinh plan.json thay cho tool (CHAT-LUONG.md mục 1).

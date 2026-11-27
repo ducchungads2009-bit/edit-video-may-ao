@@ -287,6 +287,44 @@ def get(folder: Path, name: str, k: int):
     print(f'Đã tải: {dst}   (dùng: "src": "{rel}")')
 
 
+def from_url(folder: Path, name: str, url: str, credit: str = ""):
+    """ẢNH DỰ ÁN THẬT từ trang web (trang chủ đầu tư, sàn của chủ đầu tư, báo): tải thẳng 1 link ảnh -> assets/stock/<tên>.<đuôi>.
+    Ảnh .webp được đổi sang .jpg. credit (tuỳ chọn) = dòng ghi nguồn tool tự chèn ở góc ảnh (ảnh CC BY...); ảnh phối cảnh của
+    chính dự án người dùng đang bán thì không cần."""
+    out = folder / "assets" / "stock"
+    out.mkdir(parents=True, exist_ok=True)
+    if not re.match(r"^https?://", url):
+        sys.exit("Link phải bắt đầu bằng http(s)://")
+    data = fetch(url)
+    ext = Path(urllib.parse.urlparse(url).path).suffix.lower()
+    q = urllib.parse.urlparse(url).query.lower()
+    if "webp" in q or data[:4] == b"RIFF":
+        ext = ".webp"
+    if ext not in (".jpg", ".jpeg", ".png", ".webp", ".mp4", ".mov", ".webm"):
+        ext = ".jpg"
+    for old in out.glob(f"{name}.*"):
+        old.unlink()
+    dst = out / f"{name}{ext}"
+    dst.write_bytes(data)
+    if ext == ".webp":
+        try:
+            im = Image.open(dst).convert("RGB")
+            jpg = out / f"{name}.jpg"
+            im.save(jpg, quality=94)
+            dst.unlink()
+            dst = jpg
+        except Exception as e:  # noqa
+            print("[!] Không đổi được webp -> jpg:", e)
+    if credit:
+        save_credit(folder, dst, credit)
+    try:
+        w, h = Image.open(dst).size
+        size = f"{w}x{h}"
+    except Exception:  # noqa
+        size = "?"
+    print(f'Đã tải: {dst}   ({size}; dùng: "src": "{dst.relative_to(folder).as_posix()}")')
+
+
 if __name__ == "__main__":
     import kich_hoat  # bản quyền: chưa kích hoạt / hết hạn -> dừng
     kich_hoat.require()
@@ -302,5 +340,7 @@ if __name__ == "__main__":
             search(Path(a[1]).resolve(), a[2], a[3], "--video" in a, n)
     elif len(a) >= 4 and a[0] == "get":
         get(Path(a[1]).resolve(), a[2], int(a[3]))
+    elif len(a) >= 4 and a[0] == "url":
+        from_url(Path(a[1]).resolve(), a[2], a[3], a[a.index("--nguon") + 1] if "--nguon" in a else "")
     else:
         sys.exit(__doc__)

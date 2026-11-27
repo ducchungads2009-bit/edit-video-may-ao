@@ -178,6 +178,27 @@
   "note": "có chân, đọc tốt, nghiêm túc"
  },
  {
+  "id": "cormorant-garamond",
+  "family": "Cormorant Garamond",
+  "kind": "serif",
+  "weights": [
+   400,
+   500,
+   600,
+   700
+  ],
+  "note": "có chân thanh mảnh, cao cấp, bay bổng — tiêu đề dự án sang trọng (có nghiêng: italic)"
+ },
+ {
+  "id": "great-vibes",
+  "family": "Great Vibes",
+  "kind": "script",
+  "weights": [
+   400
+  ],
+  "note": "chữ ký thư pháp mềm mại, sang chảnh — điểm nhấn 1–3 chữ (tên dự án), cỡ to ≥ 90"
+ },
+ {
   "id": "lobster",
   "family": "Lobster",
   "kind": "script",

@@ -1,9 +1,9 @@
 {
  "ten": "Sang trọng BĐS",
- "mo_ta": "Cao cấp: Montserrat in hoa giãn chữ + Playfair, điểm nhấn vàng champagne trên kính tối, chuyển cảnh mờ chậm — hợp căn hộ, biệt thự.",
+ "mo_ta": "Cao cấp: tiêu đề Cormorant Garamond in hoa giãn chữ + dòng nghiêng, tên dự án chữ ký Great Vibes, chữ nhỏ Montserrat vàng champagne, ảnh phủ kín lia chậm, chuyển cảnh mờ chậm, lớp che sáng mép trên/dưới — hợp căn hộ, biệt thự, nghỉ dưỡng.",
  "style": {
   "font": "Montserrat",
-  "heading": "Playfair Display",
+  "heading": "Cormorant Garamond",
   "skin": "flat",
   "accent": "#D4AF37",
   "text": {

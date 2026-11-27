@@ -16,9 +16,10 @@ export const MaskCtx = createContext<string | undefined>(undefined);
 /** cách hiện ảnh/video trám: flip (h | v | hv) lật gương, cs/cx/cy cắt khung (phóng cs lần quanh tâm cx, cy 0–1),
  *  freeze = đứng hình ở khung đầu, kb = false: tắt zoom chậm (Ken Burns) */
 // fit: cover (phủ kín, cắt bớt — mặc định) | contain (vừa khung, nền đen) | blur (vừa khung, nền là chính ảnh làm mờ)
-export type View = {flip?: string; cs?: number; cx?: number; cy?: number; freeze?: boolean; kb?: boolean; fit?: string; rot?: number};
+export type View = {flip?: string; cs?: number; cx?: number; cy?: number; freeze?: boolean; kb?: boolean; fit?: string; rot?: number; p0?: number; p1?: number; q0?: number; q1?: number};
 export const ViewCtx = createContext<View>({});
-export const viewOf = (e: any): View => ({flip: e.flip, cs: e.cropS, cx: e.cropX, cy: e.cropY, freeze: !!e.freeze, kb: e.kb, fit: e.fit, rot: e.rotIn});
+// panFrom/panTo (0–1): vùng hiện trượt ngang từ → tới suốt thời gian khối (lia máy qua ảnh/video ngang); panYFrom/panYTo: trượt dọc
+export const viewOf = (e: any): View => ({flip: e.flip, cs: e.cropS, cx: e.cropX, cy: e.cropY, freeze: !!e.freeze, kb: e.kb, fit: e.fit, rot: e.rotIn, p0: e.panFrom, p1: e.panTo, q0: e.panYFrom, q1: e.panYTo});
 const poly = (pts: [number, number][], cx: number, cy: number, s: number) =>
   `polygon(${pts.map(([x, y]) => `${(cx + (x - 50) * s).toFixed(2)}% ${(cy + (y - 50) * s).toFixed(2)}%`).join(', ')})`;
 const HEART: [number, number][] = Array.from({length: 40}, (_, i) => {
@@ -50,7 +51,8 @@ export const maskCss = (e: any): string | undefined => {
 
 export type Theme = {light: string; mid: string; dark: string; gold1: string; gold2: string};
 
-export const MediaFill: React.FC<{src: string; from?: number; zoom: number; panX: number; volume?: number; filter?: string}> = ({
+export const MediaFill: React.FC<{src: string; from?: number; zoom: number; panX: number; volume?: number; filter?: string; prog?: number}> = ({
+  prog,
   src,
   from = 0,
   zoom,
@@ -64,7 +66,10 @@ export const MediaFill: React.FC<{src: string; from?: number; zoom: number; panX
   const z = v.kb === false ? 1 : zoom, px = v.kb === false ? 0 : panX;
   const cs = v.cs && v.cs > 1 ? v.cs : 1;
   const fx = v.flip?.includes('h') ? -1 : 1, fy = v.flip?.includes('v') ? -1 : 1;
-  const pos = `${(v.cx ?? 0.5) * 100}% ${(v.cy ?? 0.5) * 100}%`;
+  const pt = prog == null ? null : Math.min(1, Math.max(0, prog)), ease = (x: number) => 0.5 - Math.cos(x * Math.PI) / 2;
+  const cxv = pt != null && v.p0 != null && v.p1 != null ? v.p0 + (v.p1 - v.p0) * ease(pt) : v.cx ?? 0.5;
+  const cyv = pt != null && v.q0 != null && v.q1 != null ? v.q0 + (v.q1 - v.q0) * ease(pt) : v.cy ?? 0.5;
+  const pos = `${cxv * 100}% ${cyv * 100}%`;
   const fit = v.fit === 'contain' || v.fit === 'blur' ? 'contain' : 'cover';
   const style: React.CSSProperties = {
     clipPath: mask,
@@ -223,7 +228,7 @@ export const BRoll: React.FC<{src: string; from?: number; label?: string; transi
     return (
       <MaskCtx.Provider value={undefined}>
         <div style={{position: 'absolute', left: 0, width: FR.w, top: A.top, height: A.h, opacity: vis, transform: `translateY(${slide}px)`, overflow: 'hidden', WebkitMaskImage: F > 0 ? g : undefined, maskImage: F > 0 ? g : undefined, clipPath: mask}}>
-          <MediaFill src={src} from={from} zoom={kbOn ? interpolate(f, [0, dur], [1.02, 1.1]) : 1} panX={pan * 0.6} volume={volume} filter={filter} />
+          <MediaFill src={src} from={from} zoom={kbOn ? interpolate(f, [0, dur], [1.02, 1.1]) : 1} panX={pan * 0.6} volume={volume} filter={filter} prog={f / Math.max(1, dur)} />
           {st.overlay === true && <AbsoluteFill style={{background: A.area === 'bottom' ? 'linear-gradient(0deg, rgba(0,0,0,0.45), rgba(0,0,0,0) 40%)' : 'linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0) 40%)'}} />}
         </div>
         {seam && <div style={{position: 'absolute', left: 140, right: 140, top: A.top + seamY - 1, height: 3, borderRadius: 2, background: `linear-gradient(90deg, transparent, ${seam}, transparent)`, opacity: vis * 0.9}} />}
@@ -239,7 +244,7 @@ export const BRoll: React.FC<{src: string; from?: number; label?: string; transi
     <MaskCtx.Provider value={undefined}>
     <AbsoluteFill style={{...leave, clipPath: mask}}>
       <AbsoluteFill style={{overflow: 'hidden', background: mask || /\.(webm|png)(\?|$)/i.test(src) ? 'transparent' : 'black', ...enter}}>
-        <MediaFill src={src} from={from} zoom={kb} panX={pan} volume={volume} filter={filter} />
+        <MediaFill src={src} from={from} zoom={kb} panX={pan} volume={volume} filter={filter} prog={f / Math.max(1, dur)} />
         {/* phủ tối nhẹ phía trên & dưới cho chữ dễ đọc */}
         {st.overlay !== false && (
           <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 65%, rgba(0,0,0,0.45) 100%)'}} />

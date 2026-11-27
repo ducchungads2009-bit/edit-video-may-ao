@@ -453,6 +453,11 @@ Nếu thư mục này có file (giao diện: thẻ "🖼 Tư liệu minh họa c
 5. Trong outline.md ghi rõ nguồn `tư liệu #k (tên file)`. Chỗ còn thiếu minh họa → tìm stock Pixabay (bước 4) như thường.
 
 ## Bước 4 — Tìm minh họa
+**ẢNH THẬT TRƯỚC, STOCK SAU (quy tắc cứng — chi tiết CHAT-LUONG.md mục 2–3).** Video nói về một dự án / địa danh cụ thể → ảnh
+thật của đúng dự án (phối cảnh, tiện ích) tìm trên web, tải bằng `python scripts/stock.py url "<folder>" <ten-ngan> "<link ảnh>"`
+[--nguon "Ảnh: …"] (webp tự đổi jpg). Ảnh ngang: broll phủ kín + lia `panFrom`/`panTo`. Không thu nhỏ ảnh giữa nền màu, không tự
+viết script ghép / dựng khung thay tool. Hết ảnh thật mới tới Openverse, rồi Pixabay.
+
 Stock (Pixabay, miễn phí thương mại; video tải về tối đa Full HD):
 ```
 python scripts/stock.py search "<folder>" <ten-ngan> "<từ khóa TIẾNG ANH>" [--video] [--n 5]
@@ -523,7 +528,7 @@ Các loại element:
   box (khung kính) | gold (chữ vàng 3D) | tag (nhãn vàng).
   `anim` (hiện): pop | bounce | fade | up | down | left | right | blur | zoomOut | wipe | type (gõ từng ký tự) | words
   (bật từng từ) | none; `out` (ẩn): fade | pop | up | down | left | right | blur | none.
-  `font` (tên trong remotion/fonts.json, xem phong-cach/_font-mau.jpg), `weight`, `size` (mặc định 80), `color`, `bg`,
+  `font` (tên trong remotion/fonts.json, xem phong-cach/_font-mau.jpg; sang trọng: Cormorant Garamond, Playfair Display, Great Vibes — xem CHAT-LUONG.md mục 4), `weight`, `size` (mặc định 80), `color`, `bg`,
   `stroke` (px), `strokeColor`, `shadow` (none|soft|hard|glow), `upper`, `italic`, `spacing`, `hl` (danh sách từ khóa tô
   màu `hlColor`), `x` (0–1, tâm ngang; bỏ = giữa), `y`, `width` (px), `align`, `rotate` (độ).
 - `sticker`: nhãn dán — `icon` = emoji ("🔥", "👇") hoặc tên icon lucide ("ArrowDown", "Heart"); `size` (150), `color`
@@ -531,7 +536,8 @@ Các loại element:
 - `broll` thêm `transition` (vào): zoom | zoomout | fade | blur | cut | flash | glitch | slide | up | drop | whip | wipe | diag | split | circle | spin;
   `exit`: fade | cut | blur | zoom | zoomout | flash | slide | up | down | whip | wipe | circle.
   VÙNG HIỆN (ảnh/video khác tỉ lệ khung, vd video ngang): `cropX`, `cropY` (0–1, phần giữ lại: 0 = mép trái/trên, 1 = phải/dưới),
-  `cropS` (phóng thêm ≥ 1), `rotIn` (xoay ảnh bên trong khung, độ; 90/270 = xoay ảnh chụp sai chiều), `flip` (h|v|hv); `fit`: cover (mặc định, phủ kín cắt bớt) | blur (vừa khung, nền là chính video làm mờ) | contain (vừa khung, nền đen).
+  `panFrom` / `panTo` (0–1): LIA NGANG — vùng hiện trượt từ panFrom tới panTo suốt khối (ảnh ngang / phối cảnh trong khung dọc:
+  0.2→0.5 hoặc 0.7→0.4, khối 3–5 giây; `panYFrom` / `panYTo` = lia dọc), `cropS` (phóng thêm ≥ 1), `rotIn` (xoay ảnh bên trong khung, độ; 90/270 = xoay ảnh chụp sai chiều), `flip` (h|v|hv); `fit`: cover (mặc định, phủ kín cắt bớt) | blur (vừa khung, nền là chính video làm mờ) | contain (vừa khung, nền đen).
   Video ngang mà chủ thể lệch một bên → đặt cropX cho đúng chủ thể (xem 3 khung của file); toàn cảnh rộng không muốn cắt → fit "blur".
   `area`: full (che cả khung — mặc định) | top (nửa trên) | bottom (nửa dưới) — người nói vẫn thấy ở phần còn lại, mép giao hoà
   trộn mờ (`feather` px, mặc định 170; 0 = cắt thẳng), `split` = tỉ lệ chiều cao vùng trám (0.25–0.7, mặc định 0.45), `seam` =
