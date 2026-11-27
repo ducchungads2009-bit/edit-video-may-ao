@@ -75,6 +75,22 @@ def frame(src: Path, t: float, W: int, H: int):
     return im
 
 
+def is_layer(b: dict) -> bool:
+    """khối broll là lớp phủ trong suốt (PNG trong assets/lop/ hoặc đặt z trên ảnh trám)"""
+    s = str(b.get("src") or "")
+    return s.lower().endswith(".png") and ("assets/lop/" in s or (isinstance(b.get("z"), (int, float)) and b["z"] > 10))
+
+
+def over(im, png: Path, W: int, H: int):
+    """ghép lớp PNG có kênh trong suốt lên khung (đúng vị trí, phủ kín khung)"""
+    from PIL import Image
+    try:
+        lay = Image.open(png).convert("RGBA").resize((W, H))
+        return Image.alpha_composite(im.convert("RGBA"), lay).convert("RGB")
+    except Exception:  # noqa
+        return im
+
+
 def text_box(e: dict, size: float, fw: int, fh: int):
     lines = str(e.get("text") or "").split("\n")
     upper = e.get("upper", True)
@@ -124,13 +140,17 @@ def check(folder: Path, fix: bool = False) -> list:
         worst, mean_r = 0.0, 99.0
         for k in (0.2, 0.5, 0.85):
             t = e["start"] + (e["end"] - e["start"]) * k
-            br = next((b for b in els if b and b.get("type") == "broll" and b.get("src") and b["start"] <= t < b["end"] and not b.get("hidden")), None)
+            act = [b for b in els if b and b.get("type") == "broll" and b.get("src") and b["start"] <= t < b["end"] and not b.get("hidden")]
+            lay = [b for b in act if is_layer(b)]  # lớp phủ trong suốt (vd lớp che sáng assets/lop/che-sang.png) — ghép lên nền khi đo
+            br = next((b for b in act if not is_layer(b)), None)
             if br and (folder / br["src"]).exists():
                 im = frame(folder / br["src"], float(br.get("from") or 0) + (t - br["start"]) * float(br.get("rate") or 1), W, H)
             else:
                 im = frame(vid, out_to_src(plan, t), W, H)
             if im is None:
                 continue
+            for b in lay:
+                im = over(im, folder / b["src"], W, H)
             reg = im.crop((int(x0), int(y0), max(int(x0) + 1, int(x1)), max(int(y0) + 1, int(y1))))
             px = list(reg.get_flattened_data() if hasattr(reg, "get_flattened_data") else reg.getdata())
             if not px:

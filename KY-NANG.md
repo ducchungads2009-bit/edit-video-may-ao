@@ -127,13 +127,13 @@ bằng cách khác (vd nhãn chữ "📍 Cách trung tâm 10 phút" thay cho kh�
 - Ảnh / video stock: pixabay.com, cdn.pixabay.com (+ khoá Pixabay); ảnh địa danh: api.openverse.org.
 - Ảnh dự án thật: tên miền trang chứa ảnh (vd market.vinhomes.vn); ảnh Wikimedia: upload.wikimedia.org.
 - Tải link Google Drive: drive.google.com, drive.usercontent.google.com (Dropbox: www.dropbox.com, dl.dropboxusercontent.com).
-Muốn bật: người dùng thêm các tên miền trên vào danh sách được phép (claude.ai → Cài đặt → Capabilities), mở phiên mới.
+Muốn bật hết một lần: claude.ai → Cài đặt → Capabilities → Domain allowlist chọn "All domains" (mọi trang đều tải được), mở phiên mới.
 Không cần mạng: chữ, phụ đề, thẻ, chữ 3D, thẻ 3D, lớp phủ, hình vẽ, cảnh dựng sẵn, zoom, chuyển cảnh, nhạc trong kho.
 
 ## Lưu ý
 - Không bịa giá, diện tích, SĐT, số phòng khi brief không có (số phòng đoán theo hình thì nói rõ là đoán).
 - Ảnh: người dùng gửi > ẢNH THẬT của dự án trên web (trang chủ đầu tư / sàn chính thức / báo — `./chay.sh stock.py url …`) >
   Openverse ảnh địa danh (ghi nguồn tự chèn) > Pixabay (khi có khoá). Nhạc: người dùng gửi > kho có sẵn. Không lấy ảnh người thật.
-- Máy ảo không tải được trang ảnh dự án (mạng chặn tên miền) → nói người dùng thêm tên miền đó vào danh sách được phép, hoặc gửi ảnh
-  vào chat; KHÔNG thay bằng cảnh chung chung mà không báo.
+- Không tải được ảnh dự án (mạng chặn tên miền) → KHÔNG hỏi / báo người dùng giữa chừng; tự thử nguồn khác (CHAT-LUONG.md mục 2),
+  chỉ ghi vào báo cáo cuối những ảnh không lấy được.
 - Mỗi file trang chỉnh sửa ≤ 20 MiB (trang_sua.py tự nén video xem thử).

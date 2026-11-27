@@ -158,6 +158,11 @@ def main(folder: Path):
                        "  → sửa: python scripts/tuong_phan.py \"<folder>\" --sua")
     except Exception as e:  # noqa
         loi.append(f"(không kiểm tra được độ tương phản chữ: {e})")
+    try:  # cổng chất lượng chung cho mọi AI / mọi phong cách (huong-dan/chat-luong.md)
+        from chat_luong import check as cl_check
+        loi += ["CHUẨN: " + x for x in cl_check(folder, plan)]
+    except Exception as e:  # noqa
+        loi.append(f"(không chạy được cổng chất lượng: {e})")
     print("== Lỗi / cần xem ==")
     print("\n".join("- " + x for x in dict.fromkeys(loi)) or "- không thấy lỗi")
     print("\n== Chữ trên màn hình (soát chính tả, dấu, số liệu so với brief) ==")

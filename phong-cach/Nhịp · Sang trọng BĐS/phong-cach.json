@@ -3,7 +3,7 @@
  "mo_ta": "2–4 nhịp mỗi cảnh, đẩy chậm vào cảnh, mờ chồng, ánh sáng loé, màu ấm, chữ mảnh hiện chậm — căn hộ, biệt thự cao cấp.",
  "style": {
   "font": "Montserrat",
-  "heading": "Playfair Display",
+  "heading": "Cormorant Garamond",
   "skin": "flat",
   "accent": "#D4AF37",
   "text": {
@@ -15,8 +15,8 @@
    "anim": "fade",
    "out": "fade",
    "upper": true,
-   "size": 66,
-   "weight": 700,
+   "size": 84,
+   "weight": 600,
    "spacing": 6
   },
   "captions": {
@@ -55,7 +55,12 @@
   },
   "beat": {
    "preset": "sang-trong"
-  }
+  },
+  "fonts": [
+   "Cormorant Garamond",
+   "Great Vibes",
+   "Montserrat"
+  ]
  },
  "plan": {
   "theme": {
@@ -92,5 +97,8 @@
   "nhip": "Sang trọng: 2–4 nhịp mỗi cảnh"
  },
  "nguon": "tạo sẵn",
- "nhom": "nhip"
+ "nhom": "nhip",
+ "ghiChu": {
+  "chu": "Tiêu đề Cormorant Garamond (mặc định của bộ, để trống font); dòng nhỏ phía trên: font Montserrat 600 cỡ 32 in hoa spacing 12 màu #E9D9A6; dòng phụ: Cormorant italic 500 cỡ 58 màu #FFF8E7; tên dự án / người liên hệ: Great Vibes cỡ 90–150. Không hộp màu. Nền sáng: lớp che sáng assets-chung/lop/che-sang.png (xem huong-dan/chat-luong.md mục 4)."
+ }
 }

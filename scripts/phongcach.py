@@ -39,7 +39,7 @@ def slug(name: str) -> str:
 
 # Thành phần của một phong cách: tên, nhãn, các khoá trong "style" và trong "plan"
 COMPONENTS = [
-    ("chu", "Chữ & font", ["font", "heading", "text"], []),
+    ("chu", "Chữ & font", ["font", "heading", "text", "fonts", "looks"], []),  # fonts / looks: font & kiểu chữ PHỤ được phép dùng thêm (soát lệch phong cách)
     ("phude", "Phụ đề", ["captions"], ["captionTop", "wordsPerPage", "captionSize", "captionUpper"]),
     ("chuyencanh", "Chuyển cảnh", [], ["transition", "cutFx"]),
     ("hieuung", "Hiệu ứng (zoom, chớp, rung, lớp phủ, chuyển động)", ["effects", "motion"], []),

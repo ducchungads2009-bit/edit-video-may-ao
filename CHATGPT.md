@@ -120,7 +120,8 @@ gửi. Video nói về dự án cụ thể → ảnh THẬT của dự án tìm 
 - Không bịa giá, diện tích, SĐT, số phòng khi brief không có (số phòng đoán theo hình thì nói rõ là đoán).
 - Ảnh: người dùng gửi > ẢNH THẬT của dự án trên web (trang chủ đầu tư / sàn chính thức / báo — `./chay.sh stock.py url …`) >
   Openverse ảnh địa danh (ghi nguồn tự chèn) > Pixabay (khi có khoá). Nhạc: người dùng gửi > kho có sẵn. Không lấy ảnh người thật.
-- Không tải được trang ảnh dự án → báo người dùng / xin họ gửi ảnh; KHÔNG thay bằng cảnh chung chung mà không báo.
+- Không tải được ảnh dự án (mạng chặn tên miền) → KHÔNG hỏi / báo người dùng giữa chừng; tự thử nguồn khác (CHAT-LUONG.md mục 2),
+  chỉ ghi vào báo cáo cuối những ảnh không lấy được.
 
 ## KHỐI CẦN MẠNG
 `cai-may-ao.sh` ghi `.mang.json` (co / khong) cho từng nhóm. "khong" thì thay bằng cách khác (vd nhãn chữ "📍 Cách trung tâm 10 phút"

@@ -15,8 +15,8 @@
    "anim": "fade",
    "out": "fade",
    "upper": true,
-   "size": 66,
-   "weight": 700,
+   "size": 84,
+   "weight": 600,
    "spacing": 6
   },
   "captions": {
@@ -52,7 +52,12 @@
    "density": "it",
    "set": "mem",
    "joins": false
-  }
+  },
+  "fonts": [
+   "Cormorant Garamond",
+   "Great Vibes",
+   "Montserrat"
+  ]
  },
  "plan": {
   "theme": {
@@ -87,5 +92,8 @@
   "amthanh": "rất ít, nhẹ",
   "mau": "ấm, sâu, tối 4 góc"
  },
- "nguon": "tạo sẵn"
+ "nguon": "tạo sẵn",
+ "ghiChu": {
+  "chu": "Tiêu đề Cormorant Garamond (mặc định của bộ, để trống font); dòng nhỏ phía trên: font Montserrat 600 cỡ 32 in hoa spacing 12 màu #E9D9A6; dòng phụ: Cormorant italic 500 cỡ 58 màu #FFF8E7; tên dự án / người liên hệ: Great Vibes cỡ 90–150. Không hộp màu. Nền sáng: lớp che sáng assets-chung/lop/che-sang.png (xem huong-dan/chat-luong.md mục 4)."
+ }
 }
