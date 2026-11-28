@@ -83,6 +83,13 @@ Tiêu đề để trống font = Cormorant Garamond (mặc định của bộ). 
   | Tin tức, Kiến thức, Podcast, Infographic, Doanh nhân | corporate light (volume 0,08–0,10) | nhe-nhang, chill |
   Bộ có `thanhPhan.amthanh` ghi rõ thì theo đó. Dựng theo nhịp (dung-nhip.json) dùng đúng bài đã chọn.
 - Lời nói gốc: giữ `"audio": {"denoise": 1, "normalize": true}`.
+- Khi xuất, tool tự cho nhạc nhường lời (to lên ở khoảng lặng, hạ khi nói) và đưa cả video về −14 LUFS — KHÔNG tự viết lệnh
+  ffmpeg chỉnh âm lượng. Chỉ đặt volume nhạc theo bảng trên (mức khi đang nói).
+
+### 5b. Cảnh AI (khối `canhAI`, canh-ai/HUONG-DAN.md)
+- Chỉ dùng cho đồ hoạ khối có sẵn không làm được (mở đầu thương hiệu, bảng giá / tiến độ động, tranh vẽ tay, infographic). KHÔNG
+  thay ảnh thật của dự án, KHÔNG làm thay chữ / phụ đề của phong cách. Chữ trong cảnh theo font của bộ (`window.CANH.style`).
+- Viết bằng `canh_ai.py moi` → xem `canh_ai.py thu` bằng mắt → soát. Đây là công cụ của tool (không vi phạm mục 1).
 
 ## 6. Mẫu khối bộ Sang trọng BĐS (chép rồi sửa chữ / thời gian; bộ khác: khối text chỉ cần text, start, end, y)
 ```json
@@ -94,7 +101,8 @@ Tiêu đề để trống font = Cormorant Garamond (mặc định của bộ). 
 ```
 
 ## 7. Tự kiểm tra trước khi giao (bắt buộc, không bỏ bước)
-1. `soat.py "<folder>"` → KHÔNG còn dòng nào bắt đầu bằng "CHUẨN:" (cổng chất lượng chung, scripts/chat_luong.py), hết lỗi đè mặt
+1. `soat.py "<folder>"` → KHÔNG còn dòng nào bắt đầu bằng "CHUẨN:" (cổng chất lượng chung, scripts/chat_luong.py — gồm cả
+   "CHUẨN: FONT …": font thiếu dấu tiếng Việt / không có trong thư viện / nghiêng giả / số viết bằng font thư pháp, và lỗi cảnh AI), hết lỗi đè mặt
    và chữ khó đọc (bộ chữ trơn: sửa bằng lớp che sáng / dời chữ, không đặt hộp).
 2. XEM khung hình thật: `render.py --check` (máy tính: `nho_may.py check`) 6 mốc mỗi lần, phủ cả mở đầu, giữa, kết. Mở ảnh
    ra xem bằng mắt. Không xem được ảnh thì nói rõ với người dùng.

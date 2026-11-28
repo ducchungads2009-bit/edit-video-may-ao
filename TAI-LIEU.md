@@ -320,6 +320,9 @@ Người dùng nhập API key + voice id ở ⚙ Cài đặt (settings.json "tts
 - Đoạn lẻ (chèn câu đọc thêm): `python scripts/tts_api.py "<folder>" "câu cần đọc"` → assets/giong-doc/*.wav → khối `audio`; hoặc
   `tts.py ... --giong api:<voice id>`. Trình chỉnh sửa: Âm thanh → Giọng đọc AI (chọn giọng API hoặc offline).
 - Số / giá / chữ tiếng Anh nên viết theo cách đọc trong kịch bản nếu sợ đọc sai (vd "2,5 tỷ" → "hai tỷ rưỡi").
+- Chưa có giọng API: giọng VieNeu chạy trên máy — `tts.py "<folder>" "câu" --giong "vn:Hải Đăng"` (25 giọng Bắc / Trung / Nam:
+  `tts.py ds`; nam Hải Đăng, Thiện Minh (kể chuyện), Quốc Tuấn; nữ Trúc Ly, Ngọc Huyền, Mai Anh (tin tức); miền Nam Thùy Dung, Minh
+  Triết…). Tự nhiên hơn giọng `nu1`/`nu2`. Lần đầu cài ~250MB + tải mô hình ~600MB từ huggingface.co; mạng chặn → tự đọc bằng `nu1`.
 
 ## Tua nhanh / slow-motion / timelapse THEO NỘI DUNG (tự quyết, không cần người dùng nhắc)
 Đổi tốc độ khi nó làm nội dung dễ xem hơn — mỗi video 0–3 chỗ, đừng lạm dụng:
@@ -679,7 +682,7 @@ Quy tắc:
   (chọn đoạn video → kéo trên khung hình / thanh trượt). Giữ nguyên khi sửa plan. Riêng từng đoạn:
   `segXf: {"<giây bắt đầu đoạn>": {cùng các trường, + x, y tâm phóng}}` (ghi đè mainXf cho đoạn đó); `segCurve: {"<giây>": hero|bullet|montage|jump|flashin|flashout}`.
 - Nhịp nhạc: `beats: [giây]` (scripts/nhip.py). Âm thanh: `"audio": {"voice": deep|high|chipmunk|robot|echo|phone|radio, "vocals": true}`
-  (vocals = tách giọng khỏi nhạc nền, scripts/tach_giong.py). Giọng đọc AI: `python scripts/tts.py "<folder>" "nội dung"` -> wav trong
+  (vocals = tách giọng khỏi nhạc nền, scripts/tach_giong.py). Giọng đọc AI: `python scripts/tts.py "<folder>" "nội dung" [--giong vn:<tên>]` -> wav trong
   assets/giong-doc → chèn bằng khối audio. Ảnh bìa: `python scripts/render.py "<folder>" --cover <giây> "Tiêu đề"` -> anh-bia.jpg.
 - BẢN ĐỒ (khối `map` — bản đồ thật, camera bay, vẽ đường đi tới từng tiện ích, ghim bật kèm nhãn "5 phút"):
   `{"type": "map", start, end, "places": [{name, lng, lat, label?}] (điểm đầu = dự án), "paths": [[[lng, lat]...] cho từng tiện ích],
@@ -859,6 +862,46 @@ thường → mỗi video 1–3 khối, mỗi khối 3–8 giây, cho Ý QUAN TR
   máy ảo chặn thì bỏ qua theo tay, dùng `at` để chuyển trang theo lời nói).
 - Tốc độ video: `"speed": 1.2` (cả video), `"segSpeed": {"12.5": 2}` (riêng đoạn, khoá = giây bắt đầu đoạn trong video gốc). render.py áp lên bản xuất cuối (scripts/render.py `speed_ranges` / `apply_speed`). Tốc độ 0,1–16×; `"segCurve"` đường cong (hero | bullet | montage | jump | flashin | flashout); `"segAudio": {"<giây>": "keep|mute"}` (mặc định tự tắt tiếng gốc khi < 0,75× hoặc > 2,5×), `"segSmooth": {"<giây>": "mci|blend|off"}` (slow-motion tự trộn khung; mci = mượt nhất, xuất lâu).
 
+### CẢNH AI — khối `canhAI` (remotion/src/CanhAI.tsx, cách làm của LumReels) — đồ hoạ AI tự viết bằng code
+Khi khối có sẵn không làm được đoạn cần (mở đầu thương hiệu, bảng giá / tiến độ thanh toán động, sa bàn vẽ tay, tranh màu nước tự
+vẽ, infographic số liệu, kết bài có nút gọi…): tự viết 1 cảnh HTML/SVG/Canvas/Three.js rồi chèn như mọi khối. Luật viết: ĐỌC HẾT
+`canh-ai/HUONG-DAN.md` (mỗi khung là hàm thuần của t, không gọi mạng, chỉ font trong thư viện). Không thay ảnh thật của dự án.
+- Thư viện 104 mẫu phong cách (bản mô tả bằng chữ: màu, font, bố cục, nhịp theo giây, cách dựng, tự kiểm):
+  `canh_ai.py ds [--nhom bds|ads|faceless] [--tim "<từ>"]` · `canh_ai.py xem <id>` (10 mẫu BĐS: 014, 015, 021, 042, 044, 046, 047, 050, 052, 078).
+- Tạo: `canh_ai.py moi "<du-an>" <ten> [--mau <id>] [--giay 6] [--nen trong|mau]` → `canh/<ten>/index.html` (+ `MAU.md`).
+- Xem thử riêng (5 mốc, không cần dựng video): `canh_ai.py thu "<du-an>" <ten>` → `canh/<ten>/_thu.jpg` — MỞ RA XEM.
+- Soát: `canh_ai.py kiem "<du-an>"` (soat.py tự gọi: luật + chạy cảnh trong Chrome bắt chữ mất dấu / font hệ thống / chữ quá nhỏ).
+- Khối: `{"type": "canhAI", "start", "end", "canh": "canh/<ten>", "data": {…dữ liệu cảnh đọc qua window.CANH.data…}, "from"?, "speed"?,
+  "fit": "cover"|"contain", "fadeIn"?: 0.25, "fadeOut"?: 0.25, "opacity"?, "z"?, "sfx"?}`. Nền cảnh trong suốt = lớp phủ trên video;
+  nền màu = chèn kín khung. Cùng 1 cảnh dùng lại được cho dự án khác — chỉ đổi `data`.
+- Máy ảo: cảnh 2D (DOM/SVG/canvas) dựng nhanh như khối thường; cảnh WebGL / Three.js vẽ bằng CPU → chậm, giữ ngắn (≤ 6s).
+- CẢNH DỰNG SẴN (đã viết, chỉ đổi `data` — ưu tiên dùng trước khi tự viết): `canh_ai.py san` (danh sách + trường data),
+  `canh_ai.py moi "<du-an>" <tên> --san <cảnh>`, xem thử `canh_ai.py thu san <cảnh> --data '{…}'`:
+  | Cảnh | Kiểu | Dùng khi |
+  |---|---|---|
+  | `mau-nuoc` | kín khung 7s, che mo / ket, `chu: false` = chỉ tranh (làm nền) | mở / kết BĐS cao cấp, nghỉ dưỡng |
+  | `art-deco` | kín khung 6s, mo / ket | dự án thượng lưu, mở bán sang |
+  | `du-lich` | kín khung 6s, mo / ket | nghỉ dưỡng ven biển / núi, homestay |
+  | `bauhaus` | 6s, che mo / so / ket, `nen: "trong"` = đè lên video | khoe 1–3 con số, môi giới, vay |
+  | `the-tin-rao` | thẻ nổi 6s | giá + thông số + nút gọi |
+  | `bieu-do-vay` | thẻ nổi 6s, giaoDien sang / toi | tiến độ thanh toán, ngân hàng hỗ trợ |
+  | `tuyen-tien-ich` | thẻ nổi 6s | vị trí → tiện ích (thay bản đồ khi mạng chặn) |
+  | `tin-nhan` | khung chat nổi 8s | câu hỏi khách hay hỏi, review |
+  | `terminal` | cửa sổ nổi 7s | tăng giá theo năm, lãi kép (số liệu có nguồn) |
+  Khối dài / ngắn hơn cảnh: chỉnh `speed` (vd cảnh 6s trong khối 4s → `speed` 1.5) hoặc `from` (bắt đầu giữa cảnh).
+- BỘ PHONG CÁCH CÓ CẢNH AI ĐI KÈM: Sang trọng màu nước · Art Deco vàng kim · Du lịch cổ điển · Bauhaus số liệu — `phongcach.py chon`
+  in tên cảnh đi kèm; `phongcach.py xem "<bộ>"` in ghi-chu.md: cảnh nào cho mở / kết / giá / tiến độ / vị trí, data mẫu.
+
+### VIDEO KHÔNG CẦN CLIP GỐC — `scripts/video_ai.py` (người dùng chỉ gửi kịch bản / thông tin, không có video)
+1. `video_ai.py moi "<du-an>" --kich-ban "<file .txt hoặc chữ>" --giong "vn:Hải Đăng"` (mỗi dòng = 1 câu; `--giong khong` + `--giay 20`
+   = không lời; `--nen "#0B0B0D"` màu nền cho bộ tối; `--khung 1:1`…). Tự đọc giọng AI từng câu → `voice.wav` → prepare (chế độ
+   CHỈ TIẾNG) → `cau.json` (mốc từng câu), `kich-ban-voice.txt` (đúng chữ → `fixes` cho phụ đề). Có file giọng thật → chép thành
+   `voice.*` rồi prepare như thường.
+2. Chọn bộ có cảnh AI (hoặc bộ bất kỳ + cảnh dựng sẵn / tự viết). Mỗi câu = 1 cảnh: cảnh kín khung cho mở / kết, cảnh thẻ ở giữa
+   đặt trên NỀN (cảnh tranh `mau-nuoc` `"chu": false` kéo dài, ảnh dự án thật phủ kín + lia, hoặc stock video). Không để nền trơn.
+3. Phụ đề `captions: true` + `fixes`; nền sáng mà chữ phụ đề trắng → `"style": {"captions": {"stroke": 7, "strokeColor": "#2B2620"}}`;
+   `captionTop` tránh vùng thẻ. Nhạc nền theo bộ. Rồi soát → render như thường. Mẫu đầy đủ: `samples/khong-clip-plan.json`.
+
 ## DỰNG THEO NHỊP NHẠC — dự án có `dung-nhip.json` {"on": true} (người dùng tích "🎵 Dựng theo nhịp nhạc")
 Dùng cho trailer, đoạn mở đầu, video không lời / video đặc biệt. KHÔNG tự bật khi người dùng không tích (hoặc không nhờ).
 `range`: "intro" (0 → `introSec` giây) | "all" (cả video) | "custom" (`from`–`to`); `density`: auto | 1 | 2 | 4 (số nhịp mỗi cảnh).
@@ -909,6 +952,12 @@ có lời nói thì âm lượng 0.25). Không có nhạc nào -> KHÔNG dựng 
    - Chữ tiêu đề: `text` anim "type"/"words"/"pop" bật đúng nhịp; trailer: chữ to, ít chữ, mỗi câu 2–4 nhịp.
    - `fx` style "beat" (khung nảy theo nhịp), `zoom` punch ở nhịp mạnh (tối đa ~1/4 số nhịp), `fx` flash rất ít (đoạn cao trào).
 4. Ngoài đoạn nhịp dựng như thường. Ghi trong bao-cao.md: đoạn nào dựng theo nhịp, BPM, đã dùng kiểu khối gì.
+
+### Âm thanh tự động khi xuất (render.py — cách trộn của LumReels)
+- NHẠC NHƯỜNG LỜI: nhạc nền (`music` hoặc khối `audio` có `"bgm": true`) giữ đúng volume đã đặt khi có người nói, tự to lên ×1,8 ở
+  khoảng lặng ≥ 0,8s (theo `_work/words.json`) rồi hạ lại trước câu kế. Tắt: plan `"musicDuck": false`; đổi độ to lên: `{"lift": 1.5}`;
+  riêng 1 khối: `"duck": false`. Video không lời (`videoVolume: 0`) thì không áp.
+- ĐỘ TO CHUẨN: bản xuất cuối được đo và đưa về −14 LUFS, đỉnh ≤ −1,5 dBTP (2 lượt, hình chép thẳng) — dòng "Độ to: …". Tắt: `"loudness": false`.
 
 ## Bước 6 — Soát nhanh (không dựng hình)
 ```

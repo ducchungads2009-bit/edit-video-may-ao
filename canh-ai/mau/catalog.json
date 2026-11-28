@@ -1,0 +1,1440 @@
+[
+ {
+  "id": "001",
+  "name": "Hố đen giả định",
+  "blurb": "Shader vũ trụ cho câu hỏi \"nếu như\". Một con số đổi dần trên thẻ đồng hồ.",
+  "category": "faceless",
+  "genre": "khoa học vũ trụ / \"nếu như\"",
+  "technique": [
+   "webgl-shader",
+   "svg",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": true
+ },
+ {
+  "id": "002",
+  "name": "Tia nắng dưới đại dương",
+  "blurb": "Nước xanh ngọc, tia nắng xuyên xuống, sinh vật lớn bơi chậm phát vòng sóng âm mảnh.",
+  "category": "faceless",
+  "genre": "kể chuyện thiên nhiên / đại dương",
+  "technique": [
+   "webgl-shader",
+   "svg",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": true
+ },
+ {
+  "id": "003",
+  "name": "Hoạt hình phẳng viền đậm, giờ trôi",
+  "blurb": "Hoạt hình vector viền đậm: một phòng, đồng hồ nhảy giờ, ánh sáng trôi từ đêm sang sáng.",
+  "category": "faceless",
+  "genre": "hài tình huống / meme đời thường",
+  "technique": [
+   "svg",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "004",
+  "name": "Hồ sơ bí ẩn đêm bão",
+  "blurb": "Đêm bão mưa xiên, vật thể bóng tối giữa sóng, chữ máy gõ, vòng khoanh manh mối, dấu đỏ.",
+  "category": "faceless",
+  "genre": "bí ẩn / vụ án chưa giải",
+  "technique": [
+   "webgl-shader",
+   "svg",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": true
+ },
+ {
+  "id": "005",
+  "name": "Zoom thang đo vũ trụ",
+  "blurb": "Camera lùi liên tục, từ ngọn đồi ra tới thiên hà.",
+  "category": "faceless",
+  "genre": "khoa học phổ thông / thang đo vũ trụ",
+  "technique": [
+   "canvas2d",
+   "svg",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": true
+ },
+ {
+  "id": "006",
+  "name": "Bản đồ giấy da, chibi đối đầu",
+  "blurb": "Bản đồ cổ giấy da, dấu sáp đỏ đóng xuống, hai nhân vật chibi đồ chơi và đường hành quân.",
+  "category": "faceless",
+  "genre": "lịch sử / chiến tranh cổ đại",
+  "technique": [
+   "canvas2d",
+   "svg",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": true
+ },
+ {
+  "id": "007",
+  "name": "Truyện tin nhắn",
+  "blurb": "Kể chuyện gia đình qua màn hình chat, từng tin hiện ra.",
+  "category": "faceless",
+  "genre": "truyện tin nhắn / cảm xúc gia đình",
+  "technique": [
+   "dom",
+   "svg"
+  ],
+  "difficulty": 2,
+  "narration": false
+ },
+ {
+  "id": "008",
+  "name": "Kawaii pastel soi kính lúp",
+  "blurb": "Minh hoạ kawaii pastel viền nâu dày, con vật giữa phòng, kính lúp soi bộ phận bên trong.",
+  "category": "faceless",
+  "genre": "khoa học thiếu nhi",
+  "technique": [
+   "svg",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": true
+ },
+ {
+  "id": "009",
+  "name": "Bảng terminal xanh lãi kép",
+  "blurb": "Bảng điều khiển nền đen xanh lá: số lớn đếm lên, đường cong tự vẽ, thanh so sánh chốt kết.",
+  "category": "faceless",
+  "genre": "tài chính cá nhân",
+  "technique": [
+   "svg",
+   "dom"
+  ],
+  "difficulty": 2,
+  "narration": false
+ },
+ {
+  "id": "010",
+  "name": "Platformer pixel 8-bit CRT",
+  "blurb": "Cảnh platformer pixel hoàng hôn trong khung CRT, HUD xu điểm, tiêu đề rơi từng chữ.",
+  "category": "faceless",
+  "genre": "game / danh sách đếm ngược",
+  "technique": [
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": true
+ },
+ {
+  "id": "011",
+  "name": "Giấy cắt dán giải thích",
+  "blurb": "Giấy vở, băng keo, nhân vật cắt giấy giảng một ý tâm lý.",
+  "category": "faceless",
+  "genre": "giải thích tâm lý / phát triển bản thân",
+  "technique": [
+   "svg",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": true
+ },
+ {
+  "id": "012",
+  "name": "Thuỷ mặc trích dẫn",
+  "blurb": "Nét bút lông vẽ núi và lữ khách, minh hoạ một câu nói.",
+  "category": "faceless",
+  "genre": "truyền cảm hứng / trích dẫn triết lý",
+  "technique": [
+   "webgl-shader",
+   "svg",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": true
+ },
+ {
+  "id": "014",
+  "name": "Drone 3D phố đêm low-poly",
+  "blurb": "Camera bay qua thành phố 3D low-poly về đêm, hạ xuống ghim cam, tuyến đường cam tự vẽ.",
+  "category": "ads",
+  "genre": "quảng cáo bất động sản",
+  "technique": [
+   "three",
+   "svg",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "015",
+  "name": "Diorama 3D tua nhanh công trình",
+  "blurb": "Khối đất isometric trên biển mây, cần cẩu dựng nhà theo giai đoạn, trời trôi ngày sang đêm.",
+  "category": "ads",
+  "genre": "quảng cáo nhà thầu xây dựng",
+  "technique": [
+   "three",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "016",
+  "name": "Đồ chơi 3D bóng đổi màu",
+  "blurb": "Sản phẩm 3D bóng mềm rơi xuống bục tròn, đổi 3 màu kéo theo nền, giá mới đập xuống.",
+  "category": "ads",
+  "genre": "thương mại điện tử / bán lẻ",
+  "technique": [
+   "three",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "017",
+  "name": "Siêu anh hùng truyện tranh",
+  "blurb": "Quảng cáo dịch vụ kể như một trận đánh, chữ tượng thanh dồn dập.",
+  "category": "ads",
+  "genre": "y tế / nha khoa",
+  "technique": [
+   "svg",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "018",
+  "name": "Cẩm thạch lỏng hồng gân vàng",
+  "blurb": "Nền cẩm thạch lỏng hồng-ngà gân vàng chảy cuộn, giọt nước gợn sóng, chữ serif mảnh.",
+  "category": "ads",
+  "genre": "spa / thẩm mỹ",
+  "technique": [
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "019",
+  "name": "Neon phòng tập tường gạch",
+  "blurb": "Biển neon trên tường gạch tối, người vẽ bằng nét neon tập lặp, bộ đếm LED nhảy số.",
+  "category": "ads",
+  "genre": "thể hình / phòng gym",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "020",
+  "name": "Bàn gỗ nhìn từ trên, vẽ bọt sữa",
+  "blurb": "Góc nhìn thẳng xuống bàn gỗ: bọt sữa tự vẽ thành hình trong tách, món kèm trượt vào.",
+  "category": "ads",
+  "genre": "ẩm thực / quán cà phê, tiệm bánh",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "021",
+  "name": "Gieo hạt thành nhà",
+  "blurb": "Minh hoạ phẳng ấm áp: hạt nảy mầm, cây lớn thành ngôi nhà.",
+  "category": "ads",
+  "genre": "tài chính / vay mua nhà",
+  "technique": [
+   "svg",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "022",
+  "name": "Băng VHS nửa đêm",
+  "blurb": "Hình nhiễu, lệch kênh, phụ đề trắng. Kinh dị analog.",
+  "category": "faceless",
+  "genre": "kinh dị analog",
+  "technique": [
+   "webgl-shader",
+   "svg",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "023",
+  "name": "Bình gốm kể chuyện",
+  "blurb": "Bình gốm 3D xoay dưới đèn rọi, hình vẽ trên thân bình chuyển động.",
+  "category": "faceless",
+  "genre": "thần thoại / lịch sử cổ đại",
+  "technique": [
+   "three",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": true
+ },
+ {
+  "id": "024",
+  "name": "Vách hang dưới ánh đuốc",
+  "blurb": "Đuốc rọi vách đá sần, hình vẽ thổ hoàng cổ động đậy trong quầng lửa, máy lướt dọc vách.",
+  "category": "faceless",
+  "genre": "lịch sử / tiền sử",
+  "technique": [
+   "webgl-shader",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": true
+ },
+ {
+  "id": "025",
+  "name": "Tranh khắc gỗ dân gian",
+  "blurb": "Sóng chàm cuộn bọt, truyện dân gian kể bằng mảng màu phẳng.",
+  "category": "faceless",
+  "genre": "truyện dân gian / thần thoại Á Đông",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": true
+ },
+ {
+  "id": "026",
+  "name": "Truyện vải nỉ trước giờ ngủ",
+  "blurb": "Thế giới vải nỉ khâu tay, nhịp chậm, ánh đèn ấm.",
+  "category": "faceless",
+  "genre": "truyện thiếu nhi / trước giờ ngủ",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": true
+ },
+ {
+  "id": "027",
+  "name": "Bóc tách cơ khí 3D",
+  "blurb": "Vật thể kim loại tách từng lớp dưới đèn studio, có nhãn chú thích.",
+  "category": "faceless",
+  "genre": "giải thích kỹ thuật / khoa học",
+  "technique": [
+   "three",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": true
+ },
+ {
+  "id": "028",
+  "name": "Bản thảo trung cổ",
+  "blurb": "Trang sách cổ có chữ dát vàng, hình vẽ lề sống dậy.",
+  "category": "faceless",
+  "genre": "lịch sử thú vị",
+  "technique": [
+   "svg",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": true
+ },
+ {
+  "id": "029",
+  "name": "Phim câm kinh dị",
+  "blurb": "Đen trắng, cầu thang méo, cái bóng tự tách khỏi tường.",
+  "category": "faceless",
+  "genre": "truyện kinh dị ngắn",
+  "technique": [
+   "svg",
+   "dom",
+   "canvas2d"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "030",
+  "name": "Cắt cát động 3D",
+  "blurb": "Dao cắt khối cát nhiều lớp màu thành từng lát. Video thoả mãn.",
+  "category": "faceless",
+  "genre": "video thoả mãn (oddly satisfying)",
+  "technique": [
+   "three",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "031",
+  "name": "Tranh gạch men lật",
+  "blurb": "Tường gạch men xanh lật từng cột để đổi cảnh.",
+  "category": "faceless",
+  "genre": "ngôn ngữ và văn hoá",
+  "technique": [
+   "three",
+   "canvas2d",
+   "svg"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "032",
+  "name": "Rối bóng giấy đục lỗ",
+  "blurb": "Sân khấu rối bóng giấy cắt đục lỗ sau màn hổ phách, khán giả bóng đen ngồi phía dưới.",
+  "category": "faceless",
+  "genre": "ngụ ngôn thiếu nhi",
+  "technique": [
+   "svg",
+   "dom",
+   "canvas2d"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "033",
+  "name": "Áp phích du lịch cổ điển",
+  "blurb": "Mặt trời toả quạt, núi tuyết, đoàn tàu lao qua mây.",
+  "category": "faceless",
+  "genre": "du lịch",
+  "technique": [
+   "svg",
+   "dom",
+   "canvas2d"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "034",
+  "name": "Đất sét meme 3D",
+  "blurb": "Nhân vật đất sét có mặt, nhịp meme ngắn và lật kết.",
+  "category": "faceless",
+  "genre": "hài meme",
+  "technique": [
+   "three",
+   "dom",
+   "canvas2d"
+  ],
+  "difficulty": 5,
+  "narration": false
+ },
+ {
+  "id": "035",
+  "name": "Quán nhỏ đêm mưa 3D",
+  "blurb": "Mặt tiền quán nhỏ sáng đèn vàng giữa phố mưa đêm, mặt đường ướt soi bóng, máy đẩy chậm vào quầy.",
+  "category": "faceless",
+  "genre": "kể chuyện đời thường",
+  "technique": [
+   "three",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": false
+ },
+ {
+  "id": "036",
+  "name": "Phố đêm đông khách 3D",
+  "blurb": "Phố đêm 3D sách tranh: quán nhỏ sáng đèn, hàng người vòng góc phố, máy bay lên rồi lao zoom.",
+  "category": "faceless",
+  "genre": "kể chuyện đời thường",
+  "technique": [
+   "three",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": false
+ },
+ {
+  "id": "037",
+  "name": "Mười chất liệu một bố cục",
+  "blurb": "Cùng một cảnh vẽ lại liên tục qua mười chất liệu: sơn dầu, LED, dither, dao động ký, hạt nhựa…",
+  "category": "multi-style",
+  "genre": "trình diễn phong cách / thiết kế",
+  "technique": [
+   "webgl-shader",
+   "canvas2d",
+   "svg",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": false
+ },
+ {
+  "id": "038",
+  "name": "Tám chất liệu một cú nhảy",
+  "blurb": "Cùng một chuyển động, vẽ lại qua tám chất liệu bằng shader.",
+  "category": "multi-style",
+  "genre": "trình diễn phong cách / AI tạo hình",
+  "technique": [
+   "webgl-shader",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": false
+ },
+ {
+  "id": "039",
+  "name": "Trailer hành động nhại",
+  "blurb": "Quảng cáo tiệm nhỏ làm như trailer phim: lửa, chậm, chữ to.",
+  "category": "ads",
+  "genre": "quảng cáo dịch vụ địa phương (tiệm giặt sấy)",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": true
+ },
+ {
+  "id": "040",
+  "name": "Tranh khắc lino ba màu",
+  "blurb": "Tranh khắc lino đen–đỏ–kem, nhân vật đấm theo nhịp nhạc, chữ slab đóng dấu, tia áp phích.",
+  "category": "ads",
+  "genre": "quảng cáo phòng tập / thể thao",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "041",
+  "name": "Mô hình tí hon tilt-shift",
+  "blurb": "Góc phố đêm 3D như mô hình đồ chơi, tilt-shift nhoè trên dưới, máy lao vào lò nướng.",
+  "category": "ads",
+  "genre": "quảng cáo nhà hàng",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": false
+ },
+ {
+  "id": "042",
+  "name": "Áp phích Bauhaus phá ngộ nhận",
+  "blurb": "Một con số khổng lồ bị chém nát, câu đúng hiện ra.",
+  "category": "ads",
+  "genre": "môi giới vay mua nhà",
+  "technique": [
+   "svg",
+   "dom"
+  ],
+  "difficulty": 2,
+  "narration": false
+ },
+ {
+  "id": "043",
+  "name": "HUD camera nhiệt ironbow",
+  "blurb": "Ảnh nhiệt tím-đỏ-vàng với HUD đo đạc, cơ thể nguội dần khi chỉ số tụt.",
+  "category": "ads",
+  "genre": "nha khoa",
+  "technique": [
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "044",
+  "name": "Sách pop-up giấy cắt 3D",
+  "blurb": "Sách pop-up trên bàn gỗ: trang cũ gập xuống, cảnh mới bằng giấy bật dựng lên.",
+  "category": "ads",
+  "genre": "cải tạo nhà bếp / nội thất",
+  "technique": [
+   "three",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "045",
+  "name": "Trang manga tram chấm đen trắng",
+  "blurb": "Panel manga đen trắng tram chấm, chữ hiệu ứng to đập vào, băng rôn đỏ ở cuối.",
+  "category": "ads",
+  "genre": "phòng tập leo núi / thể thao",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "046",
+  "name": "Màu nước phác hoạ",
+  "blurb": "Nét mực tự phác, mảng màu nước loang dần vào.",
+  "category": "ads",
+  "genre": "bất động sản cao cấp",
+  "technique": [
+   "svg",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "047",
+  "name": "Origami tự gấp dưới đèn bàn",
+  "blurb": "Các tấm giấy tự gấp thành mô hình origami 3D trên bàn gỗ ấm, hạc giấy bay ngang.",
+  "category": "ads",
+  "genre": "môi giới bất động sản",
+  "technique": [
+   "three",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "048",
+  "name": "Zine photocopy cắt dán",
+  "blurb": "Trang zine đen trắng tram chấm điểm đỏ cam: chữ cắt báo, kéo cắt sticker, băng keo dán.",
+  "category": "ads",
+  "genre": "streetwear / bán lẻ thời trang",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "049",
+  "name": "Đảo voxel isometric lơ lửng",
+  "blurb": "Hòn đảo khối lập phương nhìn isometric nổ tung thành hàng trăm khối rồi tự lắp lại.",
+  "category": "ads",
+  "genre": "thiết kế sân vườn / cảnh quan",
+  "technique": [
+   "three",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "050",
+  "name": "Bóng bay xoắn 3D",
+  "blurb": "Nhân vật bóng bay trong phòng pastel, hài và dễ thương.",
+  "category": "ads",
+  "genre": "môi giới vay mua nhà",
+  "technique": [
+   "three",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": false
+ },
+ {
+  "id": "051",
+  "name": "Áp phích Art Deco vàng kim",
+  "blurb": "Khung Art Deco đen vàng đối xứng, vật nét vàng biến hoá thành tia nắng ánh kim.",
+  "category": "ads",
+  "genre": "làm đẹp (nối mi, làm mày)",
+  "technique": [
+   "svg",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "052",
+  "name": "Hoạt hình rubber-hose phim cũ",
+  "blurb": "Hoạt hình đen trắng sepia kiểu thập niên 30: nhân vật tay ống, hạt phim, iris đóng.",
+  "category": "ads",
+  "genre": "bảo hiểm nhà ở",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "053",
+  "name": "Món ăn anime lấp lánh",
+  "blurb": "Cận cảnh món ăn vẽ kiểu anime bóng bẩy, lấp lánh, hơi nóng bốc rồi lùi ra quán đêm.",
+  "category": "ads",
+  "genre": "nhà hàng / quán ăn",
+  "technique": [
+   "canvas2d",
+   "svg",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "054",
+  "name": "Tranh khắc thực vật cổ",
+  "blurb": "Trang tranh thực vật cổ trên giấy ố: nét mực tự vẽ, màu nước loang, tên Latin nghiêng.",
+  "category": "ads",
+  "genre": "spa / chăm sóc da",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "055",
+  "name": "Thế giới kẹo 3D lông xù",
+  "blurb": "Thế giới 3D pastel hồng tím: chủ thể lông bết đi vào cỗ máy, bước ra trắng xù.",
+  "category": "ads",
+  "genre": "dịch vụ tắm thú cưng tận nhà",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": false
+ },
+ {
+  "id": "056",
+  "name": "Màn hình máy tính 90s pixel",
+  "blurb": "Desktop thập niên 90 pixel art: con trỏ mở file, hộp thoại cài đặt, cửa sổ bật cứng.",
+  "category": "ads",
+  "genre": "shop online / sản phẩm thủ công",
+  "technique": [
+   "dom",
+   "canvas2d",
+   "svg"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "057",
+  "name": "Tranh bút sáp thiếu nhi",
+  "blurb": "Tranh bút sáp trẻ con nét run, gạch chéo lộ giấy, cảnh cuộn từ phòng lên vũ trụ.",
+  "category": "ads",
+  "genre": "nha khoa trẻ em / dịch vụ cho trẻ",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "webgl-shader"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "058",
+  "name": "Cắt vật thể thủy tinh 3D",
+  "blurb": "Dao cắt trái cây thủy tinh trong suốt trên bàn gỗ tối, caustics màu gợn trên mặt gỗ.",
+  "category": "faceless",
+  "genre": "ASMR cắt trái cây thủy tinh",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": false
+ },
+ {
+  "id": "059",
+  "name": "Phông nền anime gió lộng",
+  "blurb": "Phông nền anime vẽ tay: đồi cỏ lộng gió, mây khổng lồ, camera ngước theo vật bay tới mặt trời.",
+  "category": "faceless",
+  "genre": "truyện anime / truyền cảm hứng",
+  "technique": [
+   "canvas2d",
+   "webgl-shader",
+   "svg",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": true
+ },
+ {
+  "id": "060",
+  "name": "Phòng ngủ 3D đổi ánh sáng",
+  "blurb": "Phòng trẻ con 3D ban đêm: một nguồn sáng nhỏ xua bóng tối, phòng chuyển từ ấm tối sang xanh dịu.",
+  "category": "faceless",
+  "genre": "truyện kể trước giờ ngủ cho trẻ",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": true
+ },
+ {
+  "id": "061",
+  "name": "Kính bóng trời xanh Y2K",
+  "blurb": "Trời xanh, đồi cỏ, bong bóng kính và vòng crôm bóng loáng kiểu Y2K trong veo.",
+  "category": "ads",
+  "genre": "đồ uống / nước có ga",
+  "technique": [
+   "canvas2d",
+   "svg",
+   "dom",
+   "webgl-shader"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "062",
+  "name": "Poster in risograph 3 màu",
+  "blurb": "Poster in risograph cam-xanh-vàng lệch khuôn, chấm halftone, đĩa than quay theo nhịp.",
+  "category": "ads",
+  "genre": "tiệm đĩa than / sự kiện âm nhạc",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "063",
+  "name": "Poster phim kinh dị màu 60s",
+  "blurb": "Cảnh phim kinh dị hài màu rực thập niên 60 vẽ phẳng, hạt phim, quả cầu đổi tím sang xanh.",
+  "category": "faceless",
+  "genre": "kinh dị hài / Halloween",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "064",
+  "name": "Poster xiếc phẳng sọc toả tia",
+  "blurb": "Sân khấu xiếc vector phẳng, phông sọc đỏ-kem toả tia, con vật nhảy qua vòng lửa.",
+  "category": "ads",
+  "genre": "khu vui chơi / tổ chức tiệc sinh nhật",
+  "technique": [
+   "svg",
+   "dom",
+   "canvas2d"
+  ],
+  "difficulty": 2,
+  "narration": false
+ },
+ {
+  "id": "065",
+  "name": "Tấm đan len stop-motion",
+  "blurb": "Cả khung là mũi len đan chữ V, đồi len, thảm ô móc, vật len đính nổi rung kiểu stop-motion.",
+  "category": "ads",
+  "genre": "tiệm len / đồ thủ công",
+  "technique": [
+   "webgl-shader",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "066",
+  "name": "Kính đóng băng tan lộ ánh ấm",
+  "blurb": "Băng lông vũ mọc kín ô kính xanh đêm, rồi một lỗ tan mở ra cảnh quán ấm nhoè đèn vàng.",
+  "category": "ads",
+  "genre": "quán cà phê / đồ uống nóng mùa lạnh",
+  "technique": [
+   "webgl-shader",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "067",
+  "name": "Thạch 3D trong suốt nảy rung",
+  "blurb": "Khối thạch và gấu dẻo 3D trong suốt nảy rung trên sàn gương tím hồng.",
+  "category": "ads",
+  "genre": "tiệm kẹo / đồ ăn vặt",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "068",
+  "name": "Linh vật đồ chơi nhựa 3D lắp món",
+  "blurb": "Linh vật 3D bóng như đồ chơi nhựa tung món lên trời tím hồng, nguyên liệu bay tới lắp ráp.",
+  "category": "ads",
+  "genre": "quảng cáo quán ăn (pizza) theo trào lưu \"Italian brainrot\"",
+  "technique": [
+   "three",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": true
+ },
+ {
+  "id": "069",
+  "name": "Sa mạc xà cừ phụ đề serif",
+  "blurb": "Sa mạc 3D ánh xà cừ pastel, vật phát sáng trôi trên trời, phụ đề serif hiện từng cụm từ.",
+  "category": "faceless",
+  "genre": "truyện ngắn viễn tưởng (micro-fiction)",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": true
+ },
+ {
+  "id": "070",
+  "name": "Mô hình phố tilt-shift low-poly",
+  "blurb": "Khu phố 3D low-poly màu kẹo như mô hình, dải giữa nét, xe chạy vù quanh vòng xuyến.",
+  "category": "ads",
+  "genre": "quảng bá du lịch thành phố",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "071",
+  "name": "Sân khấu opera rèm nhung vàng",
+  "blurb": "Khung sân khấu mạ vàng, rèm nhung đỏ vén ra, vật biểu tượng hiện trong vòng đèn rọi.",
+  "category": "ads",
+  "genre": "teaser sự kiện quán rượu/nhà hàng",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "072",
+  "name": "Đất sét 3D macro mờ tiền cảnh",
+  "blurb": "Nhân vật đất sét 3D có vân tay, stop-motion 12 hình/s, tiền cảnh cỏ nhoè kiểu macro.",
+  "category": "ads",
+  "genre": "quảng cáo tiệm văn phòng phẩm / quà tặng",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": true
+ },
+ {
+  "id": "073",
+  "name": "Macro vảy hạt cườm lấy nét",
+  "blurb": "Cận cảnh macro mặt vảy như hạt cườm xanh tím, độ sâu rất mỏng, một hoạ tiết tròn lấy nét.",
+  "category": "faceless",
+  "genre": "thiên nhiên / sự thật thú vị (macro)",
+  "technique": [
+   "webgl-shader",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": true
+ },
+ {
+  "id": "074",
+  "name": "Hành lang Art Deco đồng đỏ",
+  "blurb": "Hành lang 3D đối xứng đá đỏ, đồng thau và chrome, camera bay xuyên tới vòm cửa sáng.",
+  "category": "ads",
+  "genre": "quảng cáo quán cocktail / bar",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "075",
+  "name": "Quảng cáo TV 70s thước vẽ hoa",
+  "blurb": "Bàn caro nắng chiều nhìn từ trên, bánh răng vẽ hoa, lớp phim TV cũ bo góc, hạt ấm.",
+  "category": "ads",
+  "genre": "quảng cáo cửa hàng hoạ cụ / đồ chơi sáng tạo",
+  "technique": [
+   "canvas2d",
+   "svg",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": true
+ },
+ {
+  "id": "076",
+  "name": "Phác chì trượt lộ món thật",
+  "blurb": "Nét chì tự vẽ món ăn trên giấy kẻ dòng, tờ giấy trượt đi lộ món thật đúng vị trí.",
+  "category": "ads",
+  "genre": "quảng cáo quán ăn (ramen)",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "077",
+  "name": "Nét bút bi sôi nguệch ngoạc",
+  "blurb": "Hoạt hình nét bút bi rung liên tục trên giấy ngà, tô bút dạ lem, một phòng một tình huống.",
+  "category": "faceless",
+  "genre": "hài đời thường (meme hoạt hình)",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 2,
+  "narration": false
+ },
+ {
+  "id": "078",
+  "name": "Vải nhuộm chàm đổi màu loang",
+  "blurb": "Tấm vải dệt thô nhấc khỏi chum, màu lục loang dần thành chàm, hoạ tiết trắng hiện rõ.",
+  "category": "ads",
+  "genre": "quảng cáo đồ trang trí nhà / dệt thủ công",
+  "technique": [
+   "webgl-shader",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "079",
+  "name": "Sân khấu rối 3D sơn mài mặt gương",
+  "blurb": "Thuỷ đình mái đỏ đèn lồng đêm, con rối 3D bóng sơn mài diễn trên mặt hồ phản chiếu.",
+  "category": "ads",
+  "genre": "quảng bá du lịch / văn hoá truyền thống",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": false
+ },
+ {
+  "id": "080",
+  "name": "Tranh cuộn dân gian minhwa cử động",
+  "blurb": "Tranh cuộn lụa xanh giấy ngà, con vật nét cọ khô cử động cắt giấy, con dấu đỏ chốt.",
+  "category": "ads",
+  "genre": "quảng cáo nhà hàng (BBQ Hàn Quốc) / khai trương",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "081",
+  "name": "Gốm vỡ tự ghép vàng kintsugi 3D",
+  "blurb": "Mảnh gốm 3D tự bay lại ghép thành bát dưới nắng xiên, vàng lỏng chảy dọc vết nứt.",
+  "category": "ads",
+  "genre": "lớp học làm gốm / thủ công",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "082",
+  "name": "Tranh dân gian Madhubani tự vẽ",
+  "blurb": "Tranh dân gian viền đôi màu phẳng tự vẽ ra trên giấy thủ công, đối xứng quanh trục giữa.",
+  "category": "ads",
+  "genre": "tiệm bánh kẹo / quà cưới",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "083",
+  "name": "Vẽ màu trên nước ebru kéo kim",
+  "blurb": "Nhìn từ trên khay nước rải đốm màu, kim kéo màu loang thành hoa, tờ giấy in lấy tranh.",
+  "category": "ads",
+  "genre": "quán cà phê / đồ uống",
+  "technique": [
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "084",
+  "name": "Bích hoạ Ai Cập dưới ánh đuốc",
+  "blurb": "Bức tường bích hoạ cổ nứt ố dưới đuốc lập loè, nhân vật cắt giấy làm việc theo tầng.",
+  "category": "ads",
+  "genre": "tiệm bánh mì / ẩm thực",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "085",
+  "name": "Khung cửi dệt từng mũi vải",
+  "blurb": "Khung cửi dệt từng hàng sợi, dải vải hoạ tiết ghép thành tấm rồi thành khăn trên ma-nơ-canh.",
+  "category": "ads",
+  "genre": "tiệm may / thời trang lễ hội",
+  "technique": [
+   "canvas2d",
+   "svg",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "086",
+  "name": "Tranh vector viền đậm dưới trăng",
+  "blurb": "Vector phẳng viền đen dày, sinh vật gỗ đổi từ xỉn sang rực rỡ bên bậu cửa sổ đêm trăng.",
+  "category": "faceless",
+  "genre": "truyện thiếu nhi / ru ngủ",
+  "technique": [
+   "svg",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": true
+ },
+ {
+  "id": "087",
+  "name": "Biển sơn tay fileteado",
+  "blurb": "Biển hiệu đen bóng sơn tay, dây lá cuộn vàng tự mọc, ruy băng chữ và huy hiệu sản phẩm.",
+  "category": "ads",
+  "genre": "tiệm bánh / quán ăn",
+  "technique": [
+   "svg",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "088",
+  "name": "Poster Vị lai sáp màu chéo",
+  "blurb": "Khối phẳng sáp màu theo trường phái Vị lai, bóng lặp tốc độ, chữ tượng thanh và tia nắng chéo.",
+  "category": "ads",
+  "genre": "quán cà phê espresso",
+  "technique": [
+   "svg",
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "089",
+  "name": "Tranh ấn tượng nét cọ sống",
+  "blurb": "Cảnh hiên quán ven sông vẽ toàn bằng nét cọ ấn tượng rung liên tục, bóng tím, nước lấp lánh.",
+  "category": "ads",
+  "genre": "quán cà phê ven sông / không gian thư giãn",
+  "technique": [
+   "canvas2d",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "090",
+  "name": "Poster chicha neon cầu vồng",
+  "blurb": "Poster nền đen chữ khối dạ quang dải cầu vồng đập lên tường gạch, nảy theo nhịp và glitch.",
+  "category": "ads",
+  "genre": "câu lạc bộ âm nhạc / sự kiện đêm",
+  "technique": [
+   "svg",
+   "dom",
+   "canvas2d"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "091",
+  "name": "Tờ flash xăm bật sticker",
+  "blurb": "Tờ giấy hình xăm cổ điển dưới đèn treo, từng hình bứt ra thành sticker viền trắng rồi đáp về.",
+  "category": "ads",
+  "genre": "tiệm xăm / dịch vụ phong cách",
+  "technique": [
+   "svg",
+   "dom",
+   "canvas2d"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "092",
+  "name": "Ảnh in cyanotype mép cọ",
+  "blurb": "Ảnh in đơn sắc xanh Phổ trên giấy màu nước mép quét cọ, đàn cá voi dưới tia nắng, chữ hiện như rửa ảnh.",
+  "category": "faceless",
+  "genre": "sự thật thiên nhiên / khoa học",
+  "technique": [
+   "canvas2d",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": true
+ },
+ {
+  "id": "093",
+  "name": "Gạch nhựa 3D stop-motion",
+  "blurb": "Gạch nhựa bóng 3D tự bay vào khớp kiểu stop-motion macro, chữ ghép bằng nút tròn, bokeh nhiều màu.",
+  "category": "ads",
+  "genre": "cửa hàng đồ chơi / sự kiện thiếu nhi",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "094",
+  "name": "Gameplay 3D low-poly PS1",
+  "blurb": "Khung game 3D low-poly vỡ điểm có HUD điểm số, nhân vật khối hộp, màn mở khoá vật phẩm trên bục neon.",
+  "category": "ads",
+  "genre": "bán lẻ đồ thể thao / ván trượt",
+  "technique": [
+   "three",
+   "dom",
+   "canvas2d"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "095",
+  "name": "Bìa tạp chí pulp halftone",
+  "blurb": "Bìa tạp chí kinh dị cũ in chấm halftone lệch màu, quái vật hoạt hình, con dấu đỏ đập xuống.",
+  "category": "ads",
+  "genre": "dịch vụ diệt côn trùng / dịch vụ gia đình",
+  "technique": [
+   "svg",
+   "dom",
+   "canvas2d"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "096",
+  "name": "Kim loại nóng chảy macro 3D",
+  "blurb": "Cận cảnh 3D ấm: kim loại nóng chảy phát sáng rót vào khuôn, loé trắng, thành phẩm bóng gương xoay trên nền đen.",
+  "category": "ads",
+  "genre": "trang sức / tiệm kim hoàn",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": false
+ },
+ {
+  "id": "097",
+  "name": "Anime cel đối kháng hoàng hôn",
+  "blurb": "Hoạt hình 2D cel kiểu anime đối kháng: đòn đánh lao vào camera, tia tốc độ, sóng xung kích, hoàng hôn.",
+  "category": "ads",
+  "genre": "võ đường / lớp thể thao",
+  "technique": [
+   "svg",
+   "dom",
+   "canvas2d"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "098",
+  "name": "Bàn bài nhung đỏ in cổ",
+  "blurb": "Ba lá bài in thạch bản cũ trên nền nhung đỏ cạnh ngọn nến, lá giữa lật phóng to, thẻ giấy kem kết.",
+  "category": "faceless",
+  "genre": "tử vi / tarot hằng ngày",
+  "technique": [
+   "svg",
+   "dom",
+   "canvas2d"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "099",
+  "name": "Bo mạch macro 3D phát sáng",
+  "blurb": "Cận cảnh 3D bo mạch, tia điện nổ và dòng sáng cam lan theo đường mạch, máy đậy nắp và bật màn hình.",
+  "category": "ads",
+  "genre": "sửa chữa điện thoại / dịch vụ kỹ thuật",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "100",
+  "name": "Đám mây điểm quét LiDAR",
+  "blurb": "Đám mây điểm nhìn từ trên: vạch quét lướt qua, lớp phủ tan thành tia, lộ công trình bằng chấm xanh vàng.",
+  "category": "faceless",
+  "genre": "lịch sử / khảo cổ / khoa học",
+  "technique": [
+   "three",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": true
+ },
+ {
+  "id": "101",
+  "name": "Áp phích Art Nouveau in đá",
+  "blurb": "Áp phích Art Nouveau in thạch bản: nhân vật trong khung vòm có hào quang hoa văn, hoa lá bung ra rồi thu lại.",
+  "category": "ads",
+  "genre": "tiệm hoa / quà tặng thủ công",
+  "technique": [
+   "svg",
+   "dom",
+   "canvas2d"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "102",
+  "name": "Áp phích psychedelic tan chảy",
+  "blurb": "Áp phích ảo giác thập niên 60 màu chói: chữ méo sóng, cả khung tan chảy xoáy vào tâm thành nền paisley.",
+  "category": "ads",
+  "genre": "đồ uống / quán sinh tố",
+  "technique": [
+   "svg",
+   "webgl-shader",
+   "dom"
+  ],
+  "difficulty": 4,
+  "narration": false
+ },
+ {
+  "id": "103",
+  "name": "Vệt sáng phơi sáng dài",
+  "blurb": "Phòng tối, bóng người mờ, đèn LED ở tay chân vẽ vệt neon phơi sáng rồi tự viết thành chữ sáng.",
+  "category": "ads",
+  "genre": "phòng tập nhảy / lớp vận động buổi tối",
+  "technique": [
+   "canvas2d",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "104",
+  "name": "Sơ đồ tuyến tàu vẽ ký tự",
+  "blurb": "Sơ đồ tuyến tàu điện phẳng: biểu tượng xe vẽ các tuyến màu qua ga, ghép thành một ký tự khổng lồ.",
+  "category": "ads",
+  "genre": "giao hàng / logistics nội thành",
+  "technique": [
+   "svg",
+   "dom"
+  ],
+  "difficulty": 3,
+  "narration": false
+ },
+ {
+  "id": "105",
+  "name": "Biển LED 3D ảo giác góc phố",
+  "blurb": "Biển LED 3D anamorphic ôm góc toà nhà đêm mưa: sản phẩm và mascot như lao ra khỏi màn hình.",
+  "category": "ads",
+  "genre": "kem / đồ ăn vặt / F&B",
+  "technique": [
+   "three",
+   "dom"
+  ],
+  "difficulty": 5,
+  "narration": false
+ }
+]

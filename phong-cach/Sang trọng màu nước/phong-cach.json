@@ -1,0 +1,133 @@
+{
+ "ten": "Sang trọng màu nước",
+ "mo_ta": "BĐS cao cấp nghỉ dưỡng kiểu tranh màu nước: tiêu đề Playfair Display, tên dự án thư pháp, nhấn đồng #A8854A, chữ trơn bóng mềm, kèm cảnh AI tranh màu nước tự vẽ (mở / kết) và thẻ tin rao kem viền đồng.",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Playfair Display",
+  "skin": "flat",
+  "accent": "#A8854A",
+  "text": {
+   "look": "clean",
+   "color": "#FFF8EC",
+   "hlColor": "#E9C98B",
+   "hlStyle": "color",
+   "shadow": "soft",
+   "anim": "fade",
+   "out": "fade",
+   "upper": false,
+   "size": 82,
+   "weight": 700,
+   "spacing": 1
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Montserrat",
+   "size": 48,
+   "weight": 600,
+   "color": "#FFF8EC",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "none",
+   "color": "#E9C98B",
+   "stroke": 1.8
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 90
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "fonts": [
+   "Playfair Display",
+   "Imperial Script",
+   "Montserrat"
+  ]
+ },
+ "plan": {
+  "theme": {
+   "light": "#F1EBDD",
+   "mid": "#A8854A",
+   "dark": "#2B2620",
+   "gold1": "#F3E2BF",
+   "gold2": "#C49A5A"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 102,
+   "contrast": 104,
+   "saturation": 96,
+   "warmth": 18,
+   "vignette": 20
+  },
+  "sfxVolume": 0.18
+ },
+ "thanhPhan": {
+  "chu": "Playfair Display chữ thường, nhấn đồng",
+  "phude": "tối giản, nhỏ",
+  "chuyencanh": "mờ chồng chậm",
+  "hieuung": "zoom chậm, rất ít",
+  "dohoa": "thẻ kem viền đồng, tranh màu nước",
+  "bocuc": "căn giữa, lề rộng",
+  "icon": "icon nét mảnh vàng, không nền",
+  "minhhoa": "mờ dần, zoom chậm",
+  "amthanh": "rất ít, nhẹ",
+  "mau": "ấm nhẹ, sáng"
+ },
+ "nguon": "tạo sẵn",
+ "ghiChu": {
+  "chu": "Tiêu đề Playfair Display (mặc định, để trống font); tên dự án Imperial Script Hoa Đầu Mỗi Chữ cỡ 120–150 màu #FFF8EC; dòng nhỏ Montserrat 600 cỡ 30 in hoa spacing 10 màu #E9C98B. Không hộp màu; nền sáng dùng lớp che sáng."
+ },
+ "nhom": "bds",
+ "canhAI": {
+  "mo": {
+   "san": "mau-nuoc",
+   "data": {
+    "che": "mo"
+   }
+  },
+  "ket": {
+   "san": "mau-nuoc",
+   "data": {
+    "che": "ket"
+   }
+  },
+  "the": [
+   {
+    "san": "the-tin-rao"
+   },
+   {
+    "san": "bieu-do-vay",
+    "data": {
+     "giaoDien": "sang",
+     "mau": "#A8854A"
+    }
+   },
+   {
+    "san": "tuyen-tien-ich",
+    "data": {
+     "giaoDien": "sang",
+     "mau": "#A8854A"
+    }
+   }
+  ]
+ }
+}

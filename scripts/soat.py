@@ -85,6 +85,10 @@ def main(folder: Path):
             for w in words_of(e):
                 if w and w.strip():
                     chu.append(f"{e.get('start', 0):6.1f}s  {w.strip()}")
+        if e.get("type") == "canhAI" and isinstance(e.get("data"), dict):  # chữ đưa vào cảnh AI
+            for k, v in e["data"].items():
+                if isinstance(v, str) and v.strip() and k not in ("che", "giaoDien", "mau", "nen", "font") and not v.startswith("#"):
+                    chu.append(f"{e.get('start', 0):6.1f}s  [cảnh AI {k}] {v.strip()}")
     # nhiều chữ cùng lúc
     pts = sorted({round(e.get("start", 0), 2) for e in els})
     for t in pts:

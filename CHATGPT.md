@@ -16,6 +16,12 @@ câu nào nữa, đọc đơn rồi làm luôn mục 2 → 3. Chỉ hỏi lại 
 - "Ý tưởng" + "Nội dung chi tiết" (nhiều dòng, người dùng tự gõ theo loại video: giá, ý chính, lời thơ, ghi chú clip…) → chép nguyên vào
   `brief.txt` (kèm "SĐT", "Kêu gọi cuối" nếu có — không có SĐT thì không hiện SĐT, không có kêu gọi thì tự chọn câu hợp nội dung); dòng ghi chú clip (thứ tự, bỏ đoạn, lấy hình bỏ tiếng) làm theo như mục ghi chú clip của TAI-LIEU.md.
 - "Video gốc: cảnh quay không lời" → dựng không lời (chữ + nhạc); "Giọng đọc: có gửi kèm file" → file âm thanh gửi kèm là `voice.*`.
+- KHÔNG CÓ VIDEO (đơn ghi "Video gốc: không có" / người dùng chỉ gửi kịch bản hoặc thông tin): KHÔNG hỏi xin video. Viết kịch bản
+  ngắn từ brief (mỗi dòng 1 câu, không bịa số) → `./chay.sh video_ai.py moi "<du-an>" --kich-ban kich-ban.txt --giong "vn:Hải Đăng"`
+  (giọng nữ: "vn:Ngọc Huyền"; danh sách: `./chay.sh tts.py ds`) → làm theo TAI-LIEU.md mục "VIDEO KHÔNG CẦN CLIP GỐC".
+- CẢNH AI (đồ hoạ động: mở / kết bằng tranh, thẻ giá, biểu đồ tiến độ, sơ đồ tiện ích, khung chat): `./chay.sh canh_ai.py san` xem
+  9 cảnh dựng sẵn → chép `canh_ai.py moi "<du-an>" <tên> --san <cảnh>` → khối `canhAI` (TAI-LIEU.md mục "CẢNH AI"). Đây là công cụ
+  của tool, được dùng (không phải tự viết script dựng hình). Bộ có cảnh đi kèm: Sang trọng màu nước, Art Deco vàng kim, Du lịch cổ điển, Bauhaus số liệu.
 - "Tư liệu minh họa: có" → ảnh / video không phải clip chính → `assets/cua-ban/`. "Khung hình" → khung.py.
 Nhắn "bắt đầu" mà KHÔNG có đơn → trả lời 1 dòng: "Điền nhanh ở trang Đơn edit (https://bdsnhamoi.vn/edit-video-ai/) rồi dán vào đây kèm video — hoặc mình hỏi từng câu:"
 rồi hỏi câu 1 bên dưới.

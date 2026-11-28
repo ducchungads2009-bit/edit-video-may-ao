@@ -25,6 +25,7 @@ import {Bubble, Chart, Counter, Note, Phrase, PresenterBg, Spark, Stamp, Tabs, T
 import {MapBlock} from './MapBlock';
 import {Orbit} from './Orbit';
 import {Object3D, Photo3D, Screen3D, Text3DPro, handAt} from './Three3D';
+import {CanhAI} from './CanhAI';
 import {MapTour} from './MapTour';
 import {BrandLayer, BrandMark} from './Brand';
 import {FR, fy, DEFAULT_Y} from './frame';
@@ -92,6 +93,8 @@ export type El =
   // 3D THẬT (Three3D.tsx, Three.js): text3dPro (chữ khối kim loại, bóng đổ, vệt sáng) · photo3d (ảnh bay vòng quanh người, phóng ảnh ra
   // trước mặt: hero) · object3d (ghim / nhà / bảng giá / mô hình .glb đặt trên mặt đất của cảnh)
   | (Base & {type: 'text3dPro' | 'photo3d' | 'object3d' | 'screen3d'; [k: string]: any})
+  // CẢNH AI (CanhAI.tsx): cảnh HTML/SVG/WebGL AI tự viết theo canh-ai/HUONG-DAN.md — canh: thư mục cảnh trong dự án, data: dữ liệu cho cảnh
+  | (Base & {type: 'canhAI'; canh: string; data?: any; from?: number; speed?: number; fit?: string; fadeIn?: number; fadeOut?: number; opacity?: number})
   | (Base & {type: 'zoom'; style?: 'punch' | 'in' | 'out' | 'pulse' | 'shake' | 'smooth'; scale?: number; x?: number; y?: number});
 
 /** Chỉnh màu & ánh sáng (100 = giữ nguyên). all: áp cả cho ảnh/video trám */
@@ -1101,11 +1104,30 @@ const Flash: React.FC = () => {
   return <AbsoluteFill style={{background: 'white', opacity: interpolate(f, [0, 2, 7], [0, 0.45, 0], {extrapolateRight: 'clamp'})}} />;
 };
 
-/** khối âm thanh / nhạc: âm lượng, tốc độ (rate), vuốt to dần (fadeIn) / nhỏ dần (fadeOut) — giây */
+/** NHẠC NHƯỜNG LỜI (render.py → p.duck): nhạc nền giữ mức đặt khi có người nói, to dần lên ở khoảng lặng, hạ lại trước câu kế.
+ *  t = giây trên video xuất. Trả hệ số nhân âm lượng (1 khi đang nói, tối đa duck.lift ở giữa khoảng lặng dài). */
+const DUCK: {v?: {spans: [number, number][]; lift: number}} = {};
+export const duckK = (t: number, base = 0.15) => {
+  const d = DUCK.v;
+  if (!d || !d.spans?.length || base <= 0) return 1;
+  let near = Infinity;
+  for (const [a, b] of d.spans) {
+    const x = t < a ? a - t : t > b ? t - b : 0;
+    if (x < near) near = x;
+    if (a > t && x > near) break;
+  }
+  const lift = Math.min(d.lift || 1.8, 0.6 / base); // nhạc to lên nhưng không quá 0,6
+  const k = Math.max(0, Math.min(1, (near - 0.12) / 0.35));
+  return 1 + (lift - 1) * k * k * (3 - 2 * k);
+};
+
+/** khối âm thanh / nhạc: âm lượng, tốc độ (rate), vuốt to dần (fadeIn) / nhỏ dần (fadeOut) — giây; bgm: true = nhạc nền (nhường lời) */
 const AudioEl: React.FC<{e: any; dur: number}> = ({e, dur}) => {
   const v = e.volume ?? 1, fi = Math.round((e.fadeIn || 0) * FPS), fo = Math.round((e.fadeOut || 0) * FPS);
   const rate = e.rate && e.rate > 0 ? e.rate : 1;
-  return <Audio src={mediaSrc(e.src)} startFrom={Math.round((e.from ?? 0) * FPS)} playbackRate={rate} loop={!!e.loop} volume={(f) => v * fadeK(f, dur, fi, fo)} />;
+  const st = Number(e.start) || 0;
+  return <Audio src={mediaSrc(e.src)} startFrom={Math.round((e.from ?? 0) * FPS)} playbackRate={rate} loop={!!e.loop}
+    volume={(f) => v * fadeK(f, dur, fi, fo) * (e.bgm && e.duck !== false ? duckK(st + f / FPS, v) : 1)} />;
 };
 
 const renderEl = (e: El, dur: number, theme: Theme, filter?: string) => {
@@ -1134,6 +1156,7 @@ const renderEl = (e: El, dur: number, theme: Theme, filter?: string) => {
     case 'photo3d': return <Photo3D e={e as any} dur={dur} />;
     case 'object3d': return <Object3D e={e} dur={dur} />;
     case 'screen3d': return <Screen3DEl e={e} dur={dur} />;
+    case 'canhAI': return e.canh ? <CanhAI e={e} dur={dur} /> : null;
     case 'mapTour': return <MapTour e={e as any} dur={dur} />;
     case 'phrase': return <Phrase e={e} dur={dur} theme={theme} />;
     case 'counter': return <Counter e={e} dur={dur} theme={theme} />;
@@ -1489,6 +1512,7 @@ export const DemoBlocks: React.FC<{theme: Theme}> = ({theme}) => {
 
 export const EditPlan: React.FC<PlanProps> = (p) => {
   S.style = p.style || {};
+  DUCK.v = (p as any).duck;
   MXF.v = p.mainXf;
   useFonts(p);
   const cutFx = p.cutFx || 'none';
@@ -1666,7 +1690,7 @@ export const EditPlan: React.FC<PlanProps> = (p) => {
             loop
             playbackRate={(p.music as any).rate > 0 ? (p.music as any).rate : 1}
             startFrom={Math.round((p.music.from ?? 0) * FPS)}
-            volume={(f) => mv * interpolate(f, [0, 15, durationInFrames - 45, durationInFrames], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}
+            volume={(f) => mv * duckK(f / FPS, mv) * interpolate(f, [0, 15, durationInFrames - 45, durationInFrames], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}
           />
         )}
       </AbsoluteFill>
@@ -1680,6 +1704,7 @@ export const EditPlan: React.FC<PlanProps> = (p) => {
    khối âm thanh, tiếng hiệu ứng, nhạc nền — nhưng không vẽ hình nên Remotion dựng tiếng rất nhanh ===== */
 export const AudioPlan: React.FC<PlanProps> = (p) => {
   S.style = p.style || {};
+  DUCK.v = (p as any).duck;
   const {durationInFrames} = useVideoConfig();
   const url = mediaSrc(p.videoSrc);
   const vol0 = p.videoVolume ?? 1;
@@ -1744,7 +1769,7 @@ export const AudioPlan: React.FC<PlanProps> = (p) => {
           loop
           playbackRate={(p.music as any).rate > 0 ? (p.music as any).rate : 1}
           startFrom={Math.round((p.music.from ?? 0) * FPS)}
-          volume={(f) => mv * interpolate(f, [0, 15, durationInFrames - 45, durationInFrames], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}
+          volume={(f) => mv * duckK(f / FPS, mv) * interpolate(f, [0, 15, durationInFrames - 45, durationInFrames], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}
         />
       )}
     </>

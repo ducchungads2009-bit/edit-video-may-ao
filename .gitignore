@@ -5,3 +5,8 @@ cho-edit/
 .mang.json
 __pycache__/
 *.pyc
+canh-ai/lib/
+_cache/
+_thong-ke.json
+canh-ai/san/*/lib/
+canh-ai/san/*/_thu.jpg

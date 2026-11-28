@@ -682,6 +682,10 @@ if __name__ == "__main__":
     elif a[:1] == ["chon"] and len(a) > 2:
         set_mix(Path(a[1]).resolve(), {c: a[2] for c in COMP_IDS} if a[2] else {})
         print("Đã chọn:", a[2] or "(không)")
+        ca = (load(a[2]) or {}).get("canhAI") if a[2] else None
+        if ca:  # bộ có cảnh AI dựng sẵn đi kèm (canh-ai/san)
+            print("Bộ này có CẢNH AI đi kèm (đọc ghi-chu.md của bộ: phongcach.py xem): "
+                  + ", ".join(f"{k} → {', '.join(x['san'] for x in (v if isinstance(v, list) else [v]))}" for k, v in ca.items()))
     elif a[:1] == ["luu-ketqua"] and len(a) > 2:  # lưu phong cách từ video ĐÃ DỰNG (plan.json) — không đổi phong cách của dự án
         d = save_from_result(Path(a[1]).resolve(), a[2])
         print("Đã lưu:", d)

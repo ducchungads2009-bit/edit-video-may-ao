@@ -94,6 +94,11 @@ gửi. Video nói về dự án cụ thể → ảnh THẬT của dự án tìm 
 7. Viết `plan.json` theo TAI-LIEU.md (bước 5) và CHAT-LUONG.md (mẫu khối ở mục 6). Nhạc từ kho: chép `assets-chung/nhac/<file>.mp3` vào `assets/nhac/` →
    `"music": {"src": "assets/nhac/<file>.mp3", "volume": 0.15}` (video không lời: 0.5–0.7). Danh sách: `assets-chung/nhac/danh-sach.json`.
    Chưa có: khối cần tách người (behind, orbit, presenter) — không dùng trên máy ảo.
+   Cần đồ hoạ khối có sẵn không làm được (mở đầu thương hiệu, bảng giá động, tranh vẽ tay, infographic…) → CẢNH AI: đọc HẾT
+   `canh-ai/HUONG-DAN.md`, chọn mẫu `./chay.sh canh_ai.py ds --nhom bds`, tạo `canh_ai.py moi`, xem `canh_ai.py thu` rồi khối `canhAI`
+   (TAI-LIEU.md mục "CẢNH AI"; có 9 cảnh dựng sẵn: `canh_ai.py san`). Giọng đọc AI từ kịch bản: `./chay.sh tts.py "<du-an>" "<câu>" --giong "vn:Hải Đăng"` (giọng VieNeu).
+   KHÔNG CÓ VIDEO (người dùng chỉ gửi kịch bản / thông tin, đơn ghi "Video gốc: không có"): `./chay.sh video_ai.py moi "<du-an>"
+   --kich-ban kich-ban.txt --giong "vn:Hải Đăng"` rồi làm theo TAI-LIEU.md mục "VIDEO KHÔNG CẦN CLIP GỐC" (bỏ mục 1 câu 1 — không cần video).
 8. `./chay.sh soat.py "<du-an>"`, sửa 1 vòng. `./chay.sh render.py "<du-an>"` (máy ảo ~10 giây dựng / 1 giây video:
    chạy nền, kiểm tra mỗi 2–4 phút; KHÔNG kết thúc lượt trả lời khi đang dựng).
 9. XEM 6 khung của `final.mp4` (ffmpeg, phủ mở đầu / giữa / kết) bằng mắt, đối chiếu danh sách "KHÔNG ĐƯỢC CÓ" ở CHAT-LUONG.md
@@ -128,7 +133,8 @@ bằng cách khác (vd nhãn chữ "📍 Cách trung tâm 10 phút" thay cho kh�
 - Ảnh dự án thật: tên miền trang chứa ảnh (vd market.vinhomes.vn); ảnh Wikimedia: upload.wikimedia.org.
 - Tải link Google Drive: drive.google.com, drive.usercontent.google.com (Dropbox: www.dropbox.com, dl.dropboxusercontent.com).
 Muốn bật hết một lần: claude.ai → Cài đặt → Capabilities → Domain allowlist chọn "All domains" (mọi trang đều tải được), mở phiên mới.
-Không cần mạng: chữ, phụ đề, thẻ, chữ 3D, thẻ 3D, lớp phủ, hình vẽ, cảnh dựng sẵn, zoom, chuyển cảnh, nhạc trong kho.
+- Giọng đọc VieNeu (`tts.py --giong vn:…`): huggingface.co (lần đầu tải mô hình). Không được thì tự dùng giọng `nu1`.
+Không cần mạng: chữ, phụ đề, thẻ, chữ 3D, thẻ 3D, lớp phủ, hình vẽ, cảnh dựng sẵn, cảnh AI, zoom, chuyển cảnh, nhạc trong kho.
 
 ## Lưu ý
 - Không bịa giá, diện tích, SĐT, số phòng khi brief không có (số phòng đoán theo hình thì nói rõ là đoán).

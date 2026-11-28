@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<!-- CẢNH DỰNG SẴN "mau-nuoc" — mẫu 046 Màu nước phác hoạ: giấy ngà, nét mực tự phác biệt thự + hồ bơi, màu nước loang vào,
+     mặt trời hạ, đèn cửa sổ bật; rồi chữ hiện. Kín khung, 7 giây (mở đầu / kết bài video BĐS cao cấp).
+     data: che ("mo" mở đầu | "ket" kết bài), nhan (dòng nhỏ in hoa), ten (tên dự án — thư pháp), phuDe (dòng nghiêng),
+           cta (kết bài), sdt (kết bài — để trống thì không hiện),
+           chu (false = chỉ có tranh, không chữ — làm NỀN cho các cảnh thẻ: đặt khối dài, "from": 5, "speed": 0.15) -->
+<link rel="stylesheet" href="./lib/fonts/fonts.css" />
+<script src="./lib/runtime/scene.js"></script>
+<style>
+  html, body { margin:0; width:1080px; height:1920px; overflow:hidden; background:#F1EBDD; }
+  #root { position:relative; width:1080px; height:1920px; overflow:hidden; }
+  canvas, svg { position:absolute; left:0; top:0; }
+  .txt { position:absolute; left:80px; right:80px; text-align:center; }
+  #nhan { top:1290px; font-family:'Montserrat', sans-serif; font-weight:500; font-size:32px; letter-spacing:0.22em; color:#A8854A; }
+  #ten { top:1340px; font-family:'Imperial Script', cursive; font-size:150px; line-height:1.2; color:#2B2620; }
+  #phu { top:1540px; font-family:'Playfair Display', serif; font-style:italic; font-size:52px; color:#5A4B3C; }
+  #rule { position:absolute; left:390px; width:300px; top:1515px; height:2px; background:#A8854A; transform-origin:50% 50%; }
+  #cta { position:absolute; left:50%; top:1650px; transform:translateX(-50%); background:#2E2620; color:#FBF8F1; white-space:nowrap;
+         font-family:'Montserrat', sans-serif; font-weight:600; font-size:38px; padding:26px 60px; border-radius:60px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="7" data-fps="30" data-width="1080" data-height="1920">
+  <canvas id="paint" width="1080" height="1920"></canvas>
+  <svg id="ink" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <canvas id="grain" width="1080" height="1920"></canvas>
+  <div class="txt" id="nhan"></div>
+  <div class="txt" id="ten"></div>
+  <div id="rule"></div>
+  <div class="txt" id="phu"></div>
+  <div id="cta"></div>
+</div>
+<script>
+  const D = window.CANH.data;
+  const { prog, ease, lerp, clamp } = VideoScene;
+  const KET = D.che === 'ket';
+  const $ = (id) => document.getElementById(id);
+  const r = VideoScene.rng(46);
+  const jit = (v, a = 1.4) => v + (r() * 2 - 1) * a;
+
+  // ---- nét mực: danh sách polyline [điểm], mốc vẽ, thời lượng (giây)
+  const L = [];
+  const line = (pts, at, dur = 0.35, w = 2.2) => L.push({ pts, at, dur, w });
+  const rect = (x, y, w, h, at, dur) => line([[x, y], [x + w, y], [x + w, y + h], [x, y + h], [x, y]], at, dur);
+  const arch = (x, y, w, h, at) => { const p = []; for (let k = 0; k <= 12; k++) { const a = Math.PI - (Math.PI * k) / 12; p.push([x + w / 2 + Math.cos(a) * w / 2, y + h - Math.sin(a) * w / 2 - (h - w / 2)]); } p.unshift([x, y + h]); p.push([x + w, y + h]); line(p, at, 0.3, 1.8); };
+  // biệt thự 2 tầng + tháp mái vòm (vùng 15–50% cao, 10–76% rộng)
+  rect(140, 560, 560, 380, 0.0, 0.5);              // khối chính
+  line([[120, 565], [420, 420], [720, 565]], 0.15, 0.45, 2.6); // mái
+  rect(700, 420, 150, 520, 0.25, 0.5);             // tháp
+  line([[690, 425], [775, 330], [860, 425]], 0.4, 0.35, 2.6);  // mái tháp
+  for (let i = 0; i < 4; i++) arch(180 + i * 128, 790, 92, 150, 0.6 + i * 0.08); // vòm tầng dưới
+  for (let i = 0; i < 4; i++) rect(190 + i * 128, 620, 72, 100, 0.8 + i * 0.07, 0.25); // cửa sổ tầng trên
+  rect(742, 500, 66, 110, 0.95, 0.25);             // cửa sổ tháp
+  line([[60, 960], [1020, 960]], 0.5, 0.5, 2);     // chân nhà
+  line([[200, 1010], [880, 1010], [1000, 1260], [80, 1260], [200, 1010]], 0.7, 0.6, 2.2); // hồ bơi phối cảnh
+  line([[850, 700], [1080, 690]], 1.0, 0.3, 1.6);  // chân trời biển
+  line([[70, 940], [78, 600], [100, 520], [112, 600], [118, 940]], 1.0, 0.4, 2); // cây bách
+  line([[930, 1500], [950, 1380], [990, 1500]], 1.2, 0.3, 1.8); // chậu cây phải
+  line([[90, 1500], [110, 1380], [150, 1500]], 1.25, 0.3, 1.8); // chậu cây trái
+  line([[0, 120], [160, 160], [260, 250], [330, 380]], 1.1, 0.4, 2.4); // cành hoa rủ góc trái
+  // làm run tay + nét đúp
+  for (const l of L) l.pts = l.pts.map(([x, y]) => [jit(x), jit(y)]);
+  const svg = $('ink');
+  const NS = 'http://www.w3.org/2000/svg';
+  const paths = [];
+  for (const l of L) for (const off of [0, 1.2]) {
+    const p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', 'M' + l.pts.map(([x, y]) => `${(x + off).toFixed(1)} ${(y + off * 0.6).toFixed(1)}`).join(' L'));
+    p.setAttribute('fill', 'none'); p.setAttribute('stroke', '#2B2620'); p.setAttribute('stroke-width', off ? l.w * 0.5 : l.w);
+    p.setAttribute('stroke-linecap', 'round'); p.setAttribute('stroke-linejoin', 'round'); p.setAttribute('opacity', off ? 0.45 : 0.9);
+    svg.appendChild(p); paths.push({ p, l, len: 0 });
+  }
+
+  // ---- màu nước: vùng (đường bao để cắt) + các vệt loang (tâm, bán kính, mốc)
+  const R = (x, y, w, h) => [[x, y], [x + w, y], [x + w, y + h], [x, y + h]];
+  const regions = [
+    { poly: R(0, 0, 1080, 700), col: ['#5E7898', '#E6A894', '#F0C49A'], grad: [0, 700], at: 1.5, n: 9 },  // trời
+    { poly: R(850, 690, 230, 270), col: ['#3FA89A'], at: 1.8, n: 3 },                                       // biển
+    { poly: R(140, 560, 560, 380).concat([[140, 940]]), col: ['#EBDDC2'], at: 2.0, n: 5, a: 0.5 },                  // tường
+    { poly: R(700, 420, 150, 520), col: ['#EFE3CC'], at: 2.1, n: 3 },
+    { poly: [[120, 565], [420, 420], [720, 565]], col: ['#B5553A'], at: 2.4, n: 3 },                        // mái
+    { poly: [[690, 425], [775, 330], [860, 425]], col: ['#B5553A'], at: 2.5, n: 2 },
+    { poly: [[200, 1010], [880, 1010], [1000, 1260], [80, 1260]], col: ['#3FA89A', '#2E8C80'], grad: [1010, 1260], at: 2.2, n: 6 }, // hồ
+    { poly: R(0, 1260, 1080, 660), col: ['#D9B3A0', '#C99A85'], grad: [1260, 1920], at: 2.6, n: 7, a: 0.22 },        // sân gạch
+    { poly: R(0, 960, 1080, 50), col: ['#C99A85'], at: 2.6, n: 3 },
+  ];
+  for (const g of regions) {
+    const xs = g.poly.map((p) => p[0]), ys = g.poly.map((p) => p[1]);
+    const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+    g.blobs = Array.from({ length: g.n }, (_, i) => ({ x: lerp(x0, x1, r()), y: lerp(y0, y1, r()), rad: Math.max(x1 - x0, y1 - y0) * (0.35 + r() * 0.35), d: g.at + i * 0.07 + r() * 0.15 }));
+    g.box = [x0, y0, x1, y1];
+  }
+  // hoa giấy: chấm magenta dọc cành
+  const flowers = Array.from({ length: 70 }, () => { const k = r(); return { x: lerp(0, 330, k) + (r() - 0.5) * 70, y: lerp(120, 380, k * k) + (r() - 0.5) * 60, s: 7 + r() * 9, d: 2.6 + r() * 0.8, c: r() < 0.5 ? '#8E1F4E' : '#B02860' }; });
+  const windows = [[190, 620, 72, 100], [318, 620, 72, 100], [446, 620, 72, 100], [574, 620, 72, 100], [742, 500, 66, 110]];
+
+  const cv = $('paint'), cx = cv.getContext('2d');
+  function wash(g, t) {
+    cx.save();
+    cx.beginPath(); g.poly.forEach(([x, y], i) => (i ? cx.lineTo(x, y) : cx.moveTo(x, y))); cx.closePath(); cx.clip();
+    let fill = g.col[0];
+    if (g.grad) { const gr = cx.createLinearGradient(0, g.grad[0], 0, g.grad[1]); g.col.forEach((c, i) => gr.addColorStop(i / Math.max(1, g.col.length - 1), c)); fill = gr; }
+    for (const b of g.blobs) {
+      const k = ease.outCubic(prog(t, b.d, 0.7));
+      if (k <= 0) continue;
+      cx.globalAlpha = g.a ?? 0.34;
+      cx.fillStyle = fill;
+      cx.beginPath();
+      // mép loang không đều nhưng mềm: 72 đỉnh, bán kính rung nhẹ theo 2 tần số, nối bằng đường cong
+      const N = 72, pts = [];
+      for (let a = 0; a < N; a++) { const ang = (a / N) * Math.PI * 2; const rr = b.rad * k * (0.86 + 0.08 * Math.sin(ang * 3 + b.x * 0.01) + 0.05 * Math.sin(ang * 7 + b.y * 0.013) + 0.03 * Math.sin(ang * 13 + b.d * 9)); pts.push([b.x + Math.cos(ang) * rr, b.y + Math.sin(ang) * rr]); }
+      cx.moveTo((pts[0][0] + pts[N - 1][0]) / 2, (pts[0][1] + pts[N - 1][1]) / 2);
+      for (let a = 0; a < N; a++) { const p = pts[a], q = pts[(a + 1) % N]; cx.quadraticCurveTo(p[0], p[1], (p[0] + q[0]) / 2, (p[1] + q[1]) / 2); }
+      cx.closePath();
+      cx.fill();
+      cx.globalAlpha = (g.a ?? 0.34) * 0.45; cx.lineWidth = 4; cx.strokeStyle = g.col[g.col.length - 1]; cx.stroke(); // viền khô đậm
+    }
+    cx.restore();
+  }
+
+  // vân giấy: vẽ 1 lần
+  (function grain() {
+    const g = $('grain').getContext('2d'), im = g.createImageData(1080, 1920), rr = VideoScene.rng(7);
+    for (let i = 0; i < im.data.length; i += 4) { const v = rr(); im.data[i] = im.data[i + 1] = im.data[i + 2] = v < 0.5 ? 60 : 255; im.data[i + 3] = 14 * Math.abs(v - 0.5); }
+    g.putImageData(im, 0, 0);
+  })();
+
+  VideoScene.define({
+    duration: 7, fps: 30, width: 1080, height: 1920,
+    setup() {
+      for (const o of paths) { o.len = o.p.getTotalLength(); o.p.setAttribute('stroke-dasharray', o.len); }
+      $('nhan').textContent = (D.nhan || (KET ? 'LIÊN HỆ TƯ VẤN' : 'BẤT ĐỘNG SẢN NGHỈ DƯỠNG')).toUpperCase();
+      $('ten').textContent = D.ten || 'Biệt Thự Hồ';
+      $('phu').textContent = D.phuDe || (KET ? 'Hẹn xem nhà riêng' : 'Nơi mỗi buổi chiều là một bức tranh');
+      $('cta').textContent = KET ? [D.cta || 'Đặt lịch xem nhà', D.sdt].filter(Boolean).join(' · ') : '';
+      if (!KET) $('cta').style.display = 'none';
+      if (D.chu === false) for (const id of ['nhan', 'ten', 'phu', 'rule', 'cta']) $(id).style.display = 'none';
+    },
+    render(t) {
+      for (const o of paths) o.p.setAttribute('stroke-dashoffset', o.len * (1 - ease.inOutCubic(prog(t, o.l.at, o.l.dur))));
+      cx.clearRect(0, 0, 1080, 1920);
+      cx.globalCompositeOperation = 'multiply';
+      for (const g of regions) wash(g, t);
+      // mặt trời hạ dần, vàng -> cam đỏ, bị cắt ở chân trời
+      const s = prog(t, 1.6, 5.4), sy = lerp(450, 640, s);
+      cx.save(); cx.beginPath(); cx.rect(820, 0, 260, 690); cx.clip();
+      cx.globalAlpha = 0.75 * prog(t, 1.6, 0.4);
+      const sc = `rgb(${Math.round(lerp(217, 217, s))},${Math.round(lerp(162, 102, s))},${Math.round(lerp(63, 58, s))})`;
+      cx.fillStyle = sc; cx.beginPath(); cx.arc(950, sy, 62, 0, Math.PI * 2); cx.fill(); cx.restore();
+      // đèn cửa sổ
+      const w = prog(t, 4.0, 0.4);
+      if (w > 0) { cx.globalAlpha = 0.6 * w; cx.fillStyle = '#D9B04A'; for (const [x, y, ww, hh] of windows) cx.fillRect(x + 3, y + 3, ww - 6, hh - 6); }
+      // hoa giấy
+      for (const f of flowers) { const k = ease.outBack(prog(t, f.d, 0.35)); if (k <= 0) continue; cx.globalAlpha = 0.5; cx.fillStyle = f.c; cx.beginPath(); cx.arc(f.x, f.y, f.s * k, 0, Math.PI * 2); cx.fill(); }
+      // ánh hoàng hôn ấm phủ dần
+      cx.globalAlpha = 0.18 * prog(t, 3, 4); cx.fillStyle = '#F2B48C'; cx.fillRect(0, 0, 1080, 1920);
+      cx.globalAlpha = 1; cx.globalCompositeOperation = 'source-over';
+      // nền giấy mờ đi sau chữ để chữ dễ đọc
+      const pk = D.chu === false ? 0 : ease.outCubic(prog(t, 4.3, 0.6));
+      cx.globalAlpha = 0.82 * pk; cx.fillStyle = '#FBF8F1'; cx.fillRect(0, 1250, 1080, 560); cx.globalAlpha = 1;
+      const fade = (id, a, d, dy) => { const k = ease.outCubic(prog(t, a, d)); $(id).style.opacity = k; $(id).style.transform = (id === 'cta' ? 'translateX(-50%) ' : '') + `translateY(${lerp(dy, 0, k)}px)`; };
+      fade('nhan', 4.5, 0.5, 8); fade('ten', 4.9, 0.7, 10); fade('phu', 5.5, 0.5, 6); fade('cta', 5.9, 0.5, 10);
+      $('rule').style.opacity = prog(t, 5.3, 0.3); $('rule').style.transform = `scaleX(${ease.outCubic(prog(t, 5.3, 0.5))})`;
+    },
+  });
+</script>
+</body>
+</html>
