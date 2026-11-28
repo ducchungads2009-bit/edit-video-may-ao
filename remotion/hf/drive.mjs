@@ -13,7 +13,9 @@ const browser = await puppeteer.launch({
   headless: true,
   protocolTimeout: 600000,
   args: ['--no-sandbox', '--disable-dev-shm-usage', '--hide-scrollbars', '--mute-audio', '--use-gl=angle', '--use-angle=swiftshader',
-    '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--font-render-hinting=none', '--force-color-profile=srgb'],
+    '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--font-render-hinting=none', '--force-color-profile=srgb',
+    '--disable-background-networking', '--disable-component-update', '--disable-domain-reliability', '--no-pings', '--disable-sync',
+    '--metrics-recording-only', '--no-first-run', '--disable-breakpad'],
 });
 let code = 0;
 try {
