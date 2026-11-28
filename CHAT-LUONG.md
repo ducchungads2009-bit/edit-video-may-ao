@@ -51,11 +51,11 @@ Tiêu đề để trống font = Cormorant Garamond (mặc định của bộ). 
 
 | Vai trò | font | thông số |
 |---|---|---|
-| Dòng nhỏ phía trên (kicker) | Montserrat | weight 600, size 30–34, upper, spacing 10–12, `"grad": ["#F6E7BF","#D9B56A"]` |
-| Tiêu đề / tên chương | Cormorant Garamond (bộ tự áp) | size 80–92, `"grad": ["#FFFFFF","#F6E7BF"]` (trắng → champagne) |
+| Dòng nhỏ phía trên (kicker) | Montserrat | weight 600, size 30–34, upper, spacing 10–12, `"grad": ["#FFF0BF","#FFC94D"]` |
+| Tiêu đề / tên chương | Cormorant Garamond (bộ tự áp) | size 80–92, `"grad": ["#FFFFFF","#FFF1C7","#FFD877"]` (trắng → champagne) |
 | Dòng phụ | Cormorant Garamond | weight 500, italic, size 54–72, màu `#FFF8E7` |
-| Số chương (01, 02…) | Cormorant Garamond | weight 500, italic, size 60–70, `"grad": ["#F6E7BF","#D9B56A"]` |
-| CHỮ NHẤN MẠNH: tên dự án, từ khoá đắt giá, tên người dẫn | Imperial Script (thư pháp chữ hoa uốn lượn) | size 100–150, 1–4 chữ, một dòng, viết Hoa Đầu Mỗi Chữ, `"grad": ["#FFF4D6","#E8C57E","#B4873A"]`, `"gradAngle": 180` |
+| Số chương (01, 02…) | Cormorant Garamond | weight 500, italic, size 60–70, `"grad": ["#FFF0BF","#FFC94D"]` |
+| CHỮ NHẤN MẠNH: tên dự án, từ khoá đắt giá, tên người dẫn | Imperial Script (thư pháp chữ hoa uốn lượn) | size 100–150, 1–4 chữ, một dòng, viết Hoa Đầu Mỗi Chữ, `"grad": ["#FFFDF2","#FFE08A","#F5B935","#C98A14"]`, `"gradAngle": 180` |
 
 - Chữ trơn, bóng mềm, hiện mờ dần (bộ tự áp), màu tô chuyển sắc vàng champagne (`grad`). KHÔNG hộp màu. Mỗi cảnh 1 chữ nhấn
   Imperial Script là đủ (tiêu đề in hoa + chữ nhấn bên dưới), đừng dùng chữ thư pháp cho cả câu dài.
@@ -87,8 +87,8 @@ Tiêu đề để trống font = Cormorant Garamond (mặc định của bộ). 
 ## 6. Mẫu khối bộ Sang trọng BĐS (chép rồi sửa chữ / thời gian; bộ khác: khối text chỉ cần text, start, end, y)
 ```json
 {"type":"text","start":0.04,"end":2.7,"text":"Điều làm nên","y":236,"font":"Montserrat","size":32,"weight":600,"color":"#E9D9A6","upper":true,"spacing":12,"look":"clean","shadow":"soft","stroke":0,"anim":"fade","out":"fade","inDur":0.6,"width":960,"align":"center"},
-{"type":"text","start":0.1,"end":2.7,"text":"Giá trị","y":290,"size":84,"grad":["#FFFFFF","#F6E7BF"],"width":960},
-{"type":"text","start":0.5,"end":2.7,"text":"Khác Biệt","y":372,"font":"Imperial Script","size":140,"weight":400,"grad":["#FFF4D6","#E8C57E","#B4873A"],"gradAngle":180,"look":"clean","shadow":"soft","stroke":0,"anim":"fade","out":"fade","inDur":0.6,"width":960,"align":"center"},
+{"type":"text","start":0.1,"end":2.7,"text":"Giá trị","y":290,"size":84,"grad":["#FFFFFF","#FFF1C7","#FFD877"],"width":960},
+{"type":"text","start":0.5,"end":2.7,"text":"Khác Biệt","y":372,"font":"Imperial Script","size":140,"weight":400,"grad":["#FFFDF2","#FFE08A","#F5B935","#C98A14"],"gradAngle":175,"look":"clean","shadow":"soft","stroke":0,"anim":"fade","out":"fade","inDur":0.6,"width":960,"align":"center"},
 {"type":"broll","start":12.66,"end":16.02,"src":"assets/du-an/toan-canh.jpg","fit":"cover","panFrom":0.2,"panTo":0.45,"transition":"fade","exit":"fade","inDur":0.6},
 {"type":"text","start":17.42,"end":20.07,"text":"Địa thế hùng vĩ","y":428,"font":"Cormorant Garamond","size":58,"weight":500,"italic":true,"color":"#FFF8E7","look":"clean","shadow":"soft","stroke":0,"anim":"fade","out":"fade","inDur":0.6,"width":960,"align":"center"}
 ```

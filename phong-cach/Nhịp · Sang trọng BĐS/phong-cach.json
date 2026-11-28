@@ -100,6 +100,6 @@
  "nguon": "tạo sẵn",
  "nhom": "nhip",
  "ghiChu": {
-  "chu": "Tiêu đề Cormorant Garamond (mặc định của bộ, để trống font) tô chuyển sắc grad [\"#FFFFFF\",\"#F6E7BF\"]; dòng nhỏ phía trên: Montserrat 600 cỡ 32 in hoa spacing 12, grad [\"#F6E7BF\",\"#D9B56A\"]; dòng phụ: Cormorant italic 500 cỡ 58 màu #FFF8E7; CHỮ NHẤN MẠNH (tên dự án, từ khoá đắt giá, tên người dẫn): Imperial Script — thư pháp chữ hoa uốn lượn, viết Hoa Đầu Mỗi Chữ, 1–4 chữ, cỡ 100–150, grad [\"#FFF4D6\",\"#E8C57E\",\"#B4873A\"] gradAngle 180. Không hộp màu. Nền sáng: lớp che sáng assets-chung/lop/che-sang.png."
+  "chu": "Tiêu đề Cormorant Garamond (mặc định của bộ, để trống font) tô chuyển sắc grad [\"#FFFFFF\",\"#FFF1C7\",\"#FFD877\"]; dòng nhỏ phía trên: Montserrat 600 cỡ 32 in hoa spacing 12, grad [\"#FFF0BF\",\"#FFC94D\"]; dòng phụ: Cormorant italic 500 cỡ 58 màu #FFF8E7; CHỮ NHẤN MẠNH (tên dự án, từ khoá đắt giá, tên người dẫn): Imperial Script — thư pháp chữ hoa uốn lượn, viết Hoa Đầu Mỗi Chữ, 1–4 chữ, cỡ 100–150, grad [\"#FFFDF2\",\"#FFE08A\",\"#F5B935\",\"#C98A14\"] gradAngle 175. Không hộp màu. Nền sáng: lớp che sáng assets-chung/lop/che-sang.png."
  }
 }
