@@ -80,12 +80,45 @@ def run_enc(cmd_before: list, cmd_after: list, out: str):
     return r
 
 
+def mem_gb() -> float:
+    """RAM còn dùng được (GB) — Linux /proc/meminfo, tính cả giới hạn cgroup của máy ảo; không đọc được → 0"""
+    gb = 0.0
+    try:
+        for ln in open("/proc/meminfo"):
+            if ln.startswith("MemAvailable:"):
+                gb = int(ln.split()[1]) / 1e6
+                break
+    except Exception:  # noqa
+        return 0.0
+    for f in ("/sys/fs/cgroup/memory.max", "/sys/fs/cgroup/memory/memory.limit_in_bytes"):
+        try:
+            v = open(f).read().strip()
+            if v.isdigit() and int(v) < 1 << 50:
+                used = 0
+                for g in ("/sys/fs/cgroup/memory.current", "/sys/fs/cgroup/memory/memory.usage_in_bytes"):
+                    try:
+                        used = int(open(g).read().strip())
+                        break
+                    except Exception:  # noqa
+                        pass
+                gb = min(gb or 1e9, (int(v) - used) / 1e9)
+                break
+        except Exception:  # noqa
+            pass
+    return max(0.0, gb)
+
+
 def render_flags() -> list:
     """tham số tăng tốc cho Remotion"""
     s = _settings()
     n = cores()
     conc = s.get("renderConcurrency") or (n if n <= 4 else min(n - 1, 10))
-    flags = [f"--concurrency={conc}", "--offthreadvideo-cache-size-in-bytes=2000000000", "--x264-preset=faster"]
+    cache = 2000000000
+    ram = mem_gb()
+    if ram and not s.get("renderConcurrency"):  # máy ảo ít RAM (ChatGPT…): mỗi tab dựng ~0,8 GB → bớt tab, bớt bộ nhớ đệm video
+        conc = max(1, min(conc, int((ram - 1.0) / 0.8)))
+        cache = int(min(cache, max(256e6, ram * 1e9 * 0.2)))
+    flags = [f"--concurrency={conc}", f"--offthreadvideo-cache-size-in-bytes={cache}", "--x264-preset=faster"]
     if sys.platform == "darwin" and s.get("renderHwAccel", True):  # mã hóa bằng chip Apple (VideoToolbox)
         flags.append("--hardware-acceleration=if-possible")
     gl = s.get("renderGl", "angle" if sys.platform in ("darwin", "win32") else "")

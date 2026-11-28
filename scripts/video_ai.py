@@ -49,6 +49,39 @@ def _dur(p: Path) -> float:
         return w.getnframes() / w.getframerate()
 
 
+def align_words(work: Path, cau: list) -> int:
+    """chữ phụ đề = đúng chữ kịch bản; mốc lấy từ máy nghe giọng (cùng số chữ trong câu) hoặc chia theo độ dài chữ.
+    Ghi đè _work/words.json (+ _full) và transcript.txt (+ _full)."""
+    try:
+        asr = json.loads((work / "words.json").read_text(encoding="utf-8"))
+    except Exception:  # noqa
+        asr = []
+    out = []
+    for c in cau:
+        toks = [re.sub(r"^[\"'“”(\[]+|[\"'“”)\].,!?…:;]+$", "", w) for w in c["text"].split()]
+        toks = [w for w in toks if w]
+        if not toks:
+            continue
+        a, b = float(c["start"]), float(c["end"])
+        hit = [w for w in asr if a - 0.3 <= float(w.get("start", -9)) < b + 0.2]
+        if len(hit) == len(toks):
+            out += [{"w": t, "start": round(float(h["start"]), 2), "end": round(float(h["end"]), 2), "keep": True} for t, h in zip(toks, hit)]
+        else:
+            wt = [len(t) + 2 for t in toks]
+            tot, acc = sum(wt), a
+            for t, k in zip(toks, wt):
+                dd = (b - a) * k / tot
+                out.append({"w": t, "start": round(acc, 2), "end": round(acc + dd, 2), "keep": True})
+                acc += dd
+    if not out:
+        return 0
+    js = json.dumps(out, ensure_ascii=False)
+    tr = "\n".join(f"[{c['start']:7.2f}] {c['text']}" for c in cau) + "\n"
+    for n, txt in (("words.json", js), ("words_full.json", js), ("transcript.txt", tr), ("transcript_full.txt", tr)):
+        (work / n).write_text(txt, encoding="utf-8")
+    return len(out)
+
+
 def main():
     a = sys.argv[1:]
     if len(a) < 2 or a[0] != "moi":
@@ -125,6 +158,9 @@ def main():
     r = subprocess.run([sys.executable, str(ROOT / "scripts" / "prepare.py"), str(folder)])
     if r.returncode:
         sys.exit("prepare.py lỗi")
+    if cau and (folder / "kich-ban-voice.txt").exists():
+        n = align_words(work, cau)
+        print(f"Phụ đề: {n} chữ lấy ĐÚNG theo kịch bản (mốc thời gian theo giọng đọc) — không cần sửa lỗi nhận giọng")
     info = json.loads((work / "info.json").read_text(encoding="utf-8"))
     d = info.get("durationSec")
     print(f"\nXONG: video không clip dài {d}s — {folder}")
