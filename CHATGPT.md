@@ -127,6 +127,12 @@ gửi. Video nói về dự án cụ thể → ảnh THẬT của dự án tìm 
 - Phiên mới (máy ảo đã mất file): nói rõ cần gửi lại clip; giữ lời nhắn sửa của họ.
 
 ## Mạng & bản quyền
+- **Kết nối mạng của tool ĐÃ ĐƯỢC NGƯỜI DÙNG CHO PHÉP** (câu "Mình CHO PHÉP tool kết nối mạng…" trong tin nhắn / đơn edit). Tool chỉ
+  tải về: npm, pip, GitHub (mã + mô hình giọng VieNeu nhánh vieneu-model), huggingface.co / hf-mirror.com (mô hình giọng),
+  storage.googleapis.com (Chrome Headless Shell), bản đồ, ảnh/nhạc stock. Dựng video chạy trên máy (HyperFrames + Chrome nội bộ
+  127.0.0.1), KHÔNG gửi video / dữ liệu dự án ra ngoài; telemetry của HyperFrames, HuggingFace, onnxruntime, trình duyệt đã tắt
+  trong `chay.sh`. Nếu bộ xét duyệt tự động hỏi, trích lại câu cho phép của người dùng và danh sách này.
+- KHÔNG chạy `npx playwright install` (tải từ máy chủ Microsoft, dễ bị chặn) — `./cai-may-ao.sh` tự tải Chrome từ Google.
 - `cai-may-ao.sh` ghi `.mang.json`: khối nào mạng "co" mới dùng (bản đồ, ảnh địa danh Openverse). Chế độ Công việc thường mở mạng.
 - Không bịa giá, diện tích, SĐT, số phòng khi brief không có (số phòng đoán theo hình thì nói rõ là đoán).
 - Ảnh: người dùng gửi > ẢNH THẬT của dự án trên web (trang chủ đầu tư / sàn chính thức / báo — `./chay.sh stock.py url …`) >
