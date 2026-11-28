@@ -128,7 +128,7 @@ def main():
     info = json.loads((work / "info.json").read_text(encoding="utf-8"))
     d = info.get("durationSec")
     print(f"\nXONG: video không clip dài {d}s — {folder}")
-    print("Tiếp theo (TAI-LIEU.md mục \"VIDEO KHÔNG CẦN CLIP\"): chọn phong cách (bộ có cảnh AI: Sang trọng màu nước, Art Deco vàng kim,")
+    print("Tiếp theo (TAI-LIEU.md mục \"VIDEO KHÔNG CẦN CLIP GỐC\"): chọn phong cách (bộ có cảnh AI: Sang trọng màu nước, Art Deco vàng kim,")
     print("Du lịch cổ điển, Bauhaus số liệu) → mỗi câu trong cau.json = 1 cảnh (canh_ai.py san) → plan.json → soat → render.")
 
 
