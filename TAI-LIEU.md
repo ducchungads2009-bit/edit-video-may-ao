@@ -10,7 +10,7 @@ Luôn chạy lệnh từ thư mục gốc của tool này, đường dẫn để
 Các lệnh bên dưới viết `python` — trên Mac thay bằng `.venv/bin/python`.
 
 ## ⚡ VIỆC NẶNG CHẠY TRÊN MÁY THẬT — `scripts/nho_may.py` (BẮT BUỘC)
-Bạn thường chạy lệnh trong một máy ảo nhỏ (ít nhân, ít RAM, không có chip/card đồ họa) → ffmpeg / Remotion / tách người
+Bạn thường chạy lệnh trong một máy ảo nhỏ (ít nhân, ít RAM, không có chip/card đồ họa) → ffmpeg / bộ dựng HyperFrames / tách người
 chạy ở đó chậm gấp nhiều lần. Giao diện của tool (giao-dien.command / .bat) chạy thẳng trên máy người dùng. Vì vậy MỌI
 việc nặng chạy qua: `python scripts/nho_may.py <việc> "<folder>" [tham số]` — việc: `prepare`, `check <mốc,mốc>`,
 `render`, `trim`, `assemble`, `style`, `tachnguoi`, `mat`, `stock <tham số stock.py get>`, `bando "<dự án>" "<tiện ích>"…` (toạ độ cho khối bản đồ; `bando --vung` = ranh giới vùng cho mapTour). Lệnh tự gửi cho giao diện và chờ;
@@ -116,7 +116,7 @@ Mục tiêu: người dùng chỉ tải video + điền brief; Claude làm trọ
   bao-cao.md, bỏ qua, làm tiếp dự án khác. Cuối đợt: tóm tắt bảng (dự án · thời lượng · trạng thái · cần bổ sung).
 - Sửa sau đợt: người dùng nhắn "sửa <tên dự án>: ..." → chỉ sửa outline/plan/canh của dự án đó, kiểm tra, render lại,
   cập nhật bao-cao.md.
-- Nếu môi trường không render được (vd máy Linux không có trình biên dịch của Remotion), chép tool + dự án sang môi
+- Nếu môi trường không render được (vd máy không chạy được trình duyệt dựng hình), chép tool + dự án sang môi
   trường render được, render ở đó rồi chép final.mp4 về đúng folder.
 
 ## Video mẫu & PHONG CÁCH — folder có `_mau/` chứa 1 video, hoặc dự án đã chọn bộ phong cách
@@ -988,9 +988,18 @@ Báo người dùng 2–3 dòng: đã thêm gì, chữ nào đã sửa, còn thi
 (theo can-tim.md), và nhắc có thể tự chỉnh tiếp bằng nút ✂ Chỉnh sửa trong giao diện.
 Khi người dùng bỏ thêm ảnh vào assets/, chỉ cần chạy lại bước 7.
 
+## Bộ dựng: HyperFrames (mặc định) — không cần giấy phép công ty
+- Hình được dựng bằng **HyperFrames** (HeyGen, Apache-2.0) qua `scripts/hf_engine.py`; mọi khối trong `remotion/src` giữ nguyên
+  (gói `remotion` được thay bằng `remotion/hf/shim.tsx` khi đóng gói bằng esbuild, ~2 giây). Video trong khung lấy từ máy chủ khung
+  (ffmpeg giải mã tuần tự), tiếng trộn bằng numpy theo bản ghi từng khung. Kết quả giống bản Remotion (đã so từng khung + tiếng),
+  nhanh hơn 1,3–2 lần.
+- Vẫn dùng được Remotion (cần giấy phép nếu công ty từ 4 người): settings `"renderEngine": "remotion"` hoặc biến `NHM_ENGINE=remotion`.
+- Số luồng: tự theo CPU/RAM (≈1,5 GB/luồng, tối đa 8) — ép bằng biến `HF_WORKERS=3`.
+- Lỗi trong khối được báo rõ ("Lỗi khi dựng khung N: …") thay vì ra khung trống.
+
 ## Xuất nhanh & bản nháp
 - render.py mặc định DỰNG NHANH (scripts/dung_nhanh.py): chỉ những khúc có khối/chữ/ảnh trám/zoom/chuyển cảnh chồng mới dựng bằng
-  Remotion (composition "partial"), phần còn lại ffmpeg lấy thẳng video gốc (giữ cắt đoạn, zoom cut 108%, màu); phụ đề vẽ bằng Python
+  bộ dựng (composition "partial"), phần còn lại ffmpeg lấy thẳng video gốc (giữ cắt đoạn, zoom cut 108%, màu); phụ đề vẽ bằng Python
   (scripts/phude_nhanh.py, giống kiểu phụ đề của tool); tiếng dựng riêng (composition "audio"). Video ít đồ hoạ nhanh hơn 2–3 lần, máy yếu
   (2 nhân, Mac Intel) lợi nhất. Tự dựng như cũ khi: kiểu phụ đề "box", khung người nói / nền vẽ của phong cách, logo thương hiệu, đứng hình
   cuối, đổi cỡ cảnh tự động, màu phủ (tint), hoặc đồ hoạ > 75% thời lượng. Tắt: `--cham`, plan `"fastRender": false`, settings `"renderFast": false`.

@@ -72,7 +72,7 @@ thanh toán động, sa bàn vẽ tay, tranh màu nước tự vẽ, infographic
   `style` (font / màu của phong cách video: `heading`, `font`, `fonts`, `text`, `captions`).
 
 ## 3. Luật thời gian (quan trọng nhất)
-- **Mọi khung là hàm thuần của t.** `render(t)` phải đặt lại mọi thứ nó đụng tới (style, text, transform, canvas) chỉ dựa vào t. Remotion tua nhảy cóc, lùi, dựng song song nhiều tab và dựng nhanh từng khúc rời.
+- **Mọi khung là hàm thuần của t.** `render(t)` phải đặt lại mọi thứ nó đụng tới (style, text, transform, canvas) chỉ dựa vào t. Bộ dựng tua nhảy cóc, lùi, dựng song song nhiều luồng và dựng nhanh từng khúc rời.
 - Cấm: `Math.random()` (dùng `const r = VideoScene.rng(42)`, tạo mảng ngẫu nhiên MỘT lần ở ngoài render), `Date.now()`, `performance.now()`, `setTimeout/setInterval` để tạo chuyển động, `requestAnimationFrame` tự chạy vòng, CSS `animation`/`transition` (không seek được), `<video>` tự phát.
 - Hiệu ứng tích luỹ (hạt bay, vệt mờ): tính lại từ t (vị trí = p0 + v·t), không cộng dồn qua khung.
 - `VideoScene.rng(seed)` nhận 1 số nguyên, trả về **một hàm** `r()`; mỗi lần gọi `r()` ra số thực trong [0, 1), cùng seed thì luôn ra cùng chuỗi số. Gọi trong setup (hoặc ngoài render) để sinh dữ liệu cố định:

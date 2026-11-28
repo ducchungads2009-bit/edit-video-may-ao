@@ -4,9 +4,13 @@ set -e
 cd "$(dirname "$0")"
 mkdir -p ~/.local/bin; export PATH="$HOME/.local/bin:$HOME/.local/node/bin:$PATH"
 # Máy ảo thiếu Node / ffmpeg (vd ChatGPT) -> tải bản dựng sẵn (cần mạng tới nodejs.org / johnvansickle.com)
-if ! command -v npm >/dev/null 2>&1; then
-  echo "== Tải Node.js"
-  curl -sSL --retry 3 https://nodejs.org/dist/v22.11.0/node-v22.11.0-linux-x64.tar.xz | tar xJ -C /tmp && rm -rf ~/.local/node && mv /tmp/node-v22.11.0-linux-x64 ~/.local/node
+# bộ dựng HyperFrames cần Node ≥ 22.12
+node_du() { command -v npm >/dev/null 2>&1 && node -e 'const [a,b]=process.versions.node.split(".").map(Number);process.exit(a>22||(a===22&&b>=12)?0:1)' 2>/dev/null; }
+if ! node_du; then
+  echo "== Tải Node.js 22"
+  NV=v22.12.0
+  curl -sSL --retry 3 https://nodejs.org/dist/$NV/node-$NV-linux-x64.tar.xz | tar xJ -C /tmp && rm -rf ~/.local/node && mv /tmp/node-$NV-linux-x64 ~/.local/node
+  hash -r
 fi
 if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
   echo "== Tải ffmpeg"
