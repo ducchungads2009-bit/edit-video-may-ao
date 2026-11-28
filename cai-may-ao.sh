@@ -14,10 +14,11 @@ if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; 
     && cp /tmp/ffmpeg-*-amd64-static/ffmpeg /tmp/ffmpeg-*-amd64-static/ffprobe ~/.local/bin/ || true
 fi
 echo "== Thư viện Python"
-PKGS="sherpa-onnx soundfile numpy opencv-python-headless onnxruntime pillow brotli gdown"
+PKGS="sherpa-onnx soundfile numpy opencv-python-headless onnxruntime pillow brotli gdown fonttools"
 { python3 -m pip install --break-system-packages -q $PKGS 2>/dev/null || python3 -m pip install -q $PKGS; } 2>&1 | grep -v -i "warning\|notice" || true
 echo "== Thư viện dựng (npm)"
 npm ci --no-audit --no-fund --loglevel=error
+python3 scripts/canh_ai.py lib >/dev/null 2>&1 || echo "   (chưa dựng được thư viện cảnh AI — canh_ai.py tự dựng khi cần)"
 echo "== Mô hình nhận giọng tiếng Việt"
 if [ ! -f models/sherpa-onnx-zipformer-vi-2025-04-20/tokens.txt ]; then
   curl -sSL --retry 3 https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-zipformer-vi-2025-04-20.tar.bz2 | tar xj -C models

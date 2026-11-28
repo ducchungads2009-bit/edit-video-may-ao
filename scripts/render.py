@@ -433,7 +433,43 @@ def build_plan(folder: Path) -> dict:
         except Exception as e:  # noqa
             print("[!] Không tách được người khỏi nền — các element 'sau người' sẽ nằm trước người:", e)
             plan.pop("person", None)
+    duck = speech_spans(folder, plan)
+    if duck:
+        plan["duck"] = duck
     return plan
+
+
+def speech_spans(folder: Path, plan: dict):
+    """NHẠC NHƯỜNG LỜI (cách trộn của LumReels): nhạc nền giữ mức plan đặt khi có người nói, tự to lên ở khoảng lặng ≥ 0,8s
+    rồi hạ lại trước câu kế. plan "musicDuck": false = tắt · {"lift": 1.8} = độ to lên ở khoảng lặng (1–3, mức sau cùng ≤ 0,6).
+    Trả {"spans": [[a, b], …] (giây video xuất, đoạn đang nói), "lift": k} hoặc None."""
+    cfg = plan.get("musicDuck", True)
+    if cfg is False or THO:
+        return None
+    els = plan.get("elements") or []
+    has_bgm = bool(plan.get("music")) or any(e and e.get("type") == "audio" and e.get("bgm") for e in els)
+    if not has_bgm or float(plan.get("videoVolume", 1) or 0) <= 0:
+        return None
+    try:
+        words = json.loads((folder / "_work" / "words.json").read_text(encoding="utf-8"))
+    except Exception:  # noqa
+        return None
+    if plan.get("segments"):
+        words = remap_words(words, plan["segments"])
+    words = [w for w in words if isinstance(w, dict) and w.get("end", 0) > w.get("start", 0)]
+    if len(words) < 3:  # vài chữ lẻ = máy nghe nhầm tiếng ồn, coi như không lời
+        return None
+    spans = []
+    for w in sorted(words, key=lambda x: x["start"]):
+        a, b = float(w["start"]), float(w["end"])
+        if spans and a - spans[-1][1] < 0.8:
+            spans[-1][1] = max(spans[-1][1], b)
+        else:
+            spans.append([a, b])
+    lift = 1.8
+    if isinstance(cfg, dict) and cfg.get("lift"):
+        lift = max(1.0, min(3.0, float(cfg["lift"])))
+    return {"spans": [[round(a, 2), round(b, 2)] for a, b in spans], "lift": lift}
 
 
 def bundle_dir():
@@ -514,7 +550,25 @@ def build_props(folder: Path) -> dict:
         _place(path, jdir / name)
         return f"jobs/{jid}/{name}"
 
+    def stage_canh(rel: str):  # cảnh AI: cả thư mục cảnh + thư viện (canh-ai/lib) -> public/jobs/<id>/canh__<tên>/
+        src = (folder / rel).resolve()
+        if not (src / "index.html").exists():
+            print(f"[!] Cảnh AI thiếu {rel}/index.html — bỏ qua khối (tạo bằng canh_ai.py moi)")
+            return None
+        import canh_ai
+        dst = jdir / ("canh__" + rel.strip("/").replace("/", "__"))
+        for f in src.rglob("*"):
+            r = f.relative_to(src)
+            if f.is_dir() or r.parts[0] == "lib" or r.name in ("_thu.jpg", "MAU.md"):
+                continue
+            (dst / r).parent.mkdir(parents=True, exist_ok=True)
+            _place(f, dst / r)
+        canh_ai.sync_lib(dst)
+        return f"jobs/{jid}/{dst.name}"
+
     for e in plan["elements"]:
+        if e.get("type") == "canhAI" and e.get("canh"):
+            e["canh"] = stage_canh(e["canh"])
         if e.get("src"):
             e["src"] = stage(e["src"])
         if e.get("fillSrc"):
@@ -787,6 +841,38 @@ def _fix_size(path: Path, fmt: str):
         tmp.replace(path)
 
 
+LUFS = -14  # độ to chuẩn mạng xã hội (TikTok / Reels / YouTube) — cách làm của LumReels: đo rồi chỉnh 2 lượt
+
+
+def chuan_loudness(path: Path):
+    """đưa tiếng cả video (lời + nhạc + hiệu ứng) về −14 LUFS, đỉnh ≤ −1,5 dBTP; hình giữ nguyên (chép thẳng).
+    Tắt bằng plan "loudness": false."""
+    af = f"loudnorm=I={LUFS}:TP=-1.5:LRA=11:print_format=json"
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(path), "-map", "0:a:0?", "-af", af, "-f", "null", "-"],
+                       capture_output=True, text=True, encoding="utf-8", errors="replace")
+    m = re.search(r"\{[^{}]*\"input_i\"[^{}]*\}", r.stderr or "")
+    if not m:
+        return
+    j = json.loads(m.group(0))
+    li, tp = float(j["input_i"]), float(j["input_tp"])
+    if li < -70:  # không có tiếng
+        return
+    if abs(li - LUFS) <= 1.0 and tp <= -1.0:
+        print(f"Độ to: {li:.1f} LUFS, đỉnh {tp:.1f} dBTP — đạt chuẩn {LUFS} LUFS")
+        return
+    tmp = path.with_name("_loud_" + path.name)
+    af2 = (f"loudnorm=I={LUFS}:TP=-1.5:LRA=11:measured_I={j['input_i']}:measured_TP={j['input_tp']}:measured_LRA={j['input_lra']}"
+           f":measured_thresh={j['input_thresh']}:offset={j['target_offset']}:linear=true,aresample=48000")
+    r = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(path), "-map", "0:v:0", "-map", "0:a:0", "-c:v", "copy",
+                        "-af", af2, "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(tmp)],
+                       capture_output=True, text=True, encoding="utf-8", errors="replace")
+    if r.returncode or not tmp.exists():
+        tmp.unlink(missing_ok=True)
+        raise RuntimeError((r.stderr or "")[-300:])
+    tmp.replace(path)
+    print(f"Độ to: {li:.1f} → {LUFS} LUFS (đỉnh {tp:.1f} → ≤ −1,5 dBTP)")
+
+
 def want_fast(props: dict) -> bool:
     """dựng nhanh (chỉ dựng khúc có đồ hoạ): mặc định bật; tắt bằng --cham, plan "fastRender": false, hoặc settings "renderFast": false"""
     if THO or "--cham" in sys.argv or props.get("fastRender") is False:
@@ -896,6 +982,11 @@ def main():
                 sp.replace(out)
             except Exception as e:  # noqa
                 print("[!] Không đổi được tốc độ (giữ tốc độ thường):", e)
+        if props.get("loudness", True) is not False and not THO:
+            try:
+                chuan_loudness(out)
+            except Exception as e:  # noqa
+                print("[!] Không chuẩn được độ to (giữ nguyên):", e)
         shutil.rmtree(props["_jobDir"], ignore_errors=True)
         print(f"XONG: {out}")
         if "--copy-to" in sys.argv and not THO and not NHAP:  # lưu thêm 1 bản ra thư mục người dùng chọn

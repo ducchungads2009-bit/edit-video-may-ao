@@ -2,7 +2,7 @@
 soat.py tự gọi; chạy riêng: python scripts/chat_luong.py "<folder>"
 Bắt các lỗi làm video "khác tay": lệch phong cách (font / kiểu hộp chữ ngoài bộ), ảnh thu nhỏ / đóng khung, ảnh tĩnh quá lâu,
 ảnh độ phân giải thấp, chữ ghi nguồn giữa màn hình, thiếu nhạc nền, ảnh lặp sát nhau, brief cần ảnh dự án mà toàn ảnh stock,
-script tự viết trong _work để dựng hình. Chuẩn đầy đủ: huong-dan/chat-luong.md (máy ảo: CHAT-LUONG.md).
+script tự viết trong _work để dựng hình, font thiếu dấu tiếng Việt (kiem_font.py), cảnh AI sai luật / lỗi font (canh_ai.py). Chuẩn đầy đủ: huong-dan/chat-luong.md (máy ảo: CHAT-LUONG.md).
 """
 import json
 import re
@@ -132,7 +132,26 @@ def check(folder: Path, plan: dict = None) -> list:
             out.append(f"brief cần ẢNH THẬT của dự án nhưng {len(gen)}/{len(brolls)} ảnh trám là stock Pixabay chung chung — tìm ảnh "
                        f"phối cảnh / tiện ích của dự án trên web và tải bằng stock.py url (chuẩn mục 2)")
 
-    # 6. SCRIPT TỰ VIẾT ĐỂ DỰNG HÌNH
+    # 6. FONT TIẾNG VIỆT — mở file font kiểm từng ký tự (kiem_font.py)
+    try:
+        import kiem_font
+        out += kiem_font.check(folder, plan)
+    except Exception as ex:  # noqa
+        out.append(f"không kiểm được font ({ex})")
+
+    # 7. CẢNH AI — luật viết cảnh + chạy thử trong Chrome bắt chữ mất dấu (canh_ai.py, canh-ai/HUONG-DAN.md)
+    for e in els:
+        if e.get("type") == "canhAI" and not e.get("hidden"):
+            if not e.get("canh"):
+                out.append(f"khối canhAI {e.get('start', 0):.1f}s thiếu trường canh (thư mục cảnh, vd canh/gia-ban)")
+                continue
+            try:
+                import canh_ai
+                out += [x for x in canh_ai.check_scene(folder, e["canh"], e) if "(nhắc)" not in x]
+            except Exception as ex:  # noqa
+                out.append(f"không soát được cảnh AI {e['canh']} ({ex})")
+
+    # 8. SCRIPT TỰ VIẾT ĐỂ DỰNG HÌNH
     work = folder / "_work"
     if work.exists():
         for py in sorted(work.glob("*.py")):
