@@ -199,6 +199,15 @@
   "note": "chữ ký thư pháp mềm mại, sang chảnh — điểm nhấn 1–3 chữ (tên dự án), cỡ to ≥ 90"
  },
  {
+  "id": "imperial-script",
+  "family": "Imperial Script",
+  "kind": "script",
+  "weights": [
+   400
+  ],
+  "note": "thư pháp chữ hoa uốn lượn kiểu thiệp cưới, nữ tính sang trọng — chữ nhấn mạnh 1–4 chữ, viết Hoa Đầu Mỗi Chữ, cỡ ≥ 100"
+ },
+ {
   "id": "lobster",
   "family": "Lobster",
   "kind": "script",

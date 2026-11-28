@@ -302,7 +302,7 @@ export const StyledText: React.FC<TextProps> = (p) => {
             ) : fillCss && lookCss.background ? (
               <div style={{...lookCss, display: 'inline-block'}}><div style={{...block, ...fillCss, textShadow: 'none'}}>{children}</div></div>
             ) : (
-              <div style={{...block, ...lookCss, ...(fillCss ? {...fillCss, textShadow: 'none'} : {})}}>{children}</div>
+              <div style={{...block, ...lookCss, ...(fillCss ? {...fillCss, textShadow: 'none', filter: shadow !== 'none' && look !== 'neon' ? 'drop-shadow(0 4px 10px rgba(0,0,0,0.55))' : undefined} : {})}}>{children}</div>
             )}
           </div>
         </div>
