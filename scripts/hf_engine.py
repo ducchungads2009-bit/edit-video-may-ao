@@ -76,9 +76,13 @@ def _sync_public(bd: Path):
 
 # ---------------------------------------------------------------- trình duyệt / HyperFrames
 def browser_path() -> str:
-    for k in ("HYPERFRAMES_BROWSER_PATH", "NHM_BROWSER", "REMOTION_BROWSER"):
+    """ưu tiên Chrome Headless Shell (nhanh hơn Chrome đầy đủ ~10%), rồi trình duyệt cai-may-ao.sh đã thử chạy được"""
+    for k in ("HYPERFRAMES_BROWSER_PATH", "NHM_BROWSER"):
         if os.environ.get(k) and Path(os.environ[k]).exists():
             return os.environ[k]
+    rb = os.environ.get("REMOTION_BROWSER", "")
+    if rb and "headless" in rb and Path(rb).exists():
+        return rb
     home = Path.home()
     pats = ["chs/*/chrome-headless-shell-*/chrome-headless-shell*", ".cache/chs/*/chrome-headless-shell-*/chrome-headless-shell*",
             ".cache/hyperframes/chrome/*/chrome-headless-shell-*/chrome-headless-shell*",
@@ -92,6 +96,8 @@ def browser_path() -> str:
     for p in sorted((ROOT / "node_modules").glob(".remotion/chrome-headless-shell/*/chrome-headless-shell*/chrome-headless-shell*")):
         if p.is_file():
             return str(p)
+    if rb and Path(rb).exists():
+        return rb
     return ""
 
 
