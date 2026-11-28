@@ -325,6 +325,11 @@ Người dùng nhập API key + voice id ở ⚙ Cài đặt (settings.json "tts
   Triết…). Tự nhiên hơn giọng `nu1`/`nu2`. Lần đầu cài ~250MB + tải mô hình ~600MB: thử huggingface.co → bản sao trên GitHub (nhánh `vieneu-model`
   của kho này, raw.githubusercontent.com, ~1–3 phút) → hf-mirror.com (đổi nguồn: `VIENEU_MODEL_URL` / settings `"vieneuModelUrl"`); đều không được → tự
   đọc bằng `nu1` (báo cáo ghi rõ giọng thực tế). Đã có mô hình thì chạy không cần mạng.
+- GIỌNG CỦA CHÍNH NGƯỜI DÙNG (đơn ghi "Giọng đọc AI: nhân bản giọng người dùng…", hoặc người dùng nhờ "đọc bằng giọng mình"): file ghi âm mẫu
+  (tên có "giong-mau", hoặc file âm thanh duy nhất khi đơn ghi nhân bản; m4a / mp3 / wav / video quay mặt nói đều được) → chép thành
+  `<du-an>/giong-mau.<đuôi>` → `--giong "mau:giong-mau.<đuôi>"` (tts.py / video_ai.py). Cần 10–20 giây nói rõ, không nhạc nền (< 3 giây
+  thì báo người dùng gửi lại). CHỈ giọng của chính người dùng hoặc người đã đồng ý — không bắt chước giọng người nổi tiếng / người khác;
+  nghi ngờ thì hỏi 1 câu. Lỗi → tự đọc bằng vn:Ngọc Huyền và ghi rõ trong báo cáo.
 
 ## Tua nhanh / slow-motion / timelapse THEO NỘI DUNG (tự quyết, không cần người dùng nhắc)
 Đổi tốc độ khi nó làm nội dung dễ xem hơn — mỗi video 0–3 chỗ, đừng lạm dụng:

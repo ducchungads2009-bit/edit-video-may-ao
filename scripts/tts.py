@@ -5,6 +5,8 @@ và mô hình giọng (~65MB) vào models/tts/. Sau đó không cần mạng.
   python scripts/tts.py "<folder>" "Nội dung cần đọc" [--giong nu1|nu2|vn:<tên>] [--toc-do 1.0]
   -> in đường dẫn file wav trong dự án (assets/giong-doc/...) và độ dài
   python scripts/tts.py ds    -> danh sách giọng
+  --giong "mau:giong-mau.m4a" -> GIỌNG CỦA CHÍNH NGƯỜI DÙNG: VieNeu bắt chước giọng trong file ghi âm mẫu (10–20 giây nói rõ, không
+                                 nhạc nền; chỉ giọng của người dùng hoặc người đã đồng ý — không bắt chước giọng người khác)
 
 GIỌNG VieNeu (`--giong vn:Hải Đăng`, `vn:Trúc Ly`… — cách LumReels đọc lời): 25 giọng Bắc / Trung / Nam, tự nhiên hơn Piper, vẫn
 chạy trên máy (onnxruntime). Lần đầu tự cài thư viện (~250MB) vào _cache/vieneu-lib và tải mô hình (~600MB): huggingface.co →
@@ -82,7 +84,8 @@ VN_VOICES = {  # tên: mô tả (VieNeu-TTS, Apache-2.0)
     "Quang Sơn": "Nam · Trung · tự nhiên", "Ngọc Trân": "Nữ · Trung · tự nhiên",
     "Thùy Dung": "Nữ · Nam · tin tức", "Thục Đoan": "Nữ · Nam · kể chuyện", "Mỹ Duyên": "Nữ · Nam · đọc truyện",
     "Kim Thanh": "Nữ · Nam · đọc truyện", "Minh Triết": "Nam · Nam · tin tức", "Thái Sơn": "Nam · Nam · kể chuyện",
-    "Đức Trí": "Nam · Nam · đọc truyện", "Adam": "Nam · Nam · tự nhiên",
+    "Đức Trí": "Nam · Nam · đọc truyện", "Adam": "Nam · Nam · tự nhiên", "Adam bựa": "Nam · Bắc · tự nhiên, vui",
+    "Thiền Tâm Đức": "Nam · Bắc · kể chuyện", "Phạm Tuyên": "Nam · Bắc · tự nhiên",
 }
 VN_WORKER = r'''
 import sys, json
@@ -92,7 +95,11 @@ tts = Vieneu()
 err = None
 for _ in range(3):  # VieNeu thỉnh thoảng lỗi, thử lại
     try:
-        tts.save(tts.infer(a["text"], voice=a["voice"] or None), a["out"]); err = None; break
+        if a.get("ref"):  # giọng của chính người dùng: nhân bản từ file ghi âm mẫu
+            tts.save(tts.infer(a["text"], ref_audio=a["ref"]), a["out"])
+        else:
+            tts.save(tts.infer(a["text"], voice=a["voice"] or None), a["out"])
+        err = None; break
     except Exception as e:
         err = str(e)
 if err:
@@ -171,6 +178,57 @@ def _vn_from_pack():
         return None
 
 
+VN_ENC = "https://raw.githubusercontent.com/ducchungads2009-bit/edit-video-may-ao/vieneu-model/speaker-encoder.tar"
+VN_ENC_SHA = "cd363976f0f655ad75fce93e3f3bb128a3f60bfa6b79d5c04dc867ef6903998e"
+
+
+def ensure_encoder():
+    """mô hình nhận dạng giọng (speaker_encoder.onnx, ~28MB) cho "giọng của chính bạn" — có trong bộ nhớ đệm thì thôi;
+    chưa có thì tải gói phụ từ bản sao GitHub (máy chạy được huggingface.co thì VieNeu cũng tự tải được)."""
+    if not VN_MODEL.exists() or list(VN_MODEL.glob("snapshots/*/speaker_encoder.onnx")):
+        return
+    try:
+        import hashlib as _h
+        print("Tải mô hình nhận dạng giọng (~28MB, 1 lần)...", flush=True)
+        tmp = HF_HOME / "_enc.tar"
+        with urllib.request.urlopen(VN_ENC, timeout=120) as r, open(tmp, "wb") as out:
+            shutil.copyfileobj(r, out)
+        if _h.sha256(tmp.read_bytes()).hexdigest() != VN_ENC_SHA:
+            raise RuntimeError("sai mã kiểm tra")
+        with tarfile.open(tmp) as t:
+            try:
+                t.extractall(HF_HOME, filter="data")
+            except TypeError:
+                t.extractall(HF_HOME)
+        tmp.unlink(missing_ok=True)
+    except Exception as e:  # noqa
+        print(f"[!] Không tải được mô hình nhận dạng giọng từ bản sao: {e}", flush=True)
+
+
+def prep_ref(folder: Path, ref: str) -> Path:
+    """file ghi âm mẫu (mp3/m4a/wav/mp4… người dùng gửi) → wav 24 kHz mono, bỏ lặng đầu, tối đa 20 giây, chuẩn âm lượng"""
+    src = Path(ref)
+    if not src.is_absolute():
+        src = folder / ref
+    if not src.exists():
+        raise FileNotFoundError(f"Không thấy file giọng mẫu: {src}")
+    h = hashlib.md5(f"{src.stat().st_size}|{src.stat().st_mtime}".encode()).hexdigest()[:8]
+    out = folder / "assets" / "giong-doc" / f"_giong-mau_{h}.wav"
+    if not out.exists():
+        out.parent.mkdir(parents=True, exist_ok=True)
+        r = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-vn", "-ac", "1", "-ar", "24000",
+                            "-af", "highpass=f=70,silenceremove=start_periods=1:start_threshold=-45dB,loudnorm=I=-18:TP=-2",
+                            "-t", "20", str(out)], capture_output=True, text=True)
+        if r.returncode or not out.exists():
+            raise RuntimeError("Không đọc được file giọng mẫu: " + (r.stderr or "")[-300:])
+    import wave
+    with wave.open(str(out)) as w:
+        d = w.getnframes() / w.getframerate()
+    if d < 3:
+        raise RuntimeError(f"File giọng mẫu chỉ {d:.1f}s — cần ít nhất 3 giây (tốt nhất 10–20 giây nói rõ, không nhạc nền)")
+    return out
+
+
 def vn_routes():
     if VN_MODEL.exists():  # đã có mô hình: chạy không mạng (khỏi hỏi huggingface.co mỗi lần)
         yield {"HF_HUB_OFFLINE": "1", "_route": "mô hình có sẵn"}
@@ -181,16 +239,18 @@ def vn_routes():
     yield {"HF_ENDPOINT": "https://hf-mirror.com", "_route": "hf-mirror.com"}
 
 
-def say_vieneu(folder: Path, text: str, name: str, speed: float) -> dict:
+def say_vieneu(folder: Path, text: str, name: str, speed: float, ref: Path = None) -> dict:
     name = name.strip() or "Hải Đăng"
     out_dir = folder / "assets" / "giong-doc"
     out_dir.mkdir(parents=True, exist_ok=True)
-    h = hashlib.md5(f"vn|{name}|{speed}|{text}".encode()).hexdigest()[:8]
+    h = hashlib.md5(f"vn|{ref.name if ref else name}|{speed}|{text}".encode()).hexdigest()[:8]
     out = out_dir / f"giong-ai_{h}.wav"
     if not out.exists():
         ensure_vieneu()
+        if ref:
+            ensure_encoder()
         raw = out_dir / f"_vn_{h}.wav"
-        arg = json.dumps({"text": text, "voice": name, "out": str(raw)}, ensure_ascii=False)
+        arg = json.dumps({"text": text, "voice": name, "out": str(raw), "ref": str(ref) if ref else None}, ensure_ascii=False)
         r, why = None, []
         for extra in vn_routes():  # huggingface.co → bản sao GitHub (nhánh vieneu-model) → hf-mirror.com
             if extra is None:
@@ -209,10 +269,17 @@ def say_vieneu(folder: Path, text: str, name: str, speed: float) -> dict:
     import wave
     with wave.open(str(out)) as w:
         dur = w.getnframes() / w.getframerate()
-    return {"path": out.relative_to(folder).as_posix(), "dur": round(dur, 2), "voice": f"vn:{name}"}
+    return {"path": out.relative_to(folder).as_posix(), "dur": round(dur, 2), "voice": "mau" if ref else f"vn:{name}"}
 
 
 def say(folder: Path, text: str, voice: str = "nu1", speed: float = 1.0, mode: str = None) -> dict:
+    if voice.startswith("mau:"):  # GIỌNG CỦA CHÍNH NGƯỜI DÙNG: mau:<file ghi âm mẫu> (đường dẫn trong dự án hoặc tuyệt đối)
+        ref = prep_ref(folder, voice[4:].strip())
+        try:
+            return say_vieneu(folder, " ".join(text.split()), "", speed, ref=ref)
+        except Exception as e:  # noqa
+            print(f"[!] KHÔNG đọc được bằng giọng mẫu ({str(e)[:200]}) — đọc bằng giọng Ngọc Huyền, ghi rõ trong báo cáo", flush=True)
+            voice = "vn:Ngọc Huyền"
     if voice.startswith("vn:") or voice == "vn" or voice in VN_VOICES:
         name = voice[3:] if voice.startswith("vn:") else ("" if voice == "vn" else voice)
         try:
@@ -252,6 +319,7 @@ if __name__ == "__main__":
             print(f"{k:12} {m} (Piper, có sẵn)")
         for k, m in VN_VOICES.items():
             print(f"vn:{k:10} {m} (VieNeu)")
+        print('mau:<file>    Giọng của chính người dùng — từ file ghi âm mẫu 10–20 giây (VieNeu)')
         sys.exit(0)
     if len(sys.argv) < 3:
         sys.exit(__doc__)
