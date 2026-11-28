@@ -17,6 +17,7 @@
   var HP = new URLSearchParams(String(location.hash || '').replace(/^#/, ''));
   var CANH = { data: {}, w: 1080, h: 1920, style: {} };
   try { if (HP.get('canh')) { var _c = JSON.parse(HP.get('canh')); for (var _k in _c) CANH[_k] = _c[_k]; } } catch (e) { console.error('[scene] #canh hỏng', e); }
+  if (window.CANH_FIXED) { for (var _f in window.CANH_FIXED) CANH[_f] = window.CANH_FIXED[_f]; } // dựng bằng HyperFrames (hf_dung.py)
   CANH.data = CANH.data || {};
   window.CANH = CANH;
   var readyResolve;
