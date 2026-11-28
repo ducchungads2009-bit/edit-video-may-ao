@@ -322,8 +322,8 @@ Người dùng nhập API key + voice id ở ⚙ Cài đặt (settings.json "tts
 - Số / giá / chữ tiếng Anh nên viết theo cách đọc trong kịch bản nếu sợ đọc sai (vd "2,5 tỷ" → "hai tỷ rưỡi").
 - Chưa có giọng API: giọng VieNeu chạy trên máy — `tts.py "<folder>" "câu" --giong "vn:Hải Đăng"` (25 giọng Bắc / Trung / Nam:
   `tts.py ds`; nam Hải Đăng, Thiện Minh (kể chuyện), Quốc Tuấn; nữ Trúc Ly, Ngọc Huyền, Mai Anh (tin tức); miền Nam Thùy Dung, Minh
-  Triết…). Tự nhiên hơn giọng `nu1`/`nu2`. Lần đầu cài ~250MB + tải mô hình ~600MB: thử huggingface.co → hf-mirror.com → gói bản sao
-  (biến môi trường `VIENEU_MODEL_URL` hoặc settings.json `"vieneuModelUrl"`: link file .tar bộ nhớ đệm mô hình); đều không được → tự
+  Triết…). Tự nhiên hơn giọng `nu1`/`nu2`. Lần đầu cài ~250MB + tải mô hình ~600MB: thử huggingface.co → bản sao trên GitHub (nhánh `vieneu-model`
+  của kho này, raw.githubusercontent.com, ~1–3 phút) → hf-mirror.com (đổi nguồn: `VIENEU_MODEL_URL` / settings `"vieneuModelUrl"`); đều không được → tự
   đọc bằng `nu1` (báo cáo ghi rõ giọng thực tế). Đã có mô hình thì chạy không cần mạng.
 
 ## Tua nhanh / slow-motion / timelapse THEO NỘI DUNG (tự quyết, không cần người dùng nhắc)

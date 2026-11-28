@@ -133,7 +133,7 @@ bằng cách khác (vd nhãn chữ "📍 Cách trung tâm 10 phút" thay cho kh�
 - Ảnh dự án thật: tên miền trang chứa ảnh (vd market.vinhomes.vn); ảnh Wikimedia: upload.wikimedia.org.
 - Tải link Google Drive: drive.google.com, drive.usercontent.google.com (Dropbox: www.dropbox.com, dl.dropboxusercontent.com).
 Muốn bật hết một lần: claude.ai → Cài đặt → Capabilities → Domain allowlist chọn "All domains" (mọi trang đều tải được), mở phiên mới.
-- Giọng đọc VieNeu (`tts.py --giong vn:…`): huggingface.co hoặc hf-mirror.com (lần đầu tải mô hình). Không được thì tự dùng giọng `nu1`.
+- Giọng đọc VieNeu (`tts.py --giong vn:…`): huggingface.co, hoặc bản sao trên raw.githubusercontent.com (lần đầu tải mô hình ~600MB). Không được thì tự dùng giọng `nu1`.
 Không cần mạng: chữ, phụ đề, thẻ, chữ 3D, thẻ 3D, lớp phủ, hình vẽ, cảnh dựng sẵn, cảnh AI, zoom, chuyển cảnh, nhạc trong kho.
 
 ## Lưu ý

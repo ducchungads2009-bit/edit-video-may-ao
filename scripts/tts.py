@@ -7,8 +7,8 @@ và mô hình giọng (~65MB) vào models/tts/. Sau đó không cần mạng.
   python scripts/tts.py ds    -> danh sách giọng
 
 GIỌNG VieNeu (`--giong vn:Hải Đăng`, `vn:Trúc Ly`… — cách LumReels đọc lời): 25 giọng Bắc / Trung / Nam, tự nhiên hơn Piper, vẫn
-chạy trên máy (onnxruntime). Lần đầu tự cài thư viện (~250MB) vào _cache/vieneu-lib và tải mô hình (~600MB) từ huggingface.co —
-mạng chặn thì tự quay về giọng nu1 và báo.
+chạy trên máy (onnxruntime). Lần đầu tự cài thư viện (~250MB) vào _cache/vieneu-lib và tải mô hình (~600MB): huggingface.co →
+bản sao trên GitHub (nhánh vieneu-model của kho này) → hf-mirror.com; đều không được thì tự quay về giọng nu1 và báo.
 """
 import hashlib
 import json
@@ -126,16 +126,36 @@ def _settings() -> dict:
         return {}
 
 
+# bản sao mô hình trên nhánh "vieneu-model" của kho GitHub này (7 phần ≤ 90MB, raw.githubusercontent.com — máy ảo nào tải được
+# hướng dẫn GitHub là tải được); Apache-2.0, ghi chú giấy phép trong gói
+VN_PACK = "https://raw.githubusercontent.com/ducchungads2009-bit/edit-video-may-ao/vieneu-model/vieneu.tar.part-{i:02d}"
+VN_PACK_N, VN_PACK_SHA = 7, "af40cb7bcb1d9b99e8dad1b7e3fcdd13e8c6259a95b3a7f684e87437f7217551"
+
+
 def _vn_from_pack():
-    """máy ảo chặn huggingface.co: tải gói bản sao bộ nhớ đệm mô hình (tar) từ địa chỉ cấu hình rồi chạy không mạng"""
-    url = os.environ.get("VIENEU_MODEL_URL") or _settings().get("vieneuModelUrl")
-    if not url:
-        return None
+    """máy ảo chặn huggingface.co: tải gói bản sao bộ nhớ đệm mô hình (tar, có thể chia phần "{i}") rồi chạy không mạng.
+    Địa chỉ: VIENEU_MODEL_URL / settings "vieneuModelUrl", mặc định bản sao trên nhánh vieneu-model."""
+    url = os.environ.get("VIENEU_MODEL_URL") or _settings().get("vieneuModelUrl") or VN_PACK
     try:
-        print("Tải mô hình giọng VieNeu từ bản sao (~600MB)...", flush=True)
+        import hashlib as _h
+        print("Tải mô hình giọng VieNeu từ bản sao GitHub (~600MB, 1 lần)...", flush=True)
         HF_HOME.mkdir(parents=True, exist_ok=True)
         tmp = HF_HOME / "_vieneu.tar"
-        urllib.request.urlretrieve(url, tmp)
+        sha = _h.sha256()
+        with open(tmp, "wb") as out:
+            for i in range(VN_PACK_N if "{i" in url else 1):
+                u = url.format(i=i) if "{i" in url else url
+                with urllib.request.urlopen(u, timeout=120) as r:
+                    while True:
+                        b = r.read(1 << 20)
+                        if not b:
+                            break
+                        out.write(b)
+                        sha.update(b)
+                print(f"  phần {i + 1}", flush=True)
+        if url == VN_PACK and sha.hexdigest() != VN_PACK_SHA:
+            tmp.unlink(missing_ok=True)
+            raise RuntimeError("gói tải về bị lỗi (sai mã kiểm tra)")
         with tarfile.open(tmp) as t:
             try:
                 t.extractall(HF_HOME, filter="data")
@@ -154,8 +174,8 @@ def vn_routes():
         yield {}
         return
     yield {}
+    yield _vn_from_pack()  # bản sao trên GitHub của kho này (có mã kiểm tra)
     yield {"HF_ENDPOINT": "https://hf-mirror.com", "_route": "hf-mirror.com"}
-    yield _vn_from_pack()
 
 
 def say_vieneu(folder: Path, text: str, name: str, speed: float) -> dict:
@@ -169,7 +189,7 @@ def say_vieneu(folder: Path, text: str, name: str, speed: float) -> dict:
         raw = out_dir / f"_vn_{h}.wav"
         arg = json.dumps({"text": text, "voice": name, "out": str(raw)}, ensure_ascii=False)
         r, why = None, []
-        for extra in vn_routes():  # huggingface.co → hf-mirror.com → gói bản sao (VIENEU_MODEL_URL / settings "vieneuModelUrl")
+        for extra in vn_routes():  # huggingface.co → bản sao GitHub (nhánh vieneu-model) → hf-mirror.com
             if extra is None:
                 continue
             env = {**os.environ, "PYTHONPATH": str(VN_LIB), **extra}
