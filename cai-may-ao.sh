@@ -44,14 +44,17 @@ tai_chs() { v=131.0.6778.204; d=~/.cache/chs/$v; [ -x $d/chrome-headless-shell-l
   mkdir -p $d && curl -sSL --retry 2 -m 240 -o /tmp/chs.zip "https://storage.googleapis.com/chrome-for-testing-public/$v/linux64/chrome-headless-shell-linux64.zip" \
     && python3 -c "import zipfile,sys;zipfile.ZipFile('/tmp/chs.zip').extractall(sys.argv[1])" $d && chmod +x $d/chrome-headless-shell-linux64/chrome-headless-shell; rm -f /tmp/chs.zip; }
 [ -n "$EP_DU_PHONG" ] && B="" || tim
+# Ưu tiên Chrome Headless Shell tải thẳng từ Google (storage.googleapis.com) — bộ dựng HyperFrames chạy nhanh nhất với bản này.
+# KHÔNG dùng "npx playwright install" trước: nó tải từ máy chủ Microsoft (playwright.download.prss.microsoft.com / azureedge),
+# máy ảo ChatGPT coi là gửi dữ liệu tới Microsoft và chặn lượt chạy.
+case "$B" in *headless*) ;; *) tai_chs; C="$(ls -d ~/.cache/chs/*/chrome-headless-shell-linux64/chrome-headless-shell 2>/dev/null | tail -1)"; chay_duoc "$C" && B="$C";; esac
 if [ -z "$B" ]; then
   echo "   (máy ảo chưa có trình duyệt chạy được — đang thử tải…)"
-  timeout 180 npx --yes playwright@1 install chromium-headless-shell >/dev/null 2>&1 || timeout 180 npx --yes playwright@1 install chromium >/dev/null 2>&1 || true
+  timeout 180 npx --yes @puppeteer/browsers install chrome-headless-shell@stable --path ~/.cache/puppeteer >/dev/null 2>&1 || true
   tim
 fi
-if [ -z "$B" ]; then tai_chs; tim; fi
-if [ -z "$B" ]; then
-  timeout 180 npx --yes @puppeteer/browsers install chrome-headless-shell@stable --path ~/.cache/puppeteer >/dev/null 2>&1 || true
+if [ -z "$B" ] && [ -z "$KHONG_PLAYWRIGHT" ]; then   # Playwright (máy chủ Microsoft) — chỉ khi mọi cách trên đều hỏng
+  timeout 180 npx --yes playwright@1 install chromium-headless-shell >/dev/null 2>&1 || true
   tim
 fi
 if [ -z "$B" ]; then   # cách cuối: Chromium nén sẵn trong gói npm (chỉ cần registry npm)

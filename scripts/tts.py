@@ -90,6 +90,11 @@ VN_VOICES = {  # tên: mô tả (VieNeu-TTS, Apache-2.0)
 VN_WORKER = r'''
 import sys, json
 a = json.loads(sys.argv[1])
+try:  # không gửi số liệu sử dụng (onnxruntime của Microsoft)
+    import onnxruntime as _ort
+    _ort.disable_telemetry_events()
+except Exception:
+    pass
 from vieneu import Vieneu
 tts = Vieneu()
 err = None
