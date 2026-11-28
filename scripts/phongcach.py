@@ -497,7 +497,14 @@ def render_preview(name: str) -> Path:
     j = load(name)
     if not j:
         raise FileNotFoundError("Không có phong cách " + name)
-    pub = ROOT / "public" / "jobs"
+    import render as _r
+    hf = _r.use_hf()
+    if hf:  # bộ dựng HyperFrames: file tạm nằm trong thư mục bộ dựng
+        import hf_engine
+        bd = hf_engine.bundle_dir()
+        pub = bd / "public" / "jobs"
+    else:
+        pub = ROOT / "public" / "jobs"
     pub.mkdir(parents=True, exist_ok=True)
     key = hashlib.md5(d.name.encode()).hexdigest()[:8]
     props = {"style": j.get("style") or {}, "theme": None, "blocks": (j.get("style") or {}).get("templates") is not False}
@@ -523,15 +530,24 @@ def render_preview(name: str) -> Path:
     pf = pub / f"_style_{key}.json"
     pf.write_text(json.dumps(props, ensure_ascii=False), encoding="utf-8")
     png = pub / f"_style_{key}.png"
-    npx = "npx.cmd" if os.name == "nt" else "npx"
-    entry = "remotion/src/index.ts"
-    if not (ROOT / "remotion" / "src").exists():  # bản phát hành: dùng bộ dựng đóng gói sẵn
-        import render as _r
-        entry = str(_r.bundle_dir() or entry)
-    cmd = [npx, "remotion", "still", entry, comp, str(png), "--frame=40", f"--props={pf}", "--log=error"]
-    if os.environ.get("REMOTION_BROWSER"):
-        cmd.append(f"--browser-executable={os.environ['REMOTION_BROWSER']}")
-    r = subprocess.run(cmd, cwd=ROOT)
+    if hf:
+        class _R:
+            returncode = 0
+        r = _R()
+        try:
+            hf_engine.run(["still", str(bd), comp, str(png), "--frame=40", f"--props={pf}"])
+        except Exception as e:  # noqa
+            print("[!]", e)
+            r.returncode = 1
+    else:
+        npx = "npx.cmd" if os.name == "nt" else "npx"
+        entry = "remotion/src/index.ts"
+        if not (ROOT / "remotion" / "src").exists():  # bản phát hành: dùng bộ dựng đóng gói sẵn
+            entry = str(_r.bundle_dir() or entry)
+        cmd = [npx, "remotion", "still", entry, comp, str(png), "--frame=40", f"--props={pf}", "--log=error"]
+        if os.environ.get("REMOTION_BROWSER"):
+            cmd.append(f"--browser-executable={os.environ['REMOTION_BROWSER']}")
+        r = subprocess.run(cmd, cwd=ROOT)
     try:
         if r.returncode or not png.exists():
             raise RuntimeError("Không vẽ được ảnh minh họa")

@@ -539,7 +539,11 @@ def build_props(folder: Path) -> dict:
         print("[!] Thiếu file minh họa, tạm bỏ qua: " + ", ".join(plan["_missing"]))
     # Remotion chỉ đọc file trong public/ -> copy video + ảnh/âm thanh vào public/jobs/<id>/
     jid = hashlib.md5(str(folder).encode()).hexdigest()[:10]
-    bd = bundle_dir()
+    if use_hf():
+        import hf_engine
+        bd = hf_engine.bundle_dir()
+    else:
+        bd = bundle_dir()
     plan["_bundle"] = str(bd) if bd else None
     jdir = (bd / "public" if bd else ROOT / "public") / "jobs" / jid
     jdir.mkdir(parents=True, exist_ok=True)
@@ -607,8 +611,29 @@ _PROG = re.compile(r"(Bundl\w*|Render\w*|Encod\w*|Stitch\w*)[^0-9]*(\d+)\s*/\s*(
 _PCT = re.compile(r"(Bundl\w*)[^0-9]*(\d+)%", re.I)
 
 
+def use_hf() -> bool:
+    """bộ dựng: HyperFrames (mặc định — không cần giấy phép công ty) hoặc Remotion (settings "renderEngine": "remotion" / NHM_ENGINE=remotion)"""
+    e = os.environ.get("NHM_ENGINE")
+    if not e:
+        try:
+            e = json.loads((ROOT / "settings.json").read_text(encoding="utf-8")).get("renderEngine")
+        except Exception:  # noqa
+            e = None
+    return (e or "hf").lower() not in ("remotion", "rm")
+
+
 def remotion(args, tien: Tien = None, span=(0.0, 1.0)):
-    """chạy remotion, đọc dòng tiến độ (Rendered x/y, Encoded x/y) để báo % + thời gian còn lại."""
+    """chạy bộ dựng (HyperFrames hoặc Remotion), báo % + thời gian còn lại."""
+    if use_hf():
+        import hf_engine
+        try:
+            return hf_engine.run(args, tien, span)
+        except Exception as e:  # noqa
+            import traceback
+            traceback.print_exc()
+            if tien:
+                tien.done(False)
+            sys.exit(f"Render lỗi: {e}")
     if os.environ.get("REMOTION_BROWSER"):  # tùy chọn: dùng Chrome có sẵn
         args = [*args, f"--browser-executable={os.environ['REMOTION_BROWSER']}"]
     p = subprocess.Popen([NPX, "remotion", *args], cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
