@@ -322,7 +322,9 @@ Người dùng nhập API key + voice id ở ⚙ Cài đặt (settings.json "tts
 - Số / giá / chữ tiếng Anh nên viết theo cách đọc trong kịch bản nếu sợ đọc sai (vd "2,5 tỷ" → "hai tỷ rưỡi").
 - Chưa có giọng API: giọng VieNeu chạy trên máy — `tts.py "<folder>" "câu" --giong "vn:Hải Đăng"` (25 giọng Bắc / Trung / Nam:
   `tts.py ds`; nam Hải Đăng, Thiện Minh (kể chuyện), Quốc Tuấn; nữ Trúc Ly, Ngọc Huyền, Mai Anh (tin tức); miền Nam Thùy Dung, Minh
-  Triết…). Tự nhiên hơn giọng `nu1`/`nu2`. Lần đầu cài ~250MB + tải mô hình ~600MB từ huggingface.co; mạng chặn → tự đọc bằng `nu1`.
+  Triết…). Tự nhiên hơn giọng `nu1`/`nu2`. Lần đầu cài ~250MB + tải mô hình ~600MB: thử huggingface.co → hf-mirror.com → gói bản sao
+  (biến môi trường `VIENEU_MODEL_URL` hoặc settings.json `"vieneuModelUrl"`: link file .tar bộ nhớ đệm mô hình); đều không được → tự
+  đọc bằng `nu1` (báo cáo ghi rõ giọng thực tế). Đã có mô hình thì chạy không cần mạng.
 
 ## Tua nhanh / slow-motion / timelapse THEO NỘI DUNG (tự quyết, không cần người dùng nhắc)
 Đổi tốc độ khi nó làm nội dung dễ xem hơn — mỗi video 0–3 chỗ, đừng lạm dụng:
@@ -895,7 +897,8 @@ vẽ, infographic số liệu, kết bài có nút gọi…): tự viết 1 cả
 ### VIDEO KHÔNG CẦN CLIP GỐC — `scripts/video_ai.py` (người dùng chỉ gửi kịch bản / thông tin, không có video)
 1. `video_ai.py moi "<du-an>" --kich-ban "<file .txt hoặc chữ>" --giong "vn:Hải Đăng"` (mỗi dòng = 1 câu; `--giong khong` + `--giay 20`
    = không lời; `--nen "#0B0B0D"` màu nền cho bộ tối; `--khung 1:1`…). Tự đọc giọng AI từng câu → `voice.wav` → prepare (chế độ
-   CHỈ TIẾNG) → `cau.json` (mốc từng câu), `kich-ban-voice.txt` (đúng chữ → `fixes` cho phụ đề). Có file giọng thật → chép thành
+   CHỈ TIẾNG) → `cau.json` (mốc từng câu), `kich-ban-voice.txt`; phụ đề (`_work/words.json`) tự lấy ĐÚNG chữ kịch bản, không cần
+   `fixes`. Có file giọng thật → chép thành
    `voice.*` rồi prepare như thường.
 2. Chọn bộ có cảnh AI (hoặc bộ bất kỳ + cảnh dựng sẵn / tự viết). Mỗi câu = 1 cảnh: cảnh kín khung cho mở / kết, cảnh thẻ ở giữa
    đặt trên NỀN (cảnh tranh `mau-nuoc` `"chu": false` kéo dài, ảnh dự án thật phủ kín + lia, hoặc stock video). Không để nền trơn.

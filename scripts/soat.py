@@ -129,7 +129,8 @@ def main(folder: Path):
             cur = max(cur, b)
         if total - cur > 10:
             loi.append(f"{cur:.1f}–{total:.1f}s: {total - cur:.0f}s cuối không có minh họa/đồ họa")
-        if not any(e.get("start", 99) < 3 for e in els if e.get("type") in TEXTY):
+        if not any(e.get("start", 99) < 3 for e in els if e.get("type") in TEXTY) and \
+                not (plan.get("captions") and any(e.get("type") == "canhAI" and e.get("start", 99) < 0.5 for e in els)):
             loi.append("3 giây đầu chưa có chữ hook")
     try:  # mật độ tiếng hiệu ứng (người xem dễ thấy "lạm dụng")
         sys.path.insert(0, str(Path(__file__).resolve().parent))

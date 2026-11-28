@@ -3,5 +3,6 @@
 cd "$(dirname "$0")"
 export PATH="$HOME/.local/bin:$HOME/.local/node/bin:$PATH"
 export REMOTION_BROWSER="$(cat .trinh-duyet 2>/dev/null)"
+export NODE_OPTIONS="--require $PWD/scripts/an-toan-node.cjs ${NODE_OPTIONS:-}"  # máy chặn đọc giao diện mạng vẫn dựng được
 s="$1"; shift
 exec python3 "scripts/$s" "$@"

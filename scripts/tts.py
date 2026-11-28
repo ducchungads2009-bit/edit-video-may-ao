@@ -115,6 +115,49 @@ def ensure_vieneu():
         raise RuntimeError("Không cài được VieNeu: " + (r.stderr or "")[-400:])
 
 
+HF_HOME = Path(os.environ.get("HF_HOME") or Path.home() / ".cache" / "huggingface")
+VN_MODEL = HF_HOME / "hub" / "models--pnnbao-ump--VieNeu-TTS-v3-Turbo"
+
+
+def _settings() -> dict:
+    try:
+        return json.loads((ROOT / "settings.json").read_text(encoding="utf-8"))
+    except Exception:  # noqa
+        return {}
+
+
+def _vn_from_pack():
+    """máy ảo chặn huggingface.co: tải gói bản sao bộ nhớ đệm mô hình (tar) từ địa chỉ cấu hình rồi chạy không mạng"""
+    url = os.environ.get("VIENEU_MODEL_URL") or _settings().get("vieneuModelUrl")
+    if not url:
+        return None
+    try:
+        print("Tải mô hình giọng VieNeu từ bản sao (~600MB)...", flush=True)
+        HF_HOME.mkdir(parents=True, exist_ok=True)
+        tmp = HF_HOME / "_vieneu.tar"
+        urllib.request.urlretrieve(url, tmp)
+        with tarfile.open(tmp) as t:
+            try:
+                t.extractall(HF_HOME, filter="data")
+            except TypeError:  # Python cũ chưa có filter
+                t.extractall(HF_HOME)
+        tmp.unlink(missing_ok=True)
+        return {"HF_HUB_OFFLINE": "1", "_route": "bản sao"}
+    except Exception as e:  # noqa
+        print(f"[!] Không tải được bản sao mô hình: {e}", flush=True)
+        return None
+
+
+def vn_routes():
+    if VN_MODEL.exists():  # đã có mô hình: chạy không mạng (khỏi hỏi huggingface.co mỗi lần)
+        yield {"HF_HUB_OFFLINE": "1", "_route": "mô hình có sẵn"}
+        yield {}
+        return
+    yield {}
+    yield {"HF_ENDPOINT": "https://hf-mirror.com", "_route": "hf-mirror.com"}
+    yield _vn_from_pack()
+
+
 def say_vieneu(folder: Path, text: str, name: str, speed: float) -> dict:
     name = name.strip() or "Hải Đăng"
     out_dir = folder / "assets" / "giong-doc"
@@ -124,11 +167,19 @@ def say_vieneu(folder: Path, text: str, name: str, speed: float) -> dict:
     if not out.exists():
         ensure_vieneu()
         raw = out_dir / f"_vn_{h}.wav"
-        env = {**os.environ, "PYTHONPATH": str(VN_LIB)}
-        r = subprocess.run([sys.executable, "-c", VN_WORKER, json.dumps({"text": text, "voice": name, "out": str(raw)}, ensure_ascii=False)],
-                           capture_output=True, text=True, env=env, encoding="utf-8", errors="replace", timeout=1800)
-        if r.returncode or not raw.exists():
-            raise RuntimeError("Lỗi giọng VieNeu: " + (r.stderr or "")[-400:])
+        arg = json.dumps({"text": text, "voice": name, "out": str(raw)}, ensure_ascii=False)
+        r, why = None, []
+        for extra in vn_routes():  # huggingface.co → hf-mirror.com → gói bản sao (VIENEU_MODEL_URL / settings "vieneuModelUrl")
+            if extra is None:
+                continue
+            env = {**os.environ, "PYTHONPATH": str(VN_LIB), **extra}
+            r = subprocess.run([sys.executable, "-c", VN_WORKER, arg], capture_output=True, text=True, env=env, encoding="utf-8",
+                               errors="replace", timeout=1800)
+            if not r.returncode and raw.exists():
+                break
+            why.append((extra.get("_route") or "huggingface.co") + ": " + ((r.stderr or "").strip().splitlines() or ["?"])[-1][:160])
+        if not raw.exists():
+            raise RuntimeError("Lỗi giọng VieNeu — " + " | ".join(why))
         af = ["-af", f"atempo={max(0.5, min(2.0, float(speed))):.4f}"] if abs(float(speed) - 1) > 1e-3 else []
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(raw), *af, "-ar", "48000", "-ac", "1", str(out)], check=True)
         raw.unlink(missing_ok=True)
