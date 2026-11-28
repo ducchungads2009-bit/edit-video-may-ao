@@ -102,13 +102,16 @@ if err:
 
 def ensure_vieneu():
     if (VN_LIB / "vieneu").is_dir():
+        if not (VN_LIB / "socksio").is_dir():  # máy ảo đi qua proxy SOCKS (ChatGPT): huggingface_hub/httpx cần thêm thư viện này
+            subprocess.run([sys.executable, "-m", "pip", "install", "-q", "--target", str(VN_LIB), "socksio", "pysocks"], capture_output=True)
         return
     print("Cài giọng đọc VieNeu (lần đầu, ~1–2 phút)...", flush=True)
     VN_LIB.mkdir(parents=True, exist_ok=True)
     pip = [sys.executable, "-m", "pip", "install", "-q", "--target", str(VN_LIB)]
     r = subprocess.run(pip + ["--no-deps", "vieneu", "sea-g2p"], capture_output=True, text=True)
     if not r.returncode:  # bỏ gradio / librosa (giao diện web, không cần để đọc)
-        r = subprocess.run(pip + ["onnxruntime", "numpy", "soundfile", "soxr", "kaldi-native-fbank", "tokenizers", "huggingface_hub", "PyYAML"],
+        r = subprocess.run(pip + ["onnxruntime", "numpy", "soundfile", "soxr", "kaldi-native-fbank", "tokenizers", "huggingface_hub", "PyYAML",
+                                  "socksio", "pysocks"],
                            capture_output=True, text=True)
     if r.returncode:
         shutil.rmtree(VN_LIB, ignore_errors=True)
