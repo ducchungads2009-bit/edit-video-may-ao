@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<!-- CẢNH DỰNG SẴN "the-tin-rao" — thẻ tin rao kem viền đồng (mẫu 046 Màu nước phác hoạ), nền trong suốt, 6 giây.
+     data: nhan (dòng nhỏ), ten (tên dự án — chữ thư pháp, 1–3 chữ), thongSo ("3 phòng ngủ · 2 tầng · view hồ"), gia, cta,
+           matTroi (true/false: mặt trời màu nước góc trên phải), y (đỉnh thẻ, mặc định 1130) -->
+<link rel="stylesheet" href="./lib/fonts/fonts.css" />
+<script src="./lib/runtime/scene.js"></script>
+<style>
+  html, body { margin:0; width:1080px; height:1920px; overflow:hidden; background:transparent; }
+  #root { position:relative; width:1080px; height:1920px; overflow:hidden; }
+  #sun { position:absolute; width:220px; height:220px; border-radius:50%; left:780px; top:300px;
+         background: radial-gradient(circle at 45% 40%, #F3C76A 0%, #D9A23F 55%, rgba(217,102,58,0.0) 72%); }
+  .card { position:absolute; left:108px; width:864px; top:1130px; padding:56px 60px 92px; box-sizing:border-box;
+          background:#FBF8F1; border:1px solid #A8854A; box-shadow:0 10px 30px rgba(0,0,0,0.18); text-align:center; }
+  .kicker { font-family:'Montserrat', sans-serif; font-weight:500; font-size:30px; letter-spacing:0.2em; color:#A8854A; }
+  .name { font-family:'Imperial Script', cursive; font-size:132px; line-height:1.15; color:#2B2620; margin-top:18px; }
+  .specs { font-family:'Be Vietnam Pro', sans-serif; font-size:38px; color:#6B5E50; margin-top:10px; }
+  .rule { position:relative; height:1px; background:#A8854A; margin:34px 120px 26px; }
+  .rule i { position:absolute; left:50%; top:-7px; width:14px; height:14px; background:#A8854A; transform:translateX(-50%) rotate(45deg); }
+  .price { font-family:'Playfair Display', serif; font-weight:700; font-size:92px; color:#2B2620; font-variant-numeric:lining-nums; }
+  .cta { position:absolute; left:50%; bottom:-46px; transform:translateX(-50%); background:#2E2620; color:#FBF8F1;
+         font-family:'Montserrat', sans-serif; font-weight:600; font-size:36px; padding:26px 56px; border-radius:60px; white-space:nowrap;
+         display:flex; align-items:center; gap:18px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="6" data-fps="30" data-width="1080" data-height="1920">
+  <div id="sun"></div>
+  <div class="card" id="card">
+    <div class="kicker" id="kicker"></div>
+    <div class="name" id="name"></div>
+    <div class="specs" id="specs"></div>
+    <div class="rule"><i></i></div>
+    <div class="price" id="price"></div>
+    <div class="cta" id="cta"><span id="ctaText"></span>
+      <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 10H30M22 2l8 8-8 8" stroke="#FBF8F1" stroke-width="3" fill="none" stroke-linecap="round"/></svg></div>
+  </div>
+</div>
+<script>
+  const D = window.CANH.data;
+  const { prog, ease, lerp } = VideoScene;
+  const $ = (id) => document.getElementById(id);
+  VideoScene.define({
+    duration: 6, fps: 30, width: 1080, height: 1920,
+    setup() {
+      if (D.matTroi === false) $('sun').style.display = 'none';
+      if (D.y) $('card').style.top = D.y + 'px';
+      $('kicker').textContent = (D.nhan || 'ĐỘC QUYỀN PHÂN PHỐI').toUpperCase();
+      $('name').textContent = D.ten || 'Biệt Thự Hồ';
+      $('specs').textContent = D.thongSo || '3 phòng ngủ · 2 tầng · view hồ';
+      $('price').textContent = D.gia || 'Liên hệ';
+      $('ctaText').textContent = D.cta || 'Hẹn xem nhà riêng';
+    },
+    render(t) {
+      // mặt trời hạ dần + đổi cam (luật 7 của mẫu: cảnh không đứng im)
+      const s = prog(t, 0, 6);
+      $('sun').style.top = lerp(300, 420, s) + 'px';
+      $('sun').style.filter = `hue-rotate(${lerp(0, -22, s)}deg)`;
+      const fade = (el, a, d, dy) => { const k = ease.outCubic(prog(t, a, d)); el.style.opacity = k; el.style.transform = `translateY(${lerp(dy, 0, k)}px)`; };
+      fade($('card'), 0.3, 0.6, 8);
+      fade($('kicker'), 0.5, 0.5, 8);
+      fade($('name'), 0.9, 0.7, 10);
+      fade($('specs'), 1.3, 0.5, 6);
+      fade($('price'), 1.8, 0.6, 6);
+      const kc = ease.outCubic(prog(t, 2.4, 0.5));
+      $('cta').style.opacity = kc;
+      $('cta').style.transform = `translateX(-50%) translateY(${lerp(10, 0, kc)}px)`;
+    },
+  });
+</script>
+</body>
+</html>

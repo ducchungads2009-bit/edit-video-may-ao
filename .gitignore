@@ -8,3 +8,5 @@ __pycache__/
 canh-ai/lib/
 _cache/
 _thong-ke.json
+canh-ai/san/*/lib/
+canh-ai/san/*/_thu.jpg

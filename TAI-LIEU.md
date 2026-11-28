@@ -875,6 +875,32 @@ vẽ, infographic số liệu, kết bài có nút gọi…): tự viết 1 cả
   "fit": "cover"|"contain", "fadeIn"?: 0.25, "fadeOut"?: 0.25, "opacity"?, "z"?, "sfx"?}`. Nền cảnh trong suốt = lớp phủ trên video;
   nền màu = chèn kín khung. Cùng 1 cảnh dùng lại được cho dự án khác — chỉ đổi `data`.
 - Máy ảo: cảnh 2D (DOM/SVG/canvas) dựng nhanh như khối thường; cảnh WebGL / Three.js vẽ bằng CPU → chậm, giữ ngắn (≤ 6s).
+- CẢNH DỰNG SẴN (đã viết, chỉ đổi `data` — ưu tiên dùng trước khi tự viết): `canh_ai.py san` (danh sách + trường data),
+  `canh_ai.py moi "<du-an>" <tên> --san <cảnh>`, xem thử `canh_ai.py thu san <cảnh> --data '{…}'`:
+  | Cảnh | Kiểu | Dùng khi |
+  |---|---|---|
+  | `mau-nuoc` | kín khung 7s, che mo / ket, `chu: false` = chỉ tranh (làm nền) | mở / kết BĐS cao cấp, nghỉ dưỡng |
+  | `art-deco` | kín khung 6s, mo / ket | dự án thượng lưu, mở bán sang |
+  | `du-lich` | kín khung 6s, mo / ket | nghỉ dưỡng ven biển / núi, homestay |
+  | `bauhaus` | 6s, che mo / so / ket, `nen: "trong"` = đè lên video | khoe 1–3 con số, môi giới, vay |
+  | `the-tin-rao` | thẻ nổi 6s | giá + thông số + nút gọi |
+  | `bieu-do-vay` | thẻ nổi 6s, giaoDien sang / toi | tiến độ thanh toán, ngân hàng hỗ trợ |
+  | `tuyen-tien-ich` | thẻ nổi 6s | vị trí → tiện ích (thay bản đồ khi mạng chặn) |
+  | `tin-nhan` | khung chat nổi 8s | câu hỏi khách hay hỏi, review |
+  | `terminal` | cửa sổ nổi 7s | tăng giá theo năm, lãi kép (số liệu có nguồn) |
+  Khối dài / ngắn hơn cảnh: chỉnh `speed` (vd cảnh 6s trong khối 4s → `speed` 1.5) hoặc `from` (bắt đầu giữa cảnh).
+- BỘ PHONG CÁCH CÓ CẢNH AI ĐI KÈM: Sang trọng màu nước · Art Deco vàng kim · Du lịch cổ điển · Bauhaus số liệu — `phongcach.py chon`
+  in tên cảnh đi kèm; `phongcach.py xem "<bộ>"` in ghi-chu.md: cảnh nào cho mở / kết / giá / tiến độ / vị trí, data mẫu.
+
+### VIDEO KHÔNG CẦN CLIP GỐC — `scripts/video_ai.py` (người dùng chỉ gửi kịch bản / thông tin, không có video)
+1. `video_ai.py moi "<du-an>" --kich-ban "<file .txt hoặc chữ>" --giong "vn:Hải Đăng"` (mỗi dòng = 1 câu; `--giong khong` + `--giay 20`
+   = không lời; `--nen "#0B0B0D"` màu nền cho bộ tối; `--khung 1:1`…). Tự đọc giọng AI từng câu → `voice.wav` → prepare (chế độ
+   CHỈ TIẾNG) → `cau.json` (mốc từng câu), `kich-ban-voice.txt` (đúng chữ → `fixes` cho phụ đề). Có file giọng thật → chép thành
+   `voice.*` rồi prepare như thường.
+2. Chọn bộ có cảnh AI (hoặc bộ bất kỳ + cảnh dựng sẵn / tự viết). Mỗi câu = 1 cảnh: cảnh kín khung cho mở / kết, cảnh thẻ ở giữa
+   đặt trên NỀN (cảnh tranh `mau-nuoc` `"chu": false` kéo dài, ảnh dự án thật phủ kín + lia, hoặc stock video). Không để nền trơn.
+3. Phụ đề `captions: true` + `fixes`; nền sáng mà chữ phụ đề trắng → `"style": {"captions": {"stroke": 7, "strokeColor": "#2B2620"}}`;
+   `captionTop` tránh vùng thẻ. Nhạc nền theo bộ. Rồi soát → render như thường. Mẫu đầy đủ: `samples/khong-clip-plan.json`.
 
 ## DỰNG THEO NHỊP NHẠC — dự án có `dung-nhip.json` {"on": true} (người dùng tích "🎵 Dựng theo nhịp nhạc")
 Dùng cho trailer, đoạn mở đầu, video không lời / video đặc biệt. KHÔNG tự bật khi người dùng không tích (hoặc không nhờ).

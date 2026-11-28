@@ -1,0 +1,138 @@
+{
+ "ten": "Bauhaus số liệu",
+ "mo_ta": "Số liệu nổi bật kiểu áp phích Bauhaus: khối hình học đỏ – vàng – xanh, chữ Anton đen to, nền kem — hợp môi giới, vay mua nhà, phân tích giá; kèm cảnh AI khoe 1–3 con số, biểu đồ tiến độ và bảng terminal tăng giá.",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Anton",
+  "skin": "flat",
+  "accent": "#D7322A",
+  "text": {
+   "look": "solid",
+   "color": "#111111",
+   "hlColor": "#D7322A",
+   "hlStyle": "color",
+   "shadow": "none",
+   "anim": "left",
+   "out": "fade",
+   "upper": true,
+   "size": 88,
+   "weight": 400,
+   "spacing": 1,
+   "bg": "#F2B705",
+   "radius": 0
+  },
+  "captions": {
+   "preset": "tiktok",
+   "font": "Montserrat",
+   "size": 52,
+   "weight": 800,
+   "color": "#FFFFFF",
+   "active": "#F2B705",
+   "upper": false
+  },
+  "broll": {
+   "enter": "slide",
+   "exit": "cut",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "none",
+   "color": "#F2B705",
+   "stroke": 2.2
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 90
+  },
+  "effects": {
+   "zoom": "vừa",
+   "zoomStyle": "punch"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "fonts": [
+   "Anton",
+   "Montserrat"
+  ],
+  "looks": [
+   "solid"
+  ]
+ },
+ "plan": {
+  "theme": {
+   "light": "#F2EAD8",
+   "mid": "#1F4E9C",
+   "dark": "#111111",
+   "gold1": "#F2B705",
+   "gold2": "#D7322A"
+  },
+  "transition": "auto",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 102,
+   "contrast": 108,
+   "saturation": 104,
+   "warmth": 4,
+   "vignette": 10
+  },
+  "sfxVolume": 0.3
+ },
+ "thanhPhan": {
+  "chu": "Anton in hoa trên khối vàng",
+  "phude": "tối giản, nhỏ",
+  "chuyencanh": "trượt / cắt",
+  "hieuung": "zoom giật vừa",
+  "dohoa": "khối hình học đỏ – vàng – xanh",
+  "bocuc": "căn giữa, lề rộng",
+  "icon": "icon nét mảnh vàng, không nền",
+  "minhhoa": "mờ dần, zoom chậm",
+  "amthanh": "rất ít, nhẹ",
+  "mau": "tươi, tương phản"
+ },
+ "nguon": "tạo sẵn",
+ "ghiChu": {
+  "chu": "Tiêu đề Anton in hoa trên khối vàng #F2B705 chữ đen (look solid — bộ này DÙNG hộp chữ). Số lớn Anton cỡ 120+. Dòng nhỏ Montserrat 700 in hoa spacing 4. line-height ≥ 1.2 khi tiêu đề 2 dòng (dấu hỏi / ngã dòng dưới đè dòng trên)."
+ },
+ "nhom": "tin",
+ "canhAI": {
+  "mo": {
+   "san": "bauhaus",
+   "data": {
+    "che": "mo"
+   }
+  },
+  "ket": {
+   "san": "bauhaus",
+   "data": {
+    "che": "ket"
+   }
+  },
+  "the": [
+   {
+    "san": "bauhaus",
+    "data": {
+     "che": "so",
+     "nen": "trong"
+    }
+   },
+   {
+    "san": "bieu-do-vay",
+    "data": {
+     "giaoDien": "sang",
+     "mau": "#1F4E9C"
+    }
+   },
+   {
+    "san": "terminal"
+   }
+  ]
+ }
+}

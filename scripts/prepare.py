@@ -10,6 +10,7 @@ Tạo trong <folder>/_work/:
   sheet.jpg        ảnh ghép 16 khung hình để xem nhanh nội dung
 """
 import json
+import re
 import os
 import subprocess
 import sys
@@ -454,7 +455,14 @@ def main_audio(folder: Path, work: Path, voice: Path):
         (work / "clips.json").unlink(missing_ok=True)
         (work / "ghep.mp4").unlink(missing_ok=True)
         out = work / "chi-tieng.mp4"
-        r = run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", f"color=c=0xEFE9DC:s={TARGET[0]}x{TARGET[1]}:r=30:d={d:.3f}", "-i", str(voice),
+        nen = "0xEFE9DC"  # màu giấy; video không clip (video_ai.py) đặt màu nền riêng trong video-ai.json
+        try:
+            c = json.loads((folder / "video-ai.json").read_text(encoding="utf-8")).get("nen") or ""
+            if re.fullmatch(r"#?[0-9A-Fa-f]{6}", c):
+                nen = "0x" + c.lstrip("#")
+        except Exception:  # noqa
+            pass
+        r = run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", f"color=c={nen}:s={TARGET[0]}x{TARGET[1]}:r=30:d={d:.3f}", "-i", str(voice),
                  "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "veryfast", "-tune", "stillimage", "-pix_fmt", "yuv420p",
                  "-af", "aresample=async=1:first_pts=0", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-shortest", str(out)])
         if r.returncode:

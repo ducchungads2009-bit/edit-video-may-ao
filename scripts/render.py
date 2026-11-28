@@ -966,7 +966,14 @@ def main():
         try:  # kiểm tra tiếng–hình có khớp không (đổi giọng / tách giọng làm đường âm khác tiếng gốc -> bỏ qua)
             from dongbo import check as sync_check, report as sync_report
             au = props.get("audio") or {}
-            if au.get("voice") or au.get("vocals"):
+            mode = ""
+            try:
+                mode = json.loads((folder / "_work" / "info.json").read_text(encoding="utf-8")).get("mode", "")
+            except Exception:  # noqa
+                pass
+            if mode == "audio":
+                print("Đồng bộ tiếng–hình: bỏ qua (video chỉ có giọng / không clip gốc — không có hình quay để so)")
+            elif au.get("voice") or au.get("vocals"):
                 print("Đồng bộ tiếng–hình: bỏ qua kiểm tra (đang đổi giọng / tách giọng — đã tự bù độ trễ khi xử lý tiếng)")
             else:
                 print(sync_report(sync_check(folder, out)))

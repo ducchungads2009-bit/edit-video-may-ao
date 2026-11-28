@@ -5,8 +5,11 @@ Luật viết cảnh: canh-ai/HUONG-DAN.md (đọc HẾT trước khi viết).
 Dùng (máy ảo: ./chay.sh canh_ai.py …):
   canh_ai.py ds [--nhom bds|ads|faceless] [--tim "<từ>"]   danh sách mẫu (id, tên, hợp với nội dung gì)
   canh_ai.py xem <id>                                     in bản mô tả mẫu (màu, font, bố cục, nhịp theo giây)
+  canh_ai.py san                                          CẢNH DỰNG SẴN (đã viết sẵn, chỉ đổi data): tên, mô tả, trường data
+  canh_ai.py moi "<du-an>" <ten> --san <tên cảnh dựng sẵn>  -> chép cảnh dựng sẵn vào dự án
   canh_ai.py moi "<du-an>" <ten> [--mau <id>] [--giay 6] [--nen trong|mau]
         -> tạo <du-an>/canh/<ten>/index.html (khung sẵn đúng luật) + chép bản mô tả mẫu vào MAU.md
+  canh_ai.py thu san <tên> [--data '{…}']                  xem thử cảnh dựng sẵn
   canh_ai.py thu "<du-an>" <ten> [--moc 0,1.5,3,4.5] [--data '{"gia":"4 tỷ"}']
         -> chụp các mốc ra <du-an>/canh/<ten>/_thu.jpg để XEM bằng mắt (chạy riêng, không cần dựng video)
   canh_ai.py kiem "<du-an>" [<ten>]                        soát luật + font tiếng Việt của cảnh (soat.py tự gọi)
@@ -34,6 +37,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CA = ROOT / "canh-ai"
 LIB = CA / "lib"
 MAU = CA / "mau"
+SAN = CA / "san"   # cảnh dựng sẵn (đã viết, dữ liệu đổi qua "data") — canh_ai.py san
 NM = ROOT / "node_modules"
 SUBSETS = ("latin", "latin-ext", "vietnamese")
 # font chỉ dùng trong cảnh AI (mẫu LumReels cần) — ngoài 24 font của tool (remotion/fonts.json)
@@ -237,6 +241,21 @@ def cmd_moi(args):
     if (d / "index.html").exists():
         sys.exit(f"Đã có cảnh {d / 'index.html'} — sửa thẳng file đó")
     d.mkdir(parents=True, exist_ok=True)
+    san = _opt(args, "--san")
+    if san:
+        src = SAN / san
+        if not (src / "index.html").exists():
+            sys.exit(f"Không có cảnh dựng sẵn “{san}” (canh_ai.py san để xem danh sách)")
+        shutil.copy2(src / "index.html", d / "index.html")
+        for f in src.iterdir():
+            if f.is_file() and f.name not in ("index.html", "_thu.jpg"):
+                shutil.copy2(f, d / f.name)
+        sync_lib(d)
+        info = next((x for x in san_list() if x["ten"] == san), {})
+        print(f"Đã chép cảnh dựng sẵn “{san}” → {d / 'index.html'}")
+        print(f"Dữ liệu (data): {info.get('data', '')}")
+        print(f'Khối plan.json: {{"type": "canhAI", "start": <giây>, "end": <giây + {info.get("giay", 6)}>, "canh": "canh/{ten}", "data": {{…}}}}')
+        return
     mau = _opt(args, "--mau")
     giay = float(_opt(args, "--giay") or 6)
     nen = "transparent" if (_opt(args, "--nen") or "trong") == "trong" else "#000"
@@ -480,8 +499,11 @@ def cmd_kiem(args):
 def cmd_thu(args):
     if len(args) < 2:
         sys.exit(__doc__)
-    folder = _folder(args[0])
-    d = folder / "canh" / args[1]
+    if args[0] == "san":  # xem thử cảnh dựng sẵn trong kho tool
+        folder, d = SAN, SAN / args[1]
+    else:
+        folder = _folder(args[0])
+        d = folder / "canh" / args[1]
     errs, warns, meta = lint(d)
     for e in errs:
         print("LỖI: " + e)
@@ -490,7 +512,7 @@ def cmd_thu(args):
     D = (meta or {}).get("duration") or 6
     moc = _opt(args, "--moc")
     times = [float(x) for x in moc.split(",")] if moc else [round(D * k, 2) for k in (0.08, 0.3, 0.55, 0.8, 0.98)]
-    data = json.loads(_opt(args, "--data") or "null") or _block_data(folder, f"canh/{args[1]}")
+    data = json.loads(_opt(args, "--data") or "null") or (None if folder == SAN else _block_data(folder, f"canh/{args[1]}"))
     sync_lib(d)
     srv = _serve(d)
     shots = []
@@ -528,6 +550,26 @@ def cmd_thu(args):
     print(f"Đã chụp {len(shots)} mốc: {out} — MỞ RA XEM (ô cờ xám = vùng trong suốt, video hiện qua)")
 
 
+def san_list() -> list:
+    """đọc dòng chú thích đầu mỗi cảnh dựng sẵn: <!-- CẢNH DỰNG SẴN "<tên>" — mô tả … data: … -->"""
+    out = []
+    for d in sorted(SAN.glob("*/index.html")):
+        html = d.read_text(encoding="utf-8")
+        m = re.search(r"<!--\s*CẢNH DỰNG SẴN.*?-->", html, re.S)
+        txt = re.sub(r"\s+", " ", m.group(0)[4:-3]) if m else ""
+        mo, _, data = txt.partition("data:")
+        g = re.search(r"data-duration=\"([\d.]+)\"", html)
+        out.append({"ten": d.parent.name, "mo_ta": re.sub(r'^\s*CẢNH DỰNG SẴN "[^"]+"\s*—\s*', "", mo).strip().rstrip("."), "data": data.strip(),
+                    "giay": float(g.group(1)) if g else 6})
+    return out
+
+
+def cmd_san(args):
+    for x in san_list():
+        print(f"- {x['ten']} ({x['giay']:g}s): {x['mo_ta']}\n    data: {x['data']}")
+    print('Dùng: canh_ai.py moi "<du-an>" <ten-trong-du-an> --san <tên> · xem thử: canh_ai.py thu san <tên>')
+
+
 def _block_data(folder: Path, rel: str):
     try:
         plan = json.loads((folder / "plan.json").read_text(encoding="utf-8"))
@@ -556,6 +598,8 @@ if __name__ == "__main__":
         build_lib()
     elif c == "ds":
         cmd_ds(rest)
+    elif c == "san":
+        cmd_san(rest)
     elif c == "xem":
         if not rest:
             sys.exit(__doc__)

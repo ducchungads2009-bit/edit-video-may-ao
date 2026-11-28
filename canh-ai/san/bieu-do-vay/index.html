@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<!-- CẢNH DỰNG SẴN "bieu-do-vay" — ý từ mẫu 021 Gieo hạt thành nhà: thẻ biểu đồ cột mọc dần cho tiến độ thanh toán / vay mua nhà,
+     mỗi cột kèm % và nhãn, con số tổng đếm lên. Nền trong suốt (thẻ nổi trên video), 6 giây.
+     data: tieuDe, cot ([{nhan: "Ký HĐ", gt: "15%"}, …] 2–6 cột, gt là số hoặc %), tong ({nhan: "Ngân hàng hỗ trợ", gt: "70%"}),
+           giaoDien ("sang" thẻ kem | "toi" thẻ kính tối), mau (màu cột, mặc định màu nhấn của phong cách), y (đỉnh thẻ, mặc định 980) -->
+<link rel="stylesheet" href="./lib/fonts/fonts.css" />
+<script src="./lib/runtime/scene.js"></script>
+<style>
+  html, body { margin:0; width:1080px; height:1920px; overflow:hidden; background:transparent; }
+  #root { position:relative; width:1080px; height:1920px; overflow:hidden; }
+  #card { position:absolute; left:80px; width:920px; border-radius:36px; padding:56px 56px 48px; box-sizing:border-box; }
+  #t { font-size:54px; line-height:1.15; font-weight:700; }
+  #chart { position:relative; height:520px; margin-top:40px; }
+  .col { position:absolute; bottom:70px; border-radius:16px 16px 4px 4px; }
+  .pct { position:absolute; text-align:center; font-weight:800; font-size:44px; }
+  .lab { position:absolute; bottom:0; height:60px; text-align:center; font-size:32px; line-height:1.1; }
+  #base { position:absolute; left:0; right:0; bottom:66px; height:3px; }
+  #tong { display:flex; align-items:baseline; justify-content:space-between; margin-top:30px; padding-top:28px; }
+  #tong .n { font-size:36px; } #tong .v { font-size:84px; font-weight:800; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="6" data-fps="30" data-width="1080" data-height="1920">
+  <div id="card"><div id="t"></div><div id="chart"><div id="base"></div></div><div id="tong"><div class="n"></div><div class="v"></div></div></div>
+</div>
+<script>
+  const D = window.CANH.data, ST = window.CANH.style || {};
+  const { prog, ease, lerp } = VideoScene;
+  const $ = (id) => document.getElementById(id);
+  const TOI = D.giaoDien === 'toi';
+  const ACC = D.mau || ST.accent || '#B8962E';
+  const HF = `'${ST.heading || 'Montserrat'}', 'Montserrat', sans-serif`, BF = `'${ST.font || 'Be Vietnam Pro'}', 'Be Vietnam Pro', sans-serif`;
+  const INK = TOI ? '#FFFFFF' : '#2B2620', SOFT = TOI ? 'rgba(255,255,255,0.72)' : '#6B5E50';
+  const cot = (Array.isArray(D.cot) && D.cot.length ? D.cot : [{ nhan: 'Ký HĐ', gt: '15%' }, { nhan: 'Đợt 2', gt: '10%' }, { nhan: 'Nhận nhà', gt: '25%' }, { nhan: 'Sổ hồng', gt: '50%' }]).slice(0, 6);
+  const num = (s) => parseFloat(String(s).replace(/[^\d,.-]/g, '').replace(',', '.')) || 0;
+  const max = Math.max(...cot.map((c) => num(c.gt)), 1);
+  const tong = D.tong === false ? null : (D.tong || null);
+  VideoScene.define({
+    duration: 6, fps: 30, width: 1080, height: 1920,
+    setup() {
+      const c = $('card');
+      c.style.top = (Number(D.y) || 980) + 'px';
+      c.style.background = TOI ? 'rgba(14,16,22,0.82)' : 'rgba(251,248,241,0.96)';
+      c.style.border = TOI ? '1px solid rgba(255,255,255,0.18)' : `1px solid ${ACC}`;
+      c.style.boxShadow = '0 18px 50px rgba(0,0,0,0.28)';
+      $('t').textContent = D.tieuDe || 'Tiến độ thanh toán'; $('t').style.fontFamily = HF; $('t').style.color = INK;
+      $('base').style.background = SOFT;
+      const W = 808, n = cot.length, gap = 28, bw = (W - gap * (n - 1)) / n;
+      cot.forEach((k, i) => {
+        const x = i * (bw + gap);
+        const col = document.createElement('div'); col.className = 'col'; col.id = 'c' + i;
+        col.style.left = x + 'px'; col.style.width = bw + 'px';
+        col.style.background = `linear-gradient(180deg, ${ACC}, ${ACC}cc)`;
+        const p = document.createElement('div'); p.className = 'pct'; p.id = 'p' + i; p.style.left = x - 20 + 'px'; p.style.width = bw + 40 + 'px';
+        p.style.color = INK; p.style.fontFamily = HF; p.textContent = k.gt;
+        const l = document.createElement('div'); l.className = 'lab'; l.style.left = x - 10 + 'px'; l.style.width = bw + 20 + 'px';
+        l.style.color = SOFT; l.style.fontFamily = BF; l.textContent = k.nhan || '';
+        $('chart').append(col, p, l);
+      });
+      if (tong) {
+        $('tong').style.borderTop = `1px solid ${TOI ? 'rgba(255,255,255,0.2)' : ACC}`;
+        $('tong').querySelector('.n').textContent = tong.nhan || ''; $('tong').querySelector('.n').style.cssText += `;color:${SOFT};font-family:${BF}`;
+        $('tong').querySelector('.v').style.cssText += `;color:${ACC};font-family:${HF}`;
+      } else $('tong').style.display = 'none';
+    },
+    render(t) {
+      const ck = ease.outCubic(prog(t, 0, 0.6));
+      $('card').style.opacity = ck; $('card').style.transform = `translateY(${lerp(40, 0, ck)}px)`;
+      cot.forEach((k, i) => {
+        const g = ease.outBack(prog(t, 0.6 + i * 0.28, 0.7));
+        const h = Math.max(6, (num(k.gt) / max) * 360 * g);
+        $('c' + i).style.height = h + 'px';
+        $('p' + i).style.bottom = 70 + h + 10 + 'px';
+        $('p' + i).style.opacity = prog(t, 0.9 + i * 0.28, 0.3);
+      });
+      if (tong) {
+        const k = prog(t, 0.8 + cot.length * 0.28, 0.9), v = num(tong.gt), unit = String(tong.gt).replace(/[\d,.\s-]/g, '');
+        const shown = /[,.]/.test(String(tong.gt)) ? (v * ease.outCubic(k)).toFixed(1).replace('.', ',') : Math.round(v * ease.outCubic(k));
+        $('tong').querySelector('.v').textContent = k >= 1 ? tong.gt : shown + unit;
+        $('tong').style.opacity = prog(t, 0.6 + cot.length * 0.28, 0.4);
+      }
+    },
+  });
+</script>
+</body>
+</html>

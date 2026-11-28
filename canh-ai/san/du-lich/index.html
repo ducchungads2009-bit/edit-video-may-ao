@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<!-- CẢNH DỰNG SẴN "du-lich" — mẫu 033 Áp phích du lịch cổ điển: mảng màu phẳng in thạch bản (trời dải màu, mặt trời, núi 3 lớp,
+     biển sọc sóng, thuyền buồm), chữ tiêu đề khối lớn, dải băng tên điểm đến, viền giấy ngả. Kín khung, 6 giây.
+     Mở đầu / kết bài BĐS nghỉ dưỡng, homestay, du lịch.
+     data: che ("mo" | "ket"), ten (tiêu đề lớn — tên nơi / dự án, ngắn), nhan (dải băng), phuDe, cta, sdt -->
+<link rel="stylesheet" href="./lib/fonts/fonts.css" />
+<script src="./lib/runtime/scene.js"></script>
+<style>
+  html, body { margin:0; width:1080px; height:1920px; overflow:hidden; background:#EFE2C4; }
+  #root { position:relative; width:1080px; height:1920px; overflow:hidden; }
+  svg { position:absolute; left:0; top:0; }
+  #ten { position:absolute; left:70px; right:70px; top:150px; text-align:center; font-family:'Anton', sans-serif; font-size:170px; line-height:1.18;
+         color:#F7EBD0; text-transform:uppercase; text-shadow:6px 6px 0 #1F3A5F; letter-spacing:0.02em; }
+  #nhan { position:absolute; left:50%; top:1540px; transform:translateX(-50%); background:#C8452B; color:#F7EBD0; white-space:nowrap;
+          font-family:'Montserrat', sans-serif; font-weight:800; font-size:44px; letter-spacing:0.18em; padding:20px 56px; text-transform:uppercase; }
+  #phu { position:absolute; left:80px; right:80px; top:1660px; text-align:center; font-family:'Playfair Display', serif; font-style:italic; font-size:50px; color:#1F3A5F; }
+  #cta { position:absolute; left:50%; top:1750px; transform:translateX(-50%); white-space:nowrap; background:#1F3A5F; color:#F7EBD0;
+         font-family:'Montserrat', sans-serif; font-weight:700; font-size:36px; padding:22px 50px; border-radius:50px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="6" data-fps="30" data-width="1080" data-height="1920">
+  <svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <div id="ten"></div><div id="nhan"></div><div id="phu"></div><div id="cta"></div>
+</div>
+<script>
+  const D = window.CANH.data;
+  const { prog, ease, lerp } = VideoScene;
+  const $ = (id) => document.getElementById(id);
+  const KET = D.che === 'ket';
+  const NS = 'http://www.w3.org/2000/svg', svg = $('s');
+  const el = (tag, at, parent = svg) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); parent.appendChild(e); return e; };
+  const g = (id) => el('g', { id });
+  // trời: 5 dải màu phẳng
+  const sky = g('sky');
+  ['#F4C27A', '#F2A65E', '#E8834A', '#D9673F', '#C8452B'].reverse().forEach((c, i) => el('rect', { x: 0, y: i * 150, width: 1080, height: 160, fill: c }, sky));
+  const sun = el('circle', { cx: 760, cy: 760, r: 150, fill: '#F7E3A3' });
+  const mtn = (pts, c) => el('path', { d: 'M' + pts.map((p) => p.join(' ')).join(' L') + ' L1080 1920 L0 1920 Z', fill: c });
+  const m1 = mtn([[0, 820], [180, 640], [320, 760], [520, 560], [720, 780], [900, 640], [1080, 760]], '#6E8A7A');
+  const m2 = mtn([[0, 920], [240, 760], [430, 880], [640, 720], [860, 900], [1080, 800]], '#3F6B63');
+  const m3 = mtn([[0, 1010], [300, 900], [560, 990], [800, 920], [1080, 1000]], '#24463F');
+  const sea = g('sea');
+  el('rect', { x: 0, y: 1040, width: 1080, height: 880, fill: '#2E6E8E' }, sea);
+  const waves = [];
+  for (let i = 0; i < 9; i++) waves.push(el('path', { d: '', fill: 'none', stroke: '#9CC9D9', 'stroke-width': 6, 'stroke-linecap': 'round', opacity: 0.8 }, sea));
+  const boat = g('boat');
+  el('path', { d: 'M-70 0 L70 0 L50 30 L-50 30 Z', fill: '#1F3A5F' }, boat);
+  el('path', { d: 'M0 -150 L0 -4 L80 -4 Z', fill: '#F7EBD0' }, boat);
+  el('path', { d: 'M-6 -130 L-6 -4 L-60 -4 Z', fill: '#E9D3A6' }, boat);
+  // viền giấy
+  el('rect', { x: 24, y: 24, width: 1032, height: 1872, fill: 'none', stroke: '#EFE2C4', 'stroke-width': 48 });
+  el('rect', { x: 48, y: 48, width: 984, height: 1824, fill: 'none', stroke: '#1F3A5F', 'stroke-width': 4 });
+  VideoScene.define({
+    duration: 6, fps: 30, width: 1080, height: 1920,
+    setup() {
+      $('ten').textContent = D.ten || 'Vịnh Xanh';
+      $('nhan').textContent = (D.nhan || (KET ? 'Hẹn bạn ở đây' : 'Nghỉ dưỡng ven biển')).toUpperCase();
+      $('phu').textContent = D.phuDe || '';
+      const ct = KET ? [D.cta || 'Đặt lịch tham quan', D.sdt].filter(Boolean).join(' · ') : (D.cta || '');
+      $('cta').textContent = ct; if (!ct) $('cta').style.display = 'none';
+      if (!D.phuDe) $('cta').style.top = '1670px';
+    },
+    render(t) {
+      // các lớp in chồng lần lượt (kiểu thạch bản), rồi chuyển động chậm
+      const up = (e, a, dy) => { const k = ease.outCubic(prog(t, a, 0.7)); e.setAttribute('transform', `translate(0 ${lerp(dy, 0, k)})`); e.setAttribute('opacity', k); };
+      up($('sky'), 0, -40);
+      const sk = ease.outBack(prog(t, 0.3, 0.8));
+      sun.setAttribute('r', 150 * sk); sun.setAttribute('cy', 760 - Math.min(1, t / 6) * 40);
+      up(m1, 0.5, 120); up(m2, 0.7, 160); up(m3, 0.9, 200); up($('sea'), 1.0, 240);
+      waves.forEach((w, i) => {
+        const y = 1110 + i * 52, ph = t * 1.4 + i * 0.7, x0 = 120 + ((i * 137) % 500), L = 180 + ((i * 53) % 160);
+        let d = ''; for (let k = 0; k <= 12; k++) { const x = x0 + (k / 12) * L + Math.sin(t * 0.6 + i) * 30; d += (k ? ' L' : 'M') + x.toFixed(1) + ' ' + (y + Math.sin(ph + k * 0.9) * 6).toFixed(1); }
+        w.setAttribute('d', d);
+      });
+      const bk = prog(t, 1.4, 0.6);
+      $('boat').setAttribute('transform', `translate(${lerp(260, 380, t / 6)} ${1260 + Math.sin(t * 2) * 6}) rotate(${Math.sin(t * 2) * 2})`); $('boat').setAttribute('opacity', bk);
+      const tk = ease.outBack(prog(t, 1.6, 0.6));
+      $('ten').style.opacity = prog(t, 1.6, 0.2); $('ten').style.transform = `scale(${lerp(0.85, 1, tk)})`;
+      const fade = (id, a, dy) => { const k = ease.outCubic(prog(t, a, 0.5)); $(id).style.opacity = k; $(id).style.transform = (id === 'phu' ? '' : 'translateX(-50%) ') + `translateY(${lerp(dy, 0, k)}px)`; };
+      fade('nhan', 2.3, 20); fade('phu', 2.7, 10); fade('cta', 3.0, 10);
+    },
+  });
+</script>
+</body>
+</html>

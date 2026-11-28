@@ -96,7 +96,9 @@ gửi. Video nói về dự án cụ thể → ảnh THẬT của dự án tìm 
    Chưa có: khối cần tách người (behind, orbit, presenter) — không dùng trên máy ảo.
    Cần đồ hoạ khối có sẵn không làm được (mở đầu thương hiệu, bảng giá động, tranh vẽ tay, infographic…) → CẢNH AI: đọc HẾT
    `canh-ai/HUONG-DAN.md`, chọn mẫu `./chay.sh canh_ai.py ds --nhom bds`, tạo `canh_ai.py moi`, xem `canh_ai.py thu` rồi khối `canhAI`
-   (TAI-LIEU.md mục "CẢNH AI"). Giọng đọc AI từ kịch bản: `./chay.sh tts.py "<du-an>" "<câu>" --giong "vn:Hải Đăng"` (giọng VieNeu).
+   (TAI-LIEU.md mục "CẢNH AI"; có 9 cảnh dựng sẵn: `canh_ai.py san`). Giọng đọc AI từ kịch bản: `./chay.sh tts.py "<du-an>" "<câu>" --giong "vn:Hải Đăng"` (giọng VieNeu).
+   KHÔNG CÓ VIDEO (người dùng chỉ gửi kịch bản / thông tin, đơn ghi "Video gốc: không có"): `./chay.sh video_ai.py moi "<du-an>"
+   --kich-ban kich-ban.txt --giong "vn:Hải Đăng"` rồi làm theo TAI-LIEU.md mục "VIDEO KHÔNG CẦN CLIP GỐC" (bỏ mục 1 câu 1 — không cần video).
 8. `./chay.sh soat.py "<du-an>"`, sửa 1 vòng. `./chay.sh render.py "<du-an>"` (máy ảo ~10 giây dựng / 1 giây video:
    chạy nền, kiểm tra mỗi 2–4 phút; KHÔNG kết thúc lượt trả lời khi đang dựng).
 9. XEM 6 khung của `final.mp4` (ffmpeg, phủ mở đầu / giữa / kết) bằng mắt, đối chiếu danh sách "KHÔNG ĐƯỢC CÓ" ở CHAT-LUONG.md

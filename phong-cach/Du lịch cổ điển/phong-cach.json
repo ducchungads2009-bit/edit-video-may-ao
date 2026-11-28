@@ -1,0 +1,130 @@
+{
+ "ten": "Du lịch cổ điển",
+ "mo_ta": "Nghỉ dưỡng / homestay kiểu áp phích du lịch cổ điển: tiêu đề Anton in hoa bóng xanh navy, dải băng đỏ gạch, màu hoàng hôn ấm, kèm cảnh AI áp phích núi – biển – thuyền (mở / kết) và sơ đồ tuyến tiện ích.",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Anton",
+  "skin": "flat",
+  "accent": "#C8452B",
+  "text": {
+   "look": "shadow",
+   "color": "#F7EBD0",
+   "hlColor": "#F4C27A",
+   "hlStyle": "color",
+   "shadow": "hard",
+   "anim": "up",
+   "out": "fade",
+   "upper": true,
+   "size": 96,
+   "weight": 400,
+   "spacing": 2
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Montserrat",
+   "size": 50,
+   "weight": 700,
+   "color": "#F7EBD0",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "none",
+   "color": "#F4C27A",
+   "stroke": 2
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 90
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "fonts": [
+   "Anton",
+   "Montserrat",
+   "Playfair Display"
+  ]
+ },
+ "plan": {
+  "theme": {
+   "light": "#F7EBD0",
+   "mid": "#C8452B",
+   "dark": "#1F3A5F",
+   "gold1": "#F4C27A",
+   "gold2": "#E8834A"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 102,
+   "contrast": 106,
+   "saturation": 108,
+   "warmth": 20,
+   "vignette": 25
+  },
+  "sfxVolume": 0.18
+ },
+ "thanhPhan": {
+  "chu": "Anton in hoa bóng đổ cứng",
+  "phude": "tối giản, nhỏ",
+  "chuyencanh": "mờ chồng chậm",
+  "hieuung": "zoom chậm, rất ít",
+  "dohoa": "mảng màu phẳng in thạch bản",
+  "bocuc": "căn giữa, lề rộng",
+  "icon": "icon nét mảnh vàng, không nền",
+  "minhhoa": "mờ dần, zoom chậm",
+  "amthanh": "rất ít, nhẹ",
+  "mau": "hoàng hôn ấm, bão hoà nhẹ"
+ },
+ "nguon": "tạo sẵn",
+ "ghiChu": {
+  "chu": "Tiêu đề Anton in hoa (mặc định) màu #F7EBD0 bóng cứng; dòng phụ Playfair Display italic cỡ 52 màu #F7EBD0. Nhãn nhỏ Montserrat 800 in hoa trên dải đỏ gạch #C8452B chỉ ở cảnh AI."
+ },
+ "nhom": "bds",
+ "canhAI": {
+  "mo": {
+   "san": "du-lich",
+   "data": {
+    "che": "mo"
+   }
+  },
+  "ket": {
+   "san": "du-lich",
+   "data": {
+    "che": "ket"
+   }
+  },
+  "the": [
+   {
+    "san": "tuyen-tien-ich",
+    "data": {
+     "giaoDien": "sang",
+     "mau": "#C8452B"
+    }
+   },
+   {
+    "san": "bieu-do-vay",
+    "data": {
+     "giaoDien": "sang",
+     "mau": "#1F3A5F"
+    }
+   }
+  ]
+ }
+}

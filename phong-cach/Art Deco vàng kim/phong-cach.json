@@ -1,0 +1,129 @@
+{
+ "ten": "Art Deco vàng kim",
+ "mo_ta": "Thượng lưu kiểu áp phích Art Deco: nền tối, chữ Playfair in hoa giãn rộng màu vàng kim, đường kẻ hình thoi, kèm cảnh AI tia nắng vàng + vòm quạt (mở / kết) và thẻ kính tối viền vàng.",
+ "style": {
+  "font": "Montserrat",
+  "heading": "Playfair Display",
+  "skin": "flat",
+  "accent": "#D9B45A",
+  "text": {
+   "look": "clean",
+   "color": "#F3E3B5",
+   "hlColor": "#E8C35E",
+   "hlStyle": "color",
+   "shadow": "soft",
+   "anim": "fade",
+   "out": "fade",
+   "upper": true,
+   "size": 76,
+   "weight": 700,
+   "spacing": 8
+  },
+  "captions": {
+   "preset": "minimal",
+   "font": "Montserrat",
+   "size": 48,
+   "weight": 600,
+   "color": "#F3E3B5",
+   "upper": false
+  },
+  "broll": {
+   "enter": "fade",
+   "exit": "fade",
+   "kenburns": true,
+   "overlay": false,
+   "pip": "clean"
+  },
+  "icons": {
+   "kind": "lucide",
+   "bg": "none",
+   "color": "#D9B45A",
+   "stroke": 1.8
+  },
+  "layout": {
+   "align": "center",
+   "marginX": 90
+  },
+  "effects": {
+   "zoom": "ít",
+   "zoomStyle": "in"
+  },
+  "sfx": {
+   "density": "it",
+   "set": "mem",
+   "joins": false
+  },
+  "fonts": [
+   "Playfair Display",
+   "Montserrat"
+  ]
+ },
+ "plan": {
+  "theme": {
+   "light": "#F3E3B5",
+   "mid": "#D9B45A",
+   "dark": "#0B0B0D",
+   "gold1": "#FFF3C4",
+   "gold2": "#B8862B"
+  },
+  "transition": "fade",
+  "cutFx": "none",
+  "captionTop": 1400,
+  "wordsPerPage": 4,
+  "color": {
+   "brightness": 98,
+   "contrast": 112,
+   "saturation": 90,
+   "warmth": 14,
+   "vignette": 45
+  },
+  "sfxVolume": 0.18
+ },
+ "thanhPhan": {
+  "chu": "Playfair in hoa giãn rộng, vàng kim",
+  "phude": "tối giản, nhỏ",
+  "chuyencanh": "mờ chồng chậm",
+  "hieuung": "zoom chậm, rất ít",
+  "dohoa": "tia nắng vàng, vòm quạt, kính tối viền vàng",
+  "bocuc": "căn giữa, lề rộng",
+  "icon": "icon nét mảnh vàng, không nền",
+  "minhhoa": "mờ dần, zoom chậm",
+  "amthanh": "rất ít, nhẹ",
+  "mau": "tương phản cao, tối 4 góc"
+ },
+ "nguon": "tạo sẵn",
+ "ghiChu": {
+  "chu": "Tiêu đề Playfair Display in hoa spacing 8 (mặc định); dòng nhỏ Montserrat 600 cỡ 30 in hoa spacing 14 màu #D9B45A; tên dự án grad [\"#FFF3C4\",\"#E8C35E\",\"#A87A22\"]. Không hộp màu."
+ },
+ "nhom": "bds",
+ "canhAI": {
+  "mo": {
+   "san": "art-deco",
+   "data": {
+    "che": "mo"
+   }
+  },
+  "ket": {
+   "san": "art-deco",
+   "data": {
+    "che": "ket"
+   }
+  },
+  "the": [
+   {
+    "san": "bieu-do-vay",
+    "data": {
+     "giaoDien": "toi",
+     "mau": "#D9B45A"
+    }
+   },
+   {
+    "san": "tuyen-tien-ich",
+    "data": {
+     "giaoDien": "toi",
+     "mau": "#D9B45A"
+    }
+   }
+  ]
+ }
+}

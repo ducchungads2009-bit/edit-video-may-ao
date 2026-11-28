@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<!-- CẢNH DỰNG SẴN "tuyen-tien-ich" — ý từ mẫu 104 Sơ đồ tuyến tàu: vị trí dự án vẽ như tuyến metro, đường tuyến chạy dần, mỗi tiện ích
+     là 1 ga bật ra kèm số phút. Thay bản đồ khi máy ảo không tải được bản đồ thật. Nền trong suốt (thẻ nổi), 6 giây.
+     data: tieuDe, duAn (tên ga đầu = dự án), diem ([{ten: "Trường quốc tế", phut: "3 phút"}, …] 2–6 ga), giaoDien ("sang" | "toi"),
+           mau (màu tuyến), y (đỉnh thẻ, mặc định 820) -->
+<link rel="stylesheet" href="./lib/fonts/fonts.css" />
+<script src="./lib/runtime/scene.js"></script>
+<style>
+  html, body { margin:0; width:1080px; height:1920px; overflow:hidden; background:transparent; }
+  #root { position:relative; width:1080px; height:1920px; overflow:hidden; }
+  #card { position:absolute; left:80px; width:920px; border-radius:36px; padding:52px 56px 40px; box-sizing:border-box; }
+  #t { font-size:52px; font-weight:700; line-height:1.15; }
+  #map { position:relative; margin-top:36px; }
+  #line { position:absolute; left:46px; width:14px; border-radius:7px; top:30px; }
+  .st { position:absolute; left:0; height:110px; display:flex; align-items:center; gap:36px; width:100%; }
+  .dot { width:58px; height:58px; border-radius:50%; box-sizing:border-box; border:12px solid; background:#fff; flex:none; margin-left:20px; }
+  .nm { font-size:40px; flex:1; line-height:1.15; }
+  .ph { font-size:40px; font-weight:800; white-space:nowrap; }
+  .start .dot { width:78px; height:78px; margin-left:10px; border-width:0; }
+  .start .nm { font-weight:800; font-size:44px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="6" data-fps="30" data-width="1080" data-height="1920">
+  <div id="card"><div id="t"></div><div id="map"><div id="line"></div></div></div>
+</div>
+<script>
+  const D = window.CANH.data, ST = window.CANH.style || {};
+  const { prog, ease, lerp } = VideoScene;
+  const $ = (id) => document.getElementById(id);
+  const TOI = D.giaoDien === 'toi';
+  const ACC = D.mau || ST.accent || '#C8102E';
+  const HF = `'${ST.heading || 'Montserrat'}', 'Montserrat', sans-serif`, BF = `'${ST.font || 'Be Vietnam Pro'}', 'Be Vietnam Pro', sans-serif`;
+  const INK = TOI ? '#fff' : '#1E1E1E', SOFT = TOI ? 'rgba(255,255,255,0.75)' : '#555';
+  const diem = (Array.isArray(D.diem) && D.diem.length ? D.diem : [{ ten: 'Trường học liên cấp', phut: '3 phút' }, { ten: 'Trung tâm thương mại', phut: '7 phút' }, { ten: 'Bệnh viện', phut: '10 phút' }, { ten: 'Sân bay', phut: '25 phút' }]).slice(0, 6);
+  const ROW = 120;
+  VideoScene.define({
+    duration: 6, fps: 30, width: 1080, height: 1920,
+    setup() {
+      const c = $('card');
+      c.style.top = (Number(D.y) || 820) + 'px';
+      c.style.background = TOI ? 'rgba(14,16,22,0.84)' : 'rgba(255,255,255,0.96)';
+      c.style.boxShadow = '0 18px 50px rgba(0,0,0,0.28)';
+      $('t').textContent = D.tieuDe || 'Kết nối tiện ích'; $('t').style.fontFamily = HF; $('t').style.color = INK;
+      $('line').style.background = ACC;
+      const all = [{ ten: D.duAn || 'Dự án', phut: '', start: true }, ...diem];
+      $('map').style.height = all.length * ROW + 'px';
+      all.forEach((d, i) => {
+        const r = document.createElement('div'); r.className = 'st' + (d.start ? ' start' : ''); r.id = 's' + i; r.style.top = i * ROW + 'px';
+        r.innerHTML = '<div class="dot"></div><div class="nm"></div><div class="ph"></div>';
+        const dot = r.querySelector('.dot'); dot.style.borderColor = ACC; if (d.start) dot.style.background = ACC;
+        r.querySelector('.nm').textContent = d.ten; r.querySelector('.nm').style.cssText += `;color:${INK};font-family:${d.start ? HF : BF}`;
+        r.querySelector('.ph').textContent = d.phut || ''; r.querySelector('.ph').style.cssText += `;color:${ACC};font-family:${HF}`;
+        $('map').appendChild(r);
+      });
+    },
+    render(t) {
+      const ck = ease.outCubic(prog(t, 0, 0.5));
+      $('card').style.opacity = ck; $('card').style.transform = `translateY(${lerp(40, 0, ck)}px)`;
+      const n = diem.length;
+      const lk = ease.inOutCubic(prog(t, 0.5, 0.6 + n * 0.45));
+      $('line').style.height = Math.max(0, n * ROW * lk) + 'px';
+      for (let i = 0; i <= n; i++) {
+        const a = i === 0 ? 0.35 : 0.5 + (i / n) * (0.6 + n * 0.45) - 0.1;
+        const k = ease.outBack(prog(t, a, 0.4));
+        const r = $('s' + i);
+        r.querySelector('.dot').style.transform = `scale(${k})`;
+        const tk = ease.outCubic(prog(t, a + 0.1, 0.4));
+        r.querySelector('.nm').style.opacity = tk; r.querySelector('.nm').style.transform = `translateX(${lerp(-24, 0, tk)}px)`;
+        r.querySelector('.ph').style.opacity = prog(t, a + 0.25, 0.3);
+      }
+      // ga dự án nhấp nháy nhẹ (không đứng im)
+      $('s0').querySelector('.dot').style.boxShadow = `0 0 0 ${10 + 8 * Math.sin(t * 4)}px ${ACC}33`;
+    },
+  });
+</script>
+</body>
+</html>

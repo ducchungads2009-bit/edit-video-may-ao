@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<!-- CẢNH DỰNG SẴN "terminal" — mẫu 009 Bảng terminal xanh: cửa sổ dòng lệnh chữ mono xanh lục gõ từng dòng, đường biểu đồ tăng
+     dần vẽ ra, con số cuối nhấp nháy. Hợp: tăng giá theo năm, lãi kép, dòng tiền cho thuê. Nền trong suốt (cửa sổ nổi), 7 giây.
+     data: tieuDe (dòng lệnh đầu), dong (["Giá 2020: 35 tr/m²", …] 2–5 dòng gõ ra), diem ([35, 42, 51, 63, 78] số liệu biểu đồ),
+           nhanX (["2020", …, "2024"]), ketQua ("+123% sau 4 năm"), y (đỉnh cửa sổ, mặc định 760) -->
+<link rel="stylesheet" href="./lib/fonts/fonts.css" />
+<script src="./lib/runtime/scene.js"></script>
+<style>
+  html, body { margin:0; width:1080px; height:1920px; overflow:hidden; background:transparent; }
+  #root { position:relative; width:1080px; height:1920px; overflow:hidden; }
+  #win { position:absolute; left:70px; width:940px; border-radius:22px; overflow:hidden; background:rgba(6,14,9,0.94);
+         border:1px solid rgba(80,255,140,0.35); box-shadow:0 0 60px rgba(40,255,120,0.18), 0 20px 50px rgba(0,0,0,0.5); }
+  #bar { height:64px; background:rgba(80,255,140,0.08); display:flex; align-items:center; gap:14px; padding-left:26px; }
+  #bar i { width:20px; height:20px; border-radius:50%; display:block; }
+  #body { padding:30px 40px 40px; font-family:'JetBrains Mono', monospace; color:#5CFF95; }
+  .ln { font-size:38px; line-height:1.45; white-space:pre; min-height:55px; }
+  .ln .p { color:#2FBF6A; }
+  #cur { display:inline-block; width:22px; height:40px; background:#5CFF95; vertical-align:-6px; margin-left:4px; }
+  #chart { margin-top:20px; }
+  #res { font-size:64px; font-weight:800; margin-top:14px; text-shadow:0 0 18px rgba(92,255,149,0.6); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="7" data-fps="30" data-width="1080" data-height="1920">
+  <div id="win"><div id="bar"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></div>
+    <div id="body"><div id="lines"></div><svg id="chart" width="860" height="420" viewBox="0 0 860 420"></svg><div id="res"></div></div></div>
+</div>
+<script>
+  const D = window.CANH.data;
+  const { prog, ease, lerp } = VideoScene;
+  const $ = (id) => document.getElementById(id);
+  const head = '> ' + (D.tieuDe || 'phan_tich --gia-tri');
+  const dong = (Array.isArray(D.dong) && D.dong.length ? D.dong : ['Giá 2020: 35 tr/m²', 'Giá 2024: 78 tr/m²']).slice(0, 5);
+  const diem = (Array.isArray(D.diem) && D.diem.length > 1 ? D.diem : [35, 42, 51, 63, 78]).map(Number);
+  const nhanX = Array.isArray(D.nhanX) ? D.nhanX : [];
+  const lines = [head, ...dong];
+  const TYPE = 0.032; // giây / ký tự
+  const starts = []; { let a = 0.4; for (const l of lines) { starts.push(a); a += l.length * TYPE + 0.25; } }
+  const tChart = starts[starts.length - 1] + lines[lines.length - 1].length * TYPE + 0.2;
+  const NS = 'http://www.w3.org/2000/svg';
+  let path, area, len = 0, dots = [];
+  VideoScene.define({
+    duration: 7, fps: 30, width: 1080, height: 1920,
+    setup() {
+      $('win').style.top = (Number(D.y) || 760) + 'px';
+      lines.forEach((l, i) => { const d = document.createElement('div'); d.className = 'ln'; d.id = 'l' + i; $('lines').appendChild(d); });
+      const svg = $('chart'), W = 860, H = 360, mn = Math.min(...diem), mx = Math.max(...diem);
+      for (let g = 0; g <= 4; g++) { const ln = document.createElementNS(NS, 'line'); ln.setAttribute('x1', 0); ln.setAttribute('x2', W); ln.setAttribute('y1', 20 + g * (H - 20) / 4); ln.setAttribute('y2', 20 + g * (H - 20) / 4); ln.setAttribute('stroke', 'rgba(92,255,149,0.12)'); svg.appendChild(ln); }
+      const P = diem.map((v, i) => [20 + (i * (W - 40)) / (diem.length - 1), H - ((v - mn) / Math.max(1e-6, mx - mn)) * (H - 50) - 10]);
+      area = document.createElementNS(NS, 'path');
+      area.setAttribute('d', `M${P[0][0]} ${H} ` + P.map((p) => `L${p[0]} ${p[1]}`).join(' ') + ` L${P[P.length - 1][0]} ${H} Z`);
+      area.setAttribute('fill', 'rgba(92,255,149,0.12)'); svg.appendChild(area);
+      path = document.createElementNS(NS, 'path');
+      path.setAttribute('d', 'M' + P.map((p) => p.join(' ')).join(' L')); path.setAttribute('fill', 'none'); path.setAttribute('stroke', '#5CFF95');
+      path.setAttribute('stroke-width', 6); path.setAttribute('stroke-linejoin', 'round'); svg.appendChild(path);
+      len = path.getTotalLength(); path.setAttribute('stroke-dasharray', len);
+      P.forEach((p, i) => {
+        const c = document.createElementNS(NS, 'circle'); c.setAttribute('cx', p[0]); c.setAttribute('cy', p[1]); c.setAttribute('r', 10); c.setAttribute('fill', '#5CFF95'); svg.appendChild(c);
+        const tx = document.createElementNS(NS, 'text'); tx.setAttribute('x', p[0]); tx.setAttribute('y', 410); tx.setAttribute('text-anchor', i === 0 ? 'start' : i === P.length - 1 ? 'end' : 'middle');
+        tx.setAttribute('fill', '#2FBF6A'); tx.setAttribute('font-family', "'JetBrains Mono', monospace"); tx.setAttribute('font-size', 30); tx.textContent = nhanX[i] || '';
+        svg.appendChild(tx); dots.push([c, tx, i / (P.length - 1)]);
+      });
+      $('res').textContent = D.ketQua || '';
+    },
+    render(t) {
+      const wk = ease.outCubic(prog(t, 0, 0.4));
+      $('win').style.opacity = wk; $('win').style.transform = `scale(${lerp(0.94, 1, wk)})`;
+      let curAt = -1;
+      lines.forEach((l, i) => {
+        const n = Math.max(0, Math.min(l.length, Math.floor((t - starts[i]) / TYPE)));
+        const el = $('l' + i);
+        el.textContent = l.slice(0, n);
+        if (t >= starts[i] && (i === lines.length - 1 || t < starts[i + 1])) curAt = i;
+      });
+      const old = document.getElementById('cur'); if (old) old.remove();
+      if (curAt >= 0 && Math.floor(t * 2.5) % 2 === 0) { const c = document.createElement('span'); c.id = 'cur'; $('l' + curAt).appendChild(c); }
+      const ck = ease.inOutCubic(prog(t, tChart, 1.6));
+      path.setAttribute('stroke-dashoffset', len * (1 - ck));
+      area.style.opacity = ck;
+      for (const [c, tx, f] of dots) { const on = ck >= f - 0.001 ? 1 : 0; c.setAttribute('opacity', on); tx.setAttribute('opacity', on); }
+      const rk = prog(t, tChart + 1.6, 0.3);
+      $('res').style.opacity = rk * (0.8 + 0.2 * Math.sin(t * 6));
+    },
+  });
+</script>
+</body>
+</html>

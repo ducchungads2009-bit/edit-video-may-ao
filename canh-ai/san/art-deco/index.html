@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<!-- CẢNH DỰNG SẴN "art-deco" — mẫu 051 Áp phích Art Deco vàng kim: nền đen sâu, tia nắng vàng toả từ đáy, khung bậc thang vẽ dần,
+     vòm quạt, chữ tiêu đề serif vàng giãn rộng. Kín khung, 6 giây. Mở đầu / kết bài dự án cao cấp, sự kiện mở bán sang.
+     data: che ("mo" | "ket"), nhan (dòng nhỏ), ten (tiêu đề lớn), phuDe, cta, sdt -->
+<link rel="stylesheet" href="./lib/fonts/fonts.css" />
+<script src="./lib/runtime/scene.js"></script>
+<style>
+  html, body { margin:0; width:1080px; height:1920px; overflow:hidden; background:#0B0B0D; }
+  #root { position:relative; width:1080px; height:1920px; overflow:hidden; }
+  svg { position:absolute; left:0; top:0; }
+  .txt { position:absolute; left:110px; right:110px; text-align:center; }
+  #nhan { top:740px; font-family:'Montserrat', sans-serif; font-weight:600; font-size:34px; letter-spacing:0.42em; color:#D9B45A; }
+  #ten { top:820px; font-family:'Playfair Display', serif; font-weight:700; font-size:112px; line-height:1.22; letter-spacing:0.06em;
+         text-transform:uppercase; background:linear-gradient(180deg,#FFF3C4 0%,#E8C35E 45%,#A87A22 100%); -webkit-background-clip:text; color:transparent; }
+  #phu { font-family:'Playfair Display', serif; font-style:italic; font-size:54px; color:#EADBB0; }
+  #cta { position:absolute; left:50%; transform:translateX(-50%); white-space:nowrap; border:2px solid #D9B45A; color:#F3E3B5;
+         font-family:'Montserrat', sans-serif; font-weight:600; font-size:32px; letter-spacing:0.1em; padding:24px 44px; text-transform:uppercase; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="6" data-fps="30" data-width="1080" data-height="1920">
+  <svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <div class="txt" id="nhan"></div><div class="txt" id="ten"></div><div class="txt" id="phu"></div><div id="cta"></div>
+</div>
+<script>
+  const D = window.CANH.data;
+  const { prog, ease, lerp } = VideoScene;
+  const $ = (id) => document.getElementById(id);
+  const KET = D.che === 'ket';
+  const NS = 'http://www.w3.org/2000/svg', svg = $('s');
+  const el = (tag, at) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); svg.appendChild(e); return e; };
+  const defs = el('defs', {});
+  defs.innerHTML = `<linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7E2A0"/><stop offset="1" stop-color="#B8862B"/></linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="1" r="0.8"><stop offset="0" stop-color="#E8C35E" stop-opacity="0.35"/><stop offset="1" stop-color="#E8C35E" stop-opacity="0"/></radialGradient>`;
+  el('rect', { x: 0, y: 0, width: 1080, height: 1920, fill: 'url(#glow)' });
+  const rays = [];
+  for (let i = 0; i < 25; i++) { const a = Math.PI + (i / 24) * Math.PI; rays.push({ e: el('line', { x1: 540, y1: 1920, x2: 540, y2: 1920, stroke: 'url(#g)', 'stroke-width': i % 2 ? 2 : 5, opacity: 0.55 }), a, d: 0.1 + Math.abs(i - 12) * 0.04 }); }
+  // khung bậc thang (2 lớp lồng nhau)
+  const frame = (m, st) => { const s = st; return `M${m} ${200 + s} L${m} ${m + 40} L${m + s} ${m + 40} L${m + s} ${m + 40 - s} L${1080 - m - s} ${m + 40 - s} L${1080 - m - s} ${m + 40} L${1080 - m} ${m + 40} L${1080 - m} ${1920 - m - 40} L${1080 - m - s} ${1920 - m - 40} L${1080 - m - s} ${1920 - m - 40 + s} L${m + s} ${1920 - m - 40 + s} L${m + s} ${1920 - m - 40} L${m} ${1920 - m - 40} Z`; };
+  const frames = [el('path', { d: frame(50, 40), fill: 'none', stroke: 'url(#g)', 'stroke-width': 4 }), el('path', { d: frame(78, 30), fill: 'none', stroke: 'url(#g)', 'stroke-width': 1.5 })];
+  // vòm quạt trên tiêu đề
+  const fan = [];
+  for (let i = 0; i < 9; i++) { const a0 = Math.PI + (i / 9) * Math.PI, a1 = Math.PI + ((i + 1) / 9) * Math.PI, r = 210, cx = 540, cy = 660;
+    fan.push(el('path', { d: `M${cx} ${cy} L${cx + Math.cos(a0) * r} ${cy + Math.sin(a0) * r} A${r} ${r} 0 0 1 ${cx + Math.cos(a1) * r} ${cy + Math.sin(a1) * r} Z`, fill: i % 2 ? '#1A1712' : 'url(#g)', opacity: 0.9, stroke: '#0B0B0D', 'stroke-width': 3 })); }
+  const arc2 = el('path', { d: 'M300 660 A240 240 0 0 1 780 660', fill: 'none', stroke: 'url(#g)', 'stroke-width': 3 });
+  const rule = el('path', { d: 'M240 0 L840 0', stroke: 'url(#g)', 'stroke-width': 3, fill: 'none' });
+  const diamond = el('rect', { x: -14, y: -14, width: 28, height: 28, fill: 'url(#g)' });
+  let flen = [], alen = 0;
+  VideoScene.define({
+    duration: 6, fps: 30, width: 1080, height: 1920,
+    setup() {
+      flen = frames.map((f) => { const l = f.getTotalLength(); f.setAttribute('stroke-dasharray', l); return l; });
+      alen = arc2.getTotalLength(); arc2.setAttribute('stroke-dasharray', alen);
+      $('nhan').textContent = (D.nhan || (KET ? 'Liên hệ' : 'Bộ sưu tập thượng lưu')).toUpperCase();
+      $('ten').textContent = D.ten || 'The Golden';
+      $('phu').textContent = D.phuDe || (KET ? 'Đặc quyền dành riêng cho bạn' : 'Biểu tượng của sự thịnh vượng');
+      const ct = KET ? [D.cta || 'Đặt lịch tham quan', D.sdt].filter(Boolean).join(' · ') : (D.cta || '');
+      $('cta').textContent = ct; if (!ct) $('cta').style.display = 'none';
+    },
+    render(t) {
+      for (const r of rays) { const k = ease.outCubic(prog(t, r.d, 0.9)); const L = 1500 * k; r.e.setAttribute('x2', 540 + Math.cos(r.a) * L); r.e.setAttribute('y2', 1920 + Math.sin(r.a) * L); r.e.setAttribute('opacity', 0.25 + 0.2 * Math.sin(t * 1.5 + r.a * 3)); }
+      frames.forEach((f, i) => f.setAttribute('stroke-dashoffset', flen[i] * (1 - ease.inOutCubic(prog(t, 0.2 + i * 0.25, 1.4)))));
+      fan.forEach((f, i) => { const k = ease.outBack(prog(t, 0.9 + Math.abs(i - 4) * 0.07, 0.5)); f.setAttribute('transform', `translate(540 660) scale(${k}) translate(-540 -660)`); });
+      arc2.setAttribute('stroke-dashoffset', alen * (1 - ease.outCubic(prog(t, 1.2, 0.8))));
+      const fade = (id, a, d, dy) => { const k = ease.outCubic(prog(t, a, d)); $(id).style.opacity = k; $(id).style.transform = (id === 'cta' ? 'translateX(-50%) ' : '') + `translateY(${lerp(dy, 0, k)}px)`; };
+      fade('nhan', 1.5, 0.6, 10); fade('ten', 1.8, 0.8, 14);
+      // ánh vàng quét qua tiêu đề
+      const sw = prog(t, 3.2, 1.2);
+      $('ten').style.backgroundImage = `linear-gradient(100deg, transparent ${sw * 140 - 30}%, rgba(255,255,255,0.75) ${sw * 140 - 20}%, transparent ${sw * 140 - 10}%), linear-gradient(180deg,#FFF3C4 0%,#E8C35E 45%,#A87A22 100%)`;
+      const ty = 820 + $('ten').offsetHeight;
+      rule.setAttribute('transform', `translate(0 ${ty + 40})`); rule.setAttribute('opacity', prog(t, 2.4, 0.4));
+      diamond.setAttribute('transform', `translate(540 ${ty + 40}) rotate(45) scale(${ease.outBack(prog(t, 2.5, 0.4))})`);
+      $('phu').style.top = ty + 80 + 'px'; fade('phu', 2.6, 0.6, 8);
+      $('cta').style.top = ty + 210 + 'px'; fade('cta', 3.0, 0.6, 10);
+    },
+  });
+</script>
+</body>
+</html>

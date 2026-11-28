@@ -44,7 +44,7 @@ export const CanhAI: React.FC<{e: any; dur: number}> = ({e, dur}) => {
     const info = {
       data: e.data ?? {},
       w: sw, h: sh, frameW: W, frameH: H, dur,
-      style: {font: st.font, heading: st.heading || st.font, fonts: st.fonts, text: st.text, captions: st.captions},
+      style: {font: st.font, heading: st.heading || st.font, fonts: st.fonts, text: st.text, captions: st.captions, accent: st.accent},
     };
     return staticFile(`${String(e.canh).replace(/\/+$/, '')}/index.html`) + '#canh=' + encodeURIComponent(JSON.stringify(info));
   }, [e.canh, JSON.stringify(e.data ?? {}), sw, sh, W, H, dur]);

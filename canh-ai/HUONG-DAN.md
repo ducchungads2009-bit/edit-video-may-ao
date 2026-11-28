@@ -15,6 +15,9 @@ thanh toán động, sa bàn vẽ tay, tranh màu nước tự vẽ, infographic
   màu (hex), font, bố cục theo % khung, nhịp theo giây, cách dựng bằng code, mục "Tự kiểm" — dựng theo đúng bản mô tả, ô nội dung
   lấy từ brief (không chép ví dụ trong bản mô tả, không bịa số).
 
+- TRƯỚC KHI TỰ VIẾT: xem 9 cảnh dựng sẵn `canh_ai.py san` (mau-nuoc, art-deco, du-lich, bauhaus, the-tin-rao, bieu-do-vay,
+  tuyen-tien-ich, tin-nhan, terminal) — đủ thì chỉ chép (`--san`) và đổi `data`. Cảnh dựng sẵn cũng là ví dụ mẫu để viết cảnh mới.
+
 ## 1. Quy trình
 1. `canh_ai.py moi "<du-an>" <ten> [--mau <id>] [--giay 6] [--nen trong|mau]` → `canh/<ten>/index.html` (khung đúng luật) +
    `MAU.md` (bản mô tả mẫu nếu có `--mau`) + `lib/` (thư viện, không sửa).
