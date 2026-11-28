@@ -97,6 +97,11 @@ gửi. Video nói về dự án cụ thể → ảnh THẬT của dự án tìm 
    Cần đồ hoạ khối có sẵn không làm được (mở đầu thương hiệu, bảng giá động, tranh vẽ tay, infographic…) → CẢNH AI: đọc HẾT
    `canh-ai/HUONG-DAN.md`, chọn mẫu `./chay.sh canh_ai.py ds --nhom bds`, tạo `canh_ai.py moi`, xem `canh_ai.py thu` rồi khối `canhAI`
    (TAI-LIEU.md mục "CẢNH AI"; có 9 cảnh dựng sẵn: `canh_ai.py san`). Giọng đọc AI từ kịch bản: `./chay.sh tts.py "<du-an>" "<câu>" --giong "vn:Hải Đăng"` (giọng VieNeu).
+   GIỌNG CỦA CHÍNH NGƯỜI DÙNG (đơn ghi "Giọng đọc AI: nhân bản giọng người dùng…", hoặc người dùng nhờ "đọc bằng giọng mình"): file ghi âm mẫu
+   (tên có "giong-mau", hoặc file âm thanh duy nhất khi đơn ghi nhân bản; m4a / mp3 / wav / video quay mặt nói đều được) → chép thành
+   `<du-an>/giong-mau.<đuôi>` → `--giong "mau:giong-mau.<đuôi>"` (tts.py / video_ai.py). Cần 10–20 giây nói rõ, không nhạc nền (< 3 giây
+   thì báo người dùng gửi lại). CHỈ giọng của chính người dùng hoặc người đã đồng ý — không bắt chước giọng người nổi tiếng / người khác;
+   nghi ngờ thì hỏi 1 câu. Lỗi → tự đọc bằng vn:Ngọc Huyền và ghi rõ trong báo cáo.
    KHÔNG CÓ VIDEO (người dùng chỉ gửi kịch bản / thông tin, đơn ghi "Video gốc: không có"): `./chay.sh video_ai.py moi "<du-an>"
    --kich-ban kich-ban.txt --giong "vn:Hải Đăng"` rồi làm theo TAI-LIEU.md mục "VIDEO KHÔNG CẦN CLIP GỐC" (bỏ mục 1 câu 1 — không cần video).
 8. `./chay.sh soat.py "<du-an>"`, sửa 1 vòng. `./chay.sh render.py "<du-an>"` (máy ảo ~10 giây dựng / 1 giây video:

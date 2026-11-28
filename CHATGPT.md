@@ -19,6 +19,11 @@ câu nào nữa, đọc đơn rồi làm luôn mục 2 → 3. Chỉ hỏi lại 
 - KHÔNG CÓ VIDEO (đơn ghi "Video gốc: không có" / người dùng chỉ gửi kịch bản hoặc thông tin): KHÔNG hỏi xin video. Viết kịch bản
   ngắn từ brief (mỗi dòng 1 câu, không bịa số) → `./chay.sh video_ai.py moi "<du-an>" --kich-ban kich-ban.txt --giong "vn:Hải Đăng"`
   (giọng nữ: "vn:Ngọc Huyền"; danh sách: `./chay.sh tts.py ds`) → làm theo TAI-LIEU.md mục "VIDEO KHÔNG CẦN CLIP GỐC".
+- GIỌNG CỦA CHÍNH NGƯỜI DÙNG (đơn ghi "Giọng đọc AI: nhân bản giọng người dùng…", hoặc người dùng nhờ "đọc bằng giọng mình"): file ghi âm mẫu
+  (tên có "giong-mau", hoặc file âm thanh duy nhất khi đơn ghi nhân bản; m4a / mp3 / wav / video quay mặt nói đều được) → chép thành
+  `<du-an>/giong-mau.<đuôi>` → `--giong "mau:giong-mau.<đuôi>"` (tts.py / video_ai.py). Cần 10–20 giây nói rõ, không nhạc nền (< 3 giây
+  thì báo người dùng gửi lại). CHỈ giọng của chính người dùng hoặc người đã đồng ý — không bắt chước giọng người nổi tiếng / người khác;
+  nghi ngờ thì hỏi 1 câu. Lỗi → tự đọc bằng vn:Ngọc Huyền và ghi rõ trong báo cáo.
 - CẢNH AI (đồ hoạ động: mở / kết bằng tranh, thẻ giá, biểu đồ tiến độ, sơ đồ tiện ích, khung chat): `./chay.sh canh_ai.py san` xem
   9 cảnh dựng sẵn → chép `canh_ai.py moi "<du-an>" <tên> --san <cảnh>` → khối `canhAI` (TAI-LIEU.md mục "CẢNH AI"). Đây là công cụ
   của tool, được dùng (không phải tự viết script dựng hình). Bộ có cảnh đi kèm: Sang trọng màu nước, Art Deco vàng kim, Du lịch cổ điển, Bauhaus số liệu.
