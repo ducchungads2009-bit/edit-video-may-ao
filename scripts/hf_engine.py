@@ -35,7 +35,7 @@ def bundle_dir() -> Path:
     if (pre / "bundle.js").exists() and not (ROOT / "remotion" / "src").exists():
         _sync_public(pre)
         return pre
-    files = sorted([*(ROOT / "remotion").rglob("*.ts*"), *(ROOT / "remotion" / "hf").glob("*.mjs"), ROOT / "remotion" / "fonts.json",
+    files = sorted([*(ROOT / "remotion").rglob("*.ts*"), ROOT / "remotion" / "hf" / "build.mjs", ROOT / "remotion" / "fonts.json",
                     ROOT / "package.json"])
     sig = "|".join(f"{p.relative_to(ROOT)}:{p.stat().st_size}:{int(p.stat().st_mtime)}" for p in files if p.exists())
     h = hashlib.md5(sig.encode()).hexdigest()[:10]
@@ -486,13 +486,23 @@ def mix_audio(data: dict, root: Path, out: Path):
     return out
 
 
+def _short(text: str) -> str:
+    """rút gọn lỗi trình duyệt: lấy câu lỗi đầu tiên (bỏ ngăn xếp gọi hàm)"""
+    for pat in (r"Lỗi khi dựng[^\n|]*", r"lỗi khối: ([^\n|]*)", r"(?:Type|Reference|Range|Syntax)?Error: [^\n|]*"):
+        m = re.search(pat, text or "")
+        if m:
+            return m.group(0)[:400]
+    lines = [x for x in (text or "").splitlines() if x.strip() and not re.match(r"^\s*(at\s|\S+ \(https?://)", x)]
+    return " / ".join(lines[-3:])[:400]
+
+
 def _drive(args: list, env: dict, W: int, H: int):
     e = dict(env)
     e.update(HF_W=str(W), HF_H=str(H), NODE_PATH=str(ROOT / "node_modules"))
     r = subprocess.run([NODE, str(ROOT / "remotion" / "hf" / "drive.mjs"), *args], cwd=ROOT, env=e, capture_output=True, text=True,
                        encoding="utf-8", errors="replace")
     if r.returncode:
-        raise RuntimeError("Trình duyệt lỗi: " + (r.stderr or r.stdout)[-2000:])
+        raise RuntimeError("Trình duyệt lỗi: " + _short((r.stderr or "") + (r.stdout or "")))
     return r
 
 
@@ -597,8 +607,9 @@ def run(args, tien=None, span=(0.0, 1.0)):
                     pct = float(j.get("pct", 0)) / 100
                     if tien:
                         done, tot = j.get("done"), j.get("total")
-                        msg = ("Đang dựng khung" if j.get("code") in ("capture", "render", "frames") else "Đang mã hóa" if j.get("code") == "encode"
-                               else "Chuẩn bị")
+                        c = str(j.get("code") or "")
+                        msg = "Đang mã hóa" if c in ("encode", "assemble", "mux") else "Chuẩn bị" if c in ("compile", "setup", "probe", "extract") \
+                            else "Đang dựng khung"
                         tien.update(a + (b - a) * min(0.98, pct), msg=f"{msg} {done}/{tot}" if tot else msg)
                 except Exception:  # noqa
                     pass
@@ -612,8 +623,8 @@ def run(args, tien=None, span=(0.0, 1.0)):
         p.wait()
         page.unlink(missing_ok=True)
         if p.returncode or not vid.exists():
-            print("\n".join(tail[-25:]), flush=True)
-            raise RuntimeError("HyperFrames dựng lỗi")
+            print("\n".join(x for x in tail[-30:] if not re.match(r"^\s*(at\s|\S+ \(https?://)", x))[-3000:], flush=True)
+            raise RuntimeError("HyperFrames dựng lỗi — " + _short("\n".join(tail)))
         print(f"   hình ({n} khung, {nw} luồng): {time.time() - t0:.0f}s", flush=True)
         if th:
             th.join()

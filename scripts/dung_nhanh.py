@@ -1,6 +1,6 @@
-"""BỘ DỰNG NHANH — chỉ dựng (bằng Remotion) những khúc có chữ / khối / ảnh trám / zoom / chuyển cảnh;
+"""BỘ DỰNG NHANH — chỉ dựng (bằng bộ dựng HyperFrames) những khúc có chữ / khối / ảnh trám / zoom / chuyển cảnh;
 phần còn lại ffmpeg lấy thẳng từ video gốc (giữ đúng cắt đoạn, phóng 108% của zoom cut, màu), phụ đề vẽ bằng Python
-(phude_nhanh.py, giống hệt kiểu phụ đề của tool), tiếng lấy từ Remotion (chỉ dựng tiếng, không chụp hình) -> ghép 1 lần.
+(phude_nhanh.py, giống hệt kiểu phụ đề của tool), tiếng lấy từ bộ dựng (chỉ dựng tiếng, không chụp hình) -> ghép 1 lần.
 
 Máy yếu (2 nhân, Mac Intel...) nhanh hơn rõ rệt; video càng ít đồ hoạ càng nhanh. Không dùng được (kiểu phụ đề 'box',
 khung người nói, logo thương hiệu, khung hình đặc biệt...) hoặc đồ hoạ chiếm gần hết video -> render.py dựng như cũ.
@@ -15,7 +15,7 @@ FPS = 30
 TR = 6           # khung mờ chồng ở điểm nối (giống EditPlan.tsx)
 OVERLAP = {"fade", "whip", "slide", "up", "zoomin", "blur"}
 PAD = 3          # khung đệm hai đầu khúc phức tạp
-MERGE = 20       # khúc thường ngắn hơn ~0,7s kẹp giữa 2 khúc phức tạp -> dựng luôn bằng Remotion (đỡ vụn)
+MERGE = 20       # khúc thường ngắn hơn ~0,7s kẹp giữa 2 khúc phức tạp -> dựng luôn bằng bộ dựng (đỡ vụn)
 NO_VISUAL = {"audio", "sfx", "beauty"}
 
 
@@ -216,7 +216,7 @@ def plan(props: dict, W: int, H: int):
             t = src_time(lay, f)
             if t is not None and any(r0 <= t <= r1 for r0, r1 in rngs):
                 cx[f] = 1
-    # phần kéo dài quá cuối video chính (nhạc / khối dài hơn video -> đứng hình khung cuối): dựng bằng Remotion
+    # phần kéo dài quá cuối video chính (nhạc / khối dài hơn video -> đứng hình khung cuối): dựng bằng bộ dựng
     tf = props.get("tailFrom")
     if tf:
         mark(float(tf) * FPS - PAD, N)
@@ -293,12 +293,12 @@ def run(folder: Path, props: dict, W: int, H: int, out: Path, remotion_fn, rende
     t0 = time.time()
     N, pieces, lay = P["N"], P["pieces"], P["lay"]
     ow, oh = int(round(W * k / 2) * 2), int(round(H * k / 2) * 2)
-    print(f"Dựng nhanh: {sum(1 for p in pieces if p[0] == 'R')} khúc có đồ hoạ = {P['frac'] * 100:.0f}% video dựng bằng Remotion, "
+    print(f"Dựng nhanh: {sum(1 for p in pieces if p[0] == 'R')} khúc có đồ hoạ = {P['frac'] * 100:.0f}% video dựng khung đồ hoạ, "
           f"còn lại lấy thẳng video gốc.", flush=True)
     main_src = Path(props["_jobDir"]) / Path(props["videoSrc"]).name
     bundle = props.get("_bundle")
     steps = 4
-    # phụ đề vẽ bằng Python — chạy song song (luồng riêng) trong lúc Remotion dựng khúc đồ hoạ
+    # phụ đề vẽ bằng Python — chạy song song (luồng riêng) trong lúc bộ dựng dựng khúc đồ hoạ
     cap_th, cap_res, cap_list = None, {}, None
     if props.get("captions"):
         import threading
@@ -313,7 +313,7 @@ def run(folder: Path, props: dict, W: int, H: int, out: Path, remotion_fn, rende
                 cap_res["err"] = e
         cap_th = threading.Thread(target=_caps, daemon=True)
         cap_th.start()
-    # 1) tiếng: Remotion chỉ dựng tiếng (không chụp khung)
+    # 1) tiếng: chỉ dựng tiếng (không chụp khung)
     import os
     keep = os.environ.get("NHANH_GIU") == "1"  # (thử nghiệm) dùng lại tiếng / khúc đã dựng lần trước
     aud = work / "_nhanh_audio.wav"
@@ -325,7 +325,7 @@ def run(folder: Path, props: dict, W: int, H: int, out: Path, remotion_fn, rende
         aud.unlink(missing_ok=True)
         remotion_fn(["render", bundle, "audio", str(aud), f"--props={pfile}", "--codec=wav", "--log=error"], tien, (0.01, 0.06))
     print(f"   tiếng: {time.time() - t1:.0f}s", flush=True)
-    # 2) khúc có đồ hoạ: 1 lần Remotion, phụ đề tắt (vẽ bằng Python ở bước 3)
+    # 2) khúc có đồ hoạ: 1 lần bộ dựng, phụ đề tắt (vẽ bằng Python ở bước 3)
     rr = [[f0, f1] for kind, f0, f1 in pieces if kind == "R"]
     part = work / "_nhanh_part.mp4"
     t1 = time.time()
@@ -341,7 +341,7 @@ def run(folder: Path, props: dict, W: int, H: int, out: Path, remotion_fn, rende
         pf2.write_text(json.dumps(pp, ensure_ascii=False), encoding="utf-8")
         remotion_fn(["render", bundle, "partial", str(part), f"--props={pf2}", "--muted", *render_flags, *scale_flags], tien, (0.06, 0.80))
         print(f"   khúc đồ hoạ ({sum(b - a for a, b in rr)} khung): {time.time() - t1:.0f}s", flush=True)
-    # 3) phụ đề: vẽ song song lúc Remotion dựng khúc đồ hoạ (đã khởi động ở trên)
+    # 3) phụ đề: vẽ song song lúc bộ dựng dựng khúc đồ hoạ (đã khởi động ở trên)
     if cap_th:
         if tien:
             tien.update(0.81, "Vẽ phụ đề")
@@ -382,7 +382,7 @@ def run(folder: Path, props: dict, W: int, H: int, out: Path, remotion_fn, rende
     fc = chains + ["".join(labels) + f"concat=n={len(labels)}:v=1:a=0[base]"]
     cur = "base"
     nin = len(inputs) // 4
-    if cimgs:  # vệt tối 4 góc (vignette): phủ cả video 1 lần (khúc Remotion đã dựng không có vignette)
+    if cimgs:  # vệt tối 4 góc (vignette): phủ cả video 1 lần (khúc đồ hoạ đã dựng không có vignette)
         inputs += ["-loop", "1", "-framerate", str(FPS), "-i", str(cimgs[0])]
         fc.append(f"[{nin}:v]format=rgba[vg]")
         fc.append(f"[{cur}][vg]overlay=0:0:shortest=1:format=auto[vvg]")

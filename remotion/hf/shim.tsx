@@ -38,6 +38,8 @@ type SeqProps = {from?: number; durationInFrames?: number; children?: React.Reac
   style?: React.CSSProperties; className?: string; premountFor?: number; postmountFor?: number; showInTimeline?: boolean; height?: number; width?: number};
 export const Sequence = forwardRef<HTMLDivElement, SeqProps>(({from = 0, durationInFrames, children, layout = 'absolute-fill', style, className}, ref) => {
   const p = useContext(TlCtx);
+  if (typeof from !== 'number' || !Number.isFinite(from)) throw new TypeError(`Sequence: "from" phải là số hữu hạn, đang là ${from}`);
+  if (durationInFrames !== undefined && !(durationInFrames > 0)) throw new TypeError(`Sequence: durationInFrames phải > 0, đang là ${durationInFrames}`);
   const dur = Math.max(0, Math.min(durationInFrames ?? Infinity, p.dur - from));
   const f = p.frame - from;
   const tl = useMemo(() => ({frame: f, dur}), [f, dur]);
@@ -319,6 +321,19 @@ export const Composition: React.FC<CompDef> = (p) => { if (!REG.find((x) => x.id
 export const Still: React.FC<any> = (p) => <Composition fps={30} durationInFrames={1} {...p} />;
 export const Folder: React.FC<{children?: React.ReactNode}> = ({children}) => <>{children}</>;
 
+/** lỗi trong khối -> báo lỗi rõ ràng (Remotion cũng dừng render), không lặng lẽ ra khung trống */
+let RENDER_ERR: string | null = null;
+class Guard extends React.Component<{children?: React.ReactNode}, {err: any}> {
+  state = {err: null as any};
+  static getDerivedStateFromError(err: any) { return {err}; }
+  componentDidCatch(err: any) {
+    RENDER_ERR = String((err && (err.stack || err.message)) || err);
+    console.error('[hf] lỗi khối:', RENDER_ERR);
+    W_.__hfError = RENDER_ERR;
+  }
+  render() { return this.state.err ? null : this.props.children; }
+}
+
 let BOOT: Promise<any> | null = null;
 let RENDER: ((f: number) => void) | null = null;
 let N = 1;
@@ -337,7 +352,9 @@ const seekTo = async (frame: number) => {
   await BOOT;
   ABS = Math.max(0, Math.min(N - 1, frame));
   flushSync(() => RENDER!(ABS));
+  if (RENDER_ERR) throw new Error('Lỗi khi dựng khung ' + ABS + ': ' + RENDER_ERR);
   await settle();
+  if (RENDER_ERR) throw new Error('Lỗi khi dựng khung ' + ABS + ': ' + RENDER_ERR);
 };
 
 export const registerRoot = (RootC: React.ComponentType) => {
@@ -367,7 +384,7 @@ export const registerRoot = (RootC: React.ComponentType) => {
     RENDER = (f: number) => root.render(
       <CfgCtx.Provider value={cfg}>
         <TlCtx.Provider value={{frame: f, dur: meta.durationInFrames}}>
-          <Comp {...props} />
+          <Guard><Comp {...props} /></Guard>
         </TlCtx.Provider>
       </CfgCtx.Provider>,
     );
@@ -378,6 +395,7 @@ export const registerRoot = (RootC: React.ComponentType) => {
         RECS = [];
         ABS = f;
         flushSync(() => RENDER!(f));
+        if (RENDER_ERR) throw new Error('Lỗi khi dựng tiếng khung ' + f + ': ' + RENDER_ERR);
         for (const x of RECS) out.push(x);
       }
       W_.__AUDIO = {fps: meta.fps, n: N, recs: out};
